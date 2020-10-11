@@ -21,6 +21,9 @@
 \chapter{Wprowadzenie}
 \newpage
 \chapter{Blockchain}
+Technologia Blockchain to stosunkowo nowe rozwiązanie. Pierwsze zastwosowanie tej technologii miało miejsce w roku 2009, w popularnej kryptowalucie bitcoin. Zadaniem Blockchainu było księgowanie transakcji. Od tego czasu można zauważyć zwiększanie się zainteresowania tą technologią, co przekłada się na powstawanie nowych kryptowalut i nowych rozwiązań Blockchain (Blockachain 2.0, 3.0).
+\section{Architektura Blockchain}
+Blockchain to rodzaj bazy danych, która przechowuje dane w łańcuchu bloków. Dane mają postać wpisów do bazy danych. Bloki przechowujące transakcje tworzą "łańcuch", co oznacza że każdy następny blok w łańcuchu zawiera odniesienie do poprzedniego bloku. 
 \newpage
 \chapter{Analiza dziedziny}
 Elektroniczne systemy głosowania coraz bardziej zyskują na popularności.
@@ -107,5 +110,18 @@ Główne częsci systemu:
     \item Processor (dalej nazywany Procesorem) - zajmuje się przetwarzaniem głosów. Sprawdza poprawność danych otrzymanych z Kolektora, wraz z podpisem elektronicznym. Usuwa głosy, które się powtarzają, zarówno głosy oddane elektronicznie, jak i te oddane w lokalach wyborczych. Sortuje głosy według okręgów wyborczych i usuwa z nich podpis elektroniczny, w celu anonimizacji głosu. Tak przetworzone głosy są mieszane według odpowiedniego algorytmu i wysyłane do Licznika.
     \item Tallier (dalej nazywany Licznikiem) - rolą licznika jest odebranie głosu od Procesora, otwarcie go i dodanie przyporządkowanie do odpowiedniego wyniku.
 \end{itemize}
+\chapter{Projekt systemu}
+\section{Moduły systemu}
+Całość aplikacji dzieli na moduły, które komunikując się ze sobą tworzą działający system. Taki podział pozwala na zwiększenie przejrzystości architektury aplikacji i ułatwienie jej testowania.
+\includegraphics[width=\textwidth]{images/podział_na_moduły.png}
+Aplikacja jest podzielona na stronę serwerową i kliencką. Jest to rodzaj architektury systemów oprogramowania nazywany "klient-serwer". Aplikacje typu "klient-serwer" są bardzo popularne w środowisku aplikacji webowych, które wykorzystują bazę danych. Głównym założeniem takiego podejścia jest przeniesienie do aplikacji klienckiej, tego co widzi użytkownik (UI, UX, interakcje z użytkownikiem) i wyodrębnienie logiki aplikacji, zapytań do bazy danych oraz przetwarzania danych do aplikacji serwerowej. Aplikacja serwerowa odpowiada na żądania klienta. Działanie takiego systemu odbywa się przez odpowiedni protokół komunikacyjny (np. UDP, TCP).
+
+
+
+W przypadku projektowanego systemu strona serwerowa jest podłączona do dwóch baz danych. E-voting database dostarcza dane związane z wyborcami i wyborami, baza jest zorganizowana w modelu obiektowo-relacyjnym (ORM).
+
+\includegraphics[width=\textwidth]{images/Baza_danych.png}
+
+Natomiast daza danych "Votes database" to sieć rozproszonych baz danych przechowująca wpisy z oddanymi głosami. Struktura tej bazy danych to tzw. Blockchain. Każdy węzeł tej sieci przechowuje łańcuch bloków, gdzie każdy blok zawiera transakcje z oddanym głosem. Każdy węzeł powinien posiadać taką samą zawartość łańcucha bloków, w przeciwnym razie należy zweryfikować i zaktualizować zawartość łańcucha bloków.
 
 \end{document}
