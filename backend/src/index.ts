@@ -5,11 +5,13 @@ import cookieParser from "cookie-parser";
 import auth from "./routes/authentication";
 import users from "./routes/users";
 import elections from "./routes/elections";
+import cors from "cors";
 
 const app = express();
 dotenv.config();
 const port = 8080;
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
 

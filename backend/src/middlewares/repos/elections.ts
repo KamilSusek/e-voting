@@ -90,7 +90,7 @@ export function getAllAssignedEllections(req: any, res: any) {
   });
 }
 
-export function getEllectionsForUser(req: any, res: any) {
+export function getElectionsForUser(req: any, res: any) {
   const selectUserIdQuery = "SELECT id FROM users WHERE username = ?";
 
   const { username } = req.params;
@@ -108,6 +108,20 @@ export function getEllectionsForUser(req: any, res: any) {
           res.status(400).send();
         }
       });
+    } else {
+      res.status(400).send();
+    }
+  });
+}
+
+export function getOptionsForElection(req: any, res: any) {
+  const select =
+    "SELECT optionName FROM vote_option WHERE election_id IN (SELECT election_id FROM elections WHERE electionTitle = ?)";
+  const { title } = req.params;
+  db.all(select, [title], (err, rows) => {
+    if (!err) {
+      console.log(rows);
+      res.status(200).send(rows);
     } else {
       res.status(400).send();
     }

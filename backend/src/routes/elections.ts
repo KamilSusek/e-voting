@@ -4,7 +4,8 @@ import {
   getAllElections,
   assignUserToElection,
   getAllAssignedEllections,
-  getEllectionsForUser,
+  getElectionsForUser,
+  getOptionsForElection,
 } from "../middlewares/repos/elections";
 import { Router } from "express";
 
@@ -20,6 +21,8 @@ router.post("/elections/assign", assignUserToElection);
 
 router.get("/elections/assigned", getAllAssignedEllections);
 
-router.get("/elections/user/:username", getEllectionsForUser);
+router.get("/elections/user/:username", getElectionsForUser);
+
+router.get("/elections/options/:title", getOptionsForElection);
 
 export default router;
