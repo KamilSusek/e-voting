@@ -23,7 +23,20 @@
 \chapter{Blockchain}
 Technologia Blockchain to stosunkowo nowe rozwiązanie. Pierwsze zastwosowanie tej technologii miało miejsce w roku 2009, w popularnej kryptowalucie bitcoin. Zadaniem Blockchainu było księgowanie transakcji. Od tego czasu można zauważyć zwiększanie się zainteresowania tą technologią, co przekłada się na powstawanie nowych kryptowalut i nowych rozwiązań Blockchain (Blockachain 2.0, 3.0).
 \section{Architektura Blockchain}
-Blockchain to rodzaj bazy danych, która przechowuje dane w łańcuchu bloków. Dane mają postać wpisów do bazy danych. Bloki przechowujące transakcje tworzą "łańcuch", co oznacza że każdy następny blok w łańcuchu zawiera odniesienie do poprzedniego bloku. 
+Blockchain to łańcuch bloków, które przechowują dane. Każdy blok przechowuje zabezpieczone kryptograficznie informacje, o poprzednim bloku i w ten sposób tworzy się trudny do modyfikacji łańcuch. Technologia blockchain wykorzystuje rozproszoną sieć, w celu przechowywaniu kopii łańcucha w zdecentralizowanym systemie. Takie rozwiązanie pozwala zwiększyć bezpieczeństwo przechowywanych danych.
+\subsection{Łańcuch bloków}
+Łańcuch bloków w systemie Blockchain pełni funkcje struktury danych. Jego budowa przypomina trochę listę jednokierunkową, jednak zamiast wskaźników na poprzedni element, blok przechowuje hash poprzedniego elementu. Hash to wygenerowany za pomocą odpowiedniej funkcji kryptograficznej (funkcji skrótu) ciąg bajtów. Hashowanie jest operacją jednokierunkową, co oznacza brak możliwości odczytania danych wejściowych na podstawie wartości wygenerowanej przez hash.
+Do popularnych funkcji skrótu należą SHA i MD5, jednakże należy pamiętać, że co jakiś czas te rozwiązania się zmieniają, ponieważ odkrywane są w nich luki.
+
+\includegraphics[width=\textwidth]{images/łańcuch_bloków.jpg}
+
+Na łańcuchu bloków, jak na każdej strukturze danych można wykonywać jakieś operacje. W tym przypadku jednak operacje takie jak usuwanie bloku, lub jego modyfikacja nie mają sensu, ponieważ mechanizmy zastosowane w łańcuchu mają na celu zabezpieczenie przed modyfikacją danych w bloku. Najczęściej wykorzystuje się operacje dodawania bloku i sprawdzenia spójności łańcucha.
+
+Dodanie bloku to dołączenie do tablicy bloków (bądź innej struktury łączącej lub indeksującej bloki) nowego bloku, w którym w pole "poprzedni hash" wpisywana jest wartość hash poprzedniego bloku. Następnie w świeżo dodanym bloku z wykorzystaniem funkcji skrótu liczymy hash z pól przechowujących dane, poprzedni hash i znacznik czasu.  
+
+Sprawdzenie spójności łańcucha to przeliczenie hasha każdego bloku i porównanie go z polem "poprzedni hash" następnego bloku. Jest to główny mechanizm pozwalający wykryć niespójność w łańcuchu bloków, lecz nie należy tego mylić z problemem niespójności, w rozproszonym systemie Blockchain.
+
+
 \newpage
 \chapter{Analiza dziedziny}
 Elektroniczne systemy głosowania coraz bardziej zyskują na popularności.
