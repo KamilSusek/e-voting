@@ -1,31 +1,29 @@
-import { db } from "../../repositories/usersRepo";
+import { db } from "../../database/database";
 
-export function getElectionById(req: any, res: any) {
-  const select = "SELECT * FROM elections WHERE id = ?";
-  const { id } = req.params;
-
-  db.run(select, [id], (err: any, row: any) => {
-    if (!err) {
-      console.log(row);
-      res.status(200).send(row);
-    } else {
-      console.log(err);
-      res.status(400).send();
-    }
+export function findById(id: number) {
+  return new Promise((resolve, reject) => {
+    const select = "SELECT * FROM elections WHERE id = ?";
+    db.get(select, [id], (err: any, row: any) => {
+      if (!err) {
+        return resolve(row);
+      } else {
+        return reject(err);
+      }
+    });
   });
 }
 
-export function getAllElections(req: any, res: any) {
-  const select = "SELECT * FROM elections";
+export function findAll() {
+  return new Promise((resolve, reject) => {
+    const select = "SELECT * FROM elections";
 
-  db.all(select, (err: any, rows: any) => {
-    if (!err) {
-      console.log(rows);
-      res.status(200).send(rows);
-    } else {
-      console.log(err);
-      res.status(400).send();
-    }
+    db.all(select, (err: any, rows: any) => {
+      if (!err) {
+        return resolve(rows);
+      } else {
+        return reject(err);
+      }
+    });
   });
 }
 

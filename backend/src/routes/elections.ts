@@ -1,7 +1,7 @@
 import {
-  getElectionById,
+  findById,
   createElection,
-  getAllElections,
+  findAll,
   assignUserToElection,
   getAllAssignedEllections,
   getElectionsForUser,
@@ -13,9 +13,9 @@ const router = Router();
 
 router.post("/election", createElection);
 
-router.get("/elections", getAllElections);
+router.get("/elections", findAll);
 
-router.get("/election/id/:id", getElectionById);
+router.get("/election/id/:id", findById);
 
 router.post("/elections/assign", assignUserToElection);
 

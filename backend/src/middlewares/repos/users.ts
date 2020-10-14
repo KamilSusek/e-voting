@@ -1,4 +1,4 @@
-import { db } from "../../repositories/usersRepo";
+import { db } from "../../database/database";
 
 export function createUsers(req: any, res: any) {
   const insert = "INSERT INTO users (username,  password) VALUES (?,?)";
