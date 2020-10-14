@@ -1,0 +1,36 @@
+div.item {
+  padding: 8px;
+  transition: all 0.5s;
+  margin: 8px 0;
+}
+
+.item-conent {
+  padding: 8px;
+}
+
+div.item span {
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+div.item span:after {
+  text-align: center;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+div.item span.details:after {
+  content: "details...";
+}
+
+div.item span.hide:after {
+  content: "hide...";
+}
+div.item:hover span {
+  padding-right: 25px;
+}
+
+div.item:hover span:after {
+  opacity: 1;
+  right: 0;
+}
