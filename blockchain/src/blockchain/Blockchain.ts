@@ -2,8 +2,10 @@ import Block from "./Block";
 
 class Blockchain {
   chain: Block[];
-  constructor() {
+  chainName: string;
+  constructor(chainName: string) {
     this.chain = [Block.generateGenesisBlock()];
+    this.chainName = chainName;
   }
 
   addNewBlock(data: any) {

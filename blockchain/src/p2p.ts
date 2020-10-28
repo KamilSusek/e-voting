@@ -1,5 +1,7 @@
 import WebSocket from "ws";
+import Block from "./blockchain/Block";
 import Blockchain from "./blockchain/Blockchain";
+import BlockchainService from "./BlockchainService";
 
 const P2P_PORT = process.env.P2P_PORT || 5001;
 
@@ -7,9 +9,10 @@ const peers = process.env.PEERS ? process.env.PEERS.split(",") : [];
 
 class P2PServer {
   sockets: any[];
-  blockchain: Blockchain;
-  constructor(blockchain: Blockchain) {
-    this.blockchain = blockchain;
+  blockchainService: BlockchainService;
+
+  constructor(blockchainService: BlockchainService) {
+    this.blockchainService = blockchainService;
     this.sockets = [];
   }
 
@@ -40,18 +43,32 @@ class P2PServer {
   messageHandler(socket: any) {
     socket.on("message", (message: any) => {
       const data = JSON.parse(message.toString());
-      console.log("data", data);
-      this.blockchain.swapChain(data);
+      if (data.message && data.message === "ADD_BLOCK") {
+        console.log("Message", data);
+      } else {
+        console.log("data", data);
+      }
+      this.synchronizeChain();
     });
   }
 
   sendChain(socket: any) {
-    socket.send(JSON.stringify(this.blockchain.chain));
+    // socket.send(JSON.stringify(this.blockchain.chain));
+  }
+
+  sendBlock(socket: any, blockData: any) {
+    socket.send(JSON.stringify(blockData));
   }
 
   synchronizeChain() {
     this.sockets.forEach((socket) => {
       this.sendChain(socket);
+    });
+  }
+
+  distributeBlock(blockData: any) {
+    this.sockets.forEach((socket) => {
+      this.sendBlock(socket, blockData);
     });
   }
 }
