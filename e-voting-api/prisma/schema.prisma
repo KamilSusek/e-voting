@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./app.db"
+}
+
+model Voter {
+  id            Int             @id @default(autoincrement())
+  username      String          @unique
+  password      String
+  User_Election User_Election[]
+}
+
+model Election {
+  id                   Int             @id @default(autoincrement())
+  election_name        String          @unique
+  election_description String?
+  start_date           String
+  end_date             String
+  server_url           String          @unique
+  Candidate            Candidate[]
+  User_Election        User_Election[]
+}
+
+model User_Election {
+  id          Int      @id @default(autoincrement())
+  voter_id    Int
+  election_id Int
+  didVote     Boolean  @default(false)
+  Election    Election @relation(fields: [election_id], references: [id])
+  Voter       Voter    @relation(fields: [voter_id], references: [id])
+}
+
+model Candidate {
+  id                    Int      @id @default(autoincrement())
+  candidate_name        String
+  candidate_description String?
+  election_id           Int
+  votes                 Int      @default(0)
+  Election              Election @relation(fields: [election_id], references: [id])
+}
