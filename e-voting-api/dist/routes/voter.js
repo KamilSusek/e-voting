@@ -17,7 +17,7 @@ router.get('/voters', voters_3.findAllVoters);
 router.get('/voters/:electionName', voters_2.findVoterAttachedToElection);
 router.get('/voter/:username', voters_1.findVoterFromParams);
 router.post('/voter', saveVoter_1.saveVoter);
-router.post('/send-vote', sendVote_1.registerVote, sendVote_1.sendVote);
+router.post('/send-vote', sendVote_1.validate, sendVote_1.registerVote, sendVote_1.sendVote);
 router.get('/score/:electionName', score_1.findElectionFromParams, score_1.prepareScores, score_1.calculateScore);
 exports.default = router;
 //# sourceMappingURL=voter.js.map

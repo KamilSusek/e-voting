@@ -1,35 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import {
-  Avatar,
-  Button,
-  Grid,
-  IconButton,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemSecondaryAction,
-  ListItemText,
-  Typography,
-  makeStyles,
-  Paper,
-  Divider
-} from '@material-ui/core'
-import EditIcon from '@material-ui/icons/Edit'
+import { Button, Grid, Typography, makeStyles } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import CreateVoterDialog from './CreateVoterDialog'
+import VoterList from './voters-list/VoterList'
 
 const useStyles = makeStyles({
   root: {
     marginTop: '2%',
     display: 'flex',
     justifyContent: 'center'
+  },
+  title: {
+    fontSize: '1.9rem',
+    fontWeight: 'bold'
   }
 })
-
-interface Voter {
-  username: string
-}
 
 function Voters () {
   const [voters, setVoters] = useState([])
@@ -66,39 +52,18 @@ function Voters () {
     <div className={classes.root}>
       <Grid item xs={12} md={6}>
         <Grid container justify='space-between' alignItems='center'>
-          <Typography variant='h6'>Voters</Typography>
-          <Button variant='contained' onClick={handleOpen}>
+          <Typography className={classes.title}>Voters</Typography>
+          <Button
+            size='large'
+            variant='contained'
+            color='primary'
+            onClick={handleOpen}
+          >
             Create Voter
           </Button>
         </Grid>
         <div>
-          <List>
-            <Divider />
-            {voters.length > 0 ? (
-              voters.map((item: Voter, index) => (
-                <ListItem key={index}>
-                  <ListItemAvatar>
-                    <Avatar />
-                  </ListItemAvatar>
-                  <ListItemText primary={item.username} />
-                  <ListItemSecondaryAction>
-                    <IconButton
-                      edge='end'
-                      aria-label='edit'
-                      onClick={() => goToVoterMenu(item.username)}
-                    >
-                      <EditIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                </ListItem>
-              ))
-            ) : (
-              <div>
-                There are no voters in database. Click create voter to open
-                voter creator.
-              </div>
-            )}
-          </List>
+          <VoterList voters={voters} goToVoterMenu={goToVoterMenu} />
         </div>
         <CreateVoterDialog open={openDialog} handleClose={handleClose} />
       </Grid>

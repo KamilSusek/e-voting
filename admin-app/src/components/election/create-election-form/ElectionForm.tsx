@@ -6,10 +6,12 @@ import {
   makeStyles,
   TextField
 } from '@material-ui/core'
-import React from 'react'
+import moment from 'moment'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setElectionFormState } from '../../features/electionFormSlice'
-import { RootState } from '../../store/store'
+import { setElectionFormState } from '../../../features/electionFormSlice'
+import axios from 'axios'
+import { RootState } from '../../../store/store'
 
 const useStyles = makeStyles({
   firstContainer: {
@@ -30,9 +32,16 @@ function ElectionForm ({ next }: any) {
   const state = useSelector(
     (state: RootState) => state.election.electionFormState
   )
+  const [dateErrors, setDateErrors] = useState(false)
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    next()
+
+    if (moment(state.end_date) < moment(state.start_date)) {
+      setDateErrors(true)
+    } else {
+      next()
+    }
   }
 
   const handleChange = (
@@ -64,6 +73,7 @@ function ElectionForm ({ next }: any) {
             onChange={handleChange}
             name='election_name'
             value={state.election_name}
+            type='text'
             variant='outlined'
             label='Elections title'
             required
@@ -72,6 +82,7 @@ function ElectionForm ({ next }: any) {
             onChange={handleChange}
             name='election_description'
             value={state.election_description}
+            type='text'
             variant='outlined'
             label='Description'
             required
@@ -91,6 +102,8 @@ function ElectionForm ({ next }: any) {
             variant='outlined'
             label='Start date'
             type='date'
+            error={dateErrors}
+            helperText={dateErrors && 'You provided wrong date.'}
             required
             InputLabelProps={{
               shrink: true
@@ -103,6 +116,8 @@ function ElectionForm ({ next }: any) {
             variant='outlined'
             label='End date'
             type='date'
+            error={dateErrors}
+            helperText={dateErrors && 'You provided wrong date.'}
             required
             InputLabelProps={{
               shrink: true
@@ -112,13 +127,19 @@ function ElectionForm ({ next }: any) {
             onChange={handleChange}
             name='server_url'
             value={state.server_url}
+            type='text'
             variant='outlined'
-            required
             label='Server url'
+            required
           />
         </Grid>
         <Grid container justify='center'>
-          <Button variant='contained' type='submit'>
+          <Button
+            variant='contained'
+            type='submit'
+            size='large'
+            color='primary'
+          >
             Check and proceed further
           </Button>
         </Grid>

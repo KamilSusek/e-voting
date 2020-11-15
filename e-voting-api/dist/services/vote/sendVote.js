@@ -3,23 +3,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendVote = exports.registerVote = void 0;
+exports.sendVote = exports.registerVote = exports.validate = void 0;
 const axios_1 = __importDefault(require("axios"));
-const VoteRepo_1 = __importDefault(require("../../repository/implementation/VoteRepo"));
-const ElectionsRepo_1 = __importDefault(require("../../repository/implementation/ElectionsRepo"));
-const voteRepo = new VoteRepo_1.default();
+const Database_1 = __importDefault(require("../../database/Database"));
+const ElectionsRepo_1 = __importDefault(require("../../repositories/ElectionsRepo"));
 const electionsRepo = new ElectionsRepo_1.default();
-async function registerVote(req, res, next) {
+async function validate(req, res, next) {
     try {
         const { username, electionName } = req.body;
         if (username && electionName) {
-            const response = await voteRepo.registerVote(username, electionName);
-            if (response) {
-                next();
-            }
-            else {
-                res.status(403).send();
-            }
+            next();
         }
         else {
             res.status(406).send();
@@ -27,6 +20,47 @@ async function registerVote(req, res, next) {
     }
     catch (error) {
         console.log(error);
+    }
+}
+exports.validate = validate;
+async function registerVote(req, res, next) {
+    try {
+        const { username, electionName } = req.body;
+        const db = Database_1.default.getInstance().getDatabase();
+        const voter = await db.voter.findOne({
+            where: {
+                username
+            }
+        });
+        const election = await db.election.findOne({
+            where: {
+                election_name: electionName
+            }
+        });
+        const votersWithElections = await db.user_Election.findMany();
+        const matchingRow = votersWithElections.find((item) => {
+            if (item.election_id === election.id && item.voter_id === voter.id)
+                return item;
+        });
+        console.log(matchingRow);
+        // Alredy voted
+        if (matchingRow.didVote) {
+            res.status(403).send();
+        }
+        else {
+            await db.user_Election.update({
+                where: {
+                    id: matchingRow.id
+                },
+                data: {
+                    didVote: true
+                }
+            });
+            next();
+        }
+    }
+    catch (error) {
+        res.status(406).send();
     }
 }
 exports.registerVote = registerVote;

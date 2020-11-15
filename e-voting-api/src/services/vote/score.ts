@@ -1,6 +1,6 @@
-import CandidatesRepo from '../../repository/implementation/CandidatesRepo'
-import ElectionsRepo from '../../repository/implementation/ElectionsRepo'
-import VotersRepo from '../../repository/implementation/VotersRepo'
+import CandidatesRepo from '../../repositories/CandidatesRepo'
+import ElectionsRepo from '../../repositories/ElectionsRepo'
+import VotersRepo from '../../repositories/VotersRepo'
 import axios from 'axios'
 import express from 'express'
 

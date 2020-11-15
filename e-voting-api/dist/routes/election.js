@@ -4,26 +4,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const ElectionsRepo_1 = __importDefault(require("../repository/implementation/ElectionsRepo"));
-const createElection_1 = require("./middleware/createElection");
-const findElections_1 = require("./middleware/findElections");
+const createElection_1 = require("../middleware/elections/createElection");
+const editElections_1 = require("../middleware/elections/editElections");
+const findElections_1 = require("../middleware/elections/findElections");
+const results_1 = require("../middleware/results/results");
 const router = express_1.default.Router();
-const elections = new ElectionsRepo_1.default();
 router.get('/elections', findElections_1.getAllElections);
-router.post('/election/publish', elections.publishElectionResult);
 router.get('/elections/:voterName', findElections_1.getEllectionsByVoter);
 router.get('/election/:electionName', findElections_1.getEllectionByName);
+router.get('/serverUrl', findElections_1.getEllectionByServerUrl);
 router.post('/election', createElection_1.validate, createElection_1.createElection, createElection_1.createCandidates, createElection_1.attachVotersToElection);
-router.post('/election/set_user', async (req, res) => {
-    try {
-        const { voterName, electionName } = req.body;
-        const response = await elections.setElectionToVoter(voterName, electionName);
-        res.send(response);
-    }
-    catch (error) {
-        console.log(error);
-        res.status(400).send(error);
-    }
-});
+router.post('/election/set_user', editElections_1.attachVoterToElections);
+// TODO
+router.post('/election/publish', results_1.publishElectionResult);
+router.get('/results/:electionName', results_1.getResults);
 exports.default = router;
 //# sourceMappingURL=election.js.map

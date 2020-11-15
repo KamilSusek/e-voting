@@ -1,4 +1,4 @@
-import Database from '../../database/Database'
+import Database from '../database/Database'
 import moment from 'moment'
 
 class VoteRepo {
@@ -21,7 +21,7 @@ class VoteRepo {
     })
 
     const votersWithElections = await db.user_Election.findMany()
-    const matchingRow = votersWithElections.find(item => {
+    const matchingRow = votersWithElections.find((item:any) => {
       if (item.election_id === election.id && item.voter_id === voter.id)
         return item
     })

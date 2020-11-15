@@ -1,4 +1,4 @@
-import Database from '../database/Database'
+import Database from '../../database/Database'
 import express from 'express'
 
 export async function attachVoterToElections (

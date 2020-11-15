@@ -1,3 +1,0 @@
-interface CrudRepo {
-     save():void;
-}

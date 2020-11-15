@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.findVoterAttachedToElection = exports.findVoterFromParams = exports.findAllVoters = exports.login = void 0;
-const VotersRepo_1 = __importDefault(require("../../repository/implementation/VotersRepo"));
+const VotersRepo_1 = __importDefault(require("../../repositories/VotersRepo"));
 const voters = new VotersRepo_1.default();
 async function login(req, res, next) {
     try {

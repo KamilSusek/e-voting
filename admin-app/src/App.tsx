@@ -7,7 +7,9 @@ import Voters from './components/voter/Voters'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core'
 import ElectionsMenu from './components/election/ElectionsMenu'
-import CreateElection from './components/election/CreateElection'
+import CreateElection from './components/election/create-election-form/CreateElection'
+import Footer from './components/common/footer/Footer'
+import ContentContainer from './components/common/container/ContentContainer'
 
 const useStyles = makeStyles({
   link: {
@@ -16,9 +18,11 @@ const useStyles = makeStyles({
     alignItems: 'center',
     width: '60%',
     fontSize: '1.3rem',
-    '& a': {
-      textDecoration: 'none',
+    '& button': {
       color: 'white'
+    },
+    '& a': {
+      textDecoration: 'none'
     }
   }
 })
@@ -30,36 +34,39 @@ function App () {
       <Router>
         <AppBar position='relative'>
           <Toolbar className={styles.link}>
-            <IconButton>
-              <Link to='/voters'>Voters</Link>
-            </IconButton>
-            <IconButton>
-              <Link to='/elections'>Elections</Link>
-            </IconButton>
-            <IconButton>
-              <Link to='/help'>Voters</Link>
-            </IconButton>
+            <Link to='/voters'>
+              <IconButton>Voters</IconButton>
+            </Link>
+            <Link to='/elections'>
+              <IconButton>Elections</IconButton>
+            </Link>
+            <Link to='/help'>
+              <IconButton>Voters</IconButton>
+            </Link>
           </Toolbar>
         </AppBar>
-        <Switch>
-          <Route exact path='/voters'>
-            <Voters />
-          </Route>
-          <Route exact path='/elections'>
-            <Elections />
-          </Route>
-          <Route path='/help'></Route>
-          <Route path='/voters/:votername'>
-            <VoterMenu />
-          </Route>
-          <Route path='/elections/:electionName'>
-            <ElectionsMenu />
-          </Route>
-          <Route path='/election/create'>
-            <CreateElection />
-          </Route>
-        </Switch>
+        <ContentContainer>
+          <Switch>
+            <Route exact path='/voters'>
+              <Voters />
+            </Route>
+            <Route exact path='/elections'>
+              <Elections />
+            </Route>
+            <Route path='/help'></Route>
+            <Route path='/voters/:votername'>
+              <VoterMenu />
+            </Route>
+            <Route path='/elections/:electionName'>
+              <ElectionsMenu />
+            </Route>
+            <Route path='/election/create'>
+              <CreateElection />
+            </Route>
+          </Switch>
+        </ContentContainer>
       </Router>
+      <Footer />
     </div>
   )
 }

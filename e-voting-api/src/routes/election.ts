@@ -1,27 +1,31 @@
 import express from 'express'
-import ElectionsRepo from '../repository/implementation/ElectionsRepo'
 import {
   attachVotersToElection,
   createCandidates,
   createElection,
   validate
-} from '../middleware/createElection'
-import { attachVoterToElections } from '../middleware/editElections'
+} from '../middleware/elections/createElection'
+import { attachVoterToElections } from '../middleware/elections/editElections'
 import {
   getAllElections,
   getEllectionByName,
+  getEllectionByServerUrl,
   getEllectionsByVoter
-} from '../middleware/findElections'
+} from '../middleware/elections/findElections'
+import {
+  getResults,
+  publishElectionResult
+} from '../middleware/results/results'
 
 const router = express.Router()
-
-const elections = new ElectionsRepo()
 
 router.get('/elections', getAllElections)
 
 router.get('/elections/:voterName', getEllectionsByVoter)
 
 router.get('/election/:electionName', getEllectionByName)
+
+router.get('/serverUrl', getEllectionByServerUrl)
 
 router.post(
   '/election',
@@ -34,6 +38,8 @@ router.post(
 router.post('/election/set_user', attachVoterToElections)
 
 // TODO
-router.post('/election/publish', elections.publishElectionResult)
+router.post('/election/publish', publishElectionResult)
+
+router.get('/results/:electionName', getResults)
 
 export default router

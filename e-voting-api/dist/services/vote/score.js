@@ -4,9 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.calculateScore = exports.prepareScores = exports.findElectionFromParams = void 0;
-const CandidatesRepo_1 = __importDefault(require("../../repository/implementation/CandidatesRepo"));
-const ElectionsRepo_1 = __importDefault(require("../../repository/implementation/ElectionsRepo"));
-const VotersRepo_1 = __importDefault(require("../../repository/implementation/VotersRepo"));
+const CandidatesRepo_1 = __importDefault(require("../../repositories/CandidatesRepo"));
+const ElectionsRepo_1 = __importDefault(require("../../repositories/ElectionsRepo"));
+const VotersRepo_1 = __importDefault(require("../../repositories/VotersRepo"));
 const axios_1 = __importDefault(require("axios"));
 const electionsRepository = new ElectionsRepo_1.default();
 const candidatesRepo = new CandidatesRepo_1.default();

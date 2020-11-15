@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Database_1 = __importDefault(require("../../database/Database"));
 const moment_1 = __importDefault(require("moment"));
-const axios_1 = __importDefault(require("axios"));
 class ElectionsRepo {
     async findAll() {
         const db = Database_1.default.getInstance().getDatabase();
@@ -150,35 +149,6 @@ class ElectionsRepo {
         }
         catch (error) {
             console.log(error);
-        }
-    }
-    async publishElectionResult(req, res, next) {
-        try {
-            const { electionName } = req.body;
-            const db = Database_1.default.getInstance().getDatabase();
-            const election = await db.election.findOne({
-                where: {
-                    election_name: electionName
-                }
-            });
-            const candidates = await db.candidate.findMany({
-                where: {
-                    election_id: election.id
-                },
-                select: {
-                    id: true,
-                    candidate_name: true
-                }
-            });
-            const scores = await axios_1.default.get(`${election.server_url}/score`);
-            const scoresArray = scores.data;
-            scoresArray.shift();
-            console.log(scores.data);
-            res.send(scores.data);
-        }
-        catch (error) {
-            console.log(error);
-            res.status(400).send(error);
         }
     }
     async save(election) {

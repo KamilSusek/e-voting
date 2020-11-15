@@ -4,7 +4,7 @@ import {
   prepareScores,
   calculateScore
 } from '../services/vote/score'
-import { sendVote, registerVote } from '../services/vote/sendVote'
+import { sendVote, registerVote, validate } from '../services/vote/sendVote'
 import { saveVoter } from '../services/vote/saveVoter'
 import { findVoterFromParams } from '../services/vote/voters'
 import { findVoterAttachedToElection } from '../services/vote/voters'
@@ -23,7 +23,7 @@ router.get('/voter/:username', findVoterFromParams)
 
 router.post('/voter', saveVoter)
 
-router.post('/send-vote', registerVote, sendVote)
+router.post('/send-vote', validate, registerVote, sendVote)
 
 router.get(
   '/score/:electionName',

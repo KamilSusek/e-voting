@@ -16,6 +16,7 @@ import {
 } from '@material-ui/core'
 import EditIcon from '@material-ui/icons/Edit'
 import { useHistory } from 'react-router-dom'
+import ElectionList from './election-list/ElectionList'
 
 interface Election {
   election_name: string
@@ -27,6 +28,10 @@ const useStyles = makeStyles({
     marginTop: '2%',
     display: 'flex',
     justifyContent: 'center'
+  },
+  title: {
+    fontSize: '1.9rem',
+    fontWeight: 'bold'
   }
 })
 
@@ -59,39 +64,21 @@ function Elections () {
     <div className={classes.box}>
       <Grid item xs={12} md={6}>
         <Grid container justify='space-between' alignItems='center'>
-          <Typography variant='h6'>Elections</Typography>
-          <Button onClick={goToCreateElection} variant='contained'>
+          <Typography className={classes.title}>Elections</Typography>
+          <Button
+            size='large'
+            color='primary'
+            variant='contained'
+            onClick={goToCreateElection}
+          >
             Create Election
           </Button>
         </Grid>
         <div>
-          <List>
-            <Divider />
-            {elections.length > 0 ? (
-              elections.map((item: Election, index) => (
-                <ListItem key={index}>
-                  <ListItemAvatar>
-                    <Avatar />
-                  </ListItemAvatar>
-                  <ListItemText primary={item.election_name} />
-                  <ListItemSecondaryAction>
-                    <IconButton
-                      edge='end'
-                      aria-label='edit'
-                      onClick={() => goToElectionMenu(item.election_name)}
-                    >
-                      <EditIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                </ListItem>
-              ))
-            ) : (
-              <div>
-                There are no elections. Click create elections to start election
-                creator.
-              </div>
-            )}
-          </List>
+          <ElectionList
+            elections={elections}
+            goToElectionMenu={goToElectionMenu}
+          />
         </div>
       </Grid>
     </div>

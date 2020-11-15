@@ -1,5 +1,5 @@
 import express from 'express'
-import VotersRepo from '../../repository/implementation/VotersRepo'
+import VotersRepo from '../../repositories/VotersRepo'
 
 const votersRepo = new VotersRepo()
 

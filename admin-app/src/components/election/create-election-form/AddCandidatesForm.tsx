@@ -3,9 +3,9 @@ import React from 'react'
 import RemoveIcon from '@material-ui/icons/Remove'
 import AddIcon from '@material-ui/icons/Add'
 import { Field, FieldArray, Form, Formik } from 'formik'
-import { RootState } from '../../store/store'
+import { RootState } from '../../../store/store'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCandidates } from '../../features/electionFormSlice'
+import { setCandidates } from '../../../features/electionFormSlice'
 
 function AddCandidatesForm ({ next, previous }: any) {
   const candidates = useSelector(

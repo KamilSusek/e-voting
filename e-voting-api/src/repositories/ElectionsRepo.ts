@@ -1,4 +1,4 @@
-import Database from '../../database/Database'
+import Database from '../database/Database'
 import moment from 'moment'
 import express from 'express'
 import axios from 'axios'
@@ -26,7 +26,7 @@ class ElectionsRepo {
 
     const retVal: ElectionDTO[] = new Array()
 
-    array.forEach(item => {
+    array.forEach((item: any) => {
       const now = moment()
       const endDate = moment(item.end_date)
 

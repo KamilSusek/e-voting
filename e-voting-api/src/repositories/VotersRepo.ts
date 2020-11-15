@@ -1,4 +1,4 @@
-import Database from '../../database/Database'
+import Database from '../database/Database'
 
 interface VoterDTO {
   password: string
@@ -52,7 +52,7 @@ class VotersRepo {
       username: string
     }[] = []
 
-    voters.forEach(item => {
+    voters.forEach((item: any) => {
       const { username } = item.Voter
       votersDTO.push({ username })
     })

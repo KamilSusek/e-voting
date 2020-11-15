@@ -21,6 +21,7 @@ model Election {
   start_date           String
   end_date             String
   server_url           String          @unique
+  is_published         Boolean         @default(false)
   Candidate            Candidate[]
   User_Election        User_Election[]
 }

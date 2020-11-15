@@ -2,8 +2,8 @@ import { Button, Grid, Input } from '@material-ui/core'
 import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchVoters } from '../../features/electionFormSlice'
-import { RootState } from '../../store/store'
+import { fetchVoters } from '../../../features/electionFormSlice'
+import { RootState } from '../../../store/store'
 
 function AddVotersForm ({ previous }: any) {
   const dispatch = useDispatch()

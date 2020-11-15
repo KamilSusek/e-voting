@@ -1,4 +1,4 @@
-import Database from '../database/Database'
+import Database from '../../database/Database'
 import express from 'express'
 import moment from 'moment'
 
@@ -16,7 +16,8 @@ export async function getAllElections (
         election_description: true,
         start_date: true,
         end_date: true,
-        server_url: true
+        server_url: true,
+        is_published: true
       }
     })
 
@@ -44,10 +45,40 @@ export async function getEllectionByName (
         election_description: true,
         start_date: true,
         end_date: true,
-        server_url: true
+        server_url: true,
+        is_published: true
       }
     })
     res.send(election)
+  } catch (error) {
+    res.status(400).send()
+  }
+}
+
+export async function getEllectionByServerUrl (
+  req: express.Request,
+  res: express.Response,
+  next: any
+) {
+  try {
+    const { serverUrl } = req.query
+    const db = Database.getInstance().getDatabase()
+
+    const elections = await db.election.findOne({
+      where: {
+        server_url: serverUrl.toString()
+      },
+      select: {
+        election_name: true,
+        election_description: true,
+        start_date: true,
+        end_date: true,
+        server_url: true,
+        is_published: true
+      }
+    })
+
+    res.send(elections)
   } catch (error) {
     res.status(400).send()
   }
@@ -75,7 +106,8 @@ export async function getEllectionsByVoter (
             election_description: true,
             start_date: true,
             end_date: true,
-            server_url: true
+            server_url: true,
+            is_published: true
           }
         },
         didVote: true
@@ -97,7 +129,8 @@ function transformToElectionsDTO (elections: any[]) {
       election_description,
       start_date,
       end_date,
-      server_url
+      server_url,
+      is_published
     } = item.Election
     const didVote = item.didVote
     const now = moment()
@@ -109,6 +142,7 @@ function transformToElectionsDTO (elections: any[]) {
       start_date,
       end_date,
       server_url,
+      is_published,
       isTimeElaspsed: end < now ? true : false,
       didVote
     })
