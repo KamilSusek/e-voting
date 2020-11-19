@@ -2,15 +2,20 @@ import { SHA256 } from 'crypto-js'
 import Block from './Block'
 
 class Blockchain {
-  private nodeId: string
+  private static instance: Blockchain
   private blockchain: Block[]
-  private pendingTransactionList: any[]
 
-  constructor (nodeId: string) {
-    this.nodeId = nodeId
+  private constructor () {
     this.blockchain = new Array()
-    this.pendingTransactionList = new Array()
     this.createGenesisBlock()
+  }
+
+  public static getInstance (): Blockchain {
+    if (!Blockchain.instance) {
+      Blockchain.instance = new Blockchain()
+    }
+
+    return Blockchain.instance
   }
 
   private createGenesisBlock () {
@@ -33,19 +38,12 @@ class Blockchain {
     return block
   }
 
-  private getHash (block: Block): string {
-    return SHA256(block.toString()).toString()
-  }
-
-  public mine (data: any) {
-    const lastBlock = this.blockchain[this.blockchain.length - 1]
-    const nonce = this.solveNonce(lastBlock.getNonce(), lastBlock.getPrevHash())
-
-    this.createNewBlock(nonce, lastBlock.getPrevHash(), data)
-  }
-
   public setChain (chain: any) {
     this.blockchain = chain
+  }
+
+  private getHash (block: Block): string {
+    return SHA256(block.toString()).toString()
   }
 
   public getChain (): Block[] {
@@ -54,6 +52,13 @@ class Blockchain {
 
   public getChainLength (): number {
     return this.blockchain.length
+  }
+
+  public mine (data: any) {
+    const lastBlock = this.blockchain[this.blockchain.length - 1]
+    const nonce = this.solveNonce(lastBlock.getNonce(), lastBlock.getPrevHash())
+
+    this.createNewBlock(nonce, lastBlock.getPrevHash(), data)
   }
 
   private solveNonce (lastNonce: number, prevHash: string) {
@@ -75,10 +80,6 @@ class Blockchain {
     return SHA256(attempt)
       .toString()
       .startsWith('00000')
-  }
-
-  public getNodeId (): string {
-    return this.nodeId
   }
 }
 

@@ -13,8 +13,11 @@ import {
   getEllectionsByVoter
 } from '../middleware/elections/findElections'
 import {
-  getResults,
-  publishElectionResult
+  countVotes,
+  fetchResults,
+  findCandidates,
+  findElection,
+  getResults
 } from '../middleware/results/results'
 
 const router = express.Router()
@@ -38,7 +41,13 @@ router.post(
 router.post('/election/set_user', attachVoterToElections)
 
 // TODO
-router.post('/election/publish', publishElectionResult)
+router.post(
+  '/election/publish',
+  findElection,
+  findCandidates,
+  fetchResults,
+  countVotes
+)
 
 router.get('/results/:electionName', getResults)
 

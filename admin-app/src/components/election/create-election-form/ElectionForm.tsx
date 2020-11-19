@@ -9,8 +9,12 @@ import {
 import moment from 'moment'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setElectionFormState } from '../../../features/electionFormSlice'
-import axios from 'axios'
+import {
+  checkIfDateMatches,
+  checkIfServerUrlExists,
+  checkIfTitleExists,
+  setElectionFormState
+} from '../../../features/electionFormSlice'
 import { RootState } from '../../../store/store'
 
 const useStyles = makeStyles({
@@ -32,16 +36,22 @@ function ElectionForm ({ next }: any) {
   const state = useSelector(
     (state: RootState) => state.election.electionFormState
   )
-  const [dateErrors, setDateErrors] = useState(false)
+  const {
+    titleError,
+    endDateError,
+    startDateError,
+    serverUrlError
+  } = useSelector((state: RootState) => state.election.errors)
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-
-    if (moment(state.end_date) < moment(state.start_date)) {
-      setDateErrors(true)
-    } else {
+    dispatch(checkIfTitleExists(state.election_name))
+    dispatch(checkIfDateMatches(state.start_date, state.end_date))
+    dispatch(checkIfServerUrlExists(state.server_url))
+    if (!titleError && !endDateError && !startDateError && !serverUrlError) {
       next()
     }
+
   }
 
   const handleChange = (
@@ -74,6 +84,10 @@ function ElectionForm ({ next }: any) {
             name='election_name'
             value={state.election_name}
             type='text'
+            error={titleError}
+            helperText={
+              titleError && 'Election with provided title already exists.'
+            }
             variant='outlined'
             label='Elections title'
             required
@@ -102,8 +116,8 @@ function ElectionForm ({ next }: any) {
             variant='outlined'
             label='Start date'
             type='date'
-            error={dateErrors}
-            helperText={dateErrors && 'You provided wrong date.'}
+            error={startDateError}
+            helperText={startDateError && 'You provided wrong date.'}
             required
             InputLabelProps={{
               shrink: true
@@ -116,8 +130,8 @@ function ElectionForm ({ next }: any) {
             variant='outlined'
             label='End date'
             type='date'
-            error={dateErrors}
-            helperText={dateErrors && 'You provided wrong date.'}
+            error={endDateError}
+            helperText={endDateError && 'You provided wrong date.'}
             required
             InputLabelProps={{
               shrink: true
@@ -130,6 +144,10 @@ function ElectionForm ({ next }: any) {
             type='text'
             variant='outlined'
             label='Server url'
+            error={serverUrlError}
+            helperText={
+              serverUrlError && 'Server with this url already exists.'
+            }
             required
           />
         </Grid>

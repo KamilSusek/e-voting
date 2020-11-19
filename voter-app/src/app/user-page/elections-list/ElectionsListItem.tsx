@@ -1,10 +1,12 @@
-import { Button, Divider, Grid, Paper, Typography } from '@material-ui/core'
-import DateRangeIcon from '@material-ui/icons/DateRange'
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import React from 'react'
+import { Button, Divider, Grid, Typography } from '@material-ui/core'
+import DateRangeIcon from '@material-ui/icons/DateRange'
 import { useDispatch } from 'react-redux'
-import { fetchCandidatesForElection } from '../../../services/electionsSlice'
-import CheckIcon from '@material-ui/icons/Check'
+import {
+  fetchCandidatesForElection,
+  fetchElectionResults
+} from '../../../services/electionsSlice'
+import VoteButton from './VoteButton'
 
 function ElectionsListItem ({ item }: any) {
   const dispatch = useDispatch()
@@ -14,79 +16,60 @@ function ElectionsListItem ({ item }: any) {
     start_date,
     end_date,
     isTimeElaspsed,
+    is_published,
     didVote
   } = item
+  console.log('item', item)
 
   const toggleVote = () => {
     dispatch(fetchCandidatesForElection(election_name))
   }
 
+  const getElectionResults = () => {
+    dispatch(fetchElectionResults(election_name))
+  }
+
   return (
-    <Paper className='election_list_item' elevation={3}>
-      <Grid
-        className='election_list_item_container'
-        container
-        direction='column'
-        justify='space-evenly'
-      >
+    <Grid
+      className='election_list_item_container'
+      container
+      direction='column'
+      justify='space-evenly'
+    >
+      <Grid item>
+        <Typography variant='h1'>{election_name}</Typography>
+        <Divider />
+      </Grid>
+      <Grid item>
+        <Typography variant='h2'>{election_description}</Typography>
+      </Grid>
+      <Grid container justify='space-between' alignItems='center'>
         <Grid item>
-          <Typography variant='h1'>{election_name}</Typography>
-          <Divider />
-        </Grid>
-        <Grid item>
-          <Typography variant='h2'>{election_description}</Typography>
-        </Grid>
-        <Grid container justify='space-between' alignItems='center'>
-          <Grid item>
-            <Grid container alignItems='center'>
-              <DateRangeIcon />
-              <Typography variant='h2'>
-                {start_date} - {end_date}
-              </Typography>
-            </Grid>
+          <Grid container alignItems='center'>
+            <DateRangeIcon />
+            <Typography variant='h2'>
+              {start_date} - {end_date}
+            </Typography>
           </Grid>
         </Grid>
+      </Grid>
+      {is_published ? (
+        <Button
+          variant='contained'
+          onClick={getElectionResults}
+        >
+          Results
+        </Button>
+      ) : (
         <VoteButton
           isTimeElaspsed={isTimeElaspsed}
           didVote={didVote}
           endDate={end_date}
           toggleVote={toggleVote}
         />
-      </Grid>
-    </Paper>
+      )}
+    </Grid>
   )
-}
-
-function VoteButton ({ isTimeElaspsed, didVote, endDate, toggleVote }: any) {
-  if (isTimeElaspsed) {
-    return (
-      <Grid item>
-        <Typography>This voting finished at {endDate}.</Typography>
-      </Grid>
-    )
-  } else if (didVote) {
-    return (
-      <Grid item>
-        <Grid container justify='flex-end' alignItems='center'>
-          <Typography>Your vote was sent.</Typography>
-          <CheckIcon />
-        </Grid>
-      </Grid>
-    )
-  } else {
-    return (
-      <Grid container justify='flex-end' alignItems='center'>
-        <Button
-          color='primary'
-          variant='contained'
-          startIcon={<ArrowForwardIcon />}
-          onClick={toggleVote}
-        >
-          Vote
-        </Button>
-      </Grid>
-    )
-  }
 }
 
 export default ElectionsListItem

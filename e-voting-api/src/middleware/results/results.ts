@@ -2,7 +2,7 @@ import Database from '../../database/Database'
 import express from 'express'
 import axios from 'axios'
 
-export async function publishElectionResult (
+export async function findElection (
   req: express.Request,
   res: express.Response,
   next: any
@@ -16,9 +16,30 @@ export async function publishElectionResult (
       }
     })
 
+    if (election.is_published === true) {
+      res.status(406).send()
+    } else {
+      req.body.electionId = election.id
+      req.body.serverUrl = election.server_url
+      next()
+    }
+  } catch (error) {
+    res.send(400).send(error)
+  }
+}
+
+export async function findCandidates (
+  req: express.Request,
+  res: express.Response,
+  next: any
+) {
+  try {
+    const { electionId } = req.body
+    const db = Database.getInstance().getDatabase()
+
     const candidates = await db.candidate.findMany({
       where: {
-        election_id: election.id
+        election_id: electionId
       },
       select: {
         id: true,
@@ -26,30 +47,69 @@ export async function publishElectionResult (
       }
     })
 
-    const scores = await axios.get(`${election.server_url}/score`)
-    const scoresArray: any[] = scores.data
-    // temp remove empty element
-    scoresArray.shift()
-    console.log(scoresArray, candidates)
+    if (candidates.length > 0) {
+      req.body.candidates = candidates
+      next()
+    } else {
+      res.status(406).send()
+    }
+  } catch (error) {
+    res.status(400).send(error)
+  }
+}
+
+export async function fetchResults (
+  req: express.Request,
+  res: express.Response,
+  next: any
+) {
+  try {
+    const db = Database.getInstance().getDatabase()
+    const { electionId, serverUrl, candidates } = req.body
+
+    const scores = await axios.get(`${serverUrl}/score`)
+
+    if (scores.data.length > 0) {
+      const scoresArray: any[] = scores.data
+      // temp remove empty element
+      scoresArray.shift()
+      req.body.scores = scoresArray
+      next()
+    } else {
+      res.status(406).send()
+    }
+  } catch (error) {
+    res.status(400).send(error)
+  }
+}
+
+export async function countVotes (
+  req: express.Request,
+  res: express.Response,
+  next: any
+) {
+  try {
+    const db = Database.getInstance().getDatabase()
+    const { electionId, serverUrl, candidates, scores } = req.body
     for (const candidate of candidates) {
-      const matchingRows = scoresArray.filter(item => {
+      const matchingRows = scores.filter((item: string) => {
         if (item === candidate.candidate_name) {
           return -1
         }
       })
-      console.log(matchingRows.length)
+      const votesCount = matchingRows.length
+
       await db.candidate.update({
         where: { id: candidate.id },
         data: {
-          votes: matchingRows.length
+          votes: votesCount
         }
       })
     }
-    await setResultsAsPublished(election.id)
+    await setResultsAsPublished(electionId)
 
     res.send()
   } catch (error) {
-    console.log(error)
     res.status(400).send(error)
   }
 }

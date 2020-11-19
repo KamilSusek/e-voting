@@ -10,6 +10,7 @@ import { findVoterFromParams } from '../services/vote/voters'
 import { findVoterAttachedToElection } from '../services/vote/voters'
 import { findAllVoters } from '../services/vote/voters'
 import { login } from '../services/vote/voters'
+import { countVotes } from '../middleware/candidates/countVotes'
 
 const router = express.Router()
 
@@ -20,6 +21,8 @@ router.get('/voters', findAllVoters)
 router.get('/voters/:electionName', findVoterAttachedToElection)
 
 router.get('/voter/:username', findVoterFromParams)
+
+router.get('/voting/result/:electionName', countVotes)
 
 router.post('/voter', saveVoter)
 

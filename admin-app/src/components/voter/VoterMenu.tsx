@@ -1,96 +1,83 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import {
-  Avatar,
-  Button,
   Grid,
-  IconButton,
   List,
-  ListItem,
-  ListItemAvatar,
-  ListItemSecondaryAction,
-  ListItemText,
   Paper,
-  Typography
+  Typography,
+  makeStyles,
+  Divider,
+  IconButton
 } from '@material-ui/core'
-import EditIcon from '@material-ui/icons/Edit'
 import { useHistory, useParams } from 'react-router-dom'
-
-interface Election {
-  election_name: string
-  election_description: string
-}
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchElections, fetchVoter } from '../../features/voterMenuSlice'
+import { RootState } from '../../store/store'
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp'
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import ElectionList from './election-list/ElectionList'
 
 interface Params {
   votername: string
 }
 
+const useStyles = makeStyles({
+  root: {
+    padding: '8px',
+    width: '70%',
+    minHeight: '60vh'
+  }
+})
+
 function VoterMenu () {
-  const [voter, setVoter] = useState({ username: '' })
-  const [elections, setElections] = useState([])
-  const [isElectionsShow, setElectionsShow] = useState(false)
-  const history = useHistory()
+  const classes = useStyles()
   const { votername } = useParams<Params>()
+  const history = useHistory()
+  const dispatch = useDispatch()
+  const { elections, voter } = useSelector((state: RootState) => state.voter)
+  const [isElectionsShow, setElectionsShow] = useState(false)
 
-  const fetchVoter = async () => {
-    try {
-      const voterData = await axios.get(
-        `http://localhost:8080/voter/${votername}`
-      )
-      const electionsData = await axios.get(
-        `http://localhost:8080/elections/${votername}`
-      )
-
-      setVoter(voterData.data)
-      setElections(electionsData.data)
-      console.log(electionsData.data)
-    } catch (error) {
-      history.goBack()
-    }
+  const onError = () => {
+    history.goBack()
   }
 
-  const hideElections = () => {
-    setElectionsShow(false)
+  const fetchInitialData = async () => {
+    dispatch(fetchVoter(votername, onError))
+    dispatch(fetchElections(votername))
   }
 
-  const showElections = () => {
-    setElectionsShow(true)
+  const toggleShowElections = () => {
+    setElectionsShow(!isElectionsShow)
   }
 
   useEffect(() => {
-    fetchVoter()
+    fetchInitialData()
   }, [])
 
   return (
     <div style={{ padding: '8px', display: 'flex', justifyContent: 'center' }}>
-      <Paper style={{ padding: '8px', width: '70%' }}>
-        <Grid container justify='space-between' >
-          <Typography>{voter.username}</Typography>
+      <Paper className={classes.root}>
+        <Grid container direction='column'>
+          <Grid container alignItems='center'>
+            <AccountCircleIcon fontSize="large" />
+            <Typography variant='h6'>{voter.username}</Typography>
+          </Grid>
+          <Divider />
           <div>
-            {isElectionsShow ? (
+            <Grid container justify='space-between' alignItems='center'>
+              <Typography>Elections</Typography>
+              <IconButton onClick={toggleShowElections}>
+                {isElectionsShow ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+              </IconButton>
+            </Grid>
+            <Divider/>
+            {isElectionsShow && (
               <List>
-                <Button onClick={hideElections}>Hide Elections</Button>
-                {elections.length > 0 ? (
-                  elections.map((item: Election, index) => (
-                    <ListItem key={index}>
-                      <ListItemAvatar>
-                        <Avatar />
-                      </ListItemAvatar>
-                      <ListItemText primary={item.election_name} />
-                    </ListItem>
-                  ))
-                ) : (
-                  <div>none</div>
-                )}
+                <ElectionList elections={elections} />
               </List>
-            ) : (
-              <Button onClick={showElections}>Show Elections</Button>
             )}
           </div>
         </Grid>
-        <div>
-          <Button>Add election</Button>
-        </div>
       </Paper>
     </div>
   )

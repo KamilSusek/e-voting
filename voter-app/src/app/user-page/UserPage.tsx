@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 import PrivateRoute from '../auth/PrivateRoute'
 import UserPageNavbar from '../navbar/user-page/UserPageNavbar'
 import ElectionsPage from './ElectionsPage'

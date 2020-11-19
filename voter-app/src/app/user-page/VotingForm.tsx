@@ -11,13 +11,11 @@ import { RootState } from '../../store'
 import CandidatesListItem from './candidates-list/CandidatesListItem'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
-function ElectionsForm () {
+function VotingForm () {
   const dispatch = useDispatch()
   const { candidatesList, selectedVote, selectedElection } = useSelector(
     (state: RootState) => state.elections
   )
-
-  const notify = () => toast.success('Your vote was sent succesfully!')
 
   const goBackToElections = () => {
     dispatch(showElections())
@@ -48,9 +46,9 @@ function ElectionsForm () {
   }
 
   return (
-    <div>
-      <Button onClick={goBackToElections} startIcon={<ArrowBackIcon />}>
-        Go back
+    <div className="candidates_container">
+      <Button color='primary' variant='contained' onClick={goBackToElections}>
+        <ArrowBackIcon /> Go back
       </Button>
       <div>
         {candidatesList.map((item, index) => (
@@ -61,8 +59,14 @@ function ElectionsForm () {
             onSelect={handleVoteSelect}
           />
         ))}
-        <Button color='primary' variant='contained' onClick={handleSubmit}>
-          Submit
+        <Button
+          style={{ width: '100%' }}
+          size='large'
+          color='primary'
+          variant='contained'
+          onClick={handleSubmit}
+        >
+          Send vote
         </Button>
       </div>
       <ToastContainer position='bottom-center' closeOnClick />
@@ -70,4 +74,4 @@ function ElectionsForm () {
   )
 }
 
-export default ElectionsForm
+export default VotingForm

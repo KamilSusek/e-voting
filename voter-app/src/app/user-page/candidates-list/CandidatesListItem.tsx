@@ -17,7 +17,6 @@ function CandidatesListItem ({ item, onSelect, id }: any) {
   }
 
   return (
-    <Paper className='candidates_list_item'>
       <Grid
         className='candidates_list_item_container'
         container
@@ -37,10 +36,9 @@ function CandidatesListItem ({ item, onSelect, id }: any) {
           </Grid>
         </Grid>
         <Grid item>
-          <Checkbox checked={selectedVote === id} onChange={handleSelect} />
+          <Checkbox color="primary" checked={selectedVote === id} onChange={handleSelect} />
         </Grid>
       </Grid>
-    </Paper>
   )
 }
 

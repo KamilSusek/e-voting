@@ -5,11 +5,12 @@ import { RootState } from '../../store'
 import ElectionsListItem from './elections-list/ElectionsListItem'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import ElectionsForm from './ElectionsForm'
+import VotingForm from './VotingForm'
+import ElectionResults from './results/ElectionResults'
 
 function ElectionsPage () {
   const dispatch = useDispatch()
-  const { electionsList, isCandidatesShown, candidatesList } = useSelector(
+  const { electionsList, isCandidatesShown, isResultsShown } = useSelector(
     (state: RootState) => state.elections
   )
 
@@ -17,20 +18,29 @@ function ElectionsPage () {
     dispatch(fetchElections())
   }, [])
 
-  return (
-    <div>
-      {!isCandidatesShown ? (
-        <div>
-          {electionsList.map((item, index) => (
-            <ElectionsListItem key={index} item={item} />
-          ))}
-        </div>
-      ) : (
-        <ElectionsForm />
-      )}
-      <ToastContainer position='bottom-center' closeOnClick />
-    </div>
-  )
+  if (isCandidatesShown) {
+    return (
+      <React.Fragment>
+        <VotingForm />
+        <ToastContainer position='bottom-center' closeOnClick />
+      </React.Fragment>
+    )
+  } else if (isResultsShown) {
+    return (
+      <div>
+        <ElectionResults />
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        {electionsList.map((item, index) => (
+          <ElectionsListItem key={index} item={item} />
+        ))}
+        <ToastContainer position='bottom-center' closeOnClick />
+      </div>
+    )
+  }
 }
 
 export default ElectionsPage

@@ -1,16 +1,11 @@
+import { Button } from '@material-ui/core'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  Switch,
-  useHistory
-} from 'react-router-dom'
+import { BrowserRouter as Router, Link, useHistory } from 'react-router-dom'
 import { handleLogout } from '../../../services/loginSlice'
+import NavBar from '../NavBar'
 
 function UserPageNavbar () {
-  const [selected, setSelected] = useState(0)
   const history = useHistory()
   const dispatch = useDispatch()
 
@@ -20,34 +15,22 @@ function UserPageNavbar () {
   }
 
   return (
-    <React.Fragment>
-      <nav className='landing-nav'>
-        <div className='links-container'>
-          <Link
-            onClick={() => setSelected(0)}
-            className={selected === 0 ? 'selected' : ''}
-            to='/user'
-          >
-            Home
-          </Link>
-          <Link
-            onClick={() => setSelected(1)}
-            className={selected === 1 ? 'selected' : ''}
-            to='/user/elections'
-          >
-            Elections
-          </Link>
-          <Link
-            onClick={() => setSelected(2)}
-            className={selected === 2 ? 'selected' : ''}
-            to='/user/account'
-          >
-            Account info
-          </Link>
-        </div>
-        <button onClick={logout}>Logout</button>
-      </nav>
-    </React.Fragment>
+    <NavBar>
+      <ul>
+        <li>
+          <Link to='/user'>Home</Link>
+        </li>
+        <li>
+          <Link to='/user/elections'>Elections</Link>
+        </li>
+        <li>
+          <Link to='/user/account'>Account info</Link>
+        </li>
+        <li>
+          <Button onClick={logout}>Logout</Button>
+        </li>
+      </ul>
+    </NavBar>
   )
 }
 

@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { AppThunk } from '../store/store'
+import moment from 'moment'
 import axios from 'axios'
 
 const electionsFormSlice = createSlice({
@@ -11,6 +12,12 @@ const electionsFormSlice = createSlice({
       start_date: '',
       end_date: '',
       server_url: ''
+    },
+    errors: {
+      titleError: false,
+      startDateError: false,
+      endDateError: false,
+      serverUrlError: false
     },
     candidates: [{ candidate_name: '', candidate_description: '' }],
     voters: [],
@@ -26,6 +33,18 @@ const electionsFormSlice = createSlice({
     setVoters: (state, action) => {
       state.voters = action.payload
       state.checked = action.payload.length
+    },
+    setTitleError: (state, action) => {
+      state.errors.titleError = action.payload
+    },
+    setStartDateError: (state, action) => {
+      state.errors.startDateError = action.payload
+    },
+    setEndDateError: (state, action) => {
+      state.errors.endDateError = action.payload
+    },
+    setServerUrlError: (state, action) => {
+      state.errors.serverUrlError = action.payload
     }
   }
 })
@@ -33,14 +52,71 @@ const electionsFormSlice = createSlice({
 export const {
   setElectionFormState,
   setCandidates,
-  setVoters
+  setVoters,
+  setTitleError,
+  setStartDateError,
+  setEndDateError,
+  setServerUrlError
 } = electionsFormSlice.actions
+
+export const checkIfTitleExists = (
+  electionTitle: string
+): AppThunk => async dispatch => {
+  try {
+    const response = await axios.get(
+      `http://localhost:8080/election/${electionTitle}`
+    )
+    const { data } = response
+    if (data !== '') {
+      dispatch(setTitleError(true))
+    } else {
+      dispatch(setTitleError(false))
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const checkIfDateMatches = (
+  startDate: string,
+  endDate: string
+): AppThunk => dispatch => {
+  const start = moment(startDate)
+  const end = moment(endDate)
+  if (end <= start) {
+    dispatch(setEndDateError(true))
+    dispatch(setStartDateError(true))
+  } else {
+    dispatch(setEndDateError(false))
+    dispatch(setStartDateError(false))
+  }
+}
+
+export const checkIfServerUrlExists = (
+  serverUrl: string
+): AppThunk => async dispatch => {
+  try {
+    const response = await axios.get(
+      `http://localhost:8080/serverUrl/?serverUrl=${serverUrl}`
+    )
+    const { data } = response
+    if (data !== '') {
+      dispatch(setServerUrlError(true))
+    } else {
+      dispatch(setServerUrlError(false))
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export const fetchVoters = (): AppThunk => async dispatch => {
   try {
     const response = await axios.get('http://localhost:8080/voters')
     dispatch(setVoters(response.data))
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export default electionsFormSlice.reducer

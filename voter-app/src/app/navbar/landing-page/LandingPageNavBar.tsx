@@ -1,29 +1,37 @@
+import { Button } from '@material-ui/core'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { setOpen } from '../../../services/loginSlice'
 import NavBar from '../NavBar'
 
-const initialValue = [
-  { id: 0, isSelected: false },
-  { id: 1, isSelected: false },
-  { id: 2, isSelected: false },
-  { id: 3, isSelected: false }
-]
-
 function LandingPageNavBar () {
-  const [links, setLinks] = useState(initialValue)
+  const dispatch = useDispatch()
+
+  const openLoginPopup = () => {
+    dispatch(setOpen(true))
+  }
 
   return (
     <NavBar>
-      <Link to='/'>HOME</Link>
-      <Link to='/news'>NEWS</Link>
-      <Link to='/about'>ABOUT</Link>
-      <Link to='/help'>NEWS</Link>
+      <ul>
+        <li>
+          <Link to='/'>Home</Link>
+        </li>
+        <li>
+          <Link to='/about'>About</Link>
+        </li>
+        <li>
+          <Link to='/about'>Contact</Link>
+        </li>
+        <li>
+          <Button onClick={openLoginPopup} color='primary'>
+            Login
+          </Button>
+        </li>
+      </ul>
     </NavBar>
   )
-}
-
-function NavLink ({ reset, href, children }: any) {
-  return <a href={href}>{children}</a>
 }
 
 export default LandingPageNavBar

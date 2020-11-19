@@ -9,7 +9,9 @@ const initialState = {
   candidatesList: [],
   selectedElection: '',
   selectedVote: '',
-  isCandidatesShown: false
+  isCandidatesShown: false,
+  isResultsShown: false,
+  electionResults: []
 }
 
 const electionsSlice = createSlice({
@@ -19,17 +21,26 @@ const electionsSlice = createSlice({
     setElectionsList (state, action) {
       state.electionsList = action.payload
     },
-    selectElection: (state, action) => {
+    selectElection (state, action) {
       state.selectedElection = action.payload
     },
     setCandidates (state, action) {
       state.candidatesList = action.payload
     },
+    setElectionResults (state, action) {
+      state.electionResults = action.payload
+    },
     showCandidates (state) {
       state.isCandidatesShown = true
+      state.isResultsShown = false
     },
     showElections (state) {
       state.isCandidatesShown = false
+      state.isResultsShown = false
+    },
+    showResults (state) {
+      state.isCandidatesShown = false
+      state.isResultsShown = true
     },
     selectVote (state, action) {
       state.selectedVote = action.payload
@@ -41,8 +52,10 @@ export const {
   setElectionsList,
   setCandidates,
   selectElection,
+  setElectionResults,
   showCandidates,
   showElections,
+  showResults,
   selectVote
 } = electionsSlice.actions
 
@@ -90,10 +103,22 @@ export const sendVote = (
     dispatch(fetchElections())
     dispatch(selectVote(''))
     handleResultInfo(true)
-    console.log(response)
   } catch (error) {
     console.log(error)
     handleResultInfo(false)
+  }
+}
+
+export const fetchElectionResults = (
+  electionName: any
+): AppThunk => async dispatch => {
+  try {
+    const response = await axios.get(`/voting/result/${electionName}`)
+    console.log(response.data)
+    dispatch(setElectionResults(response.data))
+    dispatch(showResults())
+  } catch (error) {
+    console.log(error)
   }
 }
 
