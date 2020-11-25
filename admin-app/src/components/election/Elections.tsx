@@ -1,27 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import axios from '../../axios/axios'
 import {
-  Avatar,
   Button,
   Grid,
-  IconButton,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemSecondaryAction,
-  ListItemText,
   Typography,
   makeStyles,
   Divider
 } from '@material-ui/core'
-import EditIcon from '@material-ui/icons/Edit'
 import { useHistory } from 'react-router-dom'
 import ElectionList from './election-list/ElectionList'
-
-interface Election {
-  election_name: string
-  election_description: string
-}
 
 const useStyles = makeStyles({
   box: {
@@ -46,7 +33,7 @@ function Elections () {
 
   const fetchCandidates = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/elections')
+      const response = await axios.get('/elections')
       setElections(response.data)
       console.log(response)
     } catch (error) {}

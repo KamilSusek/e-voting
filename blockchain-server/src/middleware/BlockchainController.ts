@@ -32,7 +32,7 @@ export function synchronizeChain (req: express.Request, res: express.Response) {
 export function mine (req: express.Request, res: express.Response) {
   console.log(req.body)
   const { candidate_name } = req.body
-  blockchain.mine(candidate_name)
 
+  blockchain.mine(candidate_name)
   res.send()
 }

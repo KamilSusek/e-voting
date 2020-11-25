@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { AppThunk } from '../store/store'
-import axios from 'axios'
+import axios from '../axios/axios'
 
 const voterMenuSlice = createSlice({
   name: 'voterMenu',
@@ -27,7 +27,7 @@ export const fetchVoter = (
   err: any
 ): AppThunk => async dispatch => {
   try {
-    const response = await axios.get(`http://localhost:8080/voter/${voterName}`)
+    const response = await axios.get(`/voter/${voterName}`)
     const { username } = response.data
     dispatch(setVoter(username))
     if (!username) {
@@ -43,9 +43,7 @@ export const fetchElections = (
   voterName: string
 ): AppThunk => async dispatch => {
   try {
-    const response = await axios.get(
-      `http://localhost:8080/elections/${voterName}`
-    )
+    const response = await axios.get(`/elections/${voterName}`)
     const { data } = response
     dispatch(setElections(data))
   } catch (error) {

@@ -21,93 +21,12 @@
 \maketitle
 \end{titlepage}
 \chapter{Wprowadzenie}
-\section{Temat projektu.}
-Tematem pracy jest zaprojektowanie oraz implementacja uproszczonego systemu głosowania elektronicznego on-line. System powinien zostać opracowany od strony teoretycznej, a wybrane fragmenty powinny zostać zaimplementowane. Bezpieczeństwo systemu powinno zawierać elementy technologii Blockchain.
-\section{Cele i założenia projektu.}
-Realizację projektu można podzielić na dwie części. Pierwszą częścią jest zaprojektowanie od strony teoretycznej systemu elektronicznego głosowania on-line, na podstawie przeglądu istniejących rozwiązań. Za zabezpieczenie wyborów, przed fałszowaniem odpowiadać będzie technologia Blockchain. Realizacja drugiej części polega na implementacji wybranych fragmentów systemu.
-Do wybranych fragmentów należą: 
-\begin{itemize}
-    \item aplikacja serwerowa, która zajmuje się obsługą Blockchain'u,
-    \item aplikacja serwerowa, której zadaniem będzie obsługa zapytań do bazy danych całego systemu, 
-    \item aplikacja kliencka, przeznaczona dla administratora wyborów, udostępnia możliwość kreatora wyborów,
-    \item aplikacja kliencka, w formie aplikacji webowej, która pozwala na zalogowanie i  oddanie głosu.
-\end{itemize}
-\section{Wykorzystane technologie.}
+
 
 
 \newpage
-\chapter{Blockchain}
-Technologia Blockchain to stosunkowo nowe rozwiązanie. Pierwsze zastwosowanie tej technologii miało miejsce w roku 2009, w popularnej kryptowalucie bitcoin. Zadaniem Blockchainu było księgowanie transakcji. Od tego czasu można zauważyć zwiększanie się zainteresowania tą technologią, co przekłada się na powstawanie nowych kryptowalut i nowych rozwiązań Blockchain (Blockachain 2.0, 3.0).
-\section{Architektura Blockchain}
-Blockchain to łańcuch bloków, które przechowują dane. Każdy blok przechowuje zabezpieczone kryptograficznie informacje, o poprzednim bloku i w ten sposób tworzy się trudny do modyfikacji łańcuch. Technologia Blockchain wykorzystuje rozproszoną sieć (Peer to Peer), w celu przechowywaniu kopii łańcucha w zdecentralizowanym systemie. Zdecentralizowane węzły komunikują się, w celu utrzymania spójności przechowywanych łańcuchów. Takie rozwiązanie pozwala zwiększyć bezpieczeństwo przechowywanych danych.
-\subsection{Łańcuch bloków}
-Łańcuch bloków w systemie Blockchain pełni funkcje struktury danych. Jego budowa przypomina trochę listę jednokierunkową, jednak zamiast wskaźników na poprzedni element, blok przechowuje hash poprzedniego elementu. Hash to wygenerowany za pomocą odpowiedniej funkcji kryptograficznej (funkcji skrótu) ciąg bajtów. Hashowanie jest operacją jednokierunkową, co oznacza brak możliwości odczytania danych wejściowych na podstawie wartości wygenerowanej przez hash.
-Do popularnych funkcji skrótu należą SHA i MD5, jednakże należy pamiętać, że co jakiś czas te rozwiązania się zmieniają, ponieważ odkrywane są w nich luki.
 
-\includegraphics[width=\textwidth]{images/łańcuch_bloków.jpg}
-
-Na łańcuchu bloków, jak na każdej strukturze danych można wykonywać operacje. W tym przypadku jednak operacje takie jak usuwanie bloku, lub jego modyfikacja nie mają sensu, ponieważ mechanizmy zastosowane w łańcuchu mają na celu zabezpieczenie przed modyfikacją danych w bloku. Najczęściej wykorzystuje się operacje dodawania bloku i sprawdzenia spójności łańcucha.
-
-Dodanie bloku to dołączenie do tablicy bloków (bądź innej struktury łączącej lub indeksującej bloki) nowego bloku, w którym w pole "poprzedni hash" wpisywana jest wartość hash poprzedniego bloku. Następnie w świeżo dodanym bloku z wykorzystaniem funkcji skrótu liczymy hash z pól przechowujących dane, poprzedni hash i znacznik czasu.  
-
-Sprawdzenie spójności łańcucha to przeliczenie hasha każdego bloku i porównanie go z polem "poprzedni hash" następnego bloku. Jest to główny mechanizm pozwalający wykryć niespójność w łańcuchu bloków, lecz nie należy tego mylić z problemem niespójności, w rozproszonym systemie Blockchain.
-
-\subsection{Sieci Peer to Peer}
-
-Ważną cechą Blockchainu, z punktu widzenia bezpieczeństwa jest wykorzystanie sieci P2P, w celu utworzenia rozproszonej sieci przechowującej dane. Tak zabezpieczone łańcuchy danych są jeszcze trudniejsze do podmiany, ponieważ trzeba podmienić każdą kopie znajdującą się w sieci.  
-
-Sieć Peer to Peer to grupa urządzeń (węzłów), które komunikują się ze sobą w celu przechowywania i udostępniania wspólnych danych. Każde indywidualne urządzenie w sieci określane jest jako węzeł. Połączone ze sobą węzły tworzą rozproszoną sieć. Dodatkowo w przypadku, gdy żaden z węzłów nie wpływa w sposób znaczący na sieć, to można powiedzieć, że jest ona zdecentralizowana.
-
-Za utrzymanie takiej sieci odpowiedzialność przejmują węzły, których zadaniem jest przechowywanie kopii danych i ich udostępnianie. Wykonywanie tych operacji jest przeprowadzane przez specjalne oprogramowanie, w które wyposażone są urządzenia tworzące węzły.
-
-Takie sieci cechują się wysokim zabezpieczeniem przeciwko atakom cybernetycznym, ze względu na ilość węzłów w sieci, które przechowują kopie danych. Aby zniszczyć taką sieć należy zlokalizować i zaatakować wszystkie węzły.
-
-Peer to Peer jest przykładem ciekawego zastosowania architektury klient-serwer. Architektura klient serwer polega na podzieleniu systemu na stronę kliencką, która zajmuje się wysłaniem żądań do serwera oraz na stronę serwerową, której zadaniem jest odpowiadanie na żądania, przechowywanie danych i operowanie na tych danych. W sieci P2P węzeł pełni role zarówno serwera, jak i klienta. Przykładowo węzeł może żądać przesłania danych od innego węzła, równocześnie odpowiadając na żądanie kolejnego węzła.
-\subsection{Konsensus}
-Węzły sieci Blockchain komunikują się ze sobą, w celu dystrybucji nowego bloku w sieci, oraz w celu osiągania konsensusu. Konsensus w sieci Blockchain to stan sieci, w którym zawartość łańcucha, w każdym węźle jest prawidłowa. Istnieje wiele metod osiągania konsensusu w sieciach Blockchain.
-
-\subsubsection{Proof of work}
-
-Proof of work to najczęściej wykorzystywany algorytm uzyskiwania konsensusu. Algorytm ten wykorzystywany jest podczas tworzenia nowego bloku. Nowy blok wysyłany jest do wszystkich węzłów w sieci, które w celu dodania bloku do swojego łańcucha muszą zostać zatwierdzone. Na tym etapie algorytmu mamy do czynienia z popularnymi "koparkami" Bitcoinów. Aby blok został zatwierdzony węzeł musi wykonać pracę, czyli dołożyć swoją moc obliczeniową. Moc obliczeniowa wykorzystywana jest do hashowania zestawu danych bloku, tak aby uzyskać określony wcześniej rezultat (np. hash musi się zaczynać od pięciu zer). Praca ta wykonywana jest przez węzeł i jest określana jako mining (ang. wydobywanie), jest to zadanie wykonywane przez wspomniane 
-koparki, które za wykopanie bloku otrzymują specjalne środki w walucie Bitcoin. W typowych rozwiązaniach dla Bitocoinu poziom trudności dodania nowego bloku jest tak skonstruowany, aby nowe bloki były dodawane, w odstępach około 10 minutowych. 
-
-Takie rozwiązanie premiuje węzły, o większej mocy obliczeniowej. Dlatego w celu utrzymania spójności danych należy przeprowadzać synchronizację węzłów. Synchronizacja przebiega nastepująco: 
-każdy węzeł rozsyła do całej sieci swój łańcuch, węzły porównują długość swojego łańcucha z nadesłanym łańcuchem i w węźle zapisywany jest dłuższy łańcuch. 
-
-Proof of work to rozwiązanie towarzyszące architekturze Blockchain, od momentu jej powstania, jednakże w miarę upływu czasu, wraz ze zwiększaniem się popularności Bitcoinów i zwiększaniem się mocy komputerów, powstały całe przedsiębiorstwa zajmujące się "kopaniem" Bitcoinów. Popularyzacja kopania Bitcoinów prowadzi do przejęcia tego rynku przez przedsiębiorstwa dysponujące całymi magazynami komputerów, które zajmowały się kopaniem Bitcoinów. Sam rozwój rynku nie jest  szkodliwy dla kryptowaluty, jedynie znacznie zmniejsza konkurencję rynku, eliminując pojedynczych kopaczy, którzy nie posiadają w domu pokoju wypełnionego "koparkami". 
-
-Głównym problemem tego rozwiązania jest zużycie energii elektrycznej. Według badań naukowych z roku 2018, przeprowadzonych na Monachijskim Uniwersytecie Technicznym oraz Instytucie w Massachusetts (MIT), wydobywanie Bitcoina pochłonęło 45,8 TWh. Dla porównania w Polsce, w roku 2017 produkcja energii elektrycznej wyniosła 170,3 TWh. Aby pokazać skalę wzrostu wykorzystania energii elektrycznej przez Bitcoin, należy przytoczyć badania z roku 2019. Naukowcy z Uniwersytetu w Cambridge oszacowali, że światowe roczne zużycie energii elektrycznej przez Bitcoin jest równe 58,93 TWh. Dla porównania Szwajcaria zużywa rocznie 58,46 TWh. 
-
-Należy również wziąć pod uwagę, że generowanie energii elektrycznej uwalnia do atmosfery szkodliwe substancje, których w obecnych czasach staramy się ograniczać. Głównym przeznaczeniem Bitcoinu jest bezpieczne księgowanie transakcji, jednak nie jest to jedyne rozwiązanie na rynku. Według wspomnianego już badania naukowców z Uniwersytetu w Cambridge, Bitcoin odpowiada za mniej niż 100 mln. operacji finansowych rocznie, natomiast tradycyjne systemu księgowania przeprowadzają około 500 mld. takich transakcji. W tym przypadku widać jak bardzo nieopłacalny jest algorytm Proof of Work, jednakże pomimo tego wciąż jest on najczęściej używany w rozwiązaniach Bitcoin.
-
-W tym algorytmie czynnik wkładu fizycznych zasobów, jest głównym motywatorem do uczciwego postępowania. Nagroda otrzymywana jest tylko za prawidłowe zweryfikowanie bloku, dlatego węzeł próbujący obejść zabezpieczenia lub sfałszować zawartość bloku, w przypadku niepowodzenia traci zainwestowane zasoby.
-
-Ogrom inwestowanych zasobów wpływa również na bezpieczeństwo sieci. Duża zdecentralizowana sieć Blockchain dysponuje ogromną mocą obliczeniową, na jej moc składa się moc wszystkich węzłów w sieci. Węzły różnią się mocą obliczeniową, natomiast decentralizacja sieci sprawia, że żaden z węzłów nie może przejąć kontroli nad całą siecią. Im większa decentralizacja tym bardziej zmniejsza się wpływ pojedynczego węzła na całą sieć. Co innego, gdy do sieci dołączona zostanie grupa węzłów, które będą stanowiły 51\% mocy obliczeniowej sieci oraz będą ze sobą współpracowały, działając na szkodę sieci. Taki scenariusz nazywany jest atakiem 51\%. 
-
-W przypadku algorytmu Proof of Work atak 51\% jest bardzo rzadkim zjawiskiem, gdyż jest on bardzo drogi. Atak ten może być opłacalny jedynie wtedy, gdy atakujący chce zdestabilizować sieć. W przypadku Bitcoin'a destabilizacja sieci nie ma większego sensu, ponieważ dysponując taką mocą obliczeniową można uzyskać ogromne przychody z kopania Bitcoin'a, dodatkowo uzyskanie takiej mocy obliczeniowej w rozrastających się sieciach Blockchain dla Bitcoin'u jest na tyle drogie, że w teorii jest uznawane za nieosiągalne. Z tego powodu, w przypadku sieci Blockchain skupionych na przechowywaniu danych, bardzo ważne jest zadbanie o jak największe rozproszenie węzłów w sieci P2P i zwiększenie mocy obliczeniowej.
-
-\subsubsection{Proof of Stake}
-
-Proof of Stake to kolejny algorytm używany do osiągania konsensusu w sieciach Blockchain. Jego największe zalety, to rozwiązanie problemu zużywania ogromnych ilości zasobów energii elektrycznej przez algorytm Proof of Work.
-
-Działanie algorytmu Proof of Stake polega na wybieraniu spośród dostępnych węzłów sieci Blockchain walidatora. Walidator to węzeł, którego zadaniem jest weryfikacja poprawności bloku dołączanego do łańcucha. Wybór walidatora może się odbywać na różne sposoby, od całkowicie losowego wyboru, po wybór z uwzględnieniem czynników takich jak np. wiek stawki węzła, wysokość stawki. Stawka to zablokowane na koncie danego węzła jednostki waluty (kryptowaluty). Stawka jest wymagana, aby węzeł mógł uczestniczyć w losowaniu.
-
-W przypadku algorytmu Proof of Stake głównym motywatorem uczciwego uczestnictwa w sieci jest możliwość utracenia części stawki. W przypadku wykrycia przez sieć nieprawidłowości w bloku dodanym przez konkretny węzeł, traci on określoną część stawki.
-
-Proof of Stake jest o wiele bardziej ekonomiczny, jeśli chodzi o zużycie energii elektrycznej, niż Proof of Work. Oznacza to, że sieć jest dostępna dla większej ilości urządzeń, co wpływa na zwiększenie rozproszenia sieci. W Proof of Stake głównym czynnikiem determinującym moc sieci jest zgromadzony w niej wkład finansowy w postaci stawek. W przypadku tego algorytmu również występuje problem ataku 51\%, jednakże tym razem atakujący musi dysponować odpowiednią ilością środków płatniczych, a dokładnie musi włożyć  51\% ogólnej stawki, co w przypadku Bitcoin'a jest mało prawdopodobne.
-
-\subsubsection{Proof of Authority}
-Proof of Authority to rozwiązanie skłaniające się ku mniej zdecentralizowanym systemom, które są tworzone na prywatne potrzeby i wymagających dużej przepustowości. Proof of Authority jest w swoim działaniu nieco zbliżony do Proof of Stake. Zamiast stawki podanej w jednostkach odpowiedniej waluty, w PoA używana jest reputacja walidatora. Prowadzi to do skonstruowania sieci, w której uczestniczą tylko zaufani walidatorzy. Uzyskanie statusu walidatora wiąże się z dużym nakładem pracy, w celu spełnienia kryteriów i uzyskania odpowiednio wysokiej reputacji. Podczas projektowania takiego systemu należy zwrócić szczególna uwagę, na stworzenie kryteriów o wysokiej trudności do spełnienia, aby wykluczyć węzły o szkodliwym działaniu.
-
-Trudność uzyskania statusu walidatora bardzo mocno wpływa na stopień zdecentralizowania. Decentralizacja porównywalna z rozwiązaniem Proof of Stake jest niemożliwa do osiągnięcia.
-Niski stopień decentralizacji wymaga pełnego zaufania do walidatorów, co może stanowić słaby punkt systemu, gdy zaufany waliadator zostanie przekupiony i dokona szkodliwej manipulacji na zawartości systemu.
-
-Algorytm Proof of Authority świetnie sprawdza się w prywatnych sieciach Blockchain, gdy ważna jest wysoka przepustowość łącza. Jednakże należy pamiętać o odpowiednim doborze walidatorów.
-
-\subsection{Funkcja skrótu}
-
-\newpage
-\chapter{Analiza dziedziny}
+\chapter{Wstępna analiza dziedziny.}
 Elektroniczne systemy głosowania coraz bardziej zyskują na popularności.
 Wraz z postępem technologii oraz coraz większego znaczenia internetu w życiu 
 społecznym, pojawiają się pomysły (a nawet implementacje) przeniesienia procesu głosowania do sieci. Pomysły i implementacje internetowych systemów wyborczych dotyczą wyborów na szczeblu państwowym (przykładowo wybory prezydenckie), jak i wyborów organizowanych na potrzeby prywatne. System e-votingu zazwyczaj sprowadza się do serwisu internetowego, który pozwala na oddanie głosu poprzez odpowiednią stronę internetową. 
@@ -118,7 +37,7 @@ Zabezpieczenie przed fałszowaniem głosów to nie jest jedyny problem, z jakim 
 
 Wykorzystując komputery do obsługi głosowania, oczekuje się szybkiego i poprawnego uzyskania rezultatu głosowania. System taki powinien być zoptymalizowany, a czas uzyskania rezultatów powinien być deterministyczny. Warto rozważyć także moduł generujący statystyki wyborcze.
 
-System wyborczy to nie tylko serwer, który zbiera, przechowuje i liczy głosy. Kliencka część aplikacji (widoczna dla wyborcy) powinna być responsywna, przejrzysta oraz przyjazna dla osób z pewnymi niepełnosprawnościami (głównie należy uwzględnić wady wzroku).
+System wyborczy to nie tylko serwer, który zbiera, przechowuje i liczy głosy. Kliencka część aplikacji (widoczna dla wyborcy) powinna być responsywna, przejrzysta oraz przyjazna dla osób z pewnymi niepełnosprawnościami.
 
 Dużą zaletą e-votingu jest przeniesienie procedur, które musi wykonać organizator do interaktywnej aplikacji przeglądarkowej. Aplikacja webowa powinna zapewniać możliwość zarządzania głosowaniem oraz kreator głosowania, ten element również powinien podlegać zabezpieczeniu danych i autentykacji użytkownika. Aplikacja wyposażona w takie funkcjonalności powinna spełniać wymagania elektronicznego systemu głosowania.
 
@@ -132,11 +51,116 @@ Z powyższej analizy można wypunktować następujące wymagania:
 
 \item Sprawne i bezbłędne liczenie głosów - czas liczenia głosów powinien być deterministyczny.
 
-\item Dbałość o prezencję aplikacji, strona kliencka powinna być przejrzysta i łatwa w obsłudze.
+\item Dbałość o stronę wizualną aplikacji, strona kliencka powinna być przejrzysta i łatwa w obsłudze.
 
 \item System musi być konfigurowalny, z uwzględnieniem bezpieczeństwa konfiguracji.
 \end{itemize}
 
+
+
+\chapter{Blockchain}
+Podstawy teoretyczne technologii Blockchain powstały już w roku 1991, a zostały opracowane przez dr Stuart'a Haber'a oraz dr W. Scott Stornetta. Naukowcy zajmowali się opracowaniem systemu, zabezpieczającego cyfrowe dokumenty przed podrobieniem, bądź podmianą. System opierał się na łańcuchach bloków, gdzie w każdym bloku znajdowały się cyfrowe dane dokumentu. Podczas dodawania nowego dokumentu do łańcucha, podpisywano go za pomocą tak zwanego stempla czasu (ang. timestamp), a następnie dokument był łączony z poprzednim dokumentem. Łączenie polegało na przypisaniu nowem blokowi, wskaźnika na poprzedni dokument. Zawartością wskaźnika były określone dane poprzedniego dokumentu, co stanowiło zabezpieczenie dokumentów. Jeżeli zwartość dokumentu w łańcuchu uległaby zmianie, to należałoby zmienić również wskaźnik na ten dokument\cite{pa}.
+
+Kaminiem milowym w popularyzacji tego pomysłu był open-source'owy projekt o nazwie Bitcoin. Projekt ten powstał w roku 2009, a jego autorstwo przyznawane jest Satoshi'emu Nakamoto. Bitcoin to kryptowaluta, której podstawa działania oparta jest o wykorzystanie systemu blockchain. Transakcje wykonane za pomocą Bitcoina zapisywane są na tak zwanym arkuszu, który jest widoczny dla każdego uczestnika sieci. Blockchain odgrywa swoją rolę w rejestrowaniu nowych transakcji i zapisywaniu ich w arkuszu. Arkusz ma strukturę łańcucha bloków, a sama architektura Blockchain została ulepszona o działanie w rozproszonej sieci Peer-to-Peer. Peer-to-Peer pozwala na udostępnienie zawartości Bitcoina milionom użytkowników na świecie, a dodatkowo zabzpieczenie sieci. Bitcoin wykorzystuje algorytm konsensusu, w celu zapewnienia spójności zwartości węzłów sieci. Jest to algorytm Proof-of-Work, który odpowiada za silnie kojarzony z Bitcoinem proces "kopania Bitcoinów".
+Działanie Proof-of-Work polega na włożeniu odpowiedniej ilości mocy obliczniowej przez węzły, poprzez rozwiązanie zagadki matematycznej, w celu utworzenia nowego bloku. Węzeł który rozwiąże zagadkę jako pierwszy nagradzany jest odpowiednią wartością Bitcoina. Węzeł, który ułoży najdłuższy łańcuch jest synchronizowany z innymi\cite{bitcoin}.
+
+Kombinacja rozwiązań tworzących Blockchain, w sieci Bitcoin wywołała poruszenie na całym świecie. Zaczęto rozmyślać nad nowymi rozwiązaniami, których podstawą miał być Blockchain. Blockhain znalazł swoje zastosowanie w systemach dokumentowania transakcji , ze względu na redukcje kosztów utrzymania oraz wydajność, co jest spowodowane\cite{business} brakiem pośredników. Dodatkowo technologia cały czas się rozwija. Kolejnym rewolucyjnym krokiem dla Blockchainu było utworzenie przez Vitalika Buterina nowej kryptowaluty, o nazwie Ethereum. Ethereum poza funkcjami płatniczymi kryptowaluty wprowadza smart kontrakty, czyli możliwość stworzenia kodu i uruchomienia go w systemie Ethereum. Programy mogą wchodzić w interakcje z węzłami w sieci, co pozwala na tworzenie ogromnych rozproszonych aplikacji.
+
+Technologia cały czas podlega rozwojowi i znajduje zastosowanie w nowych dziedzinach, jednakże przedstawione powyżej koncepty są podstawą obecnego systemu Blockchain. W skrócie podstawę systemu Blockchain tworzą \cite{4-concepts}:
+\begin{itemize}
+	\item Wspólny arkusz - rozproszony łańcuch bloków.
+	\item Ochrona dostępu.
+	\item Smart kontrakty - kontrolowanie i programowanie transakcji.
+	\item Konsensus - zawartość sieci jest bezpieczna, dzięki zgodzie pomiędzy jej uczestnikami.
+\end{itemize}
+
+\section{Architektura Blockchain}
+
+Obecnie na system Blockchain składa się wiele rozwiązań, co czasami prowadzi do rozmycia definicji Blockchainu. Mówiąc Blockchain można mieć na myśli  sam łańcuch bloków lub rozproszoną sieć urządzeń. Zdarza się nawet że termin Blockchain jest używany zamiennie z terminem Bitcoin\cite{bitcoin-vs-blockchain}. Mylenie Bitcoina, z Blockchainem jest błędem. Jednakże ten przypadek pokazuje, jak ważnym elementem Bitcoina jest Blockchain. W celu uściślenia konceptów charakterystycznych dla Blockchainu, w tej sekcji zajmę się opisaniem składników, które wchodzą w skład technologii Blockchain.
+
+\subsection{Łańcuch bloków}
+
+Łańcuch bloków to można powiedzieć jeden z filarów, na którym opiera się cała architektura współczesnego Blockchain'u. Jak już wspominałem, koncepcja łańcucha bloków pochodzi z pracy naukowej z 1991 roku. Wykorzystana w tym pomyśle zasada, według której każdy blok wskazuje na pewne dane obecne w poprzednim, cały czas funkcjonuje w systemach blockchain.
+
+Łańcuch bloków to struktura danych, w której każdy blok wskazuje na określoną wartość poprzedniego bloku. Wartość ta określana jest jako hash. Hash to ciąg znaków utworzony przez odpowiednią metodę kryptograficzną (zwaną funkcją skrótu). Ważną cechą hash'u jest nieodwracalność i bezkolizyjność. Nieodwracalność oznacza, że znając hash, nie można wywnioskować jakie dane zostały zahash'owane. Natomiast bezkolizyjność oznacza, że nie istnieją dwa różne zestawy danych, które po hash'owaniu dają ten sam wynik. Dodatkowo drobna zmiana zawartości hash'owanych danych prowadzi do uzykania nowego, kompletnie innego hash'a. Znalezienie takich danych wymaga dużej mocy obliczeniowej\cite{hash}. Doprecyzowanie działania hash'owania bedzie miało miejsce w części o tytule Funkcja skrótu.
+
+\begin{figure}[h]
+    	\centering
+	\includegraphics[width=\textwidth]{images/łańcuch_bloków.jpg}
+	\caption {Łańcuch bloków.}
+\end {figure}
+
+Na rysunku 2.1 ukazany jest schemat łańcucha bloków. Jak widać dane przechowywane są w blokach, a bloki łączone są za pomocą wskaźników na hash poprzedniego bloku. Taka budowa stanowi zabezpieczenie łańcucha bloków przed modyfikacją lub usunięciem danych. Modyfikacja dowolnego bloku w sieci jest widoczna i łatwa do zweryfikowania. Wystarczy policzyć od początku hash dla każdego bloku i porównać z polem nastepnego bloku, które przechowuje poprzedni hash.
+
+\subsection{Sieci Peer to Peer}
+
+Zmodyfikowanie łańcucha bloków jest trudne, lecz nie jest niemożliwe. Wymaga jedynie wystarczająco dużej mocy obliczeniowej. Dodatkowo zamiast modyfikować łańcuch, można przejąć urządzenie, na którym uruchmomiony jest łańcuch bloków, co daje możliwość zakłócenia pracy systemu opartego na działaniu łańcucha.
+
+Twórcy Bitcoina rozwiązali podane problemy wykorzystując zdecentralizowaną sieć Peer-to-Peer. Sieć Peer-to-Peer składa się z węzłów, które komunikują się ze sobą, bez centralnego serwera. Jeżeli węzły chcą się ze sobą skontaktować, to wysylają dane bezpośrednio do siebie. Takie rozwiązanie pozwala zwiększyć bezpieczeństwo sieci, ponieważ trudniej jest przejąć kontrole nad wieloma maszynami tworzącymi całą sieć, niż nad centalnym systemem obsługującym działanie tej sieci. Dodatkowo P2P zapewnia zabezpieczenie danych zgromadzonych w sieci, przed usunięciem, ponieważ każde urządzenie przechowuje swoje egzemplarze danych, które można traktować jako kopie zapasowe. Dystrybucja sieci na całym świecie zabezpiecza sieć przed ocenzurowaniem, z czego korzysta Bitcoin i inne kryptowaluty.
+
+Peer-to-Peer jest przykładem ciekawego zastosowania architektury klient-serwer. Architektura klient serwer polega na podzieleniu systemu na stronę kliencką, która zajmuje się wysłaniem żądań do serwera, oraz na stronę serwerową, której zadaniem jest odpowiadanie na żądania, przechowywanie danych i operowanie na tych danych. W sieci P2P węzeł pełni role zarówno serwera, jak i klienta. Przykładowo węzeł może żądać przesłania danych od innego węzła, a także odpowiedzieć na żądanie innego węzła.
+
+\subsection{Konsensus}
+
+Konsensus w sieci Blockchain oznacza, że każdy z jej uczestników zgadza się na stan danych przechowywanych w sieci. Każda aktywność zmieniająca stan przechowywanych danych powinna być autoryzowana, aby zapewnić bezpieczeństwo i spójność sieci. Konsensus pozwala na wprowadzenie do sieci zestawu reguł, według których działa cała sieć. Takie działanie pozwala na zweryfikowanie zaufanego źródła i wykluczenie wpływu węzłów dziłających na szkodę sieci. W kryptowalutach najczęściej wykorzystywane algorytmy konsensusu to Proof of Work i Proof of Stake. Natommiast Proof of Authority dotyczy rozwiązań prywatnych.
+
+\subsubsection{Proof of Work}
+
+Proof of work to popularny w kryptowalucie Bitcoin algorytm uzyskiwania konsensusu. Algorytm ten wykorzystywany jest podczas tworzenia nowego bloku. Nowy blok wysyłany jest do wszystkich węzłów w sieci, które w celu dodania bloku do swojego łańcucha muszą zostać zatwierdzone. Na tym etapie algorytmu mamy do czynienia z popularnymi "koparkami" Bitcoinów. Aby blok został zatwierdzony węzeł musi wykonać pracę, czyli dokonać wkładu mocy obliczeniowej. Moc obliczeniowa wykorzystywana jest do rozwiązania zagadki matematycznej. Praca ta wykonywana jest przez węzeł i jest określana jako mining (pol. wydobywanie).Ten węzeł, który jako pierwszy rozwiąże zagadke, otrzyma nagrodę w postaci określonej ilości środków, w kryptowalucie Bitcoin. W typowych rozwiązaniach dla Bitocoinu poziom trudności dodania nowego bloku jest tak skonstruowany, aby nowe bloki były dodawane, w odstępach około 10 minutowych\cite{pow-bitcoin}. 
+
+Takie rozwiązanie premiuje węzły, o większej mocy obliczeniowej. Dlatego w celu utrzymania spójności danych należy przeprowadzać synchronizację węzłów. Synchronizacja przebiega nastepująco: każdy węzeł rozsyła do całej sieci swój łańcuch, węzły porównują długość swojego łańcucha z nadesłanym łańcuchem i w węźle zapisywany jest dłuższy łańcuch. 
+
+Proof of work to rozwiązanie towarzyszące architekturze Blockchain, od momentu jej powstania. Bitcoin poza dokonywaniem transakcji, pozwala na zarabianie poprzez tworzenie tzw. węzłów górniczych. Węzeł górniczy zajmuje się realizacją algorytmu Proof of Work, co oznacza rozwiązywanie zagadki matematycznej. Fizycznie jest to urządzenie, ze specjalistycznymi podzespołami i oprogramowaniem, które pozwala na uzyskanie wysokiej efektywności w wydobywaniu Bitcoina \cite{nodes}. Głównym problemem tego rozwiązania jest zużycie energii elektrycznej. W roku 2017 zużycie energii elektrycznej, przez wydobywanie Bitcoina było większe, niż w 159 krajach na świecie \cite{elctricity-bitcoin}. W 2019 naukowcy z University of Cambridge stworzyli specjalny indeks (CBECI), ukazujący dane dotyczące zużycia energii elektrycznej, przez Bitcoin'a \cite{CBECI}.
+
+W tym algorytmie czynnik wkładu fizycznych zasobów, jest głównym motywatorem do uczciwego postępowania. Jednakże głownym czynnikiem sprawiającym, że ten algorytm działa jest pewność, że ponad 50\% uczestników sieci działa uczciwie. Ogrom inwestowanych zasobów wpływa na bezpieczeństwo sieci. Duża zdecentralizowana sieć Blockchain dysponuje ogromną mocą obliczeniową, na jej moc składa się moc wszystkich węzłów w sieci. Węzły różnią się mocą obliczeniową, natomiast decentralizacja sieci sprawia, że żaden z węzłów nie może przejąć kontroli nad całą siecią. Im większa decentralizacja tym bardziej zmniejsza się wpływ pojedynczego węzła na całą sieć. Co innego, gdy do sieci dołączona zostanie grupa węzłów, które będą stanowiły 51\% mocy obliczeniowej sieci oraz będą ze sobą współpracowały, działając na szkodę sieci. Taki scenariusz nazywany jest atakiem 51\%. Dysponując 51\% mocy obliczeniowej sieci, można bez wiedzy uczciwych uczestników, w szybszy sposób dodawać nowe bloki, co prowadzi do przejęcia obsługi dodawania zawartości, przez szkodliwych uczestników siec\cite{atack51}i.
+
+W przypadku algorytmu Proof of Work atak 51\% jest bardzo rzadkim zjawiskiem, gdyż jest on bardzo drogi. Atak ten może być opłacalny jedynie wtedy, gdy atakujący chce zdestabilizować sieć. W przypadku Bitcoin'a destabilizacja sieci nie ma większego sensu, ponieważ dysponując taką mocą obliczeniową można uzyskać ogromne przychody z kopania Bitcoin'a, dodatkowo uzyskanie takiej mocy obliczeniowej w rozrastających się sieciach Blockchain dla Bitcoin'u jest na tyle drogie, że w teorii jest uznawane za nieosiągalne. Z tego powodu, w przypadku sieci Blockchain, bardzo ważne jest zadbanie o jak największe rozproszenie węzłów w sieci P2P.
+
+\subsubsection{Proof of Stake}
+
+Proof of Stake to kolejny algorytm używany do osiągania konsensusu w sieciach Blockchain. Jego największe zalety, to rozwiązanie problemu zużywania ogromnych ilości zasobów energii elektrycznej przez algorytm Proof of Work.
+
+Działanie algorytmu Proof of Stake polega na wybieraniu spośród dostępnych węzłów sieci Blockchain walidatora. Walidator to węzeł, którego zadaniem jest weryfikacja poprawności bloku dołączanego do łańcucha. Wybór walidatora może się odbywać na różne sposoby, od całkowicie losowego wyboru, po wybór z uwzględnieniem czynników takich jak np. wiek stawki węzła, wysokość stawki. Stawka to zablokowane na koncie danego węzła jednostki waluty (kryptowaluty). Stawka jest wymagana, aby węzeł mógł uczestniczyć w losowaniu.
+
+W przypadku algorytmu Proof of Stake głównym motywatorem uczciwego uczestnictwa w sieci jest możliwość utracenia części stawki. W przypadku wykrycia przez sieć nieprawidłowości w bloku dodanym przez konkretny węzeł, traci on określoną część stawki.
+
+Proof of Stake jest o wiele bardziej ekologiczny, jeśli chodzi o zużycie energii elektrycznej, niż Proof of Work. Oznacza to, że sieć jest dostępna dla większej ilości urządzeń, co wpływa na zwiększenie rozproszenia sieci. W Proof of Stake głównym czynnikiem determinującym moc sieci jest zgromadzony w niej wkład finansowy w postaci stawek. W przypadku tego algorytmu również występuje problem ataku 51\%, jednakże tym razem atakujący musi dysponować odpowiednią ilością środków płatniczych, a dokładnie musi włożyć  51\% ogólnej stawki, co w przypadku Bitcoin'a jest mało prawdopodobne.
+
+\subsubsection{Proof of Authority}
+Proof of Authority to rozwiązanie skłaniające się ku mniej zdecentralizowanym systemom, które są tworzone na prywatne potrzeby i wymagających dużej przepustowości. Proof of Authority jest w swoim działaniu nieco zbliżony do Proof of Stake. Zamiast stawki podanej w jednostkach odpowiedniej waluty, w PoA używana jest reputacja walidatora. Prowadzi to do skonstruowania sieci, w której uczestniczą tylko zaufani walidatorzy. Uzyskanie statusu walidatora wiąże się z dużym nakładem pracy, w celu spełnienia kryteriów i uzyskania odpowiednio wysokiej reputacji. Podczas projektowania takiego systemu należy zwrócić szczególna uwagę, na stworzenie kryteriów o wysokiej trudności do spełnienia, aby wykluczyć węzły o szkodliwym działaniu.
+
+Trudność uzyskania statusu walidatora bardzo mocno wpływa na stopień zdecentralizowania. Decentralizacja porównywalna z rozwiązaniem Proof of Stake jest niemożliwa do osiągnięcia.
+Niski stopień decentralizacji wymaga pełnego zaufania do walidatorów, co może stanowić słaby punkt systemu, gdy zaufany waliadator zostanie przekupiony i dokona szkodliwej manipulacji na zawartości systemu.
+
+Algorytm Proof of Authority świetnie sprawdza się w prywatnych sieciach Blockchain, gdy ważna jest wysoka przepustowość łącza. Jednakże należy pamiętać o odpowiednim doborze walidatorów.
+
+\subsection{Funkcja skrótu}
+
+Funkcje skrótu w systemach informatycznych pełnią rolę zabezpieczenia integralności danych. Zabezpieczenie danych polega na wykryciu modyfikacji. Matematyczna definicja funkcji skrótu h to odwzorowanie wiadomości m o dowolnej , skończonej długości, w ciąg bitów o określonej, stałej długości n \cite{hash}:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/equation1.jpg}
+	\caption {Równanie 1.}
+\end{figure}
+
+Funkcja skrótu (hash) cechuje się wysoką podatnością na zmiany. Zmiana jednego bitu w danych wejściowych powoduje otrzymanie zupełnie innych wyników. \newline 
+Przykładowo dla ciągu znaków hash0, dla funkcji skrótu SHA256 wynikiem jest ciąg znaków 
+\newline 6ac73742db534bebccc9af1453c5637ee5bb5d7c9628ec2f26cf9777c89e96d8. Natomiast zmieniając ciąg znaków na hash1, otrzymanym wynikiem jest \newline af316ecb91a8ee7ae99210702b2d4758f30cdde3bf61e3d8e787d74681f90a6. Przykład obrazuje jak na wynikowy ciąg znaków wpływa zmiana jednego symbolu na wejściu.
+
+Głównymi cechami funkcji skrótu są:
+\begin{itemize}
+	\item Nieodwracalność - na podstawie otrzymanego wyniku nie można bezpośrednio odtworzyć danych.
+	\item Bezkolizyjność - nie istnieją dwa różne ciągi znaków, które dają ten sam wynik.
+\end{itemize}
+
+Znalezienie danych wejściowych dla funckji skrótu jest zadaniem wymagającym dużego nakładu mocy obliczeniowej. Dane można uzyskać losując wejściowy ciąg znaków i hashując go, a nastepnie porównując otrzymany hash z hashem, który ma być rozszyfrowany. Jest to tak zwany atak brutalny (ang. brute force).
+
+Popularnym zastosowaniem funkcji skrótu jest podopis cyfrowy. Podpis cyfrowy to zaszyfrowany hash, wygenerowany na podstawie danych potrzebnych do podpisu. Głównym zaletą wykorzystania hash'owania w podpisie cyfrowym jest szybkość. Hashowanie wiadomości jest szybsze od szyfrowania, a zaszyfrować wystarczy sam ciąg znaków o stosunkowo małej długości, w porównaniu do tekstu wiadomości.
+
+Funkcje skrótu można spotkać w bazach danych. Hasła są przykładem informacji, które w bazie danych są przechowywane w postaci funkcji skrótu. Takie rozwiązanie zabezpiecza hasła, w przypadku wycieku danych.
+
+\newpage
 
 \section{Przegląd istniejących rozwiązań e-votingu}
 Dokonana analiza jest wstępną analizą, która nie jest wystarczająco szczegółowa. Idealna aplikacja, jest dopracowana w najmniejszych detalach. W celu doprecyzowania wymagań można dokonać przeglądu i analizy istniejących rozwiązań. Analizując istniejące aplikacje można wyciągnąć wiele przydatnych wniosków.
@@ -160,7 +184,7 @@ Na system e-votingu  w Estonii składa się kilka mniejszych rozwiązań, które
 Przebieg całego procesu wyborczego w Estonii można podzielić na kilka etapów:
 \begin{itemize}
     \item ogłoszenie wyborów;
-    \item zarejestrowanie kandydat;
+    \item zarejestrowanie kandydatów;
     \item przygotowanie list wyborczych;
     \item głosowanie;
     \item liczenie głosów;
@@ -169,7 +193,12 @@ Przebieg całego procesu wyborczego w Estonii można podzielić na kilka etapów
 
 Wsparcie e-votingu (w Estonii określanego i-votingiem) obejmuje ostatnie trzy etapy procesu wyborczego.
 
-\includegraphics[width=\textwidth]{images/Dziedzina systemu estońskiego}
+\begin{figure}[h]
+    	\centering
+	\includegraphics[width=\textwidth]{images/Dziedzina systemu estońskiego}
+	\caption{Moduły systemu i-votingu.}
+\end {figure}
+\newpage
 
 W skład systemu głosowania wchodzą bazy danych przechowujące:
 \begin{itemize}
@@ -182,10 +211,13 @@ W skład systemu głosowania wchodzą bazy danych przechowujące:
 Dostarczenie odpowiednich danych do systemu pozwala na walidację wyborcy, zgłoszenie przez 
 niego głosu oraz zapisanie wyborcy, w bazie danych odpowiedzialnej za przechowanie listy e-wyborców. W skład logiki systemu wchodzą mechanizmy generujące wyniki. Wyniki e-votingu są scalane z wynikami wyborów tradycyjnych, przy czym scalanie nie pozwala na podwójne zliczenie głosu oddanego tradycyjnie i elektronicznie.
 
+\begin{figure}[h]
+    	\centering
+	\includegraphics[width=\textwidth]{images/Główne częsci systemu estońskiego.png}
+	\caption{Proces wyborczy.}
+\end {figure}
 
-\includegraphics[width=\textwidth]{images/Główne częsci systemu estońskiego.png}
-
-Główne częsci systemu:
+Główne części systemu:
 \begin{itemize}
     \item Voter (dalej nazywany wyborcą) - za pośrednictwem aplikacji klienckiej (która w systemie estońskim jest aplikacją desktopową pobieraną przed wyborami) szyfruje i zatwierdza swoim podpisem elektronicznym głos, który następnie wysyłany jest do Kolektora.
     \item Collector (dalej nazywany Kolektorem) - to aplikacja serwerowa wyposażona w logikę pozwalającą na utworzenie głosu. Aplikacja waliduje dane wprowadzone przez wyborce i elektronicznie podpisuje dane, które następnie przesyła do Procesora.
@@ -216,16 +248,16 @@ Baza danych przechowująca konta wyborców może być w dowolnym momencie modyfi
     \caption{Diagram przypadków użycia dla administratora wyborów.}
 \end{figure}
 
+\newpage
+
 \section{Podział systemu na moduły.}
 System można podzielić na 4 moduły, które wchodzące ze sobą w interakcje tworzą spójną i działającą aplikację. Do tych modułów należą:
 \begin{itemize}
     \item Serwer udostępniający API oraz baza danych.
     \item Aplikacja webowa wyborcy.
     \item Aplikacja webowa administratora.
-    \item Sieci Blockchain, przechowujące głosy, tworzone indywidualnie dla każdego głosowania.
+    \item Sieci Blockchain, przechowujące głosy, tworzone są indywidualnie dla każdego głosowania.
 \end{itemize}
-
-\newpage
 
 \begin{figure}[h]
     \centering
@@ -235,18 +267,102 @@ System można podzielić na 4 moduły, które wchodzące ze sobą w interakcje t
 
 \newpage
 
-\section{API i baza danych.}
+\section{API.}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.4]{images/Logical.png}
-    \caption{Model logiczny bazy danych.}
-\end{figure}
+Elementem centralnym całego systemu jest serwer dostarczający REST-API. API komunikuje się z wewnętrzną bazą danych, oraz zewnętrznymi sieciami Blockchain. Za pomocą otawartych endpointów serwera, użytkownicy i administratorzy mają dostęp do zasobów systemu. Dostep do zasobów jest zabezpieczony, za pomocą ról. W systemie występują dwie role: wyborca i administrator, podczas  żądania dostępu do danego zasobu użytkownik musi udowodnić przynależność do swojej roli. Określenie przynależności do roli znajduje się w bazie danych systemu. Za pośrednictwem serwera można uzyskać dostęp do dowolnego serwera pracującego w sieci Blockchain. Pozwala to na pobieranie informacji, audytowanie i konfigurowanie systemu.
+
+Funkcjami serwera z REST-API są:
+\begin{itemize}
+	\item Obsługa komunikacji z bazą danych, rozumiana jako pobiernie, dodawanie, aktualizowanie i usuwanie danych.
+	\item Komunkacja z sieciami Blockchain.
+	\item Dostarczanie odpowiednich zasobów bazy danych użytkownikom, za pośrednictwem tzw. endpointów.
+	\item Zabezpieczenie zasobów, przed nieuprawnionym dostępem. Uwierzytelnienie, w oparciu o role w systemie.
+\end{itemize}
+
+\section{Baza danych.}
+Baza danych jest elementem ściśle powiązanym z API, dlatego API i baza danych są traktowane jako jeden moduł. Baza danych jest odpowiedzialna za przechowanie konfiguracji wyborów. Struktura bazy danych składa się z pięciu encji. Przedstawiona poniżej baza danych jest rozwiązaniem proponowanym, które zostało użyte podczas implementacji systemu.
 
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.4]{images/Relational.png}
     \caption{Model fizyczny bazy danych}
 \end{figure}
+
+Encja Voter odpowiada profilowi wyborcy i przechowuje dane dotyczące logowania wyborców. Natomiast encja Election zajmuje się przechowaniem konfiguracji wyborów. Konfiguracji podlegają takie właściwości jak:
+\begin{itemize}
+	\item Tytuł wyborów (electionname).
+	\item Opis dotyczący wyborów (electiondescription).
+	\item Data rozpoczęcia  i zakończenia wyborów (startdate, enddate).
+	\item Adres serwera sieci Blockchain, która jest odpowiedzialna za zbieranie głosów.
+	\item Pole ispublished służy do poinformowania, o statusie danych wyborów. Gdy pole ma wartość 1, to wyniki wyborów są publiczne i wyborca ma do nich dostęp. W przeciwnym wypadku wyniki nie są dostępne dla wyborcy i czekaja na opublikowanie, przez administratora.
+\end{itemize}
+
+Encja o nazwie VoterElection, to tzw. encja łącznikowa, która ustanawia relacja wiele do wielu pomiędzy encjami Voter i Election. Dodatkowo przechowuje informację o oddaniu głosu w danych wyborach przez określonego użytkownika (atrybut didVote). 
+
+Encja Candidate służy do reprezentacji kandydatów. 
+
+Do funkcji bazy danych należą:
+\begin{itemize}
+    \item Przechowywanie danych logowania użytkowników i informacji o ich rolach.
+    \item Uporządkowanie dostępu użytkowników do konkretnych wyborów.
+    \item Przyporządkowanie kandydatów do wyborów i serializacja wyników.
+    \item Baza danych dostarcza również strukturę, dzięki której można szybko dodawać nowe konfiguracje.
+\end{itemize}
+
+\section {Sieci Blockchain.}
+
+Sieci Blockchain odpowiadają za przechowywanie głosów, dla określonych wyborów. Głównym argumentem za wykorzystaniem technologii Blockchain, w celu przechowania głosów, jest odporność na podmianę danych. Każda sieć odpowiada za jeden proces wyborczy. Sieć tworzona jest w opraciu o architekture Peer-to-Peer, co pozwala na rozproszenie węzłów.  Każdy węzeł to fizycznie serwer, posiadający uruchomione odpowiednie oprogramowanie. Oprogramowanie jest odpowiedzialne za dodawanie nowych bloków do łańcucha, synchronizację łańcuchów i utrzymanie konsensusu w sieci. 
+
+Ważnym aspektem projektu jest wybór odpowiedniego algorytmu konsensusu. 
+
+Dobór algoytmu konsensusu jest dowolny dla każdej sieci, ponieważ system wymaga informacji o tylko jednym węźle. Węzeł taki można nazwać węzłem głównym sieci, którego cechą jest utrzymanie bezpośredniej komunikacji z API. Węzeł ten zajmuje się:
+\begin{itemize}
+	\item Odebraniem głosów, które są wysłane z serwera centralnego za pośrednictwem API.
+	\item Dostarczenie głosu do każdego węzła w sieci.
+	\item Wysłanie zawartości łańcucha bloków do serwera centralnego.
+	\item Wykonaniem operacji typowych dla każdego węzła w sieci: tworzenie nowych bloków, utrzymanie konsensusu i synchronizacja łańcuchów.
+\end{itemize}
+
+\begin{thebibliography}{99}
+\bibitem{pa} Ankit Patel:
+\emph{English \TeX},
+https://medium.com/@ankit\_233/history-of-the-blockchain-1991-38d6d4c3420c
+\bibitem{bitcoin} Academy Binance: Czym jest Bitcoin?
+\emph{Polski \TeX},
+https://academy.binance.com/pl/articles/what-is-bitcoin\#what-is-bitcoin
+\bibitem{business} Vadapalli, Ravindhar:
+\emph{English \TeX},
+BLOCKCHAIN FUNDAMENTALS TEXT BOOK Fundamentals of Blockchain s. 10
+\bibitem{4-concepts} Vadapalli, Ravindhar:
+\emph{English \TeX},
+BLOCKCHAIN FUNDAMENTALS TEXT BOOK Fundamentals of Blockchain s. 19
+\bibitem{bitcoin-vs-blockchain} Academy Binance: Jaka jest różnica między Blockchainem a Bitcoinem?
+\emph{English \TeX},
+https://academy.binance.com/pl/articles/difference-between-blockchain-and-bitcoin
+
+\bibitem{hash} ZESZYTY NAUKOWE AKADEMII MARYNARKI WOJENNEJ
+ROK LIV NR 2 (193) 2013  Przemysław Rodwald : KRYPTOGRAFICZNE FUNKCJE SKRÓTU
+\emph{English \TeX},
+ s. 92
+
+
+
+\bibitem{pow-bitcoin} Andrew Tar: Proof-of-Work, Explained. 2018.
+\emph{English \TeX},  https://cointelegraph.com/explained/proof-of-work-explained
+
+\bibitem{elctricity-bitcoin} Bitcoin Mining. 2017. 
+\emph{English \TeX}, https://powercompare.co.uk/bitcoin/
+
+\bibitem{nodes} Academy Binance: Węzły (nodes) - czym są i jak działają?
+\emph{Polski \TeX},https://academy.binance.com/pl/articles/what-are-nodes
+
+\bibitem{CBECI} Cambridge Bitcoin Electricity Consumption Index
+\emph{English \TeX},https://www.epe.admin.cam.ac.uk/cambridge-bitcoin-electricity-consumption-index-cbeci
+
+\bibitem{atack51} Sarwar Sayeed and Hector Marco-Gisbert: Assessing Blockchain Consensus and Security Mechanisms against the 51\% Attack
+\emph{English \TeX} https://www.mdpi.com/2076-3417/9/9/1788/htm
+\end{thebibliography}
+
+
 
 \end{document}

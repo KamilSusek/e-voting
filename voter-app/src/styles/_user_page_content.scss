@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   min-height: 80vh;
-  background-color: #e3e2df;
+  background-color: #fff;
 }
 
 .election_list_item {
@@ -11,12 +11,11 @@
 
 .election_list_item_container {
   margin: 2% 0;
-  min-width: 50vw;
+  min-width: 60vw;
   min-height: 18vh;
-  background-color: #aaabb8;
   color: black;
   padding: 10px;
-  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
   h1 {
     font-size: 2rem;
@@ -33,11 +32,10 @@
 
 .candidates_list_item_container {
   margin: 2% 0;
-  min-width: 50vw;
+  min-width: 60vw;
   min-height: 8vh;
-  background-color: #aaabb8;
   padding: 10px;
-  border-radius: 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18), 0 1px 2px rgba(0, 0, 0, 0.24);
 
   h1 {
     font-size: 2rem;
@@ -45,5 +43,14 @@
 
   h2 {
     font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .election_list_item_container {
+    min-width: 90vw;
+  }
+  .candidates_list_item_container {
+    min-width: 90vw;
   }
 }

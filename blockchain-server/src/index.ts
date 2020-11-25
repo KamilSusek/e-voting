@@ -6,8 +6,7 @@ import blockchain from './routes/blockchain'
 import score from './routes/score'
 import { synchronizeOnInit } from './routes/blockchain'
 
-const HTTP_PORT = process.env.HTTP_PORT || 3001
-
+const HTTP_PORT = process.env.PORT || 3001
 const app = express()
 
 app.use(cors())

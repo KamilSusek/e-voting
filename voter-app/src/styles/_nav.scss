@@ -1,91 +1,79 @@
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #29648A;
-  color: white;
-}
-
-.brand-title {
-  font-size: 1.5rem;
-  margin: 0.5rem;
-}
-
-.brand-title a {
-  color: #112D32;
-  text-decoration: none;
-}
-
-.navbar-links ul {
-  margin: 0;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-}
-
-.navbar-links li {
-  list-style: none;
-}
-
-.navbar-links a {
-  font-size: 1.3rem;
-  text-decoration: none;
-  color: white;
-  padding: 1rem;
-  display: block;
-}
-
-.navbar-links button {
-  color:white;
-}
-
-.navbar-links li:hover {
-  background-color: #555;
-  transition: all 1s;
-}
-
-.toggle-button {
-  position: absolute;
-  top: 0.75rem;
-  right: 1rem;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
-}
-
-.toggle-button .bar {
-  height: 3px;
+nav {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
   width: 100%;
-  background-color: white;
-  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-@media (max-width: 600px) {
-  .toggle-button {
-    display: flex;
+h3 {
+  color: #3f51b5;
+  font-size: 1.8rem;
+}
+
+.nav-center {
+  padding: 8px;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links-container {
+  display: flex;
+}
+
+.links {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50vw;
+}
+
+.links a {
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: #3f51b5;
+  transition: all 0.5s;
+}
+
+.links a:hover {
+  color: red;
+}
+
+.nav-toggle {
+  display: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.nav-toggle:hover {
+  transition: 1.3s all;
+  transform: rotate(90deg);
+}
+
+.column-links-container {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .nav-toggle {
+    display: block;
   }
-  .navbar-links {
+  .links-container {
     display: none;
-    width: 100%;
   }
-
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+  .column-links-container {
+    display: block;
   }
-  .navbar-links ul {
-    width: 100%;
-    flex-direction: column;
+  .hide-menu {
+    display: none;
   }
-
-  .navbar-links li {
-    width: 100%;
-    text-align: center;
-  }
-
-  .navbar-links.active {
+  .links {
     display: flex;
+    flex-direction: column;
   }
 }

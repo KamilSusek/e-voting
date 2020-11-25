@@ -1,11 +1,27 @@
-import { Button, Grid, Input } from '@material-ui/core'
-import axios from 'axios'
+import {
+  Button,
+  Divider,
+  Grid,
+  Input,
+  List,
+  ListItem,
+  makeStyles
+} from '@material-ui/core'
+import axios from '../../../axios/axios'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchVoters } from '../../../features/electionFormSlice'
 import { RootState } from '../../../store/store'
 
+const useStyles = makeStyles({
+  root: {
+    width: '60vw',
+    minHeight: '60vh'
+  }
+})
+
 function AddVotersForm ({ previous }: any) {
+  const classes = useStyles()
   const dispatch = useDispatch()
   const { electionFormState, candidates, voters } = useSelector(
     (state: RootState) => state.election
@@ -16,7 +32,7 @@ function AddVotersForm ({ previous }: any) {
 
   const createElection = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/election', {
+      const response = await axios.post('/election', {
         election: electionFormState,
         candidates: candidates,
         voters: voters
@@ -33,23 +49,36 @@ function AddVotersForm ({ previous }: any) {
   }
 
   return (
-    <div>
+    <Grid container justify='center'>
       <form onSubmit={handleSubmit}>
-        <Button>Add all</Button>
-        {voters.map((item: any, index) => {
-          return (
-            <Grid container justify='center' alignItems='center'>
-              <p>{item.username}</p>
-              <Input type='checkbox' />
-            </Grid>
-          )
-        })}
-        <Grid>
-          <Button onClick={previous}>Previous</Button>
-          <Button type='submit'>Submit</Button>
+        <Grid className={classes.root} container direction='column'>
+          <List>
+            {voters.map((item: any, index) => {
+              return (
+                <>
+                  <ListItem button alignItems='flex-start'>
+                    <p>{item.username}</p>
+                    <Input type='checkbox' />
+                  </ListItem>
+                  <Divider />
+                </>
+              )
+            })}
+          </List>
+        </Grid>
+        <Grid container justify='space-between' alignItems='center'>
+          <Button color='primary' variant='contained' onClick={previous}>
+            Previous
+          </Button>
+          <Button color='primary' variant='contained'>
+            Add all
+          </Button>
+          <Button color='primary' variant='contained' type='submit'>
+            Submit
+          </Button>
         </Grid>
       </form>
-    </div>
+    </Grid>
   )
 }
 

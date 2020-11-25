@@ -2,6 +2,7 @@
 @import './footer';
 @import './user_page_content';
 @import './chart';
+@import './special_buttons';
 
 .container {
   width: 100%;
@@ -14,14 +15,13 @@
 }
 
 .flag-image {
-  background-image: url('../resources/vote_theme.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .content-container {
   display: flex;
-  background-color: #E3E2DF;
+  background-color: #fff;
   justify-content: center;
   width: 100%;
   height: 90vh;

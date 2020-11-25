@@ -55,6 +55,7 @@ function ElectionsListItem ({ item }: any) {
       </Grid>
       {is_published ? (
         <Button
+          color='primary'
           variant='contained'
           onClick={getElectionResults}
         >

@@ -1,5 +1,5 @@
 import { Button } from '@material-ui/core'
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { BrowserRouter as Router, Link, useHistory } from 'react-router-dom'
 import { handleLogout } from '../../../services/loginSlice'
@@ -15,8 +15,16 @@ function UserPageNavbar () {
   }
 
   return (
-    <NavBar>
-      <ul>
+    <NavBar
+      actionButton={
+        <div>
+          <Button onClick={logout} variant='contained' color='primary' size="large">
+            Logout
+          </Button>
+        </div>
+      }
+    >
+      <ul className='links'>
         <li>
           <Link to='/user'>Home</Link>
         </li>
@@ -24,10 +32,7 @@ function UserPageNavbar () {
           <Link to='/user/elections'>Elections</Link>
         </li>
         <li>
-          <Link to='/user/account'>Account info</Link>
-        </li>
-        <li>
-          <Button onClick={logout}>Logout</Button>
+          <Link to='/user/account'>Account</Link>
         </li>
       </ul>
     </NavBar>

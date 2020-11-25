@@ -30,6 +30,6 @@ peers.get('/ping', ping)
 
 peers.get('/peers', getPeers)
 
-peers.get('/register', registerPeer)
+peers.post('/register', registerPeer)
 
 export default peers

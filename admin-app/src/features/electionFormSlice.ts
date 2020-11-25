@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { AppThunk } from '../store/store'
 import moment from 'moment'
-import axios from 'axios'
+import axios from '../axios/axios'
 
 const electionsFormSlice = createSlice({
   name: 'electionsForm',
@@ -63,9 +63,7 @@ export const checkIfTitleExists = (
   electionTitle: string
 ): AppThunk => async dispatch => {
   try {
-    const response = await axios.get(
-      `http://localhost:8080/election/${electionTitle}`
-    )
+    const response = await axios.get(`/election/${electionTitle}`)
     const { data } = response
     if (data !== '') {
       dispatch(setTitleError(true))
@@ -96,9 +94,7 @@ export const checkIfServerUrlExists = (
   serverUrl: string
 ): AppThunk => async dispatch => {
   try {
-    const response = await axios.get(
-      `http://localhost:8080/serverUrl/?serverUrl=${serverUrl}`
-    )
+    const response = await axios.get(`/serverUrl/?serverUrl=${serverUrl}`)
     const { data } = response
     if (data !== '') {
       dispatch(setServerUrlError(true))
@@ -112,7 +108,7 @@ export const checkIfServerUrlExists = (
 
 export const fetchVoters = (): AppThunk => async dispatch => {
   try {
-    const response = await axios.get('http://localhost:8080/voters')
+    const response = await axios.get('/voters')
     dispatch(setVoters(response.data))
   } catch (error) {
     console.log(error)

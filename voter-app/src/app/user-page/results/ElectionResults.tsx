@@ -25,7 +25,7 @@ function ElectionResults () {
   return (
     <div className="chart_container">
       <RenderBarChart data={electionResults} />
-      <Button style={{width: '100%'}} color="primary" variant="contained" onClick={goBack}>Go back</Button>
+      <Button fullWidth color="primary" variant="contained" onClick={goBack}>Go back</Button>
     </div>
   )
 }

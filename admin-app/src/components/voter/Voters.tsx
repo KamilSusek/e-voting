@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import axios from '../../axios/axios'
 import { Button, Grid, Typography, makeStyles } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import CreateVoterDialog from './CreateVoterDialog'
@@ -38,7 +38,7 @@ function Voters () {
 
   const fetchVoters = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/voters')
+      const response = await axios.get('/voters')
       setVoters(response.data)
       console.log(response)
     } catch (error) {}

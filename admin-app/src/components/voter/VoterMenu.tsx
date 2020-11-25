@@ -26,6 +26,12 @@ const useStyles = makeStyles({
     padding: '8px',
     width: '70%',
     minHeight: '60vh'
+  },
+  rootContainer: {
+    margin: '1%',
+    padding: '8px',
+    display: 'flex',
+    justifyContent: 'center'
   }
 })
 
@@ -55,11 +61,11 @@ function VoterMenu () {
   }, [])
 
   return (
-    <div style={{ padding: '8px', display: 'flex', justifyContent: 'center' }}>
+    <div className={classes.rootContainer}>
       <Paper className={classes.root}>
         <Grid container direction='column'>
           <Grid container alignItems='center'>
-            <AccountCircleIcon fontSize="large" />
+            <AccountCircleIcon fontSize='large' />
             <Typography variant='h6'>{voter.username}</Typography>
           </Grid>
           <Divider />
@@ -70,7 +76,7 @@ function VoterMenu () {
                 {isElectionsShow ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
               </IconButton>
             </Grid>
-            <Divider/>
+            <Divider />
             {isElectionsShow && (
               <List>
                 <ElectionList elections={elections} />

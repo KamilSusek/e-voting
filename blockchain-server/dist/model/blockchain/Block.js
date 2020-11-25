@@ -9,17 +9,23 @@ class Block {
         this.prevHash = prevHash;
         this.data = data;
     }
-    toString() {
-        return `${this.index}${this.timestamp}${this.nonce}${this.prevHash}${this.data}`;
+    getIndex() {
+        return this.index;
     }
-    getPrevHash() {
-        return this.prevHash;
+    getTimestamp() {
+        return this.timestamp;
     }
     getNonce() {
         return this.nonce;
     }
+    getPrevHash() {
+        return this.prevHash;
+    }
     getData() {
         return this.data;
+    }
+    toString() {
+        return `${this.index}${this.timestamp}${this.nonce}${this.prevHash}${this.data}`;
     }
 }
 exports.default = Block;

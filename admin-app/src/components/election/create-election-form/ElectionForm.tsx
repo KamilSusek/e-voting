@@ -6,8 +6,7 @@ import {
   makeStyles,
   TextField
 } from '@material-ui/core'
-import moment from 'moment'
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   checkIfDateMatches,
@@ -51,7 +50,6 @@ function ElectionForm ({ next }: any) {
     if (!titleError && !endDateError && !startDateError && !serverUrlError) {
       next()
     }
-
   }
 
   const handleChange = (

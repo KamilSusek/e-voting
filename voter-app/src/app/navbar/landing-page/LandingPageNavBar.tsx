@@ -13,8 +13,19 @@ function LandingPageNavBar () {
   }
 
   return (
-    <NavBar>
-      <ul>
+    <NavBar
+      actionButton={
+        <Button
+          className='login-button'
+          variant='contained'
+          color='primary'
+          onClick={openLoginPopup}
+        >
+          Login
+        </Button>
+      }
+    >
+      <ul className='links'>
         <li>
           <Link to='/'>Home</Link>
         </li>
@@ -23,11 +34,6 @@ function LandingPageNavBar () {
         </li>
         <li>
           <Link to='/about'>Contact</Link>
-        </li>
-        <li>
-          <Button onClick={openLoginPopup} color='primary'>
-            Login
-          </Button>
         </li>
       </ul>
     </NavBar>

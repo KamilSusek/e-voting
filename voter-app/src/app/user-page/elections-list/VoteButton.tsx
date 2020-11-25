@@ -24,7 +24,7 @@ function VoteButton ({ isTimeElaspsed, didVote, endDate, toggleVote }: any) {
     return (
       <Grid container justify='flex-end' alignItems='center'>
         <Button
-          
+          color="primary"
           variant='contained'
           onClick={toggleVote}
         >

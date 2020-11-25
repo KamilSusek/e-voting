@@ -6,11 +6,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const crypto_js_1 = require("crypto-js");
 const Block_1 = __importDefault(require("./Block"));
 class Blockchain {
-    constructor(nodeId) {
-        this.nodeId = nodeId;
+    constructor() {
         this.blockchain = new Array();
-        this.pendingTransactionList = new Array();
         this.createGenesisBlock();
+    }
+    static getInstance() {
+        if (!Blockchain.instance) {
+            Blockchain.instance = new Blockchain();
+        }
+        return Blockchain.instance;
     }
     createGenesisBlock() {
         const block = new Block_1.default(this.blockchain.length, '0', 4, '0', 'empty');
@@ -21,22 +25,22 @@ class Blockchain {
         this.blockchain.push(block);
         return block;
     }
-    getHash(block) {
-        return crypto_js_1.SHA256(block.toString()).toString();
-    }
-    mine(data) {
-        const lastBlock = this.blockchain[this.blockchain.length - 1];
-        const nonce = this.solveNonce(lastBlock.getNonce(), lastBlock.getPrevHash());
-        this.createNewBlock(nonce, lastBlock.getPrevHash(), data);
-    }
     setChain(chain) {
         this.blockchain = chain;
+    }
+    getHash(block) {
+        return crypto_js_1.SHA256(block.toString()).toString();
     }
     getChain() {
         return this.blockchain;
     }
     getChainLength() {
         return this.blockchain.length;
+    }
+    mine(data) {
+        const lastBlock = this.blockchain[this.blockchain.length - 1];
+        const nonce = this.solveNonce(lastBlock.getNonce(), lastBlock.getPrevHash());
+        this.createNewBlock(nonce, lastBlock.getPrevHash(), data);
     }
     solveNonce(lastNonce, prevHash) {
         let nonce = 0;
@@ -50,9 +54,6 @@ class Blockchain {
         return crypto_js_1.SHA256(attempt)
             .toString()
             .startsWith('00000');
-    }
-    getNodeId() {
-        return this.nodeId;
     }
 }
 exports.default = Blockchain;

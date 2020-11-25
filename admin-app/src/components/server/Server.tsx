@@ -8,6 +8,7 @@ import {
 import React, { useState } from 'react'
 import axios from 'axios'
 import PeersList from './PeersList'
+import ConnectForm from './ConnectForm'
 
 const useStyles = makeStyles({
   root: {
@@ -20,7 +21,11 @@ const useStyles = makeStyles({
     width: '60vw'
   },
   success: { color: 'black', backgroundColor: 'green' },
-  failure: { color: 'black', backgroundColor: 'red' }
+  failure: { color: 'black', backgroundColor: 'red' },
+  connectContainer: {
+    width: '70vw',
+    margin: '10px'
+  }
 })
 
 function Server () {
@@ -103,12 +108,7 @@ function Server () {
         {serverResponse.touched && serverResponse.result && (
           <>
             <PeersList peers={peers} />
-            <Grid container justify="center" alignItems='center'>
-              <TextField variant='outlined' />
-              <Button color='primary' variant='contained'>
-                Connect
-              </Button>
-            </Grid>
+            <ConnectForm serverUrl={serverUrl} />
           </>
         )}
       </Grid>

@@ -12,7 +12,7 @@ import {
 import CheckIcon from '@material-ui/icons/Check'
 import ErrorIcon from '@material-ui/icons/Error'
 import React, { useState } from 'react'
-import axios from 'axios'
+import axios from '../../axios/axios'
 
 interface LoginData {
   username: string
@@ -95,7 +95,7 @@ const CreateVoterDialog = ({ open, handleClose }: any) => {
     setProgressShow(true)
     try {
       const { username, password } = loginData
-      const response = await axios.post('http://localhost:8080/voter', {
+      const response = await axios.post('/voter', {
         username,
         password
       })
