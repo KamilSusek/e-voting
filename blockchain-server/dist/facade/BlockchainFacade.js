@@ -4,11 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Peers_1 = __importDefault(require("../model/Peers"));
-const Blockchain_1 = __importDefault(require("../model/blockchain/Blockchain"));
 const axios_1 = __importDefault(require("axios"));
+const PoAAlgorithm_1 = __importDefault(require("../model/algorithms/PoAAlgorithm"));
 class BlockchainFacade {
     constructor() {
-        this.blockchain = Blockchain_1.default.getInstance();
+        this.blockchain = new PoAAlgorithm_1.default();
         this.peersRepo = Peers_1.default.getInstance();
     }
     synchronizeOnInit() {
@@ -20,7 +20,7 @@ class BlockchainFacade {
         }
     }
     getScore() {
-        const chain = this.blockchain.getChain();
+        const chain = this.blockchain.getScore();
         const resultsArray = new Array();
         for (const block of chain) {
             const data = block.getData();
@@ -40,7 +40,7 @@ class BlockchainFacade {
         this.blockchain.mine(candidateName);
     }
     synchronizeNode(chain) {
-        if (chain.length > this.blockchain.getChainLength()) {
+        if (chain.length > this.blockchain.getScore().length) {
             this.blockchain.setChain(chain);
         }
     }
@@ -49,7 +49,7 @@ class BlockchainFacade {
         for (const peer of peers) {
             axios_1.default
                 .post(peer + '/node/synchronize', {
-                chain: this.blockchain.getChain()
+                chain: this.blockchain.getScore()
             })
                 .catch(err => {
                 console.log('');
@@ -57,7 +57,7 @@ class BlockchainFacade {
         }
     }
     calculateResuts() {
-        const chain = this.blockchain.getChain();
+        const chain = this.blockchain.getScore();
         const results = new Array();
         for (const item of chain) {
             const block = item.getData();

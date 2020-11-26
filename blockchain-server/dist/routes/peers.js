@@ -29,6 +29,6 @@ if (HTTP_PORT === '3003') {
 }
 peers.get('/ping', PeersController_1.ping);
 peers.get('/peers', PeersController_1.getPeers);
-peers.get('/register', PeersController_1.registerPeer);
+peers.post('/register', PeersController_1.registerPeer);
 exports.default = peers;
 //# sourceMappingURL=peers.js.map

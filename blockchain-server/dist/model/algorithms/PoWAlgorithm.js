@@ -4,17 +4,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const crypto_js_1 = require("crypto-js");
+const Block_1 = __importDefault(require("../blockchain/Block"));
 const Chain_1 = __importDefault(require("../Chain"));
-const Block_1 = __importDefault(require("./Block"));
-class Blockchain {
+const Blockchain_1 = __importDefault(require("./Blockchain"));
+class PoWBlockchain extends Blockchain_1.default {
     constructor() {
+        super();
         this.chain = Chain_1.default.getInstance();
     }
     mine(data) {
         const blockchain = this.chain.getChain();
         const lastBlock = blockchain[blockchain.length - 1];
-        // const nonce = this.solveNonce(lastBlock.getNonce(), lastBlock.getPrevHash())
-        this.createNewBlock(0, lastBlock.getPrevHash(), data);
+        const nonce = this.solveNonce(lastBlock.getNonce(), lastBlock.getPrevHash());
+        const newBlock = this.createNewBlock(nonce, lastBlock.getPrevHash(), data);
+        this.chain.addBlock(newBlock);
+    }
+    getScore() {
+        return this.chain.getChain();
+    }
+    setChain(chain) {
+        this.chain.setChain(chain);
     }
     createNewBlock(nonce, prevHash, data) {
         const blockchain = this.chain.getChain();
@@ -38,5 +47,5 @@ class Blockchain {
             .startsWith('00000');
     }
 }
-exports.default = Blockchain;
-//# sourceMappingURL=Blockchain.js.map
+exports.default = PoWBlockchain;
+//# sourceMappingURL=PoWAlgorithm.js.map

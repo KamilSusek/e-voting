@@ -138,11 +138,9 @@ Algorytm Proof of Authority świetnie sprawdza się w prywatnych sieciach Blockc
 
 Funkcje skrótu w systemach informatycznych pełnią rolę zabezpieczenia integralności danych. Zabezpieczenie danych polega na wykryciu modyfikacji. Matematyczna definicja funkcji skrótu h to odwzorowanie wiadomości m o dowolnej , skończonej długości, w ciąg bitów o określonej, stałej długości n \cite{hash}:
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{images/equation1.jpg}
-	\caption {Równanie 1.}
-\end{figure}
+\begin{equation}
+h:\left \{0, 1\right \}^{*}\rightarrow \left \{0, 1\right \}^{n}, gdzie: \left \{0, 1\right \}^{*}=\bigcup_{i\in  N}\left \{0, 1\right \}^{i}, N = \left \{0, 1, ...\right \}, n \in N
+\end{equation}
 
 Funkcja skrótu (hash) cechuje się wysoką podatnością na zmiany. Zmiana jednego bitu w danych wejściowych powoduje otrzymanie zupełnie innych wyników. \newline 
 Przykładowo dla ciągu znaków hash0, dla funkcji skrótu SHA256 wynikiem jest ciąg znaków 
@@ -160,10 +158,29 @@ Popularnym zastosowaniem funkcji skrótu jest podopis cyfrowy. Podpis cyfrowy to
 
 Funkcje skrótu można spotkać w bazach danych. Hasła są przykładem informacji, które w bazie danych są przechowywane w postaci funkcji skrótu. Takie rozwiązanie zabezpiecza hasła, w przypadku wycieku danych.
 
+\subsection{Smart kontrakty.}
+
+Wraz z powstaniem kryptowaluty Ethereum do architektury Blockchain została dodana nowa funkcja. Dodano tak zwane Smart Kontrakty
+
+\newpage
+
+\section{Technologia Blockchain na rynku.}
+
+\subsection{Kryptowaluty.}
+
+Kryptowaluta to cyfrowy środek płatniczy. W przeciwieństwie do tradycyjnych walut, kryptowaluty nie sa kontrolowane przez bank centralny. Środki płatnicze w kryptowalucie znajdują się w rozproszonej, po całym świecie sieci. Każda transakcja w tym środowisku jest zapisywana we współdzielonym rejestrze. Rejestr pozwala na ustalenie ile środków w danej kryptowalucie jest na koncie danego uczestnika sieci. Podstawą działania kryptowalut jest Blockchain. To Blockchain odpowiada za tworzenie rejestru transakcji, zabezpieczenie danych przed modyfikacją, współdzielenie danych i uzyskanie konsensusu. Przykładem takich kryptowalut są Bitcoin i Ethereum.
+
+\subsection{Finanse.}
+
+Dynamiczny rozwój technologii zapoczątkował rozwój innych branż, w tym sektora finansów. Powstała osobna gałąź tego sektora o nazwie FinTech. FinTech zajmuje się opracpwywaniem i wdrażaniem nowych technologii do systemów finansowych na całym świecie. Korzyści płynące z unowocześnienia sektora finansów mogą skupiają się głównie na zwiększeniu szybkości transakcji przez brak pośredników, zmniejszeniu kosztów przepływu transakcji i zwiększenie bezpieczeństwa. FinTech zajmuje się między innymi szukaniem zastosowań dla technologii Blockchain. Jako przykład rozwijania technologii blockchain przez FinTech może posłużyć przykład trwałego nośnika wdrożonego przez PKO Bank Polski. Trwały nośnik pozwala na dostarczanie klientom banku prywatnych dokumentów w formie cyfrowej \cite{PKO}. Twórcy tego rozwiązania zastoswali również mechanizm Smart Kontarktów. Smart Kontrakty są wykorzystywane do zautomatyzowania procesu egzekwowania umów ubezpieczeniowych\cite{PKO-SMART}. Pozwala to na zmniejeszenie uczestnictwa osób trzecich i redukcję kosztów.
+
+\subsection{Internet of Things.}
+
+Internet of Things to technologia pozwalająca na łączenie ze sobą wielu urządzeń. Tak skonstruowane sieci znajdują swoje przeznaczenie w systemach czasu rzeczywistego w przemyśle, bądź w inteligentnym domu. IoT wykorzystuje serwery internetowe, do przechowywania i pobierania danych. Blockchain w usługach IoT pomaga zabezpieczyć serwery z danymi, poprzez ich decentralizacje.
+
 \newpage
 
 \section{Przegląd istniejących rozwiązań e-votingu}
-Dokonana analiza jest wstępną analizą, która nie jest wystarczająco szczegółowa. Idealna aplikacja, jest dopracowana w najmniejszych detalach. W celu doprecyzowania wymagań można dokonać przeglądu i analizy istniejących rozwiązań. Analizując istniejące aplikacje można wyciągnąć wiele przydatnych wniosków.
 \section{System estoński}
 Przykładem regularnego wykorzystania e-votingu jest Estonia. Estonia jest krajem, który pierwszy udostępnił możliwość głosowania elektronicznego w wyborach lokalnych, na szczeblu krajowym. W pierwszych wyborach wzięło udział około 1\% wyborców. Od roku 2005 w Estonii postępował rozwój systemów e-votingu. Wraz z następnymi wyborami zwiększała się liczba uczestników. W roku 2019 liczba wyborców, którzy skorzystali z e-votingu wyniosła 43,8\% wyborców.
 
@@ -327,15 +344,19 @@ Dobór algoytmu konsensusu jest dowolny dla każdej sieci, ponieważ system wyma
 \bibitem{pa} Ankit Patel:
 \emph{English \TeX},
 https://medium.com/@ankit\_233/history-of-the-blockchain-1991-38d6d4c3420c
+
 \bibitem{bitcoin} Academy Binance: Czym jest Bitcoin?
 \emph{Polski \TeX},
 https://academy.binance.com/pl/articles/what-is-bitcoin\#what-is-bitcoin
+
 \bibitem{business} Vadapalli, Ravindhar:
 \emph{English \TeX},
 BLOCKCHAIN FUNDAMENTALS TEXT BOOK Fundamentals of Blockchain s. 10
+
 \bibitem{4-concepts} Vadapalli, Ravindhar:
 \emph{English \TeX},
 BLOCKCHAIN FUNDAMENTALS TEXT BOOK Fundamentals of Blockchain s. 19
+
 \bibitem{bitcoin-vs-blockchain} Academy Binance: Jaka jest różnica między Blockchainem a Bitcoinem?
 \emph{English \TeX},
 https://academy.binance.com/pl/articles/difference-between-blockchain-and-bitcoin
@@ -344,8 +365,6 @@ https://academy.binance.com/pl/articles/difference-between-blockchain-and-bitcoi
 ROK LIV NR 2 (193) 2013  Przemysław Rodwald : KRYPTOGRAFICZNE FUNKCJE SKRÓTU
 \emph{English \TeX},
  s. 92
-
-
 
 \bibitem{pow-bitcoin} Andrew Tar: Proof-of-Work, Explained. 2018.
 \emph{English \TeX},  https://cointelegraph.com/explained/proof-of-work-explained
@@ -361,6 +380,13 @@ ROK LIV NR 2 (193) 2013  Przemysław Rodwald : KRYPTOGRAFICZNE FUNKCJE SKRÓTU
 
 \bibitem{atack51} Sarwar Sayeed and Hector Marco-Gisbert: Assessing Blockchain Consensus and Security Mechanisms against the 51\% Attack
 \emph{English \TeX} https://www.mdpi.com/2076-3417/9/9/1788/htm
+
+\bibitem{PKO} PKO BP wdraża nową wersję trwałego nośnika. To pierwsze takie rozwiązanie w Europie
+\emph{English \TeX} https://fintek.pl/pko-bp-wdraza-nowa-wersje-trwalego-nosnika-to-pierwsze-takie-rozwiazanie-w-europie/
+
+\bibitem{PKO-SMART}BLOCKCHAIN W PKO BANKU POLSKIM
+\emph{English \TeX} https://fintech.pkobp.pl/blockchain-w-banku/
+
 \end{thebibliography}
 
 
