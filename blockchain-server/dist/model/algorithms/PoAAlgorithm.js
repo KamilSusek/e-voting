@@ -11,12 +11,14 @@ class PoAAlgorithm extends Blockchain_1.default {
     constructor() {
         super();
         this.chain = Chain_1.default.getInstance();
+        this.authorityFactor = 100;
     }
     mine(data) {
         const blockchain = this.chain.getChain();
         const lastBlock = blockchain[blockchain.length - 1];
         const newBlock = this.createNewBlock(0, lastBlock.getPrevHash(), data);
         this.chain.addBlock(newBlock);
+        this.authorityFactor++;
     }
     getScore() {
         return this.chain.getChain();

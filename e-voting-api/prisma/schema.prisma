@@ -43,3 +43,9 @@ model Candidate {
   votes                 Int      @default(0)
   Election              Election @relation(fields: [election_id], references: [id])
 }
+
+model ADMIN {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  password String
+}

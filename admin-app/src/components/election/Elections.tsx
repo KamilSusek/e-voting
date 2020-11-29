@@ -31,7 +31,7 @@ function Elections () {
     history.push(`/elections/${electionName}`)
   }
 
-  const fetchCandidates = async () => {
+  const fetchElections = async () => {
     try {
       const response = await axios.get('/elections')
       setElections(response.data)
@@ -39,8 +39,21 @@ function Elections () {
     } catch (error) {}
   }
 
+  const deleteElection = async (electionName: string) => {
+    try {
+      await axios.delete('/election', {
+        data: {
+          electionName: electionName
+        }
+      })
+      fetchElections()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
-    fetchCandidates()
+    fetchElections()
   }, [])
 
   const goToCreateElection = () => {
@@ -65,6 +78,7 @@ function Elections () {
           <ElectionList
             elections={elections}
             goToElectionMenu={goToElectionMenu}
+            deleteElection={deleteElection}
           />
         </div>
       </Grid>

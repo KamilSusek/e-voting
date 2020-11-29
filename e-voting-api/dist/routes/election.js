@@ -15,8 +15,9 @@ router.get('/election/:electionName', findElections_1.getEllectionByName);
 router.get('/serverUrl', findElections_1.getEllectionByServerUrl);
 router.post('/election', createElection_1.validate, createElection_1.createElection, createElection_1.createCandidates, createElection_1.attachVotersToElection);
 router.post('/election/set_user', editElections_1.attachVoterToElections);
-// TODO
 router.post('/election/publish', results_1.findElection, results_1.findCandidates, results_1.fetchResults, results_1.countVotes);
+router.post('/changeUrl', editElections_1.setServerUrl);
+router.delete('/election', editElections_1.deleteElection);
 router.get('/results/:electionName', results_1.getResults);
 exports.default = router;
 //# sourceMappingURL=election.js.map

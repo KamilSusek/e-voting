@@ -5,7 +5,11 @@ import {
   createElection,
   validate
 } from '../middleware/elections/createElection'
-import { attachVoterToElections } from '../middleware/elections/editElections'
+import {
+  attachVoterToElections,
+  setServerUrl,
+  deleteElection
+} from '../middleware/elections/editElections'
 import {
   getAllElections,
   getEllectionByName,
@@ -40,7 +44,6 @@ router.post(
 
 router.post('/election/set_user', attachVoterToElections)
 
-// TODO
 router.post(
   '/election/publish',
   findElection,
@@ -48,6 +51,10 @@ router.post(
   fetchResults,
   countVotes
 )
+
+router.post('/changeUrl', setServerUrl)
+
+router.delete('/election', deleteElection)
 
 router.get('/results/:electionName', getResults)
 

@@ -36,8 +36,13 @@ function ConnectForm ({ serverUrl }: Props) {
   const registerPeer = async () => {
     setIsSuccess({ touched: true, isFinished: false, isSuccess: false })
     try {
+      await axios.get(`${serverUrl}/ping`)
+      await axios.get(`${connectServerUrl}/ping`)
       await axios.post(`${serverUrl}/register`, {
         url: connectServerUrl
+      })
+      await axios.post(`${connectServerUrl}/register`, {
+        url: serverUrl
       })
       setIsSuccess({ touched: true, isFinished: true, isSuccess: true })
     } catch (error) {

@@ -10,17 +10,20 @@ import {
   Divider,
   Grid
 } from '@material-ui/core'
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
 import LabelIcon from '@material-ui/icons/Label'
 import EditIcon from '@material-ui/icons/Edit'
 
 interface Election {
   election_name: string
   election_description: string
+  is_published: boolean
 }
 
 interface PropsTypes {
   elections: Election[]
   goToElectionMenu: Function
+  deleteElection: Function
 }
 
 const useStyles = makeStyles({
@@ -31,7 +34,11 @@ const useStyles = makeStyles({
   }
 })
 
-function ElectionList ({ elections, goToElectionMenu }: PropsTypes) {
+function ElectionList ({
+  elections,
+  goToElectionMenu,
+  deleteElection
+}: PropsTypes) {
   const classes = useStyles()
 
   if (elections.length > 0) {
@@ -48,6 +55,16 @@ function ElectionList ({ elections, goToElectionMenu }: PropsTypes) {
                 {item.election_name}
               </Typography>
             </Grid>
+            {item.is_published && (
+              <IconButton
+                edge='end'
+                aria-label='edit'
+                color='primary'
+                onClick={() => deleteElection(item.election_name)}
+              >
+                <DeleteOutlineIcon fontSize='large' />
+              </IconButton>
+            )}
             <ListItemSecondaryAction>
               <IconButton
                 edge='end'

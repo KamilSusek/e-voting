@@ -5,10 +5,11 @@ import Blockchain from './Blockchain'
 
 class PoAAlgorithm extends Blockchain {
   private chain: Chain
-
+  private authorityFactor: number
   constructor () {
     super()
     this.chain = Chain.getInstance()
+    this.authorityFactor = 100
   }
 
   public mine (data: any) {
@@ -16,6 +17,7 @@ class PoAAlgorithm extends Blockchain {
     const lastBlock = blockchain[blockchain.length - 1]
     const newBlock = this.createNewBlock(0, lastBlock.getPrevHash(), data)
     this.chain.addBlock(newBlock)
+    this.authorityFactor++
   }
 
   public getScore (): Block[] {

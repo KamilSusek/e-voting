@@ -4,11 +4,14 @@ import {
   Grid,
   TextField,
   Typography,
-  makeStyles
+  makeStyles,
+  LinearProgress
 } from '@material-ui/core'
-import React, { useEffect } from 'react'
+import axios from '../../../../axios/axios'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import ErrorIcon from '@material-ui/icons/Error'
+import CheckIcon from '@material-ui/icons/Check'
 import { fetchElection } from '../../../../features/electionManagerSlice'
 import { RootState } from '../../../../store/store'
 
@@ -59,8 +62,46 @@ const useStyles = makeStyles({
 function ElectionStatus ({ electionName }: Props) {
   const classes = useStyles()
   const dispatch = useDispatch()
-
+  const [disableEdit, setDisableEdit] = useState(true)
+  const [touched, setTouched] = useState({
+    isTouched: false,
+    isSuccess: false
+  })
   const { election } = useSelector((state: RootState) => state.electionManager)
+  const [url, setUrl] = useState<string>('')
+
+  useEffect(() => {
+    setUrl(election.server_url)
+  }, [])
+
+  const onSuccess = () => {
+    setTouched({ isTouched: true, isSuccess: true })
+  }
+
+  const onError = () => {
+    setTouched({ isTouched: true, isSuccess: false })
+  }
+
+  const changeUrl = async () => {
+    try {
+      const response = await axios.post(`/changeUrl`, {
+        electionName: electionName,
+        serverUrl: url
+      })
+      setDisableEdit(true)
+      onSuccess()
+    } catch (error) {
+      onError()
+    }
+  }
+
+  const handleChange = (event: any) => {
+    setUrl(event.target.value)
+  }
+
+  const handleSubmit = () => {
+    changeUrl()
+  }
 
   useEffect(() => {
     dispatch(fetchElection(electionName))
@@ -84,11 +125,32 @@ function ElectionStatus ({ electionName }: Props) {
         <TextField
           variant='outlined'
           label='Server url'
-          disabled
-          value={election.server_url}
+          disabled={disableEdit}
+          onChange={handleChange}
+          value={url}
+          required
         />
-        <Button variant='contained' color='primary'>
-          Change url
+        {!disableEdit && (
+          <>
+            <Button onClick={handleSubmit} variant='contained' color='primary'>
+              Submit
+            </Button>
+          </>
+        )}
+        <Button
+          onClick={() => setDisableEdit(!disableEdit)}
+          variant='contained'
+          color='primary'
+        >
+          {touched.isTouched ? (
+            touched.isSuccess ? (
+              <CheckIcon />
+            ) : (
+              <ErrorIcon />
+            )
+          ) : (
+            'Change url'
+          )}
         </Button>
       </Grid>
     </Grid>
