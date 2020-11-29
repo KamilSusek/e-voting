@@ -4,10 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const createElection_1 = require("../middleware/elections/createElection");
-const editElections_1 = require("../middleware/elections/editElections");
-const findElections_1 = require("../middleware/elections/findElections");
-const results_1 = require("../middleware/results/results");
+const createElection_1 = require("../model/middleware/elections/createElection");
+const editElections_1 = require("../model/middleware/elections/editElections");
+const findElections_1 = require("../model/middleware/elections/findElections");
+const results_1 = require("../model/middleware/results/results");
 const router = express_1.default.Router();
 router.get('/elections', findElections_1.getAllElections);
 router.get('/elections/:voterName', findElections_1.getEllectionsByVoter);

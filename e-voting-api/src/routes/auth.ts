@@ -1,7 +1,7 @@
 import express from 'express'
 import jwt from 'jsonwebtoken'
 import sha256 from 'crypto-js/sha256'
-import Database from '../database/Database'
+import Database from '../model/database/Database'
 
 const router = express.Router()
 

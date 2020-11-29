@@ -99,6 +99,7 @@ export async function attachVoterToElections (
           }
         }
       })
+
       res.send()
     } else {
       res.status(406).send()

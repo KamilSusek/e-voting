@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Database_1 = __importDefault(require("..//database/Database"));
+const Database_1 = __importDefault(require("../database/Database"));
 class CandidatesRepo {
     constructor() {
         this.db = Database_1.default.getInstance().getDatabase();

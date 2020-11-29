@@ -4,25 +4,25 @@ import {
   createCandidates,
   createElection,
   validate
-} from '../middleware/elections/createElection'
+} from '../model/middleware/elections/createElection'
 import {
   attachVoterToElections,
   setServerUrl,
   deleteElection
-} from '../middleware/elections/editElections'
+} from '../model/middleware/elections/editElections'
 import {
   getAllElections,
   getEllectionByName,
   getEllectionByServerUrl,
   getEllectionsByVoter
-} from '../middleware/elections/findElections'
+} from '../model/middleware/elections/findElections'
 import {
   countVotes,
   fetchResults,
   findCandidates,
   findElection,
   getResults
-} from '../middleware/results/results'
+} from '../model/middleware/results/results'
 
 const router = express.Router()
 

@@ -3,14 +3,14 @@ import {
   findElectionFromParams,
   prepareScores,
   calculateScore
-} from '../services/vote/score'
-import { sendVote, registerVote, validate } from '../services/vote/sendVote'
-import { saveVoter } from '../services/vote/saveVoter'
-import { findVoterFromParams } from '../services/vote/voters'
-import { findVoterAttachedToElection } from '../services/vote/voters'
-import { findAllVoters } from '../services/vote/voters'
-import { login } from '../services/vote/voters'
-import { countVotes } from '../middleware/candidates/countVotes'
+} from '../model/middleware/results/score'
+import { sendVote, registerVote, validate } from '../model/middleware/vote/sendVote'
+import { saveVoter } from '../model/middleware/voter/saveVoter'
+import { findVoterFromParams } from '../model/middleware/voter/voters'
+import { findVoterAttachedToElection } from '../model/middleware/voter/voters'
+import { findAllVoters } from '../model/middleware/voter/voters'
+import { login } from '../model/middleware/voter/voters'
+import { countVotes } from '../model/middleware/candidates/countVotes'
 
 const router = express.Router()
 

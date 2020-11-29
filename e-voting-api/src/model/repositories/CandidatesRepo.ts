@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import Database from '..//database/Database'
+import Database from '../database/Database'
 
 interface CandidateDTO {
   candidate_name: string
@@ -39,8 +39,6 @@ class CandidatesRepo {
 
     return candidates
   }
-
-  //   public async save(candidate: CandidateDTO) {}
 
   public async saveCandidateToElection (
     candidate: CandidateDTO,

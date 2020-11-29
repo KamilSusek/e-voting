@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const sha256_1 = __importDefault(require("crypto-js/sha256"));
-const Database_1 = __importDefault(require("../database/Database"));
+const Database_1 = __importDefault(require("../model/database/Database"));
 const router = express_1.default.Router();
 router.post('/admin/login', async (req, res) => {
     const { username, password } = req.body;
