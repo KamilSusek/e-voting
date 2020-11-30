@@ -3,6 +3,16 @@ import BlockchainFacade from '../facade/BlockchainFacade'
 
 const blockchain = new BlockchainFacade()
 
+export function getServerInfo (req: express.Request, res: express.Response) {
+  const nodes = blockchain.getAllPeers().length + 1
+  const info = {
+    addedBlocks: blockchain.getScore().length,
+    nodes
+  }
+
+  res.send(info)
+}
+
 export function distribute (req: express.Request, res: express.Response) {
   const { candidate_name } = req.body
   const vote = { candidate_name }
@@ -14,10 +24,14 @@ export function distribute (req: express.Request, res: express.Response) {
 }
 
 export function synchronizeNode (req: express.Request, res: express.Response) {
-  const { chain } = req.body
-  blockchain.synchronizeNode(chain)
+  const { chain, syncValue } = req.body
+  if (chain && syncValue) {
+    blockchain.synchronizeNode(syncValue, chain)
 
-  res.send()
+    res.send()
+  } else {
+    res.status(400).send('Some of the provided params do not exist.')
+  }
 }
 
 export function synchronize () {

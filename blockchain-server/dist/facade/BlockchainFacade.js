@@ -4,22 +4,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Peers_1 = __importDefault(require("../model/Peers"));
+const PoWAlgorithm_1 = __importDefault(require("../model/algorithms/PoWAlgorithm"));
 const axios_1 = __importDefault(require("axios"));
-const PoAAlgorithm_1 = __importDefault(require("../model/algorithms/PoAAlgorithm"));
 class BlockchainFacade {
     constructor() {
-        this.blockchain = new PoAAlgorithm_1.default();
+        this.blockchain = new PoWAlgorithm_1.default();
         this.peersRepo = Peers_1.default.getInstance();
     }
     synchronizeOnInit() {
         const peers = this.peersRepo.getPeers();
         for (const peer of peers) {
             axios_1.default.post(peer + '/synchronize').catch(err => {
-                console.log('');
+                console.log(`Peer: ${peer} is not working.`);
             });
         }
     }
     getScore() {
+        console.log(this.blockchain);
         const chain = this.blockchain.getScore();
         const resultsArray = new Array();
         for (const block of chain) {
@@ -32,15 +33,15 @@ class BlockchainFacade {
         const peers = this.peersRepo.getPeers();
         for (const peer of peers) {
             axios_1.default.post(peer + '/mine', vote).catch(err => {
-                console.log('');
+                console.log(`Peer:${peer} is not working.`);
             });
         }
     }
     mine(candidateName) {
         this.blockchain.mine(candidateName);
     }
-    synchronizeNode(chain) {
-        if (chain.length > this.blockchain.getScore().length) {
+    synchronizeNode(syncValue, chain) {
+        if (this.blockchain.synchronize(syncValue)) {
             this.blockchain.setChain(chain);
         }
     }
@@ -49,10 +50,11 @@ class BlockchainFacade {
         for (const peer of peers) {
             axios_1.default
                 .post(peer + '/node/synchronize', {
-                chain: this.blockchain.getScore()
+                chain: this.blockchain.getScore(),
+                syncValue: this.blockchain.getSyncValue()
             })
                 .catch(err => {
-                console.log('');
+                console.log(`Peer: ${peer} is not working.`);
             });
         }
     }
@@ -72,6 +74,7 @@ class BlockchainFacade {
         const peers = this.peersRepo.getPeers();
         peers.push(peer);
         this.peersRepo.setPeers(peers);
+        this.synchronizeOnInit();
     }
     deletePeer(peerUrl) {
         const peers = this.peersRepo.getPeers();

@@ -9,7 +9,7 @@ class BlockchainFacade {
   private peersRepo: PeersRepo
 
   constructor () {
-    this.blockchain = new PoAAlgorithm()
+    this.blockchain = new PoWAlgorithm()
     this.peersRepo = PeersRepo.getInstance()
   }
 
@@ -18,12 +18,13 @@ class BlockchainFacade {
 
     for (const peer of peers) {
       axios.post(peer + '/synchronize').catch(err => {
-        console.log('')
+        console.log(`Peer: ${peer} is not working.`)
       })
     }
   }
 
   public getScore (): any[] {
+    console.log(this.blockchain)
     const chain = this.blockchain.getScore()
     const resultsArray = new Array()
     for (const block of chain) {
@@ -39,7 +40,7 @@ class BlockchainFacade {
 
     for (const peer of peers) {
       axios.post(peer + '/mine', vote).catch(err => {
-        console.log('')
+        console.log(`Peer:${peer} is not working.`)
       })
     }
   }
@@ -48,8 +49,8 @@ class BlockchainFacade {
     this.blockchain.mine(candidateName)
   }
 
-  public synchronizeNode (chain: any[]) {
-    if (chain.length > this.blockchain.getScore().length) {
+  public synchronizeNode (syncValue: number, chain: any[]) {
+    if (this.blockchain.synchronize(syncValue)) {
       this.blockchain.setChain(chain)
     }
   }
@@ -60,10 +61,11 @@ class BlockchainFacade {
     for (const peer of peers) {
       axios
         .post(peer + '/node/synchronize', {
-          chain: this.blockchain.getScore()
+          chain: this.blockchain.getScore(),
+          syncValue: this.blockchain.getSyncValue()
         })
         .catch(err => {
-          console.log('')
+          console.log(`Peer: ${peer} is not working.`)
         })
     }
   }
@@ -87,6 +89,7 @@ class BlockchainFacade {
     const peers = this.peersRepo.getPeers()
     peers.push(peer)
     this.peersRepo.setPeers(peers)
+   // this.synchronizeOnInit()
   }
 
   public deletePeer (peerUrl: string) {

@@ -1,14 +1,13 @@
 import { SHA256 } from 'crypto-js'
-import Block from '../blockchain/Block'
+import Block from '../Block'
 import Chain from '../Chain'
 import Blockchain from './Blockchain'
 
 class PoAAlgorithm extends Blockchain {
-  private chain: Chain
   private authorityFactor: number
+
   constructor () {
     super()
-    this.chain = Chain.getInstance()
     this.authorityFactor = 100
   }
 
@@ -20,30 +19,16 @@ class PoAAlgorithm extends Blockchain {
     this.authorityFactor++
   }
 
-  public getScore (): Block[] {
-    return this.chain.getChain()
+  public getSyncValue (): number {
+    return this.authorityFactor
   }
 
-  public setChain (chain: Block[]) {
-    this.chain.setChain(chain)
-  }
-
-  public createNewBlock (nonce: number, prevHash: string, data: any): Block {
-    const blockchain = this.chain.getChain()
-
-    const block = new Block(
-      blockchain.length,
-      '2020-01-02',
-      nonce,
-      this.getHash(blockchain[blockchain.length - 1]),
-      data
-    )
-
-    return block
-  }
-
-  private getHash (block: Block): string {
-    return SHA256(block.toString()).toString()
+  public synchronize (auth: number) {
+    if (this.authorityFactor < auth) {
+      return false
+    } else {
+      return true
+    }
   }
 }
 

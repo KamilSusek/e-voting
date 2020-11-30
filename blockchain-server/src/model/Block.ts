@@ -1,7 +1,3 @@
-import { SHA256 } from 'crypto-js'
-
-const DIFFICULTY = 5
-
 class Block {
   private index: number
   private timestamp: string
@@ -41,6 +37,26 @@ class Block {
 
   public getData (): any {
     return this.data
+  }
+
+  public setIndex (index: number) {
+    this.index = index
+  }
+
+  public setTimestamp (timestamp: string) {
+    this.timestamp = timestamp
+  }
+
+  public setNonce (nonce: number) {
+    this.nonce = nonce
+  }
+
+  public setPrevHash (prevHash: string) {
+    this.prevHash = prevHash
+  }
+
+  public setData (data: any) {
+    this.data = data
   }
 
   public toString (): string {

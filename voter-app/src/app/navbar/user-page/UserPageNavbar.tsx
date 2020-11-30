@@ -18,7 +18,12 @@ function UserPageNavbar () {
     <NavBar
       actionButton={
         <div>
-          <Button onClick={logout} variant='contained' color='primary' size="large">
+          <Button
+            onClick={logout}
+            variant='contained'
+            color='primary'
+            size='large'
+          >
             Logout
           </Button>
         </div>
@@ -26,13 +31,10 @@ function UserPageNavbar () {
     >
       <ul className='links'>
         <li>
-          <Link to='/user'>Home</Link>
-        </li>
-        <li>
           <Link to='/user/elections'>Elections</Link>
         </li>
         <li>
-          <Link to='/user/account'>Account</Link>
+          <Link to='/user'>Help</Link>
         </li>
       </ul>
     </NavBar>

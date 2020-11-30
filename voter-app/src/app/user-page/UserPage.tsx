@@ -11,12 +11,11 @@ function UserPage () {
         <UserPageNavbar />
         <div className='user_page_container'>
           <PrivateRoute isExact={true} path='/user'>
-            home
+            help
           </PrivateRoute>
           <PrivateRoute path='/user/elections'>
             <ElectionsPage />
           </PrivateRoute>
-          <PrivateRoute path='/user/account'>a</PrivateRoute>
         </div>
         <footer className='landing-footer'></footer>
       </Router>

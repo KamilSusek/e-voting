@@ -1,5 +1,4 @@
-import { SHA256 } from 'crypto-js'
-import Block from './blockchain/Block'
+import Block from './Block'
 
 class Chain {
   private chain: Block[]

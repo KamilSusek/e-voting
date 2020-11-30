@@ -1,5 +1,6 @@
 import express from 'express'
 import {
+  getServerInfo,
   distribute,
   mine,
   synchronizeChain,
@@ -16,6 +17,8 @@ blockchain.post('/node/synchronize', synchronizeNode)
 blockchain.post('/synchronize', synchronizeChain)
 
 blockchain.post('/mine', mine)
+
+blockchain.get('/info', getServerInfo)
 
 export function synchronizeOnInit () {
   synchronize()

@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 import VotersMenu from '../tabs-conent/VotersMenu'
 import CandidatesMenu from '../tabs-conent/CandidatesMenu'
 import Results from '../tabs-conent/Results'
+import BlockchainStatus from '../tabs-conent/BlockchainStatus'
 
 interface Params {
   electionName: string
@@ -38,20 +39,24 @@ function ElectionMenuPanel () {
           <Tab label='Status' {...a11yProps(0)} />
           <Tab label='Voters' {...a11yProps(1)} />
           <Tab label='Candidates' {...a11yProps(2)} />
-          <Tab label='Results' {...a11yProps(2)} />
+          <Tab label='Blockchain' {...a11yProps(3)} />
+          <Tab label='Results' {...a11yProps(4)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
         <ElectionStatus electionName={electionName} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <VotersMenu electionName={electionName}/>
+        <VotersMenu electionName={electionName} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <CandidatesMenu electionName={electionName}/>
+        <CandidatesMenu electionName={electionName} />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <Results electionName={electionName}/>
+        <BlockchainStatus electionName={electionName} />
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+        <Results electionName={electionName} />
       </TabPanel>
     </div>
   )
