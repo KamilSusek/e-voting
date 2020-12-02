@@ -7,10 +7,12 @@ import score from './routes/score'
 import { synchronizeOnInit } from './routes/blockchain'
 
 const HTTP_PORT = process.env.PORT || 3001
+
 const app = express()
 
 app.use(cors())
 app.use(bodyParser.json())
+
 app.use(peers)
 app.use(blockchain)
 app.use(score)

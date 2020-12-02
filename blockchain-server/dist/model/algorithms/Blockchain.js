@@ -8,21 +8,25 @@ const Block_1 = __importDefault(require("../Block"));
 const Chain_1 = __importDefault(require("../Chain"));
 class Blockchain {
     constructor() {
-        this.chain = Chain_1.default.getInstance();
-    }
-    setChain(chain) {
-        this.chain.setChain(chain);
+        this.blockchain = Chain_1.default.getInstance();
     }
     createNewBlock(nonce, prevHash, data) {
-        const blockchain = this.chain.getChain();
-        const block = new Block_1.default(blockchain.length, Date.now().toString(), nonce, this.getHash(blockchain[blockchain.length - 1]), data);
+        const blockchain = this.blockchain.getChain();
+        const chainLength = blockchain.length;
+        const date = Date.now().toString();
+        const block = new Block_1.default(chainLength, date, nonce, prevHash, data);
         return block;
     }
+    setChain(chain) {
+        this.blockchain.setChain(chain);
+    }
     getScore() {
-        return this.chain.getChain();
+        return this.blockchain.getChain();
     }
     getHash(block) {
-        return crypto_js_1.SHA256(block.toString()).toString();
+        const inputWord = block.toString();
+        const hash = crypto_js_1.SHA256(inputWord).toString();
+        return hash;
     }
 }
 exports.default = Blockchain;

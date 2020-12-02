@@ -6,7 +6,7 @@ import {
   synchronizeChain,
   synchronizeNode,
   synchronize
-} from '../middleware/BlockchainController'
+} from '../middleware/blockchain'
 
 const blockchain = express.Router()
 

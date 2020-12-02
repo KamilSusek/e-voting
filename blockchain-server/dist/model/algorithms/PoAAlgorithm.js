@@ -10,10 +10,10 @@ class PoAAlgorithm extends Blockchain_1.default {
         this.authorityFactor = 100;
     }
     mine(data) {
-        const blockchain = this.chain.getChain();
+        const blockchain = this.blockchain.getChain();
         const lastBlock = blockchain[blockchain.length - 1];
-        const newBlock = this.createNewBlock(0, lastBlock.getPrevHash(), data);
-        this.chain.addBlock(newBlock);
+        const newBlock = this.createNewBlock(0, lastBlock.prevHash, data);
+        this.blockchain.addBlock(newBlock);
         this.authorityFactor++;
     }
     getSyncValue() {

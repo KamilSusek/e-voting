@@ -1,0 +1,1 @@
+{"version":3,"file":"RequiredBodyNotFoundError.js","sourceRoot":"","sources":["../../../src/errors/product/RequiredBodyNotFoundError.ts"],"names":[],"mappings":";;;;;AAAA,mEAA0C;AAG1C,MAAqB,yBAAyB;IAA9C;QACmB,eAAU,GAAG,GAAG,CAAA;QAChB,iBAAY,GAAG,4BAA4B,CAAA;IAK9D,CAAC;IAHC,QAAQ;QACN,MAAM,IAAI,sBAAY,CAAC,IAAI,CAAC,UAAU,EAAE,IAAI,CAAC,YAAY,CAAC,CAAA;IAC5D,CAAC;CACF;AAPD,4CAOC"}

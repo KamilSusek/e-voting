@@ -1,0 +1,1 @@
+{"version":3,"file":"RequiredParamsError.js","sourceRoot":"","sources":["../../../src/errors/product/RequiredParamsError.ts"],"names":[],"mappings":";;;;;AAAA,mEAA0C;AAG1C,MAAqB,mBAAmB;IAAxC;QACmB,eAAU,GAAG,GAAG,CAAA;QAChB,iBAAY,GAAG,4BAA4B,CAAA;IAK9D,CAAC;IAHC,QAAQ;QACN,OAAO,IAAI,sBAAY,CAAC,IAAI,CAAC,UAAU,EAAE,IAAI,CAAC,YAAY,CAAC,CAAA;IAC7D,CAAC;CACF;AAPD,sCAOC"}

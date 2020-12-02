@@ -1,5 +1,5 @@
 import express from 'express'
-import { getScore } from '../middleware/ScoreController'
+import { getScore } from '../middleware/score'
 
 const score = express.Router()
 

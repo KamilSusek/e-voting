@@ -13,8 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.registerPeer = exports.getPeers = exports.ping = void 0;
-const BlockchainFacade_1 = __importDefault(require("../facade/BlockchainFacade"));
-const blockchain = new BlockchainFacade_1.default();
+const PeersService_1 = __importDefault(require("../model/service/PeersService"));
+const peersService = new PeersService_1.default();
 function ping(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         res.send('ok');
@@ -23,7 +23,7 @@ function ping(req, res) {
 exports.ping = ping;
 function getPeers(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const peers = blockchain.getAllPeers();
+        const peers = peersService.getAllPeers();
         res.send(peers);
     });
 }
@@ -31,7 +31,7 @@ exports.getPeers = getPeers;
 function registerPeer(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const { url } = req.body;
-        blockchain.addNewPeer(url);
+        peersService.addNewPeer(url);
         res.send();
     });
 }

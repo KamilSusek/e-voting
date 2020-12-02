@@ -1,6 +1,6 @@
 import express from 'express'
-import PeersRepo from '../model/Peers'
-import { getPeers, ping, registerPeer } from '../middleware/PeersController'
+import PeersRepo from '../model/repository/PeersRepository'
+import { getPeers, ping, registerPeer } from '../middleware/peers'
 
 const HTTP_PORT = process.env.HTTP_PORT || 3001
 

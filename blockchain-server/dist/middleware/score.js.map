@@ -1,0 +1,1 @@
+{"version":3,"file":"score.js","sourceRoot":"","sources":["../../src/middleware/score.ts"],"names":[],"mappings":";;;;;;AACA,iFAAwD;AAExD,MAAM,YAAY,GAAG,IAAI,sBAAY,EAAE,CAAA;AAEvC,SAAgB,QAAQ,CAAE,GAAY,EAAE,GAAa;IACnD,MAAM,MAAM,GAAG,YAAY,CAAC,QAAQ,EAAE,CAAA;IAEtC,GAAG,CAAC,IAAI,CAAC,MAAM,CAAC,CAAA;AAClB,CAAC;AAJD,4BAIC"}

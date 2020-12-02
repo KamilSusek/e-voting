@@ -4,12 +4,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.mine = exports.synchronizeChain = exports.synchronize = exports.synchronizeNode = exports.distribute = exports.getServerInfo = void 0;
-const BlockchainFacade_1 = __importDefault(require("../facade/BlockchainFacade"));
-const blockchain = new BlockchainFacade_1.default();
+const PeersService_1 = __importDefault(require("../model/service/PeersService"));
+const BlockchainService_1 = __importDefault(require("../model/service/BlockchainService"));
+const ScoreService_1 = __importDefault(require("../model/service/ScoreService"));
+const blockchainService = new BlockchainService_1.default();
+const peersService = new PeersService_1.default();
+const scoreService = new ScoreService_1.default();
 function getServerInfo(req, res) {
-    const nodes = blockchain.getAllPeers().length + 1;
+    const nodes = peersService.getAllPeers().length + 1;
     const info = {
-        addedBlocks: blockchain.getScore().length,
+        addedBlocks: scoreService.getScore().length,
         nodes
     };
     res.send(info);
@@ -18,15 +22,15 @@ exports.getServerInfo = getServerInfo;
 function distribute(req, res) {
     const { candidate_name } = req.body;
     const vote = { candidate_name };
-    blockchain.distributeVote(vote);
-    blockchain.mine(candidate_name);
+    blockchainService.distributeVote(vote);
+    blockchainService.mine(candidate_name);
     res.send();
 }
 exports.distribute = distribute;
 function synchronizeNode(req, res) {
     const { chain, syncValue } = req.body;
     if (chain && syncValue) {
-        blockchain.synchronizeNode(syncValue, chain);
+        blockchainService.synchronizeNode(syncValue, chain);
         res.send();
     }
     else {
@@ -35,18 +39,18 @@ function synchronizeNode(req, res) {
 }
 exports.synchronizeNode = synchronizeNode;
 function synchronize() {
-    blockchain.synchronizeOnInit();
+    blockchainService.synchronizeOnInit();
 }
 exports.synchronize = synchronize;
 function synchronizeChain(req, res) {
-    blockchain.synchronizeChain();
+    blockchainService.synchronizeChain();
     res.send();
 }
 exports.synchronizeChain = synchronizeChain;
 function mine(req, res) {
     console.log(req.body);
     const { candidate_name } = req.body;
-    blockchain.mine(candidate_name);
+    blockchainService.mine(candidate_name);
     res.send();
 }
 exports.mine = mine;

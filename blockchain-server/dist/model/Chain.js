@@ -21,14 +21,11 @@ class Chain {
     getChain() {
         return this.chain;
     }
-    getChainLength() {
-        return this.chain.length;
-    }
     addBlock(block) {
         this.chain.push(block);
     }
     createGenesisBlock() {
-        const block = new Block_1.default(this.chain.length, '0', 4, '0', 'empty');
+        const block = new Block_1.default(this.chain.length, '0', 0, '0', 'genesis');
         this.chain.push(block);
     }
 }

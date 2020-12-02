@@ -10,17 +10,17 @@ class PoWBlockchain extends Blockchain_1.default {
         super();
     }
     mine(data) {
-        const blockchain = this.chain.getChain();
+        const blockchain = this.blockchain.getChain();
         const lastBlock = blockchain[blockchain.length - 1];
-        const nonce = this.solveNonce(lastBlock.getNonce(), lastBlock.getPrevHash());
-        const newBlock = this.createNewBlock(nonce, lastBlock.getPrevHash(), data);
-        this.chain.addBlock(newBlock);
+        const nonce = this.solveNonce(lastBlock.nonce, lastBlock.prevHash);
+        const newBlock = this.createNewBlock(nonce, lastBlock.prevHash, data);
+        this.blockchain.addBlock(newBlock);
     }
     getSyncValue() {
-        return this.chain.getChainLength();
+        return this.blockchain.getChain().length;
     }
     synchronize(syncValue) {
-        if (this.chain.getChain().length < syncValue) {
+        if (this.blockchain.getChain().length < syncValue) {
             return true;
         }
         else {
@@ -29,16 +29,16 @@ class PoWBlockchain extends Blockchain_1.default {
     }
     solveNonce(lastNonce, prevHash) {
         let nonce = 0;
-        while (!this.isNonceValid(lastNonce, nonce, prevHash)) {
+        while (!this.validateNonce(lastNonce, nonce, prevHash)) {
             nonce++;
         }
         return nonce;
     }
-    isNonceValid(lastNonce, nonce, prevHash) {
+    validateNonce(lastNonce, nonce, prevHash) {
         const attempt = `${lastNonce}${nonce}${prevHash}`;
-        return crypto_js_1.SHA256(attempt)
-            .toString()
-            .startsWith('000');
+        const hash = crypto_js_1.SHA256(attempt).toString();
+        const isValid = hash.startsWith('000');
+        return isValid;
     }
 }
 exports.default = PoWBlockchain;
