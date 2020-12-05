@@ -3,43 +3,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Database_1 = __importDefault(require("../database/Database"));
+const ElectionRepository_1 = __importDefault(require("./crud/ElectionRepository"));
+const VoterElectionRepository_1 = __importDefault(require("./crud/VoterElectionRepository"));
+const VoterRepository_1 = __importDefault(require("./crud/VoterRepository"));
 class VotersRepo {
+    constructor() {
+        this.voterRepository = new VoterRepository_1.default();
+        this.electionRepository = new ElectionRepository_1.default();
+        this.voterElectionRepository = new VoterElectionRepository_1.default();
+    }
     async findAll() {
-        const db = Database_1.default.getInstance().getDatabase();
-        const array = await db.voter.findMany({
-            select: { username: true, password: true }
-        });
-        return array;
+        const voters = await this.voterRepository.findAll();
+        return voters;
     }
     async findByUsername(username) {
-        const db = Database_1.default.getInstance().getDatabase();
-        const value = await db.voter.findOne({
-            where: {
-                username
-            }
-        });
+        const value = await this.voterRepository.findByUsername(username);
         return value;
     }
     async findVoterByElection(electionName) {
-        const db = Database_1.default.getInstance().getDatabase();
-        const election = await db.election.findOne({
-            where: {
-                election_name: electionName
-            }
-        });
-        const voters = await db.user_Election.findMany({
-            where: {
-                election_id: election.id
-            },
-            select: {
-                Voter: {
-                    select: {
-                        username: true
-                    }
-                }
-            }
-        });
+        const election = await this.electionRepository.findByElectionName(electionName);
+        const voters = await this.voterElectionRepository.findManyByElectionId(election.id);
         const votersDTO = [];
         voters.forEach((item) => {
             const { username } = item.Voter;
@@ -47,10 +30,8 @@ class VotersRepo {
         });
         return votersDTO;
     }
-    //   findById() {}
     async save(voter) {
-        const db = Database_1.default.getInstance().getDatabase();
-        const response = await db.voter.create({ data: voter });
+        const response = await this.voterRepository.save(voter);
         return response;
     }
 }

@@ -1,16 +1,15 @@
 import PeersRepository from '../repository/PeersRepository'
 import Blockchain from '../strategy/Blockchain'
-import PoWAlgorithm from '../strategy/algorithms/PoWAlgorithm'
 import axios from 'axios'
-import PoAAlgorithm from '../strategy/algorithms/PoAAlgorithm'
 import Block from '../entities/Block'
+import NodeConfig from '../config/NodeConfig'
 
 class BlockchainService {
   private blockchain: Blockchain
   private peersRepo: PeersRepository
 
   constructor () {
-    this.blockchain = new PoWAlgorithm()
+    this.blockchain = NodeConfig.getInstance().getConsensusAlgorithm()
     this.peersRepo = PeersRepository.getInstance()
   }
 

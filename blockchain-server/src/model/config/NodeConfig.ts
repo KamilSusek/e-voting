@@ -1,3 +1,6 @@
+import PoWBlockchain from '../strategy/algorithms/PoWAlgorithm'
+import Blockchain from '../strategy/Blockchain'
+
 export enum ConsensusAlogrithm {
   POW,
   POA
@@ -5,10 +8,19 @@ export enum ConsensusAlogrithm {
 
 class NodeConfig {
   private static instance: NodeConfig
-  private algorithm: ConsensusAlogrithm
+  private algorithm: Blockchain
+  private algortithmInfo: string
   private peers: string[]
 
   private constructor () {
+    const CONSENSUS = process.env.CONSENSUS || 'POA'
+    if (CONSENSUS === 'POW') {
+      this.algorithm = new PoWBlockchain()
+      this.algortithmInfo = 'Proof of Work'
+    } else {
+      this.algorithm = new PoWBlockchain()
+      this.algortithmInfo = 'Proof of Authority'
+    }
     this.peers = new Array<string>()
   }
 
@@ -19,11 +31,19 @@ class NodeConfig {
     return NodeConfig.instance
   }
 
-  public getConsensusAlgorithm (): ConsensusAlogrithm {
+  public getConsensusAlgorithmInfo () {
+    return this.algortithmInfo
+  }
+
+  public setConsensusAlgorithmInfo (consesusInfo: string) {
+    this.algortithmInfo = consesusInfo
+  }
+
+  public getConsensusAlgorithm (): Blockchain {
     return this.algorithm
   }
 
-  public setConsensusAlgorithm (algorithm: ConsensusAlogrithm) {
+  public setConsensusAlgorithm (algorithm: Blockchain) {
     this.algorithm = algorithm
   }
 

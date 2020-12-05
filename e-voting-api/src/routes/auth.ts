@@ -15,7 +15,7 @@ router.post('/admin/login', async (req, res) => {
     }
   })
 
-  if (admin.password === sha256(password).toString()) {
+  if (admin && admin.password === sha256(password).toString()) {
     const token = jwt.sign({ username }, 'secret_key')
 
     res.send({ token: token, role: 'admin' })
@@ -28,17 +28,18 @@ router.get('/api-ping', ensureToken, verifyToken, ensureAdmin, (req, res) => {
   res.send('ok')
 })
 
-router.post('/user/login', async (req, res) => {
+router.post('/login', async (req, res) => {
   const { username, password } = req.body
   const db = Database.getInstance().getDatabase()
 
-  const admin = await db.voter.findOne({
+  const voter = await db.voter.findOne({
     where: {
       username: username
     }
   })
 
-  if (admin.password === sha256(password).toString()) {
+  if (voter.password === password) {
+    //sha256(password).toString()) {
     const token = jwt.sign({ username }, 'secret_key')
 
     res.send({ token: token, role: 'user' })
@@ -47,12 +48,13 @@ router.post('/user/login', async (req, res) => {
   }
 })
 
-function ensureToken (
+export function ensureToken (
   req: express.Request,
   res: express.Response,
   next: Function
 ) {
   const bearerHeader = req.headers['authorization']
+  console.log(bearerHeader)
   if (bearerHeader !== undefined) {
     const bearer = bearerHeader.split(' ')
     const bearerToken = bearer[1]
@@ -64,11 +66,13 @@ function ensureToken (
   }
 }
 
-function verifyToken (
+export function verifyToken (
   req: express.Request,
   res: express.Response,
   next: Function
 ) {
+  console.log(req.body.token)
+
   jwt.verify(req.body.token, 'secret_key', (err: any, data: any) => {
     if (err) {
       res.status(403).send()
@@ -78,7 +82,7 @@ function verifyToken (
   })
 }
 
-function ensureAdmin (
+export function ensureAdmin (
   req: express.Request,
   res: express.Response,
   next: Function
@@ -91,7 +95,7 @@ function ensureAdmin (
   }
 }
 
-function ensureUser (
+export function ensureUser (
   req: express.Request,
   res: express.Response,
   next: Function

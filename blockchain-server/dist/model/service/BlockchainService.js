@@ -4,11 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const PeersRepository_1 = __importDefault(require("../repository/PeersRepository"));
-const PoWAlgorithm_1 = __importDefault(require("../strategy/algorithms/PoWAlgorithm"));
 const axios_1 = __importDefault(require("axios"));
+const NodeConfig_1 = __importDefault(require("../config/NodeConfig"));
 class BlockchainService {
     constructor() {
-        this.blockchain = new PoWAlgorithm_1.default();
+        this.blockchain = NodeConfig_1.default.getInstance().getConsensusAlgorithm();
         this.peersRepo = PeersRepository_1.default.getInstance();
     }
     synchronizeOnInit() {

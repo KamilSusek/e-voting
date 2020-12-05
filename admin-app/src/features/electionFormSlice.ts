@@ -63,7 +63,14 @@ export const checkIfTitleExists = (
   electionTitle: string
 ): AppThunk => async dispatch => {
   try {
-    const response = await axios.get(`/election/${electionTitle}`)
+    const token = localStorage.getItem('token')
+    const role = localStorage.getItem('role')
+    const response = await axios.get(`/election/${electionTitle}`, {
+      headers: {
+        role: role,
+        authorization: `Bearer ${token}`
+      }
+    })
     const { data } = response
     if (data !== '') {
       dispatch(setTitleError(true))
@@ -94,7 +101,12 @@ export const checkIfServerUrlExists = (
   serverUrl: string
 ): AppThunk => async dispatch => {
   try {
-    const response = await axios.get(`/serverUrl/?serverUrl=${serverUrl}`)
+    const response = await axios.get(`/serverUrl/?serverUrl=${serverUrl}`, {
+      headers: {
+        role: localStorage.getItem('role'),
+        authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
     const { data } = response
     if (data !== '') {
       dispatch(setServerUrlError(true))
@@ -108,7 +120,12 @@ export const checkIfServerUrlExists = (
 
 export const fetchVoters = (): AppThunk => async dispatch => {
   try {
-    const response = await axios.get('/voters')
+    const response = await axios.get('/voters', {
+      headers: {
+        role: localStorage.getItem('role'),
+        authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
     dispatch(setVoters(response.data))
   } catch (error) {
     console.log(error)

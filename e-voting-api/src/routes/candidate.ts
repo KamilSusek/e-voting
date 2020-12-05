@@ -2,12 +2,24 @@ import express from 'express'
 import {
   getAllCandidates,
   getCandidateElection
-} from '../model/middleware/candidates/findCandidates'
+} from '../middleware/candidates/findCandidates'
+import { ensureAdmin, ensureToken, verifyToken } from './auth'
 
 const router = express.Router()
 
-router.get('/candidates', getAllCandidates)
+router.get(
+  '/candidates',
+  ensureToken,
+  verifyToken,
+  ensureAdmin,
+  getAllCandidates
+)
 
-router.get('/candidates/:electionName', getCandidateElection)
+router.get(
+  '/candidates/:electionName',
+  ensureToken,
+  verifyToken,
+  getCandidateElection
+)
 
 export default router

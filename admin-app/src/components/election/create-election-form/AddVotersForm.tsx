@@ -12,6 +12,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchVoters } from '../../../features/electionFormSlice'
 import { RootState } from '../../../store/store'
+import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles({
   root: {
@@ -26,17 +27,27 @@ function AddVotersForm ({ previous }: any) {
   const { electionFormState, candidates, voters } = useSelector(
     (state: RootState) => state.election
   )
+  const history = useHistory()
   useEffect(() => {
     dispatch(fetchVoters())
   }, [])
 
   const createElection = async () => {
     try {
-      const response = await axios.post('/election', {
-        election: electionFormState,
-        candidates: candidates,
-        voters: voters
-      })
+      const response = await axios.post(
+        '/election',
+        {
+          election: electionFormState,
+          candidates: candidates,
+          voters: voters
+        },
+        {
+          headers: {
+            role: localStorage.getItem('role'),
+            authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      )
       console.log(response)
     } catch (error) {
       console.log(error)
@@ -46,6 +57,7 @@ function AddVotersForm ({ previous }: any) {
     event.preventDefault()
     console.log(electionFormState, candidates, voters)
     createElection()
+    history.push('/elections')
   }
 
   return (

@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countVotes = void 0;
-const Database_1 = __importDefault(require("../../database/Database"));
+const Database_1 = __importDefault(require("../../model/database/Database"));
 async function countVotes(req, res, next) {
     try {
         const { electionName } = req.params;

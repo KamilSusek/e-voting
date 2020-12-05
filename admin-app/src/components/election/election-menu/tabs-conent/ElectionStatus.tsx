@@ -85,8 +85,14 @@ function ElectionStatus ({ electionName }: Props) {
   const changeUrl = async () => {
     try {
       const response = await axios.post(`/changeUrl`, {
-        electionName: electionName,
-        serverUrl: url
+        data: {
+          electionName: electionName,
+          serverUrl: url
+        },
+        headers: {
+          role: localStorage.getItem('role'),
+          authorization: `Bearer ${localStorage.getItem('token')}`
+        }
       })
       setDisableEdit(true)
       onSuccess()

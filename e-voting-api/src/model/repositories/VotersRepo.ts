@@ -1,4 +1,7 @@
 import Database from '../database/Database'
+import ElectionRepository from './crud/ElectionRepository'
+import VoterElectionRepository from './crud/VoterElectionRepository'
+import VoterRepository from './crud/VoterRepository'
 
 interface VoterDTO {
   password: string
@@ -6,47 +9,36 @@ interface VoterDTO {
 }
 
 class VotersRepo {
-  async findAll (): Promise<VoterDTO[]> {
-    const db = Database.getInstance().getDatabase()
+  private voterRepository: VoterRepository
+  private electionRepository: ElectionRepository
+  private voterElectionRepository: VoterElectionRepository
 
-    const array = await db.voter.findMany({
-      select: { username: true, password: true }
-    })
-    return array
+  constructor () {
+    this.voterRepository = new VoterRepository()
+    this.electionRepository = new ElectionRepository()
+    this.voterElectionRepository = new VoterElectionRepository()
+  }
+
+  async findAll (): Promise<VoterDTO[]> {
+    const voters = await this.voterRepository.findAll()
+
+    return voters
   }
 
   async findByUsername (username: string): Promise<VoterDTO> {
-    const db = Database.getInstance().getDatabase()
-    const value = await db.voter.findOne({
-      where: {
-        username
-      }
-    })
+    const value = await this.voterRepository.findByUsername(username)
 
     return value
   }
 
   async findVoterByElection (electionName: string) {
-    const db = Database.getInstance().getDatabase()
+    const election = await this.electionRepository.findByElectionName(
+      electionName
+    )
 
-    const election = await db.election.findOne({
-      where: {
-        election_name: electionName
-      }
-    })
-
-    const voters = await db.user_Election.findMany({
-      where: {
-        election_id: election.id
-      },
-      select: {
-        Voter: {
-          select: {
-            username: true
-          }
-        }
-      }
-    })
+    const voters = await this.voterElectionRepository.findManyByElectionId(
+      election.id
+    )
 
     const votersDTO: {
       username: string
@@ -60,17 +52,11 @@ class VotersRepo {
     return votersDTO
   }
 
-  //   findById() {}
-
   async save (voter: VoterDTO) {
-    const db = Database.getInstance().getDatabase()
-
-    const response = await db.voter.create({ data: voter })
+    const response = await this.voterRepository.save(voter)
 
     return response
   }
-
-  //   deleteById() {}
 }
 
 export default VotersRepo

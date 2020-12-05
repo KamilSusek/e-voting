@@ -33,7 +33,12 @@ function Elections () {
 
   const fetchElections = async () => {
     try {
-      const response = await axios.get('/elections')
+      const response = await axios.get('/elections', {
+        headers: {
+          role: localStorage.getItem('role'),
+          authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
       setElections(response.data)
       console.log(response)
     } catch (error) {}
@@ -44,6 +49,10 @@ function Elections () {
       await axios.delete('/election', {
         data: {
           electionName: electionName
+        },
+        headers: {
+          role: localStorage.getItem('role'),
+          authorization: `Bearer ${localStorage.getItem('token')}`
         }
       })
       fetchElections()

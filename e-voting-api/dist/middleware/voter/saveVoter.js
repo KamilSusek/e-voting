@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.saveVoter = void 0;
-const VotersRepo_1 = __importDefault(require("../../repositories/VotersRepo"));
+const VotersRepo_1 = __importDefault(require("../../model/repositories/VotersRepo"));
 const votersRepo = new VotersRepo_1.default();
 async function saveVoter(req, res, next) {
     try {

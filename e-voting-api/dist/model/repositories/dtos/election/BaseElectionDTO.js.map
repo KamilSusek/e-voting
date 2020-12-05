@@ -1,0 +1,1 @@
+{"version":3,"file":"BaseElectionDTO.js","sourceRoot":"","sources":["../../../../../src/model/repositories/dtos/election/BaseElectionDTO.ts"],"names":[],"mappings":";;AAEA,MAAqB,eAAe;;AAApC,kCAQC;AAPwB,mBAAG,GAAiB;IACzC,EAAE,EAAE,IAAI;IACR,aAAa,EAAE,IAAI;IACnB,oBAAoB,EAAE,IAAI;IAC1B,SAAS,EAAE,IAAI;IACf,OAAO,EAAE,IAAI;CACd,CAAA"}

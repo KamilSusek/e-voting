@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendVote = exports.registerVote = exports.validate = void 0;
 const axios_1 = __importDefault(require("axios"));
-const Database_1 = __importDefault(require("../../database/Database"));
-const ElectionsRepo_1 = __importDefault(require("../../repositories/ElectionsRepo"));
+const Database_1 = __importDefault(require("../../model/database/Database"));
+const ElectionsRepo_1 = __importDefault(require("../../model/repositories/ElectionsRepo"));
 const electionsRepo = new ElectionsRepo_1.default();
 async function validate(req, res, next) {
     try {

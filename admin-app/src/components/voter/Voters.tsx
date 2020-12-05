@@ -38,7 +38,12 @@ function Voters () {
 
   const fetchVoters = async () => {
     try {
-      const response = await axios.get('/voters')
+      const response = await axios.get('/voters', {
+        headers: {
+          role: localStorage.getItem('role'),
+          authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
       setVoters(response.data)
       console.log(response)
     } catch (error) {}

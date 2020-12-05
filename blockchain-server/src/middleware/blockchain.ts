@@ -3,6 +3,7 @@ import PeersService from '../model/service/PeersService'
 import BlockchainService from '../model/service/BlockchainService'
 import ScoreService from '../model/service/ScoreService'
 import RequiredBodyNotFoundError from '../model/errors/product/RequiredBodyNotFoundError'
+import NodeConfig from '../model/config/NodeConfig'
 
 const blockchainService = new BlockchainService()
 const peersService = new PeersService()
@@ -12,10 +13,12 @@ export function getServerInfo (req: express.Request, res: express.Response) {
   /** Stored peers plus current peer. */
   const nodes = peersService.getAllPeers().length + 1
   const addedBlocks = scoreService.getScore().length
+  const consensus = NodeConfig.getInstance().getConsensusAlgorithmInfo()
 
   const info = {
     addedBlocks,
-    nodes
+    nodes,
+    consensus
   }
 
   res.send(info)

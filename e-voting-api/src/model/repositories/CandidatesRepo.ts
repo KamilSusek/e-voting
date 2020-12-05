@@ -1,5 +1,8 @@
 import { PrismaClient } from '@prisma/client'
 import Database from '../database/Database'
+import CandidateRepository from './crud/CandidateRepository'
+import ElectionRepository from './crud/ElectionRepository'
+import FullCandidateDTO from './dtos/candidate/FullCandidateDTO'
 
 interface CandidateDTO {
   candidate_name: string
@@ -7,35 +10,26 @@ interface CandidateDTO {
 }
 
 class CandidatesRepo {
-  private db: PrismaClient
+  private candidateRepository: CandidateRepository
+  private electionRepository: ElectionRepository
 
   constructor () {
-    this.db = Database.getInstance().getDatabase()
+    this.candidateRepository = new CandidateRepository()
+    this.electionRepository = new ElectionRepository()
   }
 
   async findAll () {
-    const array = await this.db.candidate.findMany({
-      select: {
-        candidate_name: true,
-        candidate_description: true
-      }
-    })
-
-    return array
+    return await this.candidateRepository.findAll()
   }
 
-  async findCandidatesByElectionName (name: string) {
-    const election = await this.db.election.findOne({
-      where: {
-        election_name: name
-      }
-    })
+  async findCandidatesByElectionName (electionName: string) {
+    const election = await this.electionRepository.findByElectionName(
+      electionName
+    )
 
-    const candidates = await this.db.candidate.findMany({
-      where: {
-        election_id: election.id
-      }
-    })
+    const candidates = await this.candidateRepository.findByElectionId(
+      election.id
+    )
 
     return candidates
   }
@@ -44,24 +38,12 @@ class CandidatesRepo {
     candidate: CandidateDTO,
     electionName: string
   ) {
-    const election = await this.db.election.findOne({
-      where: {
-        election_name: electionName
-      }
-    })
+    const election = await this.electionRepository.findByElectionName(
+      electionName
+    )
 
     if (election && candidate) {
-      const response = await this.db.candidate.create({
-        data: {
-          candidate_name: candidate.candidate_name,
-          candidate_description: candidate.candidate_description,
-          Election: {
-            connect: {
-              id: election.id
-            }
-          }
-        }
-      })
+      const response = await this.candidateRepository.save(candidate, election)
 
       return response
     } else {

@@ -4,13 +4,22 @@ import './App.css'
 import Elections from './components/election/Elections'
 import VoterMenu from './components/voter/VoterMenu'
 import Voters from './components/voter/Voters'
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Switch,
+  useHistory
+} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core'
 import CreateElection from './components/election/create-election-form/CreateElection'
 import Footer from './components/common/footer/Footer'
 import ContentContainer from './components/common/container/ContentContainer'
 import ElectionMenuPanel from './components/election/election-menu/tabs/ElectionMenuPanel'
 import Server from './components/server/Server'
+import LoginPage from './components/login-page/LoginPage'
+import PrivateRoute from './components/route/PrivateRoute'
+import { logout } from './services/authService'
 
 const useStyles = makeStyles({
   link: {
@@ -29,48 +38,80 @@ const useStyles = makeStyles({
 
 function App () {
   const styles = useStyles()
+
+  const Header = () => {
+    const history = useHistory()
+
+    const handleLogout = () => {
+      logout(history)
+    }
+
+    return (
+      <AppBar position='static'>
+        <Grid container justify='space-between'>
+          <Toolbar className={styles.link}>
+            <Link to='/voters'>
+              <IconButton>Voters</IconButton>
+            </Link>
+            <Link to='/elections'>
+              <IconButton>Elections</IconButton>
+            </Link>
+            <Link to='/servers'>
+              <IconButton>Servers</IconButton>
+            </Link>
+          </Toolbar>
+          <Button onClick={handleLogout}>Logout</Button>
+        </Grid>
+      </AppBar>
+    )
+  }
+
   return (
     <div>
       <Router>
-        <AppBar position='static'>
-          <Grid container justify='space-between'>
-            <Toolbar className={styles.link}>
-              <Link to='/voters'>
-                <IconButton>Voters</IconButton>
-              </Link>
-              <Link to='/elections'>
-                <IconButton>Elections</IconButton>
-              </Link>
-              <Link to='/servers'>
-                <IconButton>Servers</IconButton>
-              </Link>
-            </Toolbar>
-            <IconButton>Logout</IconButton>
-          </Grid>
-        </AppBar>
-        <ContentContainer>
-          <Switch>
-            <Route exact path='/voters'>
+        <Switch>
+          <Route exact path='/'>
+            <ContentContainer>
+              <LoginPage />
+            </ContentContainer>
+          </Route>
+          <PrivateRoute exact path='/voters'>
+            <Header />
+            <ContentContainer>
               <Voters />
-            </Route>
-            <Route exact path='/elections'>
+            </ContentContainer>
+          </PrivateRoute>
+          <PrivateRoute exact path='/elections'>
+            <Header />
+            <ContentContainer>
               <Elections />
-            </Route>
-            <Route path='/servers'>
+            </ContentContainer>
+          </PrivateRoute>
+          <PrivateRoute exact path='/servers'>
+            <Header />
+            <ContentContainer>
               <Server />
-            </Route>
-            <Route path='/voters/:votername'>
+            </ContentContainer>
+          </PrivateRoute>
+          <PrivateRoute exact path='/voters/:votername'>
+            <Header />
+            <ContentContainer>
               <VoterMenu />
-            </Route>
-            <Route path='/elections/:electionName'>
-              {/* <ElectionsMenu /> */}
+            </ContentContainer>
+          </PrivateRoute>
+          <PrivateRoute exact path='/elections/:electionName'>
+            <Header />
+            <ContentContainer>
               <ElectionMenuPanel />
-            </Route>
-            <Route path='/election/create'>
+            </ContentContainer>
+          </PrivateRoute>
+          <PrivateRoute exact path='/election/create'>
+            <Header />
+            <ContentContainer>
               <CreateElection />
-            </Route>
-          </Switch>
-        </ContentContainer>
+            </ContentContainer>
+          </PrivateRoute>
+        </Switch>
       </Router>
       <Footer />
     </div>

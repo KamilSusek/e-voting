@@ -1,27 +1,39 @@
 import Database from '../database/Database'
 import moment from 'moment'
+import CandidateRepository from './crud/CandidateRepository'
+import ElectionRepository from './crud/ElectionRepository'
+import { PrismaClient } from '@prisma/client'
+import VoterRepository from './crud/VoterRepository'
+import VoterElectionRepository from './crud/VoterElectionRepository'
 
 class VoteRepo {
+  private candidateRepository: CandidateRepository
+  private electionRepository: ElectionRepository
+  private voterRepository: VoterRepository
+  private voterElectionRepository: VoterElectionRepository
+
+  constructor () {
+    this.candidateRepository = new CandidateRepository()
+    this.electionRepository = new ElectionRepository()
+    this.voterRepository = new VoterRepository()
+    this.voterElectionRepository = new VoterElectionRepository()
+  }
+
   async registerVote (
     username: string,
     electionName: string
   ): Promise<boolean> {
     const db = Database.getInstance().getDatabase()
 
-    const voter = await db.voter.findOne({
-      where: {
-        username
-      }
-    })
+    const voter = await this.voterRepository.findByUsername(username)
 
-    const election = await db.election.findOne({
-      where: {
-        election_name: electionName
-      }
-    })
+    const election = await this.electionRepository.findByElectionName(
+      electionName
+    )
 
-    const votersWithElections = await db.user_Election.findMany()
-    const matchingRow = votersWithElections.find((item:any) => {
+    const votersWithElections = await this.voterElectionRepository.findAll()
+
+    const matchingRow = votersWithElections.find((item: any) => {
       if (item.election_id === election.id && item.voter_id === voter.id)
         return item
     })
@@ -32,6 +44,7 @@ class VoteRepo {
     if (matchingRow.didVote) {
       return false
     } else {
+      // TODO ADD UPDATE METHOD TO VOTE REPOSITORY
       await db.user_Election.update({
         where: {
           id: matchingRow.id

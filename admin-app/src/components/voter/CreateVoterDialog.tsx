@@ -96,8 +96,14 @@ const CreateVoterDialog = ({ open, handleClose }: any) => {
     try {
       const { username, password } = loginData
       const response = await axios.post('/voter', {
-        username,
-        password
+        data: {
+          username,
+          password
+        },
+        headers: {
+          role: localStorage.getItem('role'),
+          authorization: `Bearer ${localStorage.getItem('token')}`
+        }
       })
       setProgressShow(false)
       reset()

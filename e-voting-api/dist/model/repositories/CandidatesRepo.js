@@ -3,51 +3,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Database_1 = __importDefault(require("../database/Database"));
+const CandidateRepository_1 = __importDefault(require("./crud/CandidateRepository"));
+const ElectionRepository_1 = __importDefault(require("./crud/ElectionRepository"));
 class CandidatesRepo {
     constructor() {
-        this.db = Database_1.default.getInstance().getDatabase();
+        this.candidateRepository = new CandidateRepository_1.default();
+        this.electionRepository = new ElectionRepository_1.default();
     }
     async findAll() {
-        const array = await this.db.candidate.findMany({
-            select: {
-                candidate_name: true,
-                candidate_description: true
-            }
-        });
-        return array;
+        return await this.candidateRepository.findAll();
     }
-    async findCandidatesByElectionName(name) {
-        const election = await this.db.election.findOne({
-            where: {
-                election_name: name
-            }
-        });
-        const candidates = await this.db.candidate.findMany({
-            where: {
-                election_id: election.id
-            }
-        });
+    async findCandidatesByElectionName(electionName) {
+        const election = await this.electionRepository.findByElectionName(electionName);
+        const candidates = await this.candidateRepository.findByElectionId(election.id);
         return candidates;
     }
     async saveCandidateToElection(candidate, electionName) {
-        const election = await this.db.election.findOne({
-            where: {
-                election_name: electionName
-            }
-        });
+        const election = await this.electionRepository.findByElectionName(electionName);
         if (election && candidate) {
-            const response = await this.db.candidate.create({
-                data: {
-                    candidate_name: candidate.candidate_name,
-                    candidate_description: candidate.candidate_description,
-                    Election: {
-                        connect: {
-                            id: election.id
-                        }
-                    }
-                }
-            });
+            const response = await this.candidateRepository.save(candidate, election);
             return response;
         }
         else {

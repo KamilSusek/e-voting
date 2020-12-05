@@ -3,10 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const PoWAlgorithm_1 = __importDefault(require("../strategy/algorithms/PoWAlgorithm"));
+const NodeConfig_1 = __importDefault(require("../config/NodeConfig"));
 class ScoreService {
     constructor() {
-        this.blockchain = new PoWAlgorithm_1.default();
+        this.blockchain = NodeConfig_1.default.getInstance().getConsensusAlgorithm();
     }
     getScore() {
         const chain = this.blockchain.getScore();

@@ -1,11 +1,11 @@
-import PoWAlgorithm from '../strategy/algorithms/PoWAlgorithm'
+import NodeConfig from '../config/NodeConfig'
 import Blockchain from '../strategy/Blockchain'
 
 class ScoreService {
   private blockchain: Blockchain
 
   constructor () {
-    this.blockchain = new PoWAlgorithm()
+    this.blockchain = NodeConfig.getInstance().getConsensusAlgorithm()
   }
 
   public getScore (): any[] {
@@ -31,6 +31,5 @@ class ScoreService {
     return results
   }
 }
-
 
 export default ScoreService

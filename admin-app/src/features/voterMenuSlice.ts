@@ -27,7 +27,12 @@ export const fetchVoter = (
   err: any
 ): AppThunk => async dispatch => {
   try {
-    const response = await axios.get(`/voter/${voterName}`)
+    const response = await axios.get(`/voter/${voterName}`, {
+      headers: {
+        role: localStorage.getItem('role'),
+        authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
     const { username } = response.data
     dispatch(setVoter(username))
     if (!username) {
@@ -43,7 +48,12 @@ export const fetchElections = (
   voterName: string
 ): AppThunk => async dispatch => {
   try {
-    const response = await axios.get(`/elections/${voterName}`)
+    const response = await axios.get(`/elections/${voterName}`, {
+      headers: {
+        role: localStorage.getItem('role'),
+        authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
     const { data } = response
     dispatch(setElections(data))
   } catch (error) {

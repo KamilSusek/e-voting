@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getEllectionsByVoter = exports.getEllectionByServerUrl = exports.getEllectionByName = exports.getAllElections = void 0;
-const Database_1 = __importDefault(require("../../database/Database"));
+const Database_1 = __importDefault(require("../../model/database/Database"));
 const moment_1 = __importDefault(require("moment"));
 async function getAllElections(req, res, next) {
     try {

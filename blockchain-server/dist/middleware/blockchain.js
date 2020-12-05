@@ -8,6 +8,7 @@ const PeersService_1 = __importDefault(require("../model/service/PeersService"))
 const BlockchainService_1 = __importDefault(require("../model/service/BlockchainService"));
 const ScoreService_1 = __importDefault(require("../model/service/ScoreService"));
 const RequiredBodyNotFoundError_1 = __importDefault(require("../model/errors/product/RequiredBodyNotFoundError"));
+const NodeConfig_1 = __importDefault(require("../model/config/NodeConfig"));
 const blockchainService = new BlockchainService_1.default();
 const peersService = new PeersService_1.default();
 const scoreService = new ScoreService_1.default();
@@ -15,9 +16,11 @@ function getServerInfo(req, res) {
     /** Stored peers plus current peer. */
     const nodes = peersService.getAllPeers().length + 1;
     const addedBlocks = scoreService.getScore().length;
+    const consensus = NodeConfig_1.default.getInstance().getConsensusAlgorithmInfo();
     const info = {
         addedBlocks,
-        nodes
+        nodes,
+        consensus
     };
     res.send(info);
 }

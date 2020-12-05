@@ -59,6 +59,8 @@ export const handleLogin = (
 
     localStorage.setItem('isLoggedIn', 'true')
     localStorage.setItem('username', username)
+    localStorage.setItem('token', resposne.data.token)
+    localStorage.setItem('role', resposne.data.role)
 
     onResult(true)
   } catch (error) {
@@ -73,6 +75,7 @@ export const handleLogout = (): AppThunk => async dispatch => {
     dispatch(setLoggedOut())
     localStorage.removeItem('isLoggedIn')
     localStorage.removeItem('username')
+    localStorage.removeItem('role')
   } catch (error) {}
 }
 

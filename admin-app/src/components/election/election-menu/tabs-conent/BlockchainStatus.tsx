@@ -28,7 +28,12 @@ function BlockchainStatus ({ electionName }: any) {
 
   const fetchServerUrl = async () => {
     try {
-      const response = await axios.get(`${election.server_url}/info`)
+      const response = await axios.get(`${election.server_url}/info`, {
+        headers: {
+          role: localStorage.getItem('role'),
+          authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
       setBlockchainInfo(response.data)
       setLoading(false)
       setSuccess(true)
