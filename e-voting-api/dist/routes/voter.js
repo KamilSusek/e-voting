@@ -16,7 +16,7 @@ const router = express_1.default.Router();
 router.get('/voters', auth_1.ensureToken, auth_1.verifyToken, auth_1.ensureAdmin, voters_3.findAllVoters);
 router.get('/voters/:electionName', auth_1.ensureToken, auth_1.verifyToken, auth_1.ensureAdmin, voters_2.findVoterAttachedToElection);
 router.get('/voter/:username', auth_1.ensureToken, auth_1.verifyToken, auth_1.ensureAdmin, voters_1.findVoterFromParams);
-router.get('/voting/result/:electionName', auth_1.ensureToken, auth_1.verifyToken, auth_1.ensureAdmin, countVotes_1.countVotes);
+router.get('/voting/result/:electionName', auth_1.ensureToken, auth_1.verifyToken, countVotes_1.countVotes);
 router.post('/voter', auth_1.ensureToken, auth_1.verifyToken, auth_1.ensureAdmin, saveVoter_1.saveVoter);
 router.post('/send-vote', auth_1.ensureToken, auth_1.verifyToken, auth_1.ensureUser, sendVote_1.validate, sendVote_1.registerVote, sendVote_1.sendVote);
 router.get('/score/:electionName', auth_1.ensureToken, auth_1.verifyToken, score_1.findElectionFromParams, score_1.prepareScores, score_1.calculateScore);

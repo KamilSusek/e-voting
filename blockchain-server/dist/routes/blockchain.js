@@ -12,6 +12,7 @@ blockchain.post('/node/synchronize', blockchain_1.synchronizeNode);
 blockchain.post('/synchronize', blockchain_1.synchronizeChain);
 blockchain.post('/mine', blockchain_1.mine);
 blockchain.get('/info', blockchain_1.getServerInfo);
+blockchain.get('/chain', blockchain_1.getChain);
 function synchronizeOnInit() {
     blockchain_1.synchronize();
 }

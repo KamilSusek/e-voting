@@ -1,0 +1,32 @@
+1. Wstep
+	1.1 E-voting.
+	1.2 Cele pracy.
+	1.3 Zakres pracy.
+2. Analiza tematu.
+	2.1 Wstępna analiza dziedziny.
+	2.2 Blockchain
+		2.2.1 Łańcuch bloków.
+		2.2.2 Decentralizacja.
+		2.2.3 Konsensus.
+		2.2.4 Funkcje skrótu.
+		2.2.5 Smart Contracts.
+		2.2.6 Technologia Blockchain na rynku.
+	2.3 E-voting - przegląd rozwiązań.
+3. Projekt systemu.
+	3.1 Wymagania funkcjonalne, niefunkcjonalne.
+	3.2 Diagramy przypadków użycia.
+	3.3 Podział na systemu moduły.
+		3.3.1 API i baza danych.
+		3.3.2 Sieci Blockchain.
+		3.3.3 Aplikacja internetowa wyborcy.
+		3.3.4 Aplikacja internetowa administratora.
+4. Przygotowanie do implementacji
+	4.1 Zakres implementacji systemu.
+	4.2 Technologie i narzędzia.
+	4.3 Metodyka pracy.
+5. Specyfikacja zewnętrzna.
+6. Specyfikacja wewnętrzna.
+7. Testowanie.
+8. Wnioski.
+
+	

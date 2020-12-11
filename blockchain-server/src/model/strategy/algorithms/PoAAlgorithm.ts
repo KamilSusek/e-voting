@@ -11,7 +11,7 @@ class PoAAlgorithm extends Blockchain {
   public mine (data: any) {
     const blockchain = this.blockchain.getChain()
     const lastBlock = blockchain[blockchain.length - 1]
-    const newBlock = this.createNewBlock(0, lastBlock.prevHash, data)
+    const newBlock = this.createNewBlock(0, lastBlock, data)
     this.blockchain.addBlock(newBlock)
     this.authorityFactor++
   }

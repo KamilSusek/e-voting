@@ -10,9 +10,10 @@ class Blockchain {
     constructor() {
         this.blockchain = ChainRepository_1.default.getInstance();
     }
-    createNewBlock(nonce, prevHash, data) {
+    createNewBlock(nonce, prevBlock, data) {
         const blockchain = this.blockchain.getChain();
         const chainLength = blockchain.length;
+        const prevHash = this.getHash(prevBlock);
         const date = Date.now().toString();
         const block = new Block_1.default(chainLength, date, nonce, prevHash, data);
         return block;

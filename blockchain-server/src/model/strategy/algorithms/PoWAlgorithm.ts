@@ -9,9 +9,10 @@ class PoWBlockchain extends Blockchain {
   public mine (data: any) {
     const blockchain = this.blockchain.getChain()
     const lastBlock = blockchain[blockchain.length - 1]
-    const nonce = this.solveNonce(lastBlock.nonce, lastBlock.prevHash)
+    const prevHash = this.getHash(lastBlock)
+    const nonce = this.solveNonce(lastBlock.nonce, prevHash)
 
-    const newBlock = this.createNewBlock(nonce, lastBlock.prevHash, data)
+    const newBlock = this.createNewBlock(nonce, lastBlock, data)
     this.blockchain.addBlock(newBlock)
   }
 

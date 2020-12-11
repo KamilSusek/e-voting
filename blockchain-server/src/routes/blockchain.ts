@@ -5,7 +5,8 @@ import {
   mine,
   synchronizeChain,
   synchronizeNode,
-  synchronize
+  synchronize,
+  getChain
 } from '../middleware/blockchain'
 
 const blockchain = express.Router()
@@ -19,6 +20,8 @@ blockchain.post('/synchronize', synchronizeChain)
 blockchain.post('/mine', mine)
 
 blockchain.get('/info', getServerInfo)
+
+blockchain.get('/chain', getChain)
 
 export function synchronizeOnInit () {
   synchronize()

@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 import PrivateRoute from '../auth/PrivateRoute'
+import HelpView from '../help/HelpView'
 import UserPageNavbar from '../navbar/user-page/UserPageNavbar'
 import ElectionsPage from './ElectionsPage'
 
@@ -11,9 +12,9 @@ function UserPage () {
         <UserPageNavbar />
         <div className='user_page_container'>
           <PrivateRoute isExact={true} path='/user'>
-            help
+            <HelpView />
           </PrivateRoute>
-          <PrivateRoute path='/user/elections'>
+          <PrivateRoute isExact={true} path='/user/elections'>
             <ElectionsPage />
           </PrivateRoute>
         </div>

@@ -3,15 +3,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mine = exports.synchronizeChain = exports.synchronize = exports.synchronizeNode = exports.distribute = exports.getServerInfo = void 0;
+exports.mine = exports.synchronizeChain = exports.synchronize = exports.synchronizeNode = exports.distribute = exports.getServerInfo = exports.getChain = void 0;
 const PeersService_1 = __importDefault(require("../model/service/PeersService"));
 const BlockchainService_1 = __importDefault(require("../model/service/BlockchainService"));
 const ScoreService_1 = __importDefault(require("../model/service/ScoreService"));
 const RequiredBodyNotFoundError_1 = __importDefault(require("../model/errors/product/RequiredBodyNotFoundError"));
 const NodeConfig_1 = __importDefault(require("../model/config/NodeConfig"));
+const ChainRepository_1 = __importDefault(require("../model/repository/ChainRepository"));
 const blockchainService = new BlockchainService_1.default();
 const peersService = new PeersService_1.default();
 const scoreService = new ScoreService_1.default();
+function getChain(req, res) {
+    const chain = ChainRepository_1.default.getInstance().getChain();
+    res.send(chain);
+}
+exports.getChain = getChain;
 function getServerInfo(req, res) {
     /** Stored peers plus current peer. */
     const nodes = peersService.getAllPeers().length + 1;

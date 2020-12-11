@@ -4,10 +4,18 @@ import BlockchainService from '../model/service/BlockchainService'
 import ScoreService from '../model/service/ScoreService'
 import RequiredBodyNotFoundError from '../model/errors/product/RequiredBodyNotFoundError'
 import NodeConfig from '../model/config/NodeConfig'
+import ChainRepository from '../model/repository/ChainRepository';
 
 const blockchainService = new BlockchainService()
 const peersService = new PeersService()
 const scoreService = new ScoreService()
+
+export function getChain(req: express.Request, res: express.Response){
+
+  const chain = ChainRepository.getInstance().getChain()
+
+  res.send(chain)
+}
 
 export function getServerInfo (req: express.Request, res: express.Response) {
   /** Stored peers plus current peer. */

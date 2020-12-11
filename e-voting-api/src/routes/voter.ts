@@ -33,13 +33,7 @@ router.get(
   findVoterFromParams
 )
 
-router.get(
-  '/voting/result/:electionName',
-  ensureToken,
-  verifyToken,
-  ensureAdmin,
-  countVotes
-)
+router.get('/voting/result/:electionName', ensureToken, verifyToken, countVotes)
 
 router.post('/voter', ensureToken, verifyToken, ensureAdmin, saveVoter)
 

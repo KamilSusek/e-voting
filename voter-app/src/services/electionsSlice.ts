@@ -62,7 +62,12 @@ export const {
 export const fetchElections = (): AppThunk => async dispatch => {
   try {
     const username = localStorage.getItem('username')
-    const response = await axios.get(`/elections/${username}`)
+    const response = await axios.get(`/elections/${username}`, {
+      headers: {
+        role: localStorage.getItem('role'),
+        authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
     const electionList = response.data
 
     console.log(response.data)
@@ -77,7 +82,12 @@ export const fetchCandidatesForElection = (
   electionName: string
 ): AppThunk => async dispatch => {
   try {
-    const response = await axios.get(`/candidates/${electionName}`)
+    const response = await axios.get(`/candidates/${electionName}`, {
+      headers: {
+        role: localStorage.getItem('role'),
+        authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
     const candidates = response.data
     dispatch(setCandidates(candidates))
     dispatch(selectElection(electionName))
@@ -94,11 +104,20 @@ export const sendVote = (
 ): AppThunk => async dispatch => {
   try {
     const username = localStorage.getItem('username')
-    const response = await voteApi.post('/send-vote', {
-      electionName: electionName,
-      username: username,
-      vote: candidate
-    })
+    const response = await voteApi.post(
+      '/send-vote',
+      {
+        electionName: electionName,
+        username: username,
+        vote: candidate
+      },
+      {
+        headers: {
+          role: localStorage.getItem('role'),
+          authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      }
+    )
     dispatch(showElections())
     dispatch(fetchElections())
     dispatch(selectVote(''))
@@ -113,7 +132,12 @@ export const fetchElectionResults = (
   electionName: any
 ): AppThunk => async dispatch => {
   try {
-    const response = await axios.get(`/voting/result/${electionName}`)
+    const response = await axios.get(`/voting/result/${electionName}`, {
+      headers: {
+        role: localStorage.getItem('role'),
+        authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
     console.log(response.data)
     dispatch(setElectionResults(response.data))
     dispatch(showResults())

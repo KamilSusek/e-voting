@@ -27,13 +27,7 @@ function LandingPageNavBar () {
     >
       <ul className='links'>
         <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='/about'>About</Link>
-        </li>
-        <li>
-          <Link to='/about'>Contact</Link>
+          <Link to='/home'>Home</Link>
         </li>
       </ul>
     </NavBar>

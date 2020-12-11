@@ -13,9 +13,10 @@ abstract class Blockchain {
   abstract getSyncValue (): number
   abstract synchronize (syncValue: number): boolean
 
-  public createNewBlock (nonce: number, prevHash: string, data: any): Block {
+  public createNewBlock (nonce: number, prevBlock: Block, data: any): Block {
     const blockchain = this.blockchain.getChain()
     const chainLength = blockchain.length
+    const prevHash = this.getHash(prevBlock)
     const date = Date.now().toString()
 
     const block = new Block(chainLength, date, nonce, prevHash, data)
@@ -31,7 +32,7 @@ abstract class Blockchain {
     return this.blockchain.getChain()
   }
 
-  private getHash (block: Block): string {
+  protected getHash (block: Block): string {
     const inputWord = block.toString()
     const hash = SHA256(inputWord).toString()
     return hash

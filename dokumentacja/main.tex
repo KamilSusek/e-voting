@@ -50,24 +50,91 @@
     }%
 }%
 
-\lstset{%
-language=C++,%
-commentstyle=\textit,%
-identifierstyle=\textsf,%
-keywordstyle=\sffamily\bfseries, %\texttt, %
-%captionpos=b,%
-tabsize=3,%
-frame=lines,%
-numbers=left,%
-numberstyle=\tiny,%
-numbersep=5pt,%
-breaklines=true,%
-morekeywords={let, const, var}%
-escapeinside={@*}{*@},%
-%texcl=true, % wylacza tryb verbatim w komentarzach jednolinijkowych
-}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\lstdefinelanguage[ECMAScript2015]{JavaScript}[]{JavaScript}{
+  morekeywords=[1]{await, async, case, catch, class, const, default, do,
+    enum, export, extends, finally, from, implements, import, instanceof,
+    let, static, super, switch, throw, try},
+  morestring=[b]` % Interpolation strings.
+}
+
+
+%
+% JavaScript version 1.1 by Gary Hammock
+%
+% Reference:
+%   B. Eich and C. Rand Mckinney, "JavaScript Language Specification
+%     (Preliminary Draft)", JavaScript 1.1.  1996-11-18.  [Online]
+%     http://hepunx.rl.ac.uk/~adye/jsspec11/titlepg2.htm
+%
+
+\lstdefinelanguage{JavaScript}{
+  morekeywords=[1]{break, continue, delete, else, for, function, if, in,
+    new, return, this, typeof, var, void, while, with,  public, private, protected, constructor, abstract },
+  % Literals, primitive types, and reference types.
+  morekeywords=[2]{false, null, true, boolean, number, string, undefined,
+    Array, Boolean, Date, Math, Number, String, Object},
+  % Built-ins.
+  morekeywords=[3]{eval, parseInt, parseFloat, escape, unescape, length},
+  sensitive,
+  morecomment=[s]{/*}{*/},
+  morecomment=[l]//,
+  morecomment=[s]{/**}{*/}, % JavaDoc style comments
+  morestring=[b]',
+  morestring=[b]"
+}[keywords, comments, strings]
+
+
+\lstalias[]{ES6}[ECMAScript2015]{JavaScript}
+
+% Requires package: color.
+\definecolor{mediumgray}{rgb}{0.3, 0.4, 0.4}
+\definecolor{mediumblue}{rgb}{0.0, 0.0, 0.8}
+\definecolor{forestgreen}{rgb}{0.13, 0.55, 0.13}
+\definecolor{darkviolet}{rgb}{0.58, 0.0, 0.83}
+\definecolor{royalblue}{rgb}{0.25, 0.41, 0.88}
+\definecolor{crimson}{rgb}{0.86, 0.8, 0.24}
+
+\lstdefinestyle{JSES6Base}{
+  backgroundcolor=\color{white},
+  basicstyle=\ttfamily,
+  breakatwhitespace=false,
+  breaklines=false,
+  captionpos=b,
+  columns=fullflexible,
+  commentstyle=\color{mediumgray}\upshape,
+  emph={},
+  emphstyle=\color{crimson},
+  extendedchars=true,  % requires inputenc
+  fontadjust=true,
+  frame=single,
+  identifierstyle=\color{black},
+  keepspaces=true,
+  keywordstyle=\color{mediumblue},
+  keywordstyle={[2]\color{darkviolet}},
+  keywordstyle={[3]\color{royalblue}},
+  numbers=left,
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  rulecolor=\color{black},
+  showlines=true,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  stringstyle=\color{forestgreen},
+  tabsize=2,
+  title=\lstname,
+  upquote=true  % requires textcomp
+}
+
+\lstdefinestyle{JavaScript}{
+  language=JavaScript,
+  style=JSES6Base
+}
+\lstdefinestyle{ES6}{
+  language=ES6,
+  style=JSES6Base
+}
 
 \begin{document}
 
@@ -404,20 +471,30 @@ Aplikacje internetowe często wymagają komunikacji z zewnętrznym serwer, w cel
 Javascript to język programowania, który świetnie sprawdza się w środowisku aplikacji przeglądarkowych. Język umożliwia wieloaspektowe podejście do program. Można pisać programy z podejściem deklaratywnym lub obiektowym. Javascript spełnia najważniejsza standardy, dla nowoczesnych języków programowania, o czym świadczyć może ogromna popularność tego języka. Jednakże niektóre właściwości tego języka mogą utrudniać tworzenie oprogramowania. Przykładem jest typowanie dynamiczne.W Javascript każda zmienna nie ma przypisanego typu na stałe. Takie rozwiązanie ma swoje wady i zalety, jednak programista powinien mieć wybór, kiedy użyć zmiennej typowanej dynamicznie, a kiedy nie. Rozwiązaniem tego problemu jest język Typescript. Typescript jest nadzbiorem javascript co oznacza, że dostarcza on wszystkie funkcje Javascriptu i jednocześnie rozszerza go o nowe. W Typescript można deklarować zmienne z określonym typem, a także używać typu any. Typ any określa zmienne, które mogą być typowane dynamicznie. Język Typescript dostarcza również możliwość definiowania własnych typów. W projekcie, w celu uniknięcia problemów związanych z dynamicznym typowaniem wykorzystano język Typescript.
 
 \subsection{Serwer}
+Za stronę serwerową aplikacji odpowiada silnik NodeJs. NodeJs pozwala na tworzenie aplikacji w Javascript, poza środowiskiem przeglądarkowym. Silnik stanowi również rozbudowane narzędzie pozwalające na tworzenie REST API. Zaletą NodeJs jest ogromna popularność, co jest zauważalne podczas szukania rozwiązań na portalu Stackoverflow. Popularność silnika przekłada się również na jego bogatą dokumentację i dodatkowe biblioteki, które usprawniają elementy tworzenie oprogramowania.
 
-nodejs, expressjs, axios, prisma, Typescript
+ExpressJs to biblioteka działająca na silniku NodeJs, która została wykorzystana w projekcie do tworzenia REST API i węzłów sieci Blockchain. ExpressJs dostarcza podstawowe narzędzia do tworzenia REST API, takie jak endpointy (punkty końcowe serwera) pozwalające na obsługiwanie żądań HTTP. Zaletą biblioteki ExpressJs jest kompatybilność z wieloma innymi bibliotekami przeznaczonymi dla silnika NodeJs.
+
+Prisma to jedna z bibliotek NodeJs, które są odpowiedzialne za obsługę bazy danych. Prisma dostarcza mechanizm ORM (Object Relational Mapping), czyli możliwość odwzorowania relacyjnej bazy danych, na obiekty. Prisma generuje moduły odpowiedzialne za obsługę bazy danych i dostarcza je programiście. Takie rozwiązanie pozwala na utrzymanie całości aplikacji w jednym języku programowania, ponieważ nie wymaga korzystania z języka SQL, w celu zarządzania bazą danych z poziomu aplikacji. Prisma pozwala oddzielić implementację bazy danych, od innych funkcjonalności aplikacji.
 
 \subsection {Baza danych}
 
-sqlite, sqliteStudio
+Wykorzystana baza danych to SQLite. Baza danych znajduje się w pliku i jest umieszczona na serwerze wraz z REST API. SQLite to szybki, mały i łatwy w konfiguracji silnik baz danych. Jest to świetny silnik do prototypowania i tworzenia małych, a zarazem przenośnych baz danych.
+
+Silnik SQLite można obsługiwać z poziomu konsoli lub za pomocą specjalnej aplikacji, która dostarcza interfejs graficzny prezentujący zawartość bazy danych. W projekcie wykorzystano aplikację SQLiteStudio, która pozwala na połączenie się z bazą danych, w celu zarządzania nią. SQLiteStudio pozwala na tworzenie tabel, dodawanie zawartości, usuwanie danych i przeszukiwanie bazy danych. Aplikacja pozwala również na pisanie własnych zapytań w języku SQL. Tego rodzaju aplikacje są przydatne podczas tworzenie tabel w bazie danych i testowania aplikacji.
 
 \subsection{Testowanie}
 
-Postman, Netlify, Heroku
+Testowanie strony serwerowej systemu odbywało się przez aplikację Postman, która pozwala na wysyłanie żądań HTTP każdego rodzaju. W aplikacji można skonfigurować żądanie HTTP, tak aby zasymulować odpowiednie scenariusze żądania. Pozwala to przetestować działanie wszystkich funkcjonalności API.
+
+Testowanie aplikacji w środowisku lokalnym pozwala odpowiedzieć na pytanie, czy całość komponentów działa w kontrolowanym środowisku. Natomiast przeniesienie aplikacji do sieci pozwala na przetestowanie wydajności aplikacji. W projekcie, w celu udostępnienia aplikacji w internecie wykorzsytano serwisy Netlify oraz Heroku. Netlify pozwala na udostępnienie aplikacji internetowej, pod adresem generowanym przez serwis. Heroku zajmuje się uruchomieniem aplikacji serwerowej, która również dostępna jest w sieci pod odpowiednim adresem.
+
 
 \subsection{Metodyka pracy}
 
-Github, oracle datamodeler
+Do prowadzenia projektu wykorzystano repozytorium, kontroli wersji GitHub. GitHub to narzędzie pozwalające przechowywać kod źródłowy aplikacji, a także zapewnia jego archiwizację i wersjonowanie. Do przydatnych funkcjonalności należy również tworzenie rozgałęznień na różnych etapach tworzenia aplikacji. Pozwala to na oddzielenie poszczególnych funkcji na odrębne gałęzie projektu. Takie podejścia pozwala na uporządkowanie pracy nad projektem i większą przejrzystość w procesie rozwoju modułów.
+
+GitHub pozwala również na synchronizację ze wspomnianymi Heroku i Netlify, co pozwala na automatyzację procesu umieszczania nowych wersji aplikacji w środowisku internetowym. Wraz z umieszczeniem nowej wersji aplikacji w repozytorium, serwisy otrzymują kod źródłowy za pośrednictwem GitHuba, a następnie budują i uruchamiają aplikację.
 
 %%%%%%%%%%%%%%%%%%% Specyfikacja wewnętrzna %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -455,17 +532,112 @@ Sieć Blockchain to grupa serwerów, które wymieniają się informacjami. Komun
 
 \section{Struktury danych}
 
+W systemie można wyróżnić dwie struktury danych, które w znaczny sposób wpływają na zachowanie systemu. W tym podrozdziale omówiono implementację i zastoswania tych struktur danych.
+
+\newpage
+
 \subsection{Łańcuch bloków}
+
+Za dostarczenie odpowiedniej struktury łańcucha bloków odpowiedzialne są klasy Block i ChainRepository. Listing 5.1 przedstawia klasę Block, która jest reprezentacją pojedynczego bloku. Każdy blok jest odpowiedzialny za przechowywanie głosu wyborczego. Głos jest przechowywany w polu data. Pole timestamp przechowuje datę utworzenia bloku w łańcuchu. W łańcuchu bloków, każdy blok posiada odniesienie do hasza poprzedniego bloku, w tej implementacji zajmuje się tym pole prevHash. Klasa Block posiada również pole nonce, którego zastosowanie zostało omówione w rozdziale dotyczącym algorytmów (5.3.1 Proof of Work).
+
+\begin{lstlisting}[style=ES6, caption={Klasa Block.}]
+class Block {
+  index: number
+  timestamp: string
+  nonce: number
+  prevHash: string
+  data: string
+
+  constructor (index: number,
+ 		timestamp: string,
+ 		nonce: number,
+ 		prevHash: string,
+	 	data: string) {
+    this.index = index
+    this.timestamp = timestamp
+    this.nonce = nonce
+    this.prevHash = prevHash
+    this.data = data
+  }
+}
+\end{lstlisting}
+
+Klasa ChainRepository (przedstawiona w listingu 5.2) odpowiada za przechowywanie łańcucha bloków i jego udostępnianie. Aby zapewnić spójność danych, ułatwienie dostępu i ograniczenie zużycia pamięci, w programie istnieje tylko jedna instancja tej klasy. W tym celu wykorzystano wzorzec projektowy Singleton. Z punktu widzenia łańcucha bloków istotne jest pole chain, które w tablicy przechowuje bloki. Klasa udostępnia metodę addBlock, która pozwala na dodawanie nowego bloku na początek tablicy, zgodnie z regułą tworzenia łańcucha bloków. Dodatkowo klasa posiada prywatną metodę \textit{createGenesisBlock}, która tworzy pierwszy blok łańcucha, którego zawartość nie przechowuje istotnych danych. Metoda wywoływana jest podczas tworzenia instancji ChainRepository.
+
+\begin{lstlisting}[style=ES6, caption={Klasa ChainRepository.}]
+class ChainRepository {
+  public static instance: ChainRepository
+  private chain: Block[]
+
+  private constructor () {
+    this.chain = new Array<Block>()
+    this.createGenesisBlock()
+  }
+
+  public static getInstance (): ChainRepository {
+    if (!ChainRepository.instance) {
+      ChainRepository.instance = new ChainRepository()
+    }
+    return ChainRepository.instance
+  }
+
+  public addBlock (block: Block) {
+    this.chain.push(block)
+  }
+
+  private createGenesisBlock () {
+    const block 
+	= new Block(this.chain.length, '0', 0, '0', 'genesis')
+
+    this.chain.push(block)
+  }
+/* ... Getters and setters*/
+}
+\end{lstlisting}
+
+Za zapewnienie poprawnego utworzenia nowego bloku odpowiedzialna jest metoda \textit{createNewBlock} (Listing 5.3), która należy do klasy Blockchain. Metoda przyjmuje następujące paramtry: \textit{nonce}, \textit{prevBlock} i \textit{data}. Z parametru \textit{prevBlock} wyliczany jest hash, za pomocą metody \textit{getHash}. Jest to hash poprzedniego bloku, który przypisywany jest do pola prevHash tworzonego bloku.
+
+\begin{lstlisting}[style=ES6, caption={Fragment klasy Blockchain.}]
+abstract class Blockchain {
+  protected blockchain: ChainRepository
+
+  public createNewBlock (nonce: number,  prevBlock: Block, 
+					data: string): Block {
+    const blockchain = this.blockchain.getChain()
+    const chainLength = blockchain.length
+    const prevHash = this.getHash(prevBlock)
+    const date = Date.now().toString()
+
+    const block = new Block(chainLength, date, nonce,
+		 prevHash, data)
+
+    return block
+  }
+
+  protected getHash (block: Block): string {
+    const inputWord = block.toString()
+    const hash = SHA256(inputWord).toString()
+    return hash
+  }
+ /* ...  */
+}
+\end{lstlisting}
+
+Tak skonstruowany blok jest gotowy do dodania do łańcucha. Dodawanie bloku jest realizowane za pomocą metody \textit{addBlock}, z klasy \textit{ChainRepository}.
 
 \subsection{Baza danych}
 
 \section{Algorytmy}
 
+W podrozdziale algoytmy opisano implementacje algorytmów utrzymania konsensusu w sieci Blockchain. Każdy węzeł sieci Blockchain pozwala na wybranie algorytmu konsensusu, w którym będzie pracował.
+
 \subsection{Proof of Work}
-listingi kodu
+
+
+
 \subsection{Proof of Authority}
 listingi kodu
-\section{Zastosowania wzorców projektowych}
+\section{Zastosowane wzorce projektowe}
 listingi kodu
 \chapter{Testowanie}
 
