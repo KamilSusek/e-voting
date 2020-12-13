@@ -627,6 +627,30 @@ Tak skonstruowany blok jest gotowy do dodania do łańcucha. Dodawanie bloku jes
 
 \subsection{Baza danych}
 
+W projekcie wykorzystano relacyjną bazę danych. Taka struktura danych pozwala na uporządkowanie danych w relacje pomiędzy tabelami. Rysunek 5.2 przedstawia schemat relacyjnego modelu wykorzystanej bazy danych.
+
+\begin{figure}[h]
+    	\centering
+	\includegraphics[width=\textwidth]{images/Relational.png}
+	\caption{Schemat przedstawiający relacyjny schemat bazy danych.}
+\end {figure}
+
+Utworzona baza danych dzieli się na część odpowiadającą za przeprowadzenie wyborów oraz bank haseł i ról użytkowników. Tabele \textit{ADMIN} i \textit{VOTER} odpowiadają aktorom systemu. Na podstawie tych tabel można dokonać autoryzacji użytkownika systemu i przydzielić mu odpowiednią rolę, która zapewnia dostęp do zasobów. Dodatkowo tabela \textit{VOTER} jest połączona relacją wiele do wielu z tabelą \textit{ELECTION}. W wyniku realcji wiele do wielu powstała tabela łącznikowa \textit{VOTER\_ELECTION}, która pozwala podzielić relację wiele do wielu, na dwie relacje jeden do wielu. Tabela \textit{VOTER\_ELECTION} pozwala na przypisanie odpowiedniego wyborcy do odpowiednich wyborów. Dodatkowo tabela przechowuje informację o oddaniu głosu przez wyborcę, w polu \textit{DID\_VOTE}.
+
+Pozostała część tabel odpowiada za przechowywanie danych dotyczących bezpośrednio wyborów. Zadaniem tabeli \textit{ELECTION} jest składowanie danych dotyczących konfiguracji wyborów. 
+Konfiguracji mogą podlegać:
+\begin{itemize}
+	\item \textit{ELECTION\_NAME} - tytuł wyborów,
+	\item \textit{ELECTION\_DESCRIPTION} - opis dotyczący wyborów,
+	\item \textit{START\_DATE} - data rozpoczęcia wyborów,
+	\item \textit{END\_DATE} - data zakończenia wyborów,
+	\item \textit{SERVER\_URL} - adres zewnętrznego serwera sieci Blockchain, na który wysłane są głosy wyborców,
+	\item kandydaci - zbiór kandydatów, którzy biorą udział w wyborach, jest reprezentowany jako relacja jeden do wielu z tabelą \textit{CANDIDATE}.
+\end{itemize}
+
+Dodatkowo w tabeli znajduje się również pole \textit{IS\_PUBLISHED} typu \textit{Boolean}, które odpowiada za oznaczenie stanu wyborów jako opublikowane lub nieopublikowane. System wykorzystuje tę informację do zakończenia wyborów i udostępnienia ich wyników.
+
+Tabela \textit{CANDIDATE} reprezentuje kandydata, którego dane i opis definiują pola \textit{CANDIDATE\_NAME} i \textit{CANDIDATE\_DESCRIPTION}. Tabela posiada również pole \textit{VOTES}, które po zakończeniu wyborów uzupełniane jest o liczbę zdobytych głosów, przez danego kandydata.
 \section{Algorytmy}
 
 W podrozdziale algoytmy opisano implementacje algorytmów utrzymania konsensusu w sieci Blockchain. Każdy węzeł sieci Blockchain pozwala na wybranie algorytmu konsensusu, w którym będzie pracował.
