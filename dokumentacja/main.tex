@@ -653,14 +653,102 @@ Dodatkowo w tabeli znajduje się również pole \textit{IS\_PUBLISHED} typu \tex
 Tabela \textit{CANDIDATE} reprezentuje kandydata, którego dane i opis definiują pola \textit{CANDIDATE\_NAME} i \textit{CANDIDATE\_DESCRIPTION}. Tabela posiada również pole \textit{VOTES}, które po zakończeniu wyborów uzupełniane jest o liczbę zdobytych głosów, przez danego kandydata.
 \section{Algorytmy}
 
-W podrozdziale algoytmy opisano implementacje algorytmów utrzymania konsensusu w sieci Blockchain. Każdy węzeł sieci Blockchain pozwala na wybranie algorytmu konsensusu, w którym będzie pracował.
+W podrozdziale algorytmy opisano implementacje algorytmów utrzymania konsensusu w sieci Blockchain. Węzeł sieci Blockchain może pracować w dwóch algorytmach konsensu: Proof of Work lub Proof of Authority. Każdy węzeł sieci Blockchain pozwala na wybranie algorytmu konsensusu, w którym będzie pracował. Algorytmy różnią się sposobem dodawania nowego bloku i synchronizacją sieci. Wybór algorytmu jest możliwy poprzez wykorzystanie wzorca projektowego strategia. Implementacja została opisana w rozdziale 5.4.
 
 \subsection{Proof of Work}
 
+Dodawanie nowego bloku w algorytmie Proof of Work poprzedzone jest rozwiązaniem zagadki matematycznej. W listingu 5.4 przedstawiono metodę \textit{validateNonce}, która zajmuje się weryfikacją rozwiązania zagadki.
 
+\begin{lstlisting}[style=ES6, caption={Metoda \textit{validateNonce}.}]
+private validateNonce (
+    lastNonce: number,
+    nonce: number,
+    prevHash: string
+  ): boolean {
+    const attempt = `${lastNonce}${nonce}${prevHash}`
+    const hash = SHA256(attempt).toString()
+
+    const isValid = hash.startsWith('000')
+    return isValid
+  }
+\end{lstlisting}
+
+Rozwiązaniem zagadki matematycznej jest znalezienie odpowiedniej liczby (\textit{nonce}), która po dołączeniu do określonego stałego ciągu znaków i zahashowaniu go, daje ciąg zer na początku. W przypadku tej implementacji są to trzy zera.
+
+Metoda \textit{solveNonce} (listing 5.5) zajmuje się znalezieniem liczby \textit{nonce}. W pętli wywołana jest metoda \textit{validateNonce}, do momentu rozwiązania zagadki. Wraz z każdą iteracją pętli wykonywana jest inkrementacja zmiennej \textit{nonce}.
+
+\begin{lstlisting}[style=ES6, caption={Metoda \textit{solveNonce}.}]
+private solveNonce (lastNonce: number, prevHash: string) {
+    let nonce = 0
+
+    while (!this.validateNonce(lastNonce, nonce, prevHash)) {
+      nonce++
+    }
+    return nonce
+  }
+\end{lstlisting}
+
+Dodawanie nowego bloku jest przeprowadzane w metodzie \textit{mine}. Metodę przedstawiono w listingu 5.6.
+
+\begin{lstlisting}[style=ES6, caption={Dodawanie nowego bloku. Metoda \textit{mine}.}]
+  public mine (data: any) {
+    const blockchain = this.blockchain.getChain()
+    const lastBlock = blockchain[blockchain.length - 1]
+    const prevHash = this.getHash(lastBlock)
+    const nonce = this.solveNonce(lastBlock.nonce, prevHash)
+
+    const newBlock = this.createNewBlock(nonce, lastBlock, data)
+    this.blockchain.addBlock(newBlock)
+  }
+\end{lstlisting}
+
+Przed wywołaniem metody \textit{createNewBlock} wywoływana jest metoda \textit{solveNonce}, która rozwiązuje zagadkę matematyczną. Następnie zwracany jest wynik zagadki i tworzony jest nowy blok. Nowy blok jest dodawany do łańcucha.
+
+Synchronizacja łańcucha odbywa się poprzez porównanie jego długości z innym łańcuchem. Listing 5.7 przedstawia metodę \textit{synchronize}, która przyjmuje jako argument długość porównywanego łańcucha znaków. Następnie porównuje ją z łańcuchem bloków węzła.
+
+\begin{lstlisting}[style=ES6, caption={Metoda \textit{synchronize}.}]
+  public synchronize (syncValue: number): boolean {
+    if (this.blockchain.getChain().length < syncValue) {
+      return true
+    } else {
+      return false
+    }
+  }
+\end{lstlisting}
+
+Jeżeli metoda \textit{synchronize} zwróci prawdę, to obecny łańcuch jest podmieniany, na łańcuch przysłany do synchronizacji.
 
 \subsection{Proof of Authority}
-listingi kodu
+\begin{lstlisting}[style=ES6, caption={Fragment klasy Blockchain.}]
+class PoAAlgorithm extends Blockchain {
+  private authorityFactor: number
+
+  constructor () {
+    super()
+    this.authorityFactor = 100
+  }
+
+  public mine (data: any) {
+    const blockchain = this.blockchain.getChain()
+    const lastBlock = blockchain[blockchain.length - 1]
+    const newBlock = this.createNewBlock(0, lastBlock, data)
+    this.blockchain.addBlock(newBlock)
+    this.authorityFactor++
+  }
+
+  public getSyncValue (): number {
+    return this.authorityFactor
+  }
+
+  public synchronize (auth: number) {
+    if (this.authorityFactor < auth) {
+      return false
+    } else {
+      return true
+    }
+  }
+}
+\end{lstlisting}
 \section{Zastosowane wzorce projektowe}
 listingi kodu
 \chapter{Testowanie}
