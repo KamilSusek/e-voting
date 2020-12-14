@@ -19,6 +19,7 @@
 \usepackage{listings}
 \pagestyle{fancy}
 \usepackage{graphicx}
+\usepackage{cite}
 \graphicspath{ {./images/} }
 %%%%%%%%%%%% ZYWA PAGINA %%%%%%%%%%%%%%%
 % brak kapitalizacji zywej paginy
@@ -354,7 +355,7 @@ Wsparcie e-votingu (w Estonii określanego i-votingiem) obejmuje ostatnie trzy e
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{images/Dziedzina systemu estońskiego}
-	\caption{Moduły systemu i-votingu.}
+	\caption{Moduły systemu i-votingu. \cite{estonian:voting}}
 \end {figure}
 \newpage
 
@@ -372,18 +373,18 @@ niego głosu oraz zapisanie wyborcy, w bazie danych odpowiedzialnej za przechowa
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{images/Główne częsci systemu estońskiego.png}
-	\caption{Proces wyborczy.}
+	\caption{Proces wyborczy. \cite{estonian:voting}}
 \end {figure}
 
 Główne części systemu:
 \begin{itemize}
-\item Voter (dalej nazywany wyborcą) - za pośrednictwem aplikacji klienckiej (która w systemie estońskim jest aplikacją desktopową pobieraną przed wyborami) szyfruje i potwierdza swoim podpisem elektronicznym głos, który następnie wysyłany jest do Kolektora.
-\item Collector (dalej nazywany Kolektorem) - to aplikacja serwerowa wyposażona w logikę pozwalającą na utworzenie głosu. Aplikacja waliduje dane wprowadzone przez wyborcę i elektronicznie podpisuje dane, które następnie przesyła do Procesora.
-\item Processor (dalej nazywany Procesorem) - zajmuje się przetwarzaniem głosów. Sprawdza poprawność danych otrzymanych z Kolektora, wraz z podpisem elektronicznym. Usuwa głosy, które się powtarzają, zarówno głosy oddane elektronicznie, jak i te oddane w lokalach wyborczych. Sortuje głosy według okręgów wyborczych i usuwa z nich podpis elektroniczny, w celu anonimizacji głosu. Tak przetworzone głosy są mieszane według odpowiedniego algorytmu i wysyłane do Licznika.
-\item Tallier (dalej nazywany Licznikiem) - rolą licznika jest odebranie głosu od Procesora, otwarcie go i dodanie przyporządkowanie do odpowiedniego wyniku.
+\item Voter (wyborca) - za pośrednictwem aplikacji klienckiej (która w systemie estońskim jest aplikacją desktopową pobieraną przed wyborami) szyfruje i potwierdza swoim podpisem elektronicznym głos, który następnie wysyłany jest do Kolektora.
+\item Collector (Zbieracz głosów) - to aplikacja serwerowa wyposażona w logikę pozwalającą na utworzenie głosu. Aplikacja waliduje dane wprowadzone przez wyborcę i elektronicznie podpisuje dane, które następnie przesyła do Procesora.
+\item Processor (Procesor głosów) - zajmuje się przetwarzaniem głosów. Sprawdza poprawność danych otrzymanych z Kolektora, wraz z podpisem elektronicznym. Usuwa głosy, które się powtarzają, zarówno głosy oddane elektronicznie, jak i te oddane w lokalach wyborczych. Sortuje głosy według okręgów wyborczych i usuwa z nich podpis elektroniczny, w celu anonimizacji głosu. Tak przetworzone głosy są mieszane według odpowiedniego algorytmu i wysyłane do Licznika.
+\item Tallier (Licznik głosów) - rolą licznika jest odebranie głosu od Procesora, otwarcie go i dodanie przyporządkowanie do odpowiedniego wyniku.
 \end{itemize}
 
-\section{Aplikacja internetowa Votex}
+Estoński system E-votingu jest spójny i silnie zabezpieczony. Dlatego jest on wykorzystywany w ważnych wyborach krajowych. Rozwiązanie jest stale udoskonalane, aby mogło dotrzymać kroku rozwojowi technologii. Omówiony system pochodzi z roku 2016 \cite{estonian:voting}.
 
 \section{Evoting w Walnych Zgromadzeniach}
 
@@ -719,38 +720,236 @@ Synchronizacja łańcucha odbywa się poprzez porównanie jego długości z inny
 Jeżeli metoda \textit{synchronize} zwróci prawdę, to obecny łańcuch jest podmieniany, na łańcuch przysłany do synchronizacji.
 
 \subsection{Proof of Authority}
-\begin{lstlisting}[style=ES6, caption={Fragment klasy Blockchain.}]
-class PoAAlgorithm extends Blockchain {
-  private authorityFactor: number
 
-  constructor () {
-    super()
-    this.authorityFactor = 100
-  }
+Algorytm Proof of Authority pozwala zwiększyć przepustowość sieci Blockchain w porównaniu z algorytmem Proof of Work. Ten algorytm nie wymaga rozwiązywania żadnej zagadki logicznej, dlatego dodawanie nowego bloku sprowadza się tylko do umieszczenia nowego bloku na końcu tablicy. Proces dodawania nowego bloku przedstawia listing 5.8. Klasa odpowiedzialna za algorytm Proof of Authority posiada dodatkowe pole - \textit{authorityFactor}. Jest to współczynnik określający zaufanie danego węzła w sieci. Im wyższy współczynnik, tym wyższe zaufanie. Zaufanie jest zwiekszane, wraz z dodawaniem nowych bloków.
 
-  public mine (data: any) {
+\begin{lstlisting}[style=ES6, caption={Dodawanie nowego bloku w algorytmie Proof of Authority.}]
+private authorityFactor: number
+
+public mine (data: any) {
     const blockchain = this.blockchain.getChain()
     const lastBlock = blockchain[blockchain.length - 1]
     const newBlock = this.createNewBlock(0, lastBlock, data)
     this.blockchain.addBlock(newBlock)
     this.authorityFactor++
   }
+\end{lstlisting}
 
-  public getSyncValue (): number {
-    return this.authorityFactor
+W przypadku algorytmu Proof of Authority synchronizacja łańcucha dokonywana jest poprzez porównanie wartości \textit{authorityFactor} dwóch węzłów. Listing 5.9 przedstawia ten proces.
+
+\begin{lstlisting}[style=ES6, caption={Synchronizacja w algorytmi Proof of Authority.}]
+public synchronize (auth: number) {
+    if (this.authorityFactor < auth) {
+      return true
+    } else {
+      return false
+    }
+  }
+\end{lstlisting}
+
+Podmiana węzłów odbywa się analogicznie, jak dla algorytmu Proof of Work.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Zastosowane wzorce projektowe}
+W projekcie zastoswano kilka wzorców projektowych dotyczących zarówno programowania obiektowego, jak i podejścia funkcyjnego towarzyszącego ReactJs. W tym rozdziale przedstawiono przykłady implementacji tych wzorców w projekcie.
+
+\subsection{Singleton}
+Najczęściej wykorzystywany wzorzec projektowy w aplikacjach serwerowych. Jego zastosowaniem było bezpośrednie przechowywanie danych lub utrzymywanie połączenia i dostępu do bazy danych. W Listingu 5.10 przedstawiono klasę \textit{Database}, która jest singletonem. Klasa zajmuje się udostępnianiem połączenia z bazą danych, za pośrednictwem \textit{PrismaClient}. Prywatny konstruktor otwiera połączenie z bazą danych tylko raz, a statyczna metoda \textit{getInstance} zwraca instację klasy \textit{Database}. Publiczna metoda \textit{getDatabase} zwraca obiekt \textit{PrismaClient}, który umożliwia dostęp do bazy danych.
+
+\begin{lstlisting}[style=ES6, caption={Klasa \textit{Database}. Singleton.}]
+class Database {
+  private static instance: Database;
+  private db: PrismaClient;
+
+  private constructor() {
+    this.db = new PrismaClient();
   }
 
-  public synchronize (auth: number) {
-    if (this.authorityFactor < auth) {
-      return false
-    } else {
-      return true
+  public static getInstance(): Database {
+    if (!Database.instance) {
+      Database.instance = new Database();
     }
+
+    return Database.instance;
+  }
+
+  public getDatabase(): PrismaClient {
+    return this.db;
   }
 }
 \end{lstlisting}
-\section{Zastosowane wzorce projektowe}
-listingi kodu
+
+\subsection{Repozytorium}
+
+Repozytorium pozwala na udzielenie dostępu do danych warstwom biznesowym aplikacji. Repozytorium posiada wszelkie metody wyszukujące i zwracające żądane obiekty lub kolekcje obiektów. Listing 5.11 przedstawia klasę \textit{CandidateRepository}. Jest to jedno z wielu repozytoriów, które dostarcza podstawowe metody służące do wyszukiwania i zapisywania danych. Klasa posiada pole \textit{db}, które zawiera obiekt udzielający dostępu do bazy danych.
+
+\begin{lstlisting}[style=ES6, caption={Klasa \textit{CandidateRepository}.}]
+class CandidateRepository {
+  private db: PrismaClient
+
+  constructor () {
+    this.db = Database.getInstance().getDatabase()
+  }
+
+  public async findAll () {/* Implementacja*/}
+
+  public async findByName (candidateName: string) {
+	/* Implementacja*/
+ }
+
+  public async findByElectionId (electionId: number) {
+	/* Implementacja*/
+ }
+
+  public async save (candidate: CandidateDTO, election: Election) {
+	/* Implementacja*/
+ }
+}
+\end{lstlisting}
+
+W projekcie repozytoria mają za zadanie dostarczać obiekty z bazy danych w klasach seriwsowych, które zawierają implementację logiki bizensowej.
+
+\subsection{Strategia}
+
+Aplikacja serwerowa węzła sieci Blockchain pozwala na wybór jednego z dwóch algorytmów konsensusu. Algorytmy zajmują się rozwiązaniem tego samego problemu, dlatego można je dowolnie podstawiać. Wzorzec projektowy strategia pozwala na dokonanie takiego podstawienia, bez konieczności zmiany struktury programu. Listing 5.12 przedstawia klase bazową \textit{Blockchain}.
+Jest to klasa abstrakcyjna, ponieważ posiada implementację metod uniwersalnych dla każdego algorytmu. Metody \textit{mine}, \textit{getSyncValue} i \textit{synchronize} są abstrakcyjne.
+
+\begin{lstlisting}[style=ES6, caption={Klasa \textit{Blockchain}.}]
+abstract class Blockchain {
+  protected blockchain: ChainRepository
+
+  constructor () {
+    this.blockchain = ChainRepository.getInstance()
+  }
+
+  abstract mine (data: any): void
+  abstract getSyncValue (): number
+  abstract synchronize (syncValue: number): boolean
+
+public createNewBlock (nonce: number, prevBlock: Block, 
+data: any): Block {
+    const blockchain = this.blockchain.getChain()
+    const chainLength = blockchain.length
+    const prevHash = this.getHash(prevBlock)
+    const date = Date.now().toString()
+
+    const block = new Block(chainLength, date, nonce,
+ prevHash, data)
+
+    return block
+  }
+
+  public setChain (chain: Block[]) {
+    this.blockchain.setChain(chain)
+  }
+
+  public getScore (): Block[] {
+    return this.blockchain.getChain()
+  }
+
+  protected getHash (block: Block): string {
+    const inputWord = block.toString()
+    const hash = SHA256(inputWord).toString()
+    return hash
+  }
+}
+\end{lstlisting}
+
+Implementacja metod zależy od wykorzystywanego algorytmu. Implementacje znajduja się w klasach \textit{PoWAlgorithm} i \textit{PoAAlogorithm}. Klasy rozszerzają klasę Blockchain.
+Szczegołowa implementacja metod abstrakcyjnych została omówiona w podrozdziale 5.3. Wykorzystanie mechanizmu dziedziczenia pozwala na podstawienie w miejsce klasy Blockchain dowolną klasę potomną, która posiada zdefiniowaną implementację metod odpowiedzialnych za realizacje algorytmu.
+
+\subsection{Redux}
+
+Redux to specjalna architektura wykorzystywana w aplikacjach ReactJs. W projekcie wykorzystano bibliotekę Redux'a, o nazwie Redux-Toolkit, która upraszcza niektóre elementy Reduxa. Architektura pozwala na przeniesienie stanu aplikacji do jednego magazynu, który jest dostępny globalnie. Listingi 5.13 i  5.14 przedstawiają jeden z wycinków magazynu. Wycinek (ang. slice) to oznaczony odpowednim identyfikatorem fragment magazynu. Każdy wycinek przechowuje określony stan (listing 5.13).
+
+\begin{lstlisting}[style=ES6, caption={Stan początkowy wycinka \textit{electionsSlice}.}]
+const initialState = {
+  electionsList: [],
+  candidatesList: [],
+  selectedElection: '',
+  selectedVote: '',
+  isCandidatesShown: false,
+  isResultsShown: false,
+  electionResults: []
+}
+\end{lstlisting}
+
+Wycinek posiada zestaw metod, które pozwalają na modyfikowanie stanu wycinka. W kodzie są to metody obiektu \textit{reducers}, przedstawione w listingu 5.14.
+
+\begin{lstlisting}[style=ES6, caption={Wycinek \textit{electionsSlice}.}]
+const electionsSlice = createSlice({
+  name: 'elections',
+  initialState,
+  reducers: {
+    setElectionsList (state, action) {
+      state.electionsList = action.payload
+    },
+    selectElection (state, action) {
+      state.selectedElection = action.payload
+    },
+    setCandidates (state, action) {
+      state.candidatesList = action.payload
+    },
+    setElectionResults (state, action) {
+      state.electionResults = action.payload
+    },
+    showCandidates (state) {
+      state.isCandidatesShown = true
+      state.isResultsShown = false
+    },
+    showElections (state) {
+      state.isCandidatesShown = false
+      state.isResultsShown = false
+    },
+    showResults (state) {
+      state.isCandidatesShown = false
+      state.isResultsShown = true
+    },
+    selectVote (state, action) {
+      state.selectedVote = action.payload
+    }
+  }
+})
+\end{lstlisting}
+
+Tak stworzony kontener ułatwia zarządzanie stanem aplikacji, ponieważ pozwala na odseparowanie implementacji stanu, od kodu odpowiedzialnego za użycie stanu. Architektura Redux posiada również specjalny mechanizm do wykonywania zadań asynchronicznych, takich jak np. pobranie danych z API. Takie zadania nazywane są Thunk'ami. Listing 5.15 przedstawia Thunk'a, który pobiera listę wyborów dostępnych dla określonego użytkownika.
+
+\begin{lstlisting}[style=ES6, caption={Thunk \textit{fetchElection}.}]
+export const fetchElections = (): AppThunk => async dispatch => {
+  try {
+    const username = localStorage.getItem('username')
+    const response = await axios.get(`/elections/${username}`, {
+      headers: {
+        role: localStorage.getItem('role'),
+        authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+    const electionList = response.data
+
+    dispatch(setElectionsList(electionList))
+  } catch (error) {
+
+  }
+}
+\end{lstlisting}
+
+ W Thunk'ach można wykorzystywać reducer'y, a następnie wywoływać Thunk'i w komponentach. Przykład znajduje się w listingu 5.16. Wywołanie każdego reducer'a zawsze znajduje się wewnątrz funkcji dispatch, która wysyła reducer do punktu obsługi reducer'ów.
+
+\begin{lstlisting}[style=ES6, caption={Wykorzystanie Thunk'a, w komponencie \textit{ElectionsPage}.}]
+function ElectionsPage () {
+  const dispatch = useDispatch()
+  const { electionsList, isCandidatesShown, isResultsShown } 
+= useSelector(
+    (state: RootState) => state.elections
+  )
+
+  useEffect(() => {
+    dispatch(fetchElections())
+  }, [])
+
+/* ... */
+}
+\end{lstlisting}
+
 \chapter{Testowanie}
 
 \begin{thebibliography}{99}
@@ -809,6 +1008,9 @@ ROK LIV NR 2 (193) 2013  Przemysław Rodwald : KRYPTOGRAFICZNE FUNKCJE SKRÓTU
 \bibitem{smart-contract} https://academy.binance.com/pl/articles/what-are-smart-contracts
 \emph{Polski \TeX} Co to Smart Kontrakt?
 
+\bibitem{estonian:voting} General Framework of Electronic Voting
+and Implementation thereof at National Elections in
+Estonia \emph English, rok 2016
 
 \end{thebibliography}
 

@@ -19,7 +19,6 @@ function ElectionsListItem ({ item }: any) {
     is_published,
     didVote
   } = item
-  console.log('item', item)
 
   const toggleVote = () => {
     dispatch(fetchCandidatesForElection(election_name))
