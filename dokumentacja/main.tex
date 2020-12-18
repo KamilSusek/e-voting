@@ -493,9 +493,63 @@ Testowanie aplikacji w środowisku lokalnym pozwala odpowiedzieć na pytanie, cz
 
 \subsection{Metodyka pracy}
 
-Do prowadzenia projektu wykorzystano repozytorium, kontroli wersji GitHub. GitHub to narzędzie pozwalające przechowywać kod źródłowy aplikacji, a także zapewnia jego archiwizację i wersjonowanie. Do przydatnych funkcjonalności należy również tworzenie rozgałęznień na różnych etapach tworzenia aplikacji. Pozwala to na oddzielenie poszczególnych funkcji na odrębne gałęzie projektu. Takie podejścia pozwala na uporządkowanie pracy nad projektem i większą przejrzystość w procesie rozwoju modułów.
+Do prowadzenia projektu wykorzystano repozytorium kontroli wersji GitHub. GitHub to narzędzie, które pozwala przechowywać kod źródłowy aplikacji, a także zapewnia jego archiwizację i wersjonowanie. Do przydatnych funkcji należy również tworzenie rozgałęznień na różnych etapach tworzenia aplikacji. Pozwala to na oddzielenie poszczególnych funkcji na odrębne gałęzie projektu. Takie podejścia pozwala na uporządkowanie pracy nad projektem i większą przejrzystość w procesie rozwoju modułów.
 
 GitHub pozwala również na synchronizację ze wspomnianymi Heroku i Netlify, co pozwala na automatyzację procesu umieszczania nowych wersji aplikacji w środowisku internetowym. Wraz z umieszczeniem nowej wersji aplikacji w repozytorium, serwisy otrzymują kod źródłowy za pośrednictwem GitHuba, a następnie budują i uruchamiają aplikację.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Specyfikacja zewnętrzna %%%%%%%%%%%%%%%%%%%%
+\chapter{Specyfikacja zewnętrzna}
+Ten rozdział zawiera szczegółowy opis funkcjonalności systemu. Zawarto w nim opis instalacji, uruchomienia i korzystania z systemu. Opis dotyczy pracy systemu w środowisku lokalnym, ponieważ uzyskania działającego systemu w środowisku internetowym opiera się o wykorzystanie odpowiednich serwisów internetowych. Przykładowo może to być serwis Heroku lub Netlify.
+
+\section{Instalacja}
+Przed rozpoczęciem instalacji poszczególnych modułów systemu należy zainstalować silnik NodeJs oraz środowisko NPM. Silnik NodeJs jest niezbędny do uruchomienia poszczególnych serwerów systemu. NPM (Node Packet Manager) to menadżer pakietów, który dostarcza mechanizmy pozwalające uruchamiać odpowiednie skrypty, które pozwalają na konfigurację serwera. 
+
+\subsection{Instalacja dla Windows i MacOS}
+Dla systemów operacyjnych Windows i MacOs pakiet instalacyjny znajduje się na stronie NodeJs - \url{https://nodejs.org/en/download/}. Na stronie należy wybrać opcję \textit{Windows Installer} lub \textit{macOs Installer}, a pobieranie rozpocznie się automatycznie. Pobrany instalator przeprowadzi również instalację NPM.
+
+\subsection{Instalacja dla Linux}
+Instalacja wymaganego oprogramowania dla systemu Linux może zostać przeprowadzona z wykorzystaniem polecenia \textit{sudo}. W terminalu należy wpisać następujące polecenia: 
+
+\textit{sudo apt install nodejs}
+
+\textit{sudo apt install npm}
+
+W celu sprawdzenia poprawności instalacji dla każdego systemu można wykorzystać terminal (lub konsole w przypadku Windows). W terminalu należy wpisać: \textit{node -v}, co powinno skutkować wyświetleniem aktualnie zainsalowanej wersji NodeJs. Tak jak na rysunku \ref{nodeversion}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/node_version.png}
+	\caption{Rezultat polecenia \textit{node -v}}\label{nodeversion}
+\end {figure}
+
+\section{Struktura oprogramowania}
+
+System składa się z kilku modułów, dlatego dostarczone oprogramowanie jest podzielone na kilka folderów. Struktura folderów została przedstawiona na rysunku \ref{foldery}. Folder dokumentacja jest w tym opisie nieistotny, ponieważ nie przechowuje on żadnego oprogramowania.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/foldery.png}
+	\caption{Struktura folderów}\label{foldery}
+\end {figure}
+
+Foldery przechowują następujące moduły:
+\begin{itemize}
+	\item admin-app przechowuje aplikację przeglądarkową administratora,
+	\item voter-app przechowuje aplikację przeglądarkową użytkownika,
+	\item e-voting-api przechowuje aplikację serwerową dostarczającą API systemu,
+	\item blockchain-server przechowuje program, który realizuje działanie węzła w sieci Blockchain.
+\end{itemize}
+
+\section{Uruchamianie modułów}
+
+Za pomocą menadżera pakietów NPM uruchamiane są poszczególne moduły systemu. Aby uruchomić dany moduł należy otworzyć katalog z tym modułem, w tym katalogu znajduje się plik \textit{package.json}, który zawiera konfigurację i skrypty uruchamiające program. Programy uruchamia się za pomocą poleceń dostarczanych przez pakiet NPM, które należy wpisać w konsoli. Należy uruchomić konsolę w folderze z plikiem \textit{package.json}.
+
+Moduły \textit{admin-app} i \textit{voter-app} uruchamiane są za pomocą polecenia \textit{npm-start}. Aplikacja \textit{admin-app} w środowisku lokalnym uruchamiana jest pod adresem \url{http://localhost:4000}, a aplikacja \textit{voter-app} pod adresem \url{http://localhost:3000}.
+
+Podczas uruchamiania aplikacji serwerowych, należy określić port , na którym widoczny będzie określony serwer.
+
+Aplikacja serwerowa \textit{e-voting-api} domyślnie uruchamiana jest na porcie 8080, jednak można to zmienić za pomocą następującego polecenia:
+
+\textit{\$env:PORT=NUMER\_PORTU; npm start}.
 
 %%%%%%%%%%%%%%%%%%% Specyfikacja wewnętrzna %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -951,6 +1005,8 @@ function ElectionsPage () {
 \end{lstlisting}
 
 \chapter{Testowanie}
+
+System został przetestowany zarówno w środowisku lokalnym jak i internetowym. Aplikacja przeglądarkowa wyborcy została przetestowana na komputerach i \textit{smartfonach}.
 
 \begin{thebibliography}{99}
 \bibitem{pa} Ankit Patel:
