@@ -400,40 +400,41 @@ Za zapewnienie nieodwracalności wykonanych akcji i ogólnego bezpieczeństwa da
 \chapter{Wymagania systemu i wykorzystane narzędzia}
 W tym rozdziale sformułowano i omówiono wymagania funkcjonalne i niefunkcjonalne. Dodatkowo przedstawiono przypadki użycia i aktorów systemu. Na koniec opisane zostały technologie i narzędzia wykorzystane podczas tworzenia systemu.
 
+\section {Wymagania niefunkcjonalne}
+
+Wymagania niefunkcjonalne definiują jakość usług dostarczanych przez system. W systemie e-votingu ważnymi elementami są bezpieczeństwo i czytelność procedury głosowania. Dlatego w celu uściślenia oczekiwań jakościowych systemu sformułowano następujące wymagania niefunkcjonalne:
+
+\begin{itemize}
+	\item dane logowania użytkownika są zabezpieczone,
+	\item dane logowania administratora są zabezpieczone,
+	\item przechowywane głosy są zabezpieczone przed modyfikacją,
+	\item przejrzyste treści na stronie wyborcy,
+	\item czytelna i łatwa w obsłudze procedura wyborcza na stronie wyborcy,
+	\item przejrzyste treści na stronie administratora wyborów,
+	\item czytelna i łatwa w obsłudze konfiguracja wyborów,
+	\item aplikacje internetowe wyborcy i administratora działają na najpopularniejszych przeglądarkach internetowych.
+	\item czas liczenia głosów jest zdeterminowany.
+\end{itemize}
+
 \section {Wymagania funkcjonalne}
 
 W tej sekcji umieszczono wszystkie funkcjonalności i części systemu. Do głównych części systemu należą: aplikacja internetowa wyborcy, aplikacja internetowa administratora wyborów,
 serwis udostępniający REST (Representational State Transfer) API i serwery sieci Blockchain. Do wymagań funkcjonalnych systemu należą:
 
 \begin{itemize}
-	\item Hasła przechowywane w bazie danych są szyfrowane za pomocą funkcji skrótu SHA256,
-	\item Dostęp do zasobów wyborcy i administratora odbywa się poprzez dwie inne aplikacje internetowe,
-	\item Komunikacja pomiędzy aplikacjami przeglądarkowymi, a API odbywa się z wykorzystaniem konwencji REST API,
-	\item Dostęp do punktów końcowych API (endpointów) jest zabezpieczony za pomocą JWT (Json Web Token) oraz uwierzytelnienia na podstawie roli (Role Based Authentication),
-	\item Dostęp do zasobów posiadają tylko zalogowani użytkownicy,
-	\item Za bezpieczne przechowywanie głosów odpowiadają sieci Blockchain,
-	\item Każdy węzeł sieci Blockchain to indywidualny program umożliwiający konfigurację sieci,
-	\item Dla każdych wyborów konfigurowana jest indywidualna sieć Blockchain,
-	\item Dostęp do sieci Blockchain uzyskiwany jest za pomocą serwisu,
-	\item Komunikacja pomiędzy serwisem, a siecią Blockchain odbywa się z udziałem jednego węzła, który odbiera informacje i rozsyła po całej sieci,
-	\item Konsensus w sieci może być uzyskiwany z wykorzystaniem algorytmu Proof of Work lub Proof of Authority.
+	\item hasła przechowywane w bazie danych są szyfrowane za pomocą funkcji skrótu SHA256,
+	\item dostęp do zasobów wyborcy i administratora odbywa się poprzez dwie inne aplikacje internetowe,
+	\item komunikacja pomiędzy aplikacjami przeglądarkowymi, a API odbywa się z wykorzystaniem konwencji REST API,
+	\item dostęp do punktów końcowych API (endpointów) jest zabezpieczony za pomocą JWT (Json Web Token) oraz uwierzytelnienia na podstawie roli (Role Based Authentication),
+	\item dostęp do zasobów posiadają tylko zalogowani użytkownicy,
+	\item za bezpieczne przechowywanie głosów odpowiada sieć Blockchain,
+	\item każdy węzeł sieci Blockchain to indywidualny program umożliwiający konfigurację sieci,
+	\item dla każdych wyborów konfigurowana jest indywidualna sieć Blockchain,
+	\item dostęp do sieci Blockchain uzyskiwany jest za pomocą serwisu,
+	\item komunikacja pomiędzy serwisem, a siecią Blockchain odbywa się z udziałem jednego węzła, który odbiera informacje i rozsyła po całej sieci,
+	\item konsensus w sieci może zostać uzyskany z wykorzystaniem algorytmu Proof of Work lub Proof of Authority.
 \end{itemize}
 
-\section {Wymagania niefunkcjonalne}
-
-Wymagania niefunkcjonalne definiują jakość usług dostarczanych przez system. W systemie e-votingu ważnymi elementami są bezpieczeństwo i czytelność procedury głosowania. Dlatego w celu uściślenia oczekiwań jakościowych systemu sformułowano następujące wymagania niefunkcjonalne:
-
-\begin{itemize}
-	\item Dane logowania użytkownika są zabezpieczone,
-	\item Dane logowania administratora są zabezpieczone,
-	\item Przechowywane głosy są zabezpieczone przed modyfikacją,
-	\item Przejrzyste treści na stronie wyborcy,
-	\item Czytelna i łatwa w obsłudze procedura wyborcza na stronie wyborcy,
-	\item Przejrzyste treści na stronie administratora wyborów,
-	\item Czytelna i łatwa w obsłudze konfiguracja wyborów,
-	\item Aplikacje internetowe wyborcy i administratora działają na najpopularniejszych przeglądarkach internetowych.
-	\item Czas liczenia głosów jest zdeterminowany.
-\end{itemize}
 \newpage
 
 \section{Diagramy przypadków użycia}
@@ -443,40 +444,53 @@ W systemie można wyróżnić dwóch aktorów. W tym podrozdziale zostały przed
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{images/user_use_case.jpg}
-	\caption{Diagram przypadków użycia użytkownika.}
+	\caption{Diagram przypadków użycia wyborcy.}\label{user-use}
 \end {figure}
+
+Pierwszym z wyszczególnionych aktorów jest użytkownik aplikacji, czyli wyborca. Przewidziane akcje dostępne dla wyborcy to zalogowanie, wylogowanie, dostęp do instrukcji głosowania, głosowanie i odbiór wyników wyborów. Rysunek \ref{user-use} przedstawia diagram przypadków użycia dla wyborcy.
+
+Drugim aktorem występującym w systemie jest administrator wyborów. Do zadań administratora należą: 
+
+\begin{itemize}
+	\item tworzenie wyborów - konfiguracja składników wyborów,
+	\item modyfikacja wyborów - nadzorowanie procesu wyborczego,
+	\item dodawanie wyborców do bazy danych - zarządzanie kontami wyborców,
+	\item ogłoszenie wyników wyborów.
+\end{itemize}
+
+Dodatkowo administartor posiada swoje konto w systemie. Aby mógł korzystać z przydzielonych mu zasobów musi się zalogować. Rysunek \ref{admin-use} przedstawia diagram przypadków użycia dla administratora wyborów.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{images/admin_use_case.jpg}
-	\caption{Diagram przypadków użycia administratora.}
+	\caption{Diagram przypadków użycia administratora.}\label{admin-use}
 \end {figure}
 
 \newpage
 \section {Wykorzystane narzędzia i technologie}
 
-System e-votingu jest składa się z wielu modułów, których stworzenie obejmuje różne dziedziny programowania. W systemie są elementy odpowiedzialne za interfejs użytkownika, aplikację serwerową i bazę danych. Każdy z tych rodzajów oprogramowania wymaga innego podejścia. Są to popularne dziedziny programowania, dlatego znalezienie rozwiązań nie stanowi problemu. W tej sekcji przedstawiono wykorzystane narzędzia i technologie, a także ich zastosowania w projekcie.
+System e-votingu jest składa się z wielu modułów, których stworzenie obejmuje różne dziedziny programowania. W systemie są elementy odpowiedzialne za interfejs użytkownika, aplikację serwerową i bazę danych. Każdy z tych rodzajów oprogramowania wymaga innego podejścia. Są to popularne dziedziny programowania, dlatego znalezienie rozwiązań nie stanowi problemu. W tej sekcji przedstawiono wykorzystane narzędzia i technologie.
 
 \subsection{Interfejs użytkownika}
 
-W celu stworzenia rozbudowanego interfejsu użytkownika wykorzystano bibliotekę javascript-ową - ReactJs. React pozwala na tworzenie aplikacji internetowych z wykorzystaniem języków javascript, html i css. Takie podejście do tworzenia aplikacji określane jest jako SPA (Single Page Application), taka aplikacja posiada jeden plik html, którego zawartość jest dynamicznie generowana w trakcie działania aplikacji. Podejście SPA pozwala na zredukowanie liczby zasobów potrzebnych do generowania strony, poprzez wykorzystanie tylko jednego pliku html. Strona typu SPA działa płynnie, ponieważ nie wymaga ona ładowania szablonów z plików html. Ważną cechą ReactJs jest podejście do interfejsu użytkownika, jak do grupy komponentów. Komponent może być dowolnym elementem interfejsu, od paska nawigacji do przycisku. Każdy komponent posiada swój stan, czyli zestaw zmiennych kontrolujących jego funkcjonalności. Takie podejście pozwala na tworzenie uniwersalnych komponentów, które można wykorzystywać w wielu miejscach aplikacji.
+W celu stworzenia rozbudowanego interfejsu użytkownika wykorzystano bibliotekę javascript-ową - ReactJs. React pozwala na tworzenie aplikacji internetowych z wykorzystaniem języków JavaScript, HTML i CSS. Takie podejście do tworzenia aplikacji określane jest jako SPA (Single Page Application), taka aplikacja posiada jeden plik \textit{.html}, którego zawartość jest dynamicznie generowana w trakcie działania aplikacji. Podejście typu SPA pozwala na zredukowanie liczby zasobów potrzebnych do generowania strony, poprzez wykorzystanie tylko jednego pliku \textit{.html}. Strona typu SPA działa płynnie, ponieważ nie wymaga ona ładowania szablonów z plików \textit{.html}. Ważną cechą ReactJs jest podejście do tworzenia interfejsu użytkownika, jak do grupy komponentów. Komponent może być dowolnym elementem interfejsu, od paska nawigacji do przycisku. Każdy komponent posiada swój stan, czyli zestaw zmiennych kontrolujących jego funkcjonalności. Takie podejście pozwala na tworzenie uniwersalnych i konfigurowalnych komponentów, które można wykorzystywać w wielu miejscach aplikacji.
 
-Biblioteka ReactJs to bardzo rozbudowane narzędzie, które dzięki swojej popularności posiada wiele dodatkowych narzędzi współpracujących z całym środowiskiem ReactJs. Przykładem takiego dodatku jest biblioteka Redux, która pozwala na zarządzanie stanem aplikacji. Redux pozwala przenieść stan z komponentu do osobnego kontekstu. Takie rozwiązanie pozwala na umieszczenie tych części stanu aplikacji, które odnoszą się do różnych komponentów w jednym miejscu. Przykładowo stan informujący o zalogowaniu do aplikacji powinien być dostępny dla całej aplikacji. Przeniesienie tego stanu do osobnego kontekstu pozwala na zdefiniowanie go w jednym miejscu i dostarczenie do komponentów, które wymagają tego stanu. W projekcie wykorzystano opartą na Redux, bibliotekę Redux-Toolkit. Głównym argumentem za wykorzystaniem Redux-Toolkit jest mniejsza objętość kodu, która powstaje do uzyskania rozwiązania.
+Biblioteka ReactJs to bardzo rozbudowane narzędzie, które dzięki swojej popularności posiada wiele dodatkowych rozwiązań współpracujących z całym środowiskiem ReactJs. Przykładem takiego dodatku jest biblioteka Redux, która pozwala na zarządzanie stanem aplikacji. Redux pozwala przenieść stan z komponentu do osobnego kontekstu. Takie rozwiązanie pozwala na umieszczenie tych części stanu aplikacji, które odnoszą się do różnych komponentów w jednym miejscu. Stan aplikacji jest dostępny globalnie, a nie tylko dla komponentów potomnych. Przykładowo stan informujący o zalogowaniu do aplikacji powinien być dostępny dla całej aplikacji. Przeniesienie tego stanu do osobnego kontekstu pozwala na zdefiniowanie go w jednym miejscu i dostarczenie do komponentów, które wymagają tego stanu. W projekcie wykorzystano opartą na Redux, bibliotekę Redux-Toolkit. Głównym argumentem za wykorzystaniem Redux-Toolkit jest mniejsza objętość kodu, która powstaje do uzyskania rozwiązania.
 
-Podstawowym narzędziem odpowiedzialnym za wygląd interfejsu aplikacji internetowej są kaskadowe arkusze stylów, czyli popularny CSS (Cascade Style Sheets). Język css jest jedynym językiem odpowiedzialnym za stylowanie wyglądu, który jest rozumiany przez przeglądarkę. Jednakże istnieją rozwiązania, które pozwalają na wprowadzenie nowej składni z zachowaniem kompatybilności z danym środowiskiem uruchomieniowym (w tym przypadku z przeglądarką). Są to tzw. preprocesory. Preprocesor pozwala na przetworzenie kodu źródłowego na określony kod wyjściowy. Przykładem preprocesora języka CSS, który został wykorzystany w projekcie jest Sass. Sass dostarcza funkcjonalności, które nie są dostępne w języku CSS. Przykładowo Sass pozwala na zagnieżdżanie instrukcji, deklarowanie i wywoływanie zmiennych oraz tzw. mixins, które pozwalają na zadeklarowanie powtarzających się fragmentów kodu w jednym miejscu i ich wywoływanie bez konieczności przepisywania kodu. Sass pozwala na lepsze wykorzystanie dobrych praktyk programowania, takich jak nie powtarzanie kodu i ogólna poprawa jakości kodu.
+Podstawowym narzędziem odpowiedzialnym za wygląd interfejsu aplikacji internetowej są kaskadowe arkusze stylów, czyli popularny CSS (Cascade Style Sheets). Język CSS jest jedynym językiem odpowiedzialnym za stylowanie wyglądu, który jest rozumiany przez przeglądarkę. Jednakże istnieją rozwiązania, które pozwalają na wprowadzenie nowej składni z zachowaniem kompatybilności z danym środowiskiem uruchomieniowym (w tym przypadku z przeglądarką). Są to tzw. preprocesory. Preprocesor pozwala na przetworzenie danego kodu źródłowego, na określony kod wyjściowy. Przykładem preprocesora języka CSS, który został wykorzystany w projekcie jest SASS. SASS dostarcza funkcjonalności, które nie są dostępne w języku CSS. Przykładowo SASS pozwala na zagnieżdżanie instrukcji, deklarowanie i wywoływanie zmiennych oraz tzw. \textit{mixins}, które pozwalają na zadeklarowanie powtarzających się fragmentów kodu w jednym miejscu i ich wywoływanie bez konieczności przepisywania kodu. Sass pozwala na lepsze wykorzystanie dobrych praktyk programowania, takich jak uniknięcie powtarzania kodu i ogólna poprawa jakości kodu.
 
-Jak już wspomniano w tej sekcji ReactJs jest popularną biblioteką, co owocuje dużą ilością rozszerzeń i dodatków. Dodatki obejmują również stylowanie aplikacji. W projekcie została wykorzystana biblioteka Material-ui, która dostarcza gotowe zestawy komponentów i narzędzia do ich stylowania. Zaletą tego rozwiązania jest wykorzystywanie komponentów, które stworzono z wykorzystaniem dobrych praktyk tworzenia interfejsu.
+Jak już wspomniano w tej sekcji ReactJs jest popularną biblioteką, co przekłada się na dużą liczbę rozszerzeń i dodatków. Dodatki obejmują również stylowanie aplikacji. W projekcie została wykorzystana biblioteka Material-Ui, która dostarcza gotowe zestawy komponentów i narzędzia do ich stylowania. Zaletą tego rozwiązania jest wykorzystywanie komponentów, które stworzono z wykorzystaniem dobrych praktyk tworzenia interfejsu użytkownika.
 
-Aplikacje internetowe często wymagają komunikacji z zewnętrznym serwer, w celu pobrania lub wysłania odpowiednich zasobów. Takie działanie to przykład architektury klient-serwer. Istnieje wiele rozwiązań, które pozwalają na wysyłanie żądań w standardzie HTTP. W projekcie wykorzystano javascript-ową bibliotekę Axios. Biblioteka dostarcza wszelkich mechanizmów do wysyłania żądań HTTP, a jej wielką zaletą jest łatwość obsługi.
+Aplikacje internetowe często wymagają komunikacji z zewnętrznym serwerem, w celu pobrania lub wysłania odpowiednich zasobów. Istnieje wiele rozwiązań, które pozwalają na wysyłanie żądań w standardzie HTTP. W projekcie wykorzystano javascript-ową bibliotekę Axios. Biblioteka dostarcza wiele mechanizmów do wysyłania żądań HTTP, a jej wielką zaletą jest łatwość obsługi.
 
-Javascript to język programowania, który świetnie sprawdza się w środowisku aplikacji przeglądarkowych. Język umożliwia wieloaspektowe podejście do program. Można pisać programy z podejściem deklaratywnym lub obiektowym. Javascript spełnia najważniejsza standardy, dla nowoczesnych języków programowania, o czym świadczyć może ogromna popularność tego języka. Jednakże niektóre właściwości tego języka mogą utrudniać tworzenie oprogramowania. Przykładem jest typowanie dynamiczne.W Javascript każda zmienna nie ma przypisanego typu na stałe. Takie rozwiązanie ma swoje wady i zalety, jednak programista powinien mieć wybór, kiedy użyć zmiennej typowanej dynamicznie, a kiedy nie. Rozwiązaniem tego problemu jest język Typescript. Typescript jest nadzbiorem javascript co oznacza, że dostarcza on wszystkie funkcje Javascriptu i jednocześnie rozszerza go o nowe. W Typescript można deklarować zmienne z określonym typem, a także używać typu any. Typ any określa zmienne, które mogą być typowane dynamicznie. Język Typescript dostarcza również możliwość definiowania własnych typów. W projekcie, w celu uniknięcia problemów związanych z dynamicznym typowaniem wykorzystano język Typescript.
+JavaScript to język programowania, który świetnie sprawdza się w środowisku aplikacji przeglądarkowych. Język umożliwia wieloaspektowe podejście do programowania. Można pisać programy z podejściem deklaratywnym lub obiektowym. JavaScript spełnia najważniejsza standardy, dla nowoczesnych języków programowania, o czym świadczyć może ogromna popularność tego języka. Jednakże niektóre właściwości tego języka mogą utrudniać tworzenie oprogramowania. Przykładem jest dynamiczne typowanie.W JavaScript każda zmienna nie ma przypisanego typu na stałe. Takie rozwiązanie ma swoje wady i zalety, jednak programista powinien mieć wybór, kiedy użyć zmiennej typowanej dynamicznie, a kiedy nie. Rozwiązaniem tego problemu jest język Typescript. Typescript jest nadzbiorem JavaScript co oznacza, że dostarcza on wszystkie funkcje JavaScript'u i jednocześnie rozszerza go o nowe. W Typescript można deklarować zmienne z określonym typem, a także używać typu \textit{any}. Typ \textit{any} określa zmienne, które mogą być typowane dynamicznie. Język Typescript dostarcza również możliwość definiowania własnych typów. W projekcie, w celu uniknięcia problemów związanych z dynamicznym typowaniem wykorzystano język Typescript.
 
 \subsection{Serwer}
-Za stronę serwerową aplikacji odpowiada silnik NodeJs. NodeJs pozwala na tworzenie aplikacji w Javascript, poza środowiskiem przeglądarkowym. Silnik stanowi również rozbudowane narzędzie pozwalające na tworzenie REST API. Zaletą NodeJs jest ogromna popularność, co jest zauważalne podczas szukania rozwiązań na portalu Stackoverflow. Popularność silnika przekłada się również na jego bogatą dokumentację i dodatkowe biblioteki, które usprawniają elementy tworzenie oprogramowania.
+Za stronę serwerową aplikacji odpowiada silnik NodeJs. NodeJs pozwala na tworzenie aplikacji w JavaScript poza środowiskiem przeglądarkowym. Silnik stanowi również rozbudowane narzędzie pozwalające na tworzenie REST API. Zaletą NodeJs jest ogromna popularność, co jest zauważalne podczas szukania rozwiązań w internecie na napotkane problemy. Popularność silnika przekłada się również na jego bogatą dokumentację i dodatkowe biblioteki, które usprawniają elementy tworzenie oprogramowania.
 
-ExpressJs to biblioteka działająca na silniku NodeJs, która została wykorzystana w projekcie do tworzenia REST API i węzłów sieci Blockchain. ExpressJs dostarcza podstawowe narzędzia do tworzenia REST API, takie jak endpointy (punkty końcowe serwera) pozwalające na obsługiwanie żądań HTTP. Zaletą biblioteki ExpressJs jest kompatybilność z wieloma innymi bibliotekami przeznaczonymi dla silnika NodeJs.
+ExpressJs to biblioteka działająca na silniku NodeJs, która została wykorzystana w projekcie do tworzenia REST API i węzłów sieci Blockchain. ExpressJs dostarcza podstawowe narzędzia do tworzenia REST API, takie jak \textit{endpointy} (punkty końcowe serwera) pozwalające na obsługiwanie żądań HTTP. Zaletą biblioteki ExpressJs jest kompatybilność z wieloma innymi bibliotekami przeznaczonymi dla silnika NodeJs.
 
-Prisma to jedna z bibliotek NodeJs, które są odpowiedzialne za obsługę bazy danych. Prisma dostarcza mechanizm ORM (Object Relational Mapping), czyli możliwość odwzorowania relacyjnej bazy danych, na obiekty. Prisma generuje moduły odpowiedzialne za obsługę bazy danych i dostarcza je programiście. Takie rozwiązanie pozwala na utrzymanie całości aplikacji w jednym języku programowania, ponieważ nie wymaga korzystania z języka SQL, w celu zarządzania bazą danych z poziomu aplikacji. Prisma pozwala oddzielić implementację bazy danych, od innych funkcjonalności aplikacji.
+Prisma to jedna z bibliotek NodeJs, które są odpowiedzialne za obsługę bazy danych. Prisma dostarcza mechanizm ORM (Object Relational Mapping), czyli możliwość odwzorowania relacyjnej bazy danych, na obiekty danego języka programowania. Prisma generuje moduły odpowiedzialne za obsługę bazy danych i dostarcza je programiście. Takie rozwiązanie pozwala na utrzymanie całości aplikacji w jednym języku programowania, ponieważ nie wymaga korzystania z języka SQL. Wszystkie moduły obsługi bazy danych tworzone są automatycznie, dlatego Prisma pozwala oddzielić implementację bazy danych, od innych funkcjonalności aplikacji.
 
 \subsection {Baza danych}
 
@@ -486,10 +500,9 @@ Silnik SQLite można obsługiwać z poziomu konsoli lub za pomocą specjalnej ap
 
 \subsection{Testowanie}
 
-Testowanie strony serwerowej systemu odbywało się przez aplikację Postman, która pozwala na wysyłanie żądań HTTP każdego rodzaju. W aplikacji można skonfigurować żądanie HTTP, tak aby zasymulować odpowiednie scenariusze żądania. Pozwala to przetestować działanie wszystkich funkcjonalności API.
+Testowanie strony serwerowej systemu odbywało się przez aplikację Postman, która pozwala na wysyłanie żądań HTTP. W aplikacji można skonfigurować żądanie HTTP, tak aby zasymulować odpowiednie scenariusze żądania. Pozwala to przetestować działanie wszystkich funkcjonalności API.
 
-Testowanie aplikacji w środowisku lokalnym pozwala odpowiedzieć na pytanie, czy całość komponentów działa w kontrolowanym środowisku. Natomiast przeniesienie aplikacji do sieci pozwala na przetestowanie wydajności aplikacji. W projekcie, w celu udostępnienia aplikacji w internecie wykorzsytano serwisy Netlify oraz Heroku. Netlify pozwala na udostępnienie aplikacji internetowej, pod adresem generowanym przez serwis. Heroku zajmuje się uruchomieniem aplikacji serwerowej, która również dostępna jest w sieci pod odpowiednim adresem.
-
+Testowanie aplikacji w środowisku lokalnym pozwala odpowiedzieć na pytanie, czy całość komponentów działa w kontrolowanym środowisku. Natomiast przeniesienie aplikacji do sieci pozwala na przetestowanie wydajności aplikacji. W projekcie, w celu udostępnienia aplikacji w internecie wykorzystano serwisy Netlify oraz Heroku. Netlify pozwala na udostępnienie aplikacji internetowej, pod adresem generowanym przez serwis. Heroku zajmuje się uruchomieniem aplikacji serwerowej, która również dostępna jest w sieci pod odpowiednim adresem.
 
 \subsection{Metodyka pracy}
 
@@ -541,15 +554,39 @@ Foldery przechowują następujące moduły:
 
 \section{Uruchamianie modułów}
 
-Za pomocą menadżera pakietów NPM uruchamiane są poszczególne moduły systemu. Aby uruchomić dany moduł należy otworzyć katalog z tym modułem, w tym katalogu znajduje się plik \textit{package.json}, który zawiera konfigurację i skrypty uruchamiające program. Programy uruchamia się za pomocą poleceń dostarczanych przez pakiet NPM, które należy wpisać w konsoli. Należy uruchomić konsolę w folderze z plikiem \textit{package.json}.
+Za pomocą menadżera pakietów NPM uruchamiane są poszczególne moduły systemu. Aby uruchomić dany moduł należy otworzyć katalog z tym modułem. W katalogu znajduje się plik \textit{package.json}, który zawiera konfigurację i skrypty uruchamiające program. Programy uruchamia się za pomocą poleceń dostarczanych przez pakiet NPM, które należy wpisać w konsoli. Konsola musi być uruchomiona w folderze z plikiem \textit{package.json}.
 
 Moduły \textit{admin-app} i \textit{voter-app} uruchamiane są za pomocą polecenia \textit{npm-start}. Aplikacja \textit{admin-app} w środowisku lokalnym uruchamiana jest pod adresem \url{http://localhost:4000}, a aplikacja \textit{voter-app} pod adresem \url{http://localhost:3000}.
 
 Podczas uruchamiania aplikacji serwerowych, należy określić port , na którym widoczny będzie określony serwer.
 
-Aplikacja serwerowa \textit{e-voting-api} domyślnie uruchamiana jest na porcie 8080, jednak można to zmienić za pomocą następującego polecenia:
+Aplikacja serwerowa \textit{e-voting-api} jest domyślnie uruchamiana na porcie 8080, jednak można to zmienić za pomocą następującego polecenia:
 
 \textit{\$env:PORT=NUMER\_PORTU; npm start}.
+
+Użycie tego polecenia jest obligatoryjne podczas uruchamiania węzła sieci Blockchain, ponieważ węzeł nie uruchamia się na domyślnym porcie. W celu uruchomienia węzła należy wybrać dowolny nieużywany port komputera.
+
+\section{Aplikacja administratora}
+
+\subsection{Logowanie}
+
+\subsection{Konfiguracja sieci Blockchain}
+
+\subsection{Konfiguracja wyborów}
+
+\subsection{Nadzorowanie wyborów}
+
+\subsection{Ogłaszanie wyników}
+
+\section{Aplikacja użytkownika}
+
+\subsection{Logowanie}
+
+\subsection{Instrukcja obsługi}
+
+\subsection{Głosowanie}
+
+\subsection{Wyniki}
 
 %%%%%%%%%%%%%%%%%%% Specyfikacja wewnętrzna %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -558,7 +595,7 @@ Aplikacja serwerowa \textit{e-voting-api} domyślnie uruchamiana jest na porcie 
 W tym rozdziale umieszczono wszystkie informacje dotyczące architektury systemu, wykorzystanych struktur danych, algorytmów i wykorzystania wzorców projektowych.
 
 \section{Architektura systemu}
-Podrozdział architektura systemu zawiera przegląd komponentów systemu i pozwala nakreślić idee projektu. Podrozdział podzielono na dwie częsci. Pierwsza dotyczy całego systemu, natmioast druga opisuje charakterystykę sieci Blockchain. Sieć Blockchain jest najbardziej skomplikowanym komponentem systemu, dlatego wymaga osobnego wyjaśnienia. 
+Podrozdział architektura systemu zawiera przegląd komponentów systemu i pozwala nakreślić idee projektu. Podrozdział podzielono na dwie częsci. Pierwsza część dotyczy całego systemu, natomiast druga opisuje charakterystykę sieci Blockchain.
 
 \subsection{Architektura pełnego systemu}
 
