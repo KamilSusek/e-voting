@@ -566,11 +566,69 @@ Aplikacja serwerowa \textit{e-voting-api} jest domyślnie uruchamiana na porcie 
 
 Użycie tego polecenia jest obligatoryjne podczas uruchamiania węzła sieci Blockchain, ponieważ węzeł nie uruchamia się na domyślnym porcie. W celu uruchomienia węzła należy wybrać dowolny nieużywany port komputera.
 
+\newpage
+
 \section{Aplikacja administratora}
+
+Aplikacja administratora jest najbardziej rozbudowanym elementem systemu. W tym podrozdziale przedstawiono dostępne scenariusze obsługi tej aplikacji.
 
 \subsection{Logowanie}
 
+Wszystkie funkcjonalności administratora dostępne są po zalogowaniu. Dlatego na stronie administratora pierwszym dostępnym widokiem jest formularz logowania (rys. \ref{adminlogin}).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/adminlogin.png}
+	\caption{Formularz logowania administratora.}\label{adminlogin}
+\end {figure}
+
+Po zalogowaniu ukazuje się strona administratora. Nawigacja po stronie administratora odbywa się za pomocą górnego paska nawigacji (rys. \ref{adminnav}). Z paska nawigacji można przejść do listy wyborców (\textit{Voters}), listy wyborów (\textit{Elections}) i panelu konfiguracji sieci Blockchain (\textit{Servers}). Na pasku nawigacji znajduje się również przycisk służący do wylogwania administratora z aplikacji (\textit{Logout}).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/adminnav.png}
+	\caption{Pasek nawigacji administratora.}\label{adminnav}
+\end {figure}
+
+\newpage
+
+\subsection{Lista wyborców}
+
+Lista wyborców dostarcza informacje o wyborcach utworzonych w systemie. Cały widok przedstawia rysunek \ref{voterslist}. Przycisk \textit{Create Voter} pozwala na dodanie nowego wyborcy do systemu. Po kliknięciu tego przycisku pojawia się okno \ref{addvoter}, które zawiera formularz dodawania nowego wyborcy. Do formularza należy wpisać dane nowego wyborcy.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/voterslist.png}
+	\caption{Lista wyborców.}\label{voterslist}
+\end {figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/addvoter.png}
+	\caption{Okno dodawania wyborcy.}\label{addvoter}
+\end {figure}
+
+\newpage
+
 \subsection{Konfiguracja sieci Blockchain}
+
+Administrator posiada interfejs pozwalający na tworzenie sieci Blockchain. Węzły Blockchain to oprogramowanie działające na pojedynczym serwerze. Za pomocą konfiguratora administrator systemu może podłączyć się do danego węzła i powiązać z nim inne serwery. Interfejs jest dostępny po kliknięciu na pasku nawigacji opcji \textit{Servers}. Rysunek \ref{findnode} przedstawia wyszukiwarkę węzłów Blockchain. W pole \textit{Server url} należy wpisać adres serwera, na którym pracuje węzeł sieci Blockchain.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/findnode.png}
+	\caption{Wyszukiwarka węzłów.}\label{findnode}
+\end {figure}
+
+Pomyślne połączenie sygnalizowane jest zmianą koloru przycisku \textit{check}, tak jak na rysunku \ref{nodeconfig}. Na rysunku widać również zakładkę \textit{Peers}, która wyświetla wszystkie połączone węzły. Po podłączeniu do węzła administrator uzyskuje dostęp, do możliwości połączenia ze sobą dwoćh węzłów. Do tego służy pole z etykietą \textit{Server url} znajdujące się pod zakładką \textit{Peers}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/ndoeconfig.png}
+	\caption{Konfiguracja podłączonego węzła.}\label{nodeconfig}
+\end {figure}
+
+W taki sposób można łączyć węzły i tworzyć sieci Blockchain. Bardzo ważne jest, aby każdy węzeł był połączony z węzłem głównym, który komunikuje się z API systemu.
 
 \subsection{Konfiguracja wyborów}
 
@@ -580,9 +638,49 @@ Użycie tego polecenia jest obligatoryjne podczas uruchamiania węzła sieci Blo
 
 \section{Aplikacja użytkownika}
 
+Aplikacja użytkownika dostarcza interfejs pozwalający na wysłanie głosu i poznania wyników wyborów. Ten podrozdział przedstawia scenariusze obsługi aplkacji wyborcy.
+
 \subsection{Logowanie}
 
+Dostęp do zasobów wyborcy wymaga zalogowania. W celu zalogowania się należ kliknąć przycisk \textit{login}, który znajduję w prawym górnym rogu, na pasku nawigacji (rysunek \ref{navlogin}).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/navlogin.png}
+	\caption{Pasek nawigacji.}\label{navlogin}
+\end {figure}
+
+Po kliknięciu przycisku \textit{login} na ekranie pojawaia się okno, które wymaga podania loginu i hasła wyborcy. Okno przedstawiono na rysunku \ref{userlogin}. Jeżeli dane logowania są poprawne, to następuje przeniesienie do strony wyborcy (rys. \ref{manual}).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/userlogin.png}
+	\caption{Okno logowania.}\label{userlogin}
+\end {figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/errorlogin.png}
+	\caption{Obsługa błędnych danych logowania.}\label{wronglogin}
+\end {figure}
+
+Jeżeli użytkownik poda błędne dane logowania, to zostanie o tym poinformowany poprzez wyświetlenie stosownego komunikatu w oknie logowania (rys. \ref{wronglogin}). 
+
+\newpage
+
+Wylogowanie wymaga kliknięcia przycisku \textit{Logout} w prawym górnym rogu strony wyborcy (rys. \ref{manual}).
+
 \subsection{Instrukcja obsługi}
+
+Instrukcja obsługi, to krótki opis wykonywania danych akcji na stronie użytkownika. Można do niej przejść klikając \textit{help} na pasku nawigacji (rys. \ref{manual}). Informacje zawarte w instrukcji dotyczą: wyboru głosowania, procesu głosowania i wyników wyborów.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/manual.png}
+	\caption{Strona wyborcy. Instrukcja obsługi.}\label{manual}
+\end {figure}
+
+\newpage
 
 \subsection{Głosowanie}
 
@@ -594,7 +692,7 @@ Użycie tego polecenia jest obligatoryjne podczas uruchamiania węzła sieci Blo
 
 W tym rozdziale umieszczono wszystkie informacje dotyczące architektury systemu, wykorzystanych struktur danych, algorytmów i wykorzystania wzorców projektowych.
 
-\section{Architektura systemu}
+\section{Architektura systemu}\label={architektura}
 Podrozdział architektura systemu zawiera przegląd komponentów systemu i pozwala nakreślić idee projektu. Podrozdział podzielono na dwie częsci. Pierwsza część dotyczy całego systemu, natomiast druga opisuje charakterystykę sieci Blockchain.
 
 \subsection{Architektura pełnego systemu}
@@ -608,12 +706,12 @@ System składa się z pięciu głównych komponentów:
 	\item Sieć Blockchain - odpowiada za przechowywanie głosów i udostępnianie ich na życzenie administratora. Blockchain pełni również funkcje zabezpieczenia głosów.
 \end {itemize}
 
-Komponenty są przedstawione na rysunku 5.1.
+Komponenty są przedstawione na rysunku \ref{komponenty}.
 
 \begin{figure}[h]
     	\centering
 	\includegraphics[width=\textwidth]{images/modules.png}
-	\caption{Schemat przedstawiający komponenty systemu.}
+	\caption{Schemat przedstawiający komponenty systemu.}\label{komponenty}
 \end {figure}
 
 Taki podział systemu umożliwia wykorzystanie sieci Blockchain. Proces przeprowadzania wyborów jest zcentralizowany, a sieć Blockchain, która odpowiada za zapisanie wyników wyborów jest rozproszona.
@@ -626,13 +724,11 @@ Sieć Blockchain to grupa serwerów, które wymieniają się informacjami. Komun
 
 W systemie można wyróżnić dwie struktury danych, które w znaczny sposób wpływają na zachowanie systemu. W tym podrozdziale omówiono implementację i zastoswania tych struktur danych.
 
-\newpage
-
 \subsection{Łańcuch bloków}
 
-Za dostarczenie odpowiedniej struktury łańcucha bloków odpowiedzialne są klasy Block i ChainRepository. Listing 5.1 przedstawia klasę Block, która jest reprezentacją pojedynczego bloku. Każdy blok jest odpowiedzialny za przechowywanie głosu wyborczego. Głos jest przechowywany w polu data. Pole timestamp przechowuje datę utworzenia bloku w łańcuchu. W łańcuchu bloków, każdy blok posiada odniesienie do hasza poprzedniego bloku, w tej implementacji zajmuje się tym pole prevHash. Klasa Block posiada również pole nonce, którego zastosowanie zostało omówione w rozdziale dotyczącym algorytmów (5.3.1 Proof of Work).
+Za dostarczenie odpowiedniej struktury łańcucha bloków odpowiedzialne są klasy \textit{Block} i \textit{ChainRepository}. Listing \ref{Block.ts} przedstawia klasę \textit{Block}, która jest reprezentacją pojedynczego bloku. Każdy blok jest odpowiedzialny za przechowywanie głosu wyborczego. Głos jest przechowywany w polu data. Pole \textit{timestamp} przechowuje datę utworzenia bloku w łańcuchu. W łańcuchu bloków, każdy blok posiada odniesienie do hasza poprzedniego bloku, w tej implementacji zajmuje się tym pole \textit{prevHash}. Klasa \textit{Block} posiada również pole \textit{nonce}, którego zastosowanie zostało omówione w rozdziale dotyczącym algorytmów (rozdział 6.3).
 
-\begin{lstlisting}[style=ES6, caption={Klasa Block.}]
+\begin{lstlisting}[style=ES6, caption={Klasa Block.},label={Block.ts}]
 class Block {
   index: number
   timestamp: string
@@ -654,9 +750,9 @@ class Block {
 }
 \end{lstlisting}
 
-Klasa ChainRepository (przedstawiona w listingu 5.2) odpowiada za przechowywanie łańcucha bloków i jego udostępnianie. Aby zapewnić spójność danych, ułatwienie dostępu i ograniczenie zużycia pamięci, w programie istnieje tylko jedna instancja tej klasy. W tym celu wykorzystano wzorzec projektowy Singleton. Z punktu widzenia łańcucha bloków istotne jest pole chain, które w tablicy przechowuje bloki. Klasa udostępnia metodę addBlock, która pozwala na dodawanie nowego bloku na początek tablicy, zgodnie z regułą tworzenia łańcucha bloków. Dodatkowo klasa posiada prywatną metodę \textit{createGenesisBlock}, która tworzy pierwszy blok łańcucha, którego zawartość nie przechowuje istotnych danych. Metoda wywoływana jest podczas tworzenia instancji ChainRepository.
+Klasa \textit{ChainRepository} (przedstawiona w listingu \ref{ChainRepository.ts}) odpowiada za przechowywanie łańcucha bloków i jego udostępnianie. Aby zapewnić spójność danych, ułatwienie dostępu i ograniczenie zużycia pamięci, w programie istnieje tylko jedna instancja tej klasy. W tym celu wykorzystano wzorzec projektowy Singleton. Z punktu widzenia łańcucha bloków istotne jest pole\textit{chain}, które w tablicy przechowuje bloki. Klasa udostępnia metodę \textit{addBlock}, która pozwala na dodawanie nowego bloku na początek tablicy, zgodnie z regułą tworzenia łańcucha bloków. Dodatkowo klasa posiada prywatną metodę \textit{createGenesisBlock}, która tworzy pierwszy blok łańcucha, którego zawartość nie przechowuje istotnych danych. Metoda wywoływana jest podczas tworzenia instancji \textit{ChainRepository}.
 
-\begin{lstlisting}[style=ES6, caption={Klasa ChainRepository.}]
+\begin{lstlisting}[style=ES6, caption={Klasa ChainRepository.}, label={ChainRepository.ts}]
 class ChainRepository {
   public static instance: ChainRepository
   private chain: Block[]
@@ -687,9 +783,9 @@ class ChainRepository {
 }
 \end{lstlisting}
 
-Za zapewnienie poprawnego utworzenia nowego bloku odpowiedzialna jest metoda \textit{createNewBlock} (Listing 5.3), która należy do klasy Blockchain. Metoda przyjmuje następujące paramtry: \textit{nonce}, \textit{prevBlock} i \textit{data}. Z parametru \textit{prevBlock} wyliczany jest hash, za pomocą metody \textit{getHash}. Jest to hash poprzedniego bloku, który przypisywany jest do pola prevHash tworzonego bloku.
+Za zapewnienie poprawnego utworzenia nowego bloku odpowiedzialna jest metoda \textit{createNewBlock} (listing \ref{Blockchain1.ts}), która należy do klasy \textit{Blockchain}. Metoda przyjmuje następujące parametry: \textit{nonce}, \textit{prevBlock} i \textit{data}. Z parametru \textit{prevBlock} wyliczany jest hash, za pomocą metody \textit{getHash}. Jest to hasz poprzedniego bloku, który przypisywany jest do pola \textit{prevHash} tworzonego bloku.
 
-\begin{lstlisting}[style=ES6, caption={Fragment klasy Blockchain.}]
+\begin{lstlisting}[style=ES6, caption={Fragment klasy Blockchain.},label={Blockchain1.ts}]
 abstract class Blockchain {
   protected blockchain: ChainRepository
 
@@ -715,21 +811,22 @@ abstract class Blockchain {
 }
 \end{lstlisting}
 
-Tak skonstruowany blok jest gotowy do dodania do łańcucha. Dodawanie bloku jest realizowane za pomocą metody \textit{addBlock}, z klasy \textit{ChainRepository}.
+Tak skonstruowany blok jest gotowy do dodania do łańcucha. Dodawanie bloku jest realizowane za pomocą metody \textit{addBlock}, klasy \textit{ChainRepository}.
 
-\subsection{Baza danych}
+\subsection{Baza danych}\label={bazadanych}
 
-W projekcie wykorzystano relacyjną bazę danych. Taka struktura danych pozwala na uporządkowanie danych w relacje pomiędzy tabelami. Rysunek 5.2 przedstawia schemat relacyjnego modelu wykorzystanej bazy danych.
+W projekcie wykorzystano relacyjną bazę danych. Taka struktura danych pozwala na uporządkowanie danych w relacje pomiędzy tabelami. Rysunek \ref{database} przedstawia schemat relacyjnego modelu wykorzystanej bazy danych.
 
 \begin{figure}[h]
     	\centering
 	\includegraphics[width=\textwidth]{images/Relational.png}
-	\caption{Schemat przedstawiający relacyjny schemat bazy danych.}
+	\caption{Schemat przedstawiający relacyjny schemat bazy danych.}\label{database}
 \end {figure}
 
 Utworzona baza danych dzieli się na część odpowiadającą za przeprowadzenie wyborów oraz bank haseł i ról użytkowników. Tabele \textit{ADMIN} i \textit{VOTER} odpowiadają aktorom systemu. Na podstawie tych tabel można dokonać autoryzacji użytkownika systemu i przydzielić mu odpowiednią rolę, która zapewnia dostęp do zasobów. Dodatkowo tabela \textit{VOTER} jest połączona relacją wiele do wielu z tabelą \textit{ELECTION}. W wyniku realcji wiele do wielu powstała tabela łącznikowa \textit{VOTER\_ELECTION}, która pozwala podzielić relację wiele do wielu, na dwie relacje jeden do wielu. Tabela \textit{VOTER\_ELECTION} pozwala na przypisanie odpowiedniego wyborcy do odpowiednich wyborów. Dodatkowo tabela przechowuje informację o oddaniu głosu przez wyborcę, w polu \textit{DID\_VOTE}.
 
 Pozostała część tabel odpowiada za przechowywanie danych dotyczących bezpośrednio wyborów. Zadaniem tabeli \textit{ELECTION} jest składowanie danych dotyczących konfiguracji wyborów. 
+
 Konfiguracji mogą podlegać:
 \begin{itemize}
 	\item \textit{ELECTION\_NAME} - tytuł wyborów,
@@ -743,15 +840,16 @@ Konfiguracji mogą podlegać:
 Dodatkowo w tabeli znajduje się również pole \textit{IS\_PUBLISHED} typu \textit{Boolean}, które odpowiada za oznaczenie stanu wyborów jako opublikowane lub nieopublikowane. System wykorzystuje tę informację do zakończenia wyborów i udostępnienia ich wyników.
 
 Tabela \textit{CANDIDATE} reprezentuje kandydata, którego dane i opis definiują pola \textit{CANDIDATE\_NAME} i \textit{CANDIDATE\_DESCRIPTION}. Tabela posiada również pole \textit{VOTES}, które po zakończeniu wyborów uzupełniane jest o liczbę zdobytych głosów, przez danego kandydata.
+
 \section{Algorytmy}
 
-W podrozdziale algorytmy opisano implementacje algorytmów utrzymania konsensusu w sieci Blockchain. Węzeł sieci Blockchain może pracować w dwóch algorytmach konsensu: Proof of Work lub Proof of Authority. Każdy węzeł sieci Blockchain pozwala na wybranie algorytmu konsensusu, w którym będzie pracował. Algorytmy różnią się sposobem dodawania nowego bloku i synchronizacją sieci. Wybór algorytmu jest możliwy poprzez wykorzystanie wzorca projektowego strategia. Implementacja została opisana w rozdziale 5.4.
+W podrozdziale algorytmy opisano implementacje algorytmów utrzymania konsensusu w sieci Blockchain. Węzeł sieci Blockchain może pracować w dwóch algorytmach konsensu: Proof of Work lub Proof of Authority. Każdy węzeł sieci Blockchain pozwala na wybranie algorytmu konsensusu, w którym będzie pracował. Algorytmy różnią się sposobem dodawania nowego bloku i synchronizacją sieci. Wybór algorytmu jest możliwy poprzez wykorzystanie wzorca projektowego strategia. Implementacja została opisana w rozdziale 6.4.
 
 \subsection{Proof of Work}
 
-Dodawanie nowego bloku w algorytmie Proof of Work poprzedzone jest rozwiązaniem zagadki matematycznej. W listingu 5.4 przedstawiono metodę \textit{validateNonce}, która zajmuje się weryfikacją rozwiązania zagadki.
+Dodawanie nowego bloku w algorytmie Proof of Work poprzedzone jest rozwiązaniem zagadki matematycznej. W listingu \ref{validateNonce} przedstawiono metodę \textit{validateNonce}, która zajmuje się weryfikacją rozwiązania zagadki.
 
-\begin{lstlisting}[style=ES6, caption={Metoda \textit{validateNonce}.}]
+\begin{lstlisting}[style=ES6, caption={Metoda \textit{validateNonce}.}, label={validateNonce}]
 private validateNonce (
     lastNonce: number,
     nonce: number,
@@ -767,9 +865,9 @@ private validateNonce (
 
 Rozwiązaniem zagadki matematycznej jest znalezienie odpowiedniej liczby (\textit{nonce}), która po dołączeniu do określonego stałego ciągu znaków i zahashowaniu go, daje ciąg zer na początku. W przypadku tej implementacji są to trzy zera.
 
-Metoda \textit{solveNonce} (listing 5.5) zajmuje się znalezieniem liczby \textit{nonce}. W pętli wywołana jest metoda \textit{validateNonce}, do momentu rozwiązania zagadki. Wraz z każdą iteracją pętli wykonywana jest inkrementacja zmiennej \textit{nonce}.
+Metoda \textit{solveNonce} (listing \ref{solveNonce}) zajmuje się znalezieniem liczby \textit{nonce}. W pętli wywołana jest metoda \textit{validateNonce}, do momentu rozwiązania zagadki. Wraz z każdą iteracją pętli wykonywana jest inkrementacja zmiennej \textit{nonce}.
 
-\begin{lstlisting}[style=ES6, caption={Metoda \textit{solveNonce}.}]
+\begin{lstlisting}[style=ES6, caption={Metoda \textit{solveNonce}.}, label={solveNonce}]
 private solveNonce (lastNonce: number, prevHash: string) {
     let nonce = 0
 
@@ -780,9 +878,9 @@ private solveNonce (lastNonce: number, prevHash: string) {
   }
 \end{lstlisting}
 
-Dodawanie nowego bloku jest przeprowadzane w metodzie \textit{mine}. Metodę przedstawiono w listingu 5.6.
+Dodawanie nowego bloku jest przeprowadzane w metodzie \textit{mine}. Metodę przedstawiono w listingu \ref{mine}.
 
-\begin{lstlisting}[style=ES6, caption={Dodawanie nowego bloku. Metoda \textit{mine}.}]
+\begin{lstlisting}[style=ES6, caption={Dodawanie nowego bloku. Metoda \textit{mine}.},label={mine}]
   public mine (data: any) {
     const blockchain = this.blockchain.getChain()
     const lastBlock = blockchain[blockchain.length - 1]
@@ -796,9 +894,9 @@ Dodawanie nowego bloku jest przeprowadzane w metodzie \textit{mine}. Metodę prz
 
 Przed wywołaniem metody \textit{createNewBlock} wywoływana jest metoda \textit{solveNonce}, która rozwiązuje zagadkę matematyczną. Następnie zwracany jest wynik zagadki i tworzony jest nowy blok. Nowy blok jest dodawany do łańcucha.
 
-Synchronizacja łańcucha odbywa się poprzez porównanie jego długości z innym łańcuchem. Listing 5.7 przedstawia metodę \textit{synchronize}, która przyjmuje jako argument długość porównywanego łańcucha znaków. Następnie porównuje ją z łańcuchem bloków węzła.
+Synchronizacja łańcucha odbywa się poprzez porównanie jego długości z innym łańcuchem. Listing \ref{synchronize} przedstawia metodę \textit{synchronize}, która przyjmuje jako argument długość porównywanego łańcucha znaków. Następnie porównuje ją z łańcuchem bloków węzła.
 
-\begin{lstlisting}[style=ES6, caption={Metoda \textit{synchronize}.}]
+\begin{lstlisting}[style=ES6, caption={Metoda \textit{synchronize}.},label={synchronize}]
   public synchronize (syncValue: number): boolean {
     if (this.blockchain.getChain().length < syncValue) {
       return true
@@ -812,9 +910,9 @@ Jeżeli metoda \textit{synchronize} zwróci prawdę, to obecny łańcuch jest po
 
 \subsection{Proof of Authority}
 
-Algorytm Proof of Authority pozwala zwiększyć przepustowość sieci Blockchain w porównaniu z algorytmem Proof of Work. Ten algorytm nie wymaga rozwiązywania żadnej zagadki logicznej, dlatego dodawanie nowego bloku sprowadza się tylko do umieszczenia nowego bloku na końcu tablicy. Proces dodawania nowego bloku przedstawia listing 5.8. Klasa odpowiedzialna za algorytm Proof of Authority posiada dodatkowe pole - \textit{authorityFactor}. Jest to współczynnik określający zaufanie danego węzła w sieci. Im wyższy współczynnik, tym wyższe zaufanie. Zaufanie jest zwiekszane, wraz z dodawaniem nowych bloków.
+Algorytm Proof of Authority pozwala zwiększyć przepustowość sieci Blockchain w porównaniu z algorytmem Proof of Work. Ten algorytm nie wymaga rozwiązywania żadnej zagadki logicznej, dlatego dodawanie nowego bloku sprowadza się tylko do umieszczenia nowego bloku na końcu tablicy. Proces dodawania nowego bloku przedstawia listing \ref{PoABlock}. Klasa odpowiedzialna za algorytm Proof of Authority posiada dodatkowe pole - \textit{authorityFactor}. Jest to współczynnik określający zaufanie danego węzła w sieci. Im wyższy współczynnik, tym wyższe zaufanie. Zaufanie jest zwiekszane, wraz z dodawaniem nowych bloków.
 
-\begin{lstlisting}[style=ES6, caption={Dodawanie nowego bloku w algorytmie Proof of Authority.}]
+\begin{lstlisting}[style=ES6, caption={Dodawanie nowego bloku w algorytmie Proof of Authority.}, label={PoABlock}]
 private authorityFactor: number
 
 public mine (data: any) {
@@ -826,9 +924,9 @@ public mine (data: any) {
   }
 \end{lstlisting}
 
-W przypadku algorytmu Proof of Authority synchronizacja łańcucha dokonywana jest poprzez porównanie wartości \textit{authorityFactor} dwóch węzłów. Listing 5.9 przedstawia ten proces.
+W przypadku algorytmu Proof of Authority synchronizacja łańcucha dokonywana jest poprzez porównanie wartości \textit{authorityFactor} dwóch węzłów. Listing \ref{PoASync} przedstawia ten proces.
 
-\begin{lstlisting}[style=ES6, caption={Synchronizacja w algorytmi Proof of Authority.}]
+\begin{lstlisting}[style=ES6, caption={Synchronizacja w algorytmi Proof of Authority.}, label={PoASync}]
 public synchronize (auth: number) {
     if (this.authorityFactor < auth) {
       return true
@@ -844,9 +942,9 @@ Podmiana węzłów odbywa się analogicznie, jak dla algorytmu Proof of Work.
 W projekcie zastoswano kilka wzorców projektowych dotyczących zarówno programowania obiektowego, jak i podejścia funkcyjnego towarzyszącego ReactJs. W tym rozdziale przedstawiono przykłady implementacji tych wzorców w projekcie.
 
 \subsection{Singleton}
-Najczęściej wykorzystywany wzorzec projektowy w aplikacjach serwerowych. Jego zastosowaniem było bezpośrednie przechowywanie danych lub utrzymywanie połączenia i dostępu do bazy danych. W Listingu 5.10 przedstawiono klasę \textit{Database}, która jest singletonem. Klasa zajmuje się udostępnianiem połączenia z bazą danych, za pośrednictwem \textit{PrismaClient}. Prywatny konstruktor otwiera połączenie z bazą danych tylko raz, a statyczna metoda \textit{getInstance} zwraca instację klasy \textit{Database}. Publiczna metoda \textit{getDatabase} zwraca obiekt \textit{PrismaClient}, który umożliwia dostęp do bazy danych.
+Najczęściej wykorzystywany wzorzec projektowy w aplikacjach serwerowych. Jego zastosowaniem było bezpośrednie przechowywanie danych lub utrzymywanie połączenia i dostępu do bazy danych. W Listingu \ref{singleton} przedstawiono klasę \textit{Database}, która jest singletonem. Klasa zajmuje się udostępnianiem połączenia z bazą danych, za pośrednictwem \textit{PrismaClient}. Prywatny konstruktor otwiera połączenie z bazą danych tylko raz, a statyczna metoda \textit{getInstance} zwraca instację klasy \textit{Database}. Publiczna metoda \textit{getDatabase} zwraca obiekt \textit{PrismaClient}, który umożliwia dostęp do bazy danych.
 
-\begin{lstlisting}[style=ES6, caption={Klasa \textit{Database}. Singleton.}]
+\begin{lstlisting}[style=ES6, caption={Klasa \textit{Database}. Singleton.}, label={singleton}]
 class Database {
   private static instance: Database;
   private db: PrismaClient;
@@ -871,9 +969,9 @@ class Database {
 
 \subsection{Repozytorium}
 
-Repozytorium pozwala na udzielenie dostępu do danych warstwom biznesowym aplikacji. Repozytorium posiada wszelkie metody wyszukujące i zwracające żądane obiekty lub kolekcje obiektów. Listing 5.11 przedstawia klasę \textit{CandidateRepository}. Jest to jedno z wielu repozytoriów, które dostarcza podstawowe metody służące do wyszukiwania i zapisywania danych. Klasa posiada pole \textit{db}, które zawiera obiekt udzielający dostępu do bazy danych.
+Repozytorium pozwala na udzielenie dostępu do danych warstwom biznesowym aplikacji. Repozytorium posiada wszelkie metody wyszukujące i zwracające żądane obiekty lub kolekcje obiektów. Listing \ref{repo} przedstawia klasę \textit{CandidateRepository}. Jest to jedno z wielu repozytoriów, które dostarcza podstawowe metody służące do wyszukiwania i zapisywania danych. Klasa posiada pole \textit{db}, które zawiera obiekt udzielający dostępu do bazy danych.
 
-\begin{lstlisting}[style=ES6, caption={Klasa \textit{CandidateRepository}.}]
+\begin{lstlisting}[style=ES6, caption={Klasa \textit{CandidateRepository}.}, label={repo}]
 class CandidateRepository {
   private db: PrismaClient
 
@@ -901,10 +999,10 @@ W projekcie repozytoria mają za zadanie dostarczać obiekty z bazy danych w kla
 
 \subsection{Strategia}
 
-Aplikacja serwerowa węzła sieci Blockchain pozwala na wybór jednego z dwóch algorytmów konsensusu. Algorytmy zajmują się rozwiązaniem tego samego problemu, dlatego można je dowolnie podstawiać. Wzorzec projektowy strategia pozwala na dokonanie takiego podstawienia, bez konieczności zmiany struktury programu. Listing 5.12 przedstawia klase bazową \textit{Blockchain}.
+Aplikacja serwerowa węzła sieci Blockchain pozwala na wybór jednego z dwóch algorytmów konsensusu. Algorytmy zajmują się rozwiązaniem tego samego problemu, dlatego można je dowolnie podstawiać. Wzorzec projektowy strategia pozwala na dokonanie takiego podstawienia, bez konieczności zmiany struktury programu. Listing \ref{abstractBlockchain} przedstawia klase bazową \textit{Blockchain}.
 Jest to klasa abstrakcyjna, ponieważ posiada implementację metod uniwersalnych dla każdego algorytmu. Metody \textit{mine}, \textit{getSyncValue} i \textit{synchronize} są abstrakcyjne.
 
-\begin{lstlisting}[style=ES6, caption={Klasa \textit{Blockchain}.}]
+\begin{lstlisting}[style=ES6, caption={Klasa \textit{Blockchain}.}, label={abstractBlockchain}]
 abstract class Blockchain {
   protected blockchain: ChainRepository
 
@@ -945,14 +1043,14 @@ data: any): Block {
 }
 \end{lstlisting}
 
-Implementacja metod zależy od wykorzystywanego algorytmu. Implementacje znajduja się w klasach \textit{PoWAlgorithm} i \textit{PoAAlogorithm}. Klasy rozszerzają klasę Blockchain.
-Szczegołowa implementacja metod abstrakcyjnych została omówiona w podrozdziale 5.3. Wykorzystanie mechanizmu dziedziczenia pozwala na podstawienie w miejsce klasy Blockchain dowolną klasę potomną, która posiada zdefiniowaną implementację metod odpowiedzialnych za realizacje algorytmu.
+Implementacja metod zależy od wykorzystywanego algorytmu. Implementacje znajduja się w klasach \textit{PoWAlgorithm} i \textit{PoAAlogorithm}. Klasy rozszerzają klasę \textit{Blockchain}.
+Szczegołowa implementacja metod abstrakcyjnych została omówiona w podrozdziale \ref{algorytmy}. Wykorzystanie mechanizmu dziedziczenia pozwala na podstawienie w miejsce klasy \textit{Blockchain} dowolną klasę potomną, która posiada zdefiniowaną implementację metod odpowiedzialnych za realizacje algorytmu.
 
 \subsection{Redux}
 
-Redux to specjalna architektura wykorzystywana w aplikacjach ReactJs. W projekcie wykorzystano bibliotekę Redux'a, o nazwie Redux-Toolkit, która upraszcza niektóre elementy Reduxa. Architektura pozwala na przeniesienie stanu aplikacji do jednego magazynu, który jest dostępny globalnie. Listingi 5.13 i  5.14 przedstawiają jeden z wycinków magazynu. Wycinek (ang. slice) to oznaczony odpowednim identyfikatorem fragment magazynu. Każdy wycinek przechowuje określony stan (listing 5.13).
+Redux to specjalna architektura wykorzystywana w aplikacjach ReactJs. W projekcie wykorzystano bibliotekę Redux'a, o nazwie Redux-Toolkit, która upraszcza niektóre elementy Reduxa. Architektura pozwala na przeniesienie stanu aplikacji do jednego magazynu, który jest dostępny globalnie. Listingi \ref{slice} i  \ref{createSlice} przedstawiają jeden z wycinków magazynu. Wycinek (ang. slice) to oznaczony odpowednim identyfikatorem fragment magazynu. Każdy wycinek przechowuje określony stan (listing \ref{slice}).
 
-\begin{lstlisting}[style=ES6, caption={Stan początkowy wycinka \textit{electionsSlice}.}]
+\begin{lstlisting}[style=ES6, caption={Stan początkowy wycinka \textit{electionsSlice}.}, label={slice}]
 const initialState = {
   electionsList: [],
   candidatesList: [],
@@ -964,9 +1062,9 @@ const initialState = {
 }
 \end{lstlisting}
 
-Wycinek posiada zestaw metod, które pozwalają na modyfikowanie stanu wycinka. W kodzie są to metody obiektu \textit{reducers}, przedstawione w listingu 5.14.
+Wycinek posiada zestaw metod, które pozwalają na modyfikowanie stanu wycinka. W kodzie są to metody obiektu \textit{reducers}, przedstawione w listingu \ref{createSlice}.
 
-\begin{lstlisting}[style=ES6, caption={Wycinek \textit{electionsSlice}.}]
+\begin{lstlisting}[style=ES6, caption={Wycinek \textit{electionsSlice}.}, label={createSlice}]
 const electionsSlice = createSlice({
   name: 'elections',
   initialState,
@@ -1002,9 +1100,9 @@ const electionsSlice = createSlice({
 })
 \end{lstlisting}
 
-Tak stworzony kontener ułatwia zarządzanie stanem aplikacji, ponieważ pozwala na odseparowanie implementacji stanu, od kodu odpowiedzialnego za użycie stanu. Architektura Redux posiada również specjalny mechanizm do wykonywania zadań asynchronicznych, takich jak np. pobranie danych z API. Takie zadania nazywane są Thunk'ami. Listing 5.15 przedstawia Thunk'a, który pobiera listę wyborów dostępnych dla określonego użytkownika.
+Tak stworzony kontener ułatwia zarządzanie stanem aplikacji, ponieważ pozwala na odseparowanie implementacji stanu, od kodu odpowiedzialnego za użycie stanu. Architektura Redux posiada również specjalny mechanizm do wykonywania zadań asynchronicznych, takich jak np. pobranie danych z API. Takie zadania nazywane są Thunk'ami. Listing \ref{fetch} przedstawia Thunk'a, który pobiera listę wyborów dostępnych dla określonego użytkownika.
 
-\begin{lstlisting}[style=ES6, caption={Thunk \textit{fetchElection}.}]
+\begin{lstlisting}[style=ES6, caption={Thunk \textit{fetchElection}.}, label={fetch}]
 export const fetchElections = (): AppThunk => async dispatch => {
   try {
     const username = localStorage.getItem('username')
@@ -1023,9 +1121,9 @@ export const fetchElections = (): AppThunk => async dispatch => {
 }
 \end{lstlisting}
 
- W Thunk'ach można wykorzystywać reducer'y, a następnie wywoływać Thunk'i w komponentach. Przykład znajduje się w listingu 5.16. Wywołanie każdego reducer'a zawsze znajduje się wewnątrz funkcji dispatch, która wysyła reducer do punktu obsługi reducer'ów.
+ W Thunk'ach można wykorzystywać reducer'y, a następnie wywoływać Thunk'i w komponentach. Przykład znajduje się w listingu \ref{ElectionPage}. Wywołanie każdego reducer'a zawsze znajduje się wewnątrz funkcji \textit{dispatch}, która wysyła reducer do punktu obsługi reducer'ów.
 
-\begin{lstlisting}[style=ES6, caption={Wykorzystanie Thunk'a, w komponencie \textit{ElectionsPage}.}]
+\begin{lstlisting}[style=ES6, caption={Wykorzystanie Thunk'a, w komponencie \textit{ElectionsPage}.}, label={ElectionPage}]
 function ElectionsPage () {
   const dispatch = useDispatch()
   const { electionsList, isCandidatesShown, isResultsShown } 
