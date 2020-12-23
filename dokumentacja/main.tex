@@ -1,5 +1,6 @@
 \documentclass[a4paper,12pt]{book}
 \usepackage{polski}
+\usepackage{float}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}  
 \usepackage[margin=1in,left=1.5in,includefoot]{geometry}
@@ -630,12 +631,117 @@ Pomyślne połączenie sygnalizowane jest zmianą koloru przycisku \textit{check
 
 W taki sposób można łączyć węzły i tworzyć sieci Blockchain. Bardzo ważne jest, aby każdy węzeł był połączony z węzłem głównym, który komunikuje się z API systemu.
 
+\subsection{Lista wyborów}
+
+Widok prezentujący listę wyborów pozwala na uzyskanie dostępu do menadżera wyborów, tworzenia nowych wyborów i usunięcie wyborów. Rysunek \ref{electionlist} przedstawia omawiany widok. Ikona kosza pozwala na usnięcie wyborów, jeżeli wyniki wyborów są opublikowane. Ikona długopisa pozwala na zarządzanie wyborami. Przycisk \textit{Create election} przenosi użytkownika do konfiguratora wyborów, który pozwala na tworzenie nowych wyborów.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/electionlist.png}
+	\caption{Widok listy wyborów.}\label{electionlist}
+\end {figure}
+
 \subsection{Konfiguracja wyborów}
+
+Konfiguracja wyborów to dosyć długi proces, dlatego został on podzielony na kilka etapów. Widok na rysunku \ref{votesconfig1} przedstawia pierwszy etap konfiguracji. W tym etapie administrator musi wypełnić formularz. W formularzu należy wpisać tytuł wyborów, opis, datę rozpoczęcia, datę zakończenia i adres głównego serwera sieci Blockchain, który jest punktem dostępu do całej sieci.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/votesconfig1.png}
+	\caption{Konfiguracja wyborów etap pierwszy.}\label{votesconfig1}
+\end {figure}
+
+Po wypełnieniu formularza należy kliknąć przycisk \textit{Check and proceed further}. Aplikacja sprawdzi poprawność formularza i poinformuje o błędach (rys. \ref{votesconfigerror}) lub wyświetli następny widok.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/votesconfigerror.png}
+	\caption{Wyświetlanie błędów formularza.}\label{votesconfigerror}
+\end {figure}
+
+Następnym widokiem jest formularz pozwalający na utworzenie kandydatów. Widok został przedstawiony na rysunku \textit{votescandidate}. Formularz jest zbudowany z dwóch pól tekstowych \textit{Candidate} i \textit{Description}, w których należy umieścić nazwę kandydata i jego opis. Dodatkowo w skład formularza wchodzą przyciski oznaczone plusem i minusem. Minus usuwa okno, a plus dodaje nowe okno do formularza. Przejście do następnego widoku następuje po kliknięciu przycisku \textit{Next}. Dodatkowo można powrócić do widoku pierwszego za pomocą przycisku \textit{Previous}.
+\newpage
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/votescandidate.png}
+	\caption{Formularz dodawania kandydatów. Etap drugi}\label{votescandidate}
+\end {figure}
+
+Następnym i ostatnim krokiem jest przypisanie wyborców do wyborów.
+% TODO %
+
+Po utworzeniu wyborów następuje przeniesienie do widoku z listą wyborów (rys. \ref{electionsview}).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/electionsview.png}
+	\caption{Lista dostępnych wyborów.}\label{electionsview}
+\end {figure}
+
 
 \subsection{Nadzorowanie wyborów}
 
-\subsection{Ogłaszanie wyników}
+Żeby przejść do panelu nadzorowania wyborów, z poziomu widoku listy wyborów (rys. \textit{electionsview}) należy kliknąć ikonę edycji (rys. \ref{penicon}).
 
+\begin{figure}[h]
+	\centering
+	\includegraphics{images/penicon.png}
+	\caption{Ikona edycji.}\label{penicon}
+\end {figure}
+
+Po kliknięciu przycisku ukazuje się menu zarządzania wyborami (rys. \ref{electionmanager}). Na górze menu widać rozszerzenie paska nawigacji, które pozwala na przełączanie się pomiędz funkcjami menadżera wyborów. Widok, który ukazuje się jako pierwszy jest komponent o tytule status. Ten komponent wyświetla tytuł i opis wyborów, a także adres głównego węzła sieci Blockchain odpowiedzialnego za dane wybory. Na rysunku \ref{electionmanager} widać przycisk \textit{Change Url}, którego kliknięcie aktywuje pole tesktowe z etykietą \textit{Server Url} (rys. \ref{changeurl}). W pole tekstowe należy wpisać adres nowego serwera sieci Blockchain, który ma być traktowany jako węzeł główny. Zmiana serwera następuje po kliknięciu przycisku \textit{Submit}. Pozwala to na zmianę serwera, jeżeli używany serwer uległ awarii.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{images/electionmanager.png}
+	\caption{Komponent Status.}\label{electionmanager}
+\end {figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{images/changeurl.png}
+	\caption{Zmiana adresu serwera.}\label{changeurl}
+\end {figure}
+
+Kolejne komponenty, które można wyświetlić poprzez pasek nawigacji (rys. \ref{electionmanager}) to \textit{Voters} i \textit{Candidates}. \textit{Voters} prezentuje listę wyborców przypisanych do głosowania, a \textit{Candidates} listę kandydatów. Są to komponenty informacyjne, które przedstawiono na rysunkach \ref{infovoters} i \ref{infocandidates}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{images/infocandidates.png}
+	\caption{Lista kandydatów.}\label{infocandidates}
+\end {figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{images/infovoters.png}
+	\caption{Lista wyborców.}\label{infovoters}
+\end {figure}
+
+Komponent Blockchain (rys. \ref{bcstatus}) zawiera informacje dotyczące liczby stworzonych bloków (\textit{Blocks created}) i węzłów (\textit{Nodes}) w sieci Blockchain. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{images/bcstatus.png}
+	\caption{Dane dotyczące sieci Blockchain.}\label{bcstatus}
+\end {figure}
+
+
+Ostatnim komponentem menadżera wyborów jest \textit{Results}. Ten komponent odpowiada za publikację wyników wyborów. Wyniki wyborów są tajne, dla każdego aktora systemu, do momentu ich opublikowania. Po otwarciu komponentu, jeżeli wyniki wyborów nie zostały opublikowane wyświetlony zostaje przycisk \ref{publish}. Po klinknięciu tego przycisku wyniki wyborów zostają opublikowane i pobierane z serwera. Wyświetlany jset wykres słupkowy prezentujący wyniki wyborów (rys. \ref{adminelectionresult}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{images/publish.png}
+	\caption{Przycisk publikowania wyborów.}\label{publish}
+\end {figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{images/adminelectionresult.png}
+	\caption{Diagram słupkowy prezentujący wyniki.}\label{adminelectionresult}
+\end {figure}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Aplikacja użytkownika}
 
 Aplikacja użytkownika dostarcza interfejs pozwalający na wysłanie głosu i poznania wyników wyborów. Ten podrozdział przedstawia scenariusze obsługi aplkacji wyborcy.
@@ -654,13 +760,13 @@ Po kliknięciu przycisku \textit{login} na ekranie pojawaia się okno, które wy
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{images/userlogin.png}
+	\includegraphics{images/userlogin.png}
 	\caption{Okno logowania.}\label{userlogin}
 \end {figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{images/errorlogin.png}
+	\includegraphics{images/errorlogin.png}
 	\caption{Obsługa błędnych danych logowania.}\label{wronglogin}
 \end {figure}
 
@@ -674,7 +780,7 @@ Wylogowanie wymaga kliknięcia przycisku \textit{Logout} w prawym górnym rogu s
 
 Instrukcja obsługi, to krótki opis wykonywania danych akcji na stronie użytkownika. Można do niej przejść klikając \textit{help} na pasku nawigacji (rys. \ref{manual}). Informacje zawarte w instrukcji dotyczą: wyboru głosowania, procesu głosowania i wyników wyborów.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{images/manual.png}
 	\caption{Strona wyborcy. Instrukcja obsługi.}\label{manual}
@@ -684,7 +790,51 @@ Instrukcja obsługi, to krótki opis wykonywania danych akcji na stronie użytko
 
 \subsection{Głosowanie}
 
+Głosowanie dostępne jest po kliknięciu \textit{Elections} na pasku nawigacji. Po wybraniu tej opcji z paska nawigacji następuje przekierowanie do strony, której zawartość przedstawiona jest na rysunku \ref{electionwindow}. Jeżeli wyborca bierze udział w większej liczbie wyborów, to będzie miał do wyboru więcej opcji, niż na rysunku \ref{electionwindow}.
+
+Okno  przedstawione na rysunku \ref{electionwindow} zawiera przycisk oznaczony \textit{Vote}. Kliknięcie tego przycisku przenosi użytkownika do głównego panelu wyborów \ref{votescreen}. W tym miejscu wyborca dokonuje wyboru kandydata i przesyła swój głos, po klinięciu przycisku \textit{Send Vote}. Wyborca może cofnąć widok, do poprzedniego widoku, za pomocą przycisku \textit{Go Back}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{images/electionwindow.png}
+	\caption{Okno wyborcze.}\label{electionwindow}
+\end {figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{images/votescreen.png}
+	\caption{Panel wyborów.}\label{votescreen}
+\end {figure}
+
+Po wysłaniu głosu na ekranie pojawia się powiadomienie \ref{votesuccess} i następuje przeniesienie do widoku \ref{votesent}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{images/votesuccess.png}
+	\caption{Pomyślnie wysłany głos.}\label{votesuccess}
+\end {figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{images/votesent.png}
+	\caption{Okno wyborów. Po zagłosowaniu.}\label{votesent}
+\end {figure}
+
 \subsection{Wyniki}
+
+Dostęp do wyników wyborów uzyskiwany jest po ogłoszeniu ich wyników. Wybory, których wyniki są dostępne oznaczone są tak jak na rysunku \ref{voterresults}. Okno zawiera przycisk \textit{results}, którego kliknięcie przenosi użytkownika do okna \ref{resultdiagram}. Wykres jest podobny do wykresu administratora (rys. \ref{adminelectionresult}). Wrócić do poprzedniego widoku można za pomocą przycisku pod wykresem \textit{Go Back}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{images/voterresults.png}
+	\caption{Okno wyborów. Po ogłoszeniu wyników.}\label{voterresults}
+\end {figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{images/resultdiagram.png}
+	\caption{Wykres wyników wyborów.}\label{resultdiagram}
+\end {figure}
 
 %%%%%%%%%%%%%%%%%%% Specyfikacja wewnętrzna %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
