@@ -668,8 +668,13 @@ Następnym widokiem jest formularz pozwalający na utworzenie kandydatów. Widok
 	\caption{Formularz dodawania kandydatów. Etap drugi}\label{votescandidate}
 \end {figure}
 
-Następnym i ostatnim krokiem jest przypisanie wyborców do wyborów.
-% TODO %
+Następnym i ostatnim krokiem jest przypisanie wyborców do wyborów. Rysunek \ref{choosevoters} przedstawia formularz dodwania wyborców. Żeby zakończyć proces konfiguracji wyborów należy kliknąć przycisk \textit{Submit}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{images/choosevoters.png}
+	\caption{Lista dostępnych wyborów.}\label{choosevoters}
+\end {figure}
 
 Po utworzeniu wyborów następuje przeniesienie do widoku z listą wyborów (rys. \ref{electionsview}).
 
@@ -678,7 +683,6 @@ Po utworzeniu wyborów następuje przeniesienie do widoku z listą wyborów (rys
 	\includegraphics[width=\textwidth]{images/electionsview.png}
 	\caption{Lista dostępnych wyborów.}\label{electionsview}
 \end {figure}
-
 
 \subsection{Nadzorowanie wyborów}
 
@@ -1291,7 +1295,27 @@ function ElectionsPage () {
 
 \chapter{Testowanie}
 
-System został przetestowany zarówno w środowisku lokalnym jak i internetowym. Aplikacja przeglądarkowa wyborcy została przetestowana na komputerach i \textit{smartfonach}.
+W tym rozdziale przedstawiono proces testowania systemu, wykryty i naprawione błędy. Testowanie systemu można podzielić na dwa etapy: testowanie aplikacji serwerowych i testowanie aplikacji przeglądarkowych. 
+
+\section{Testowanie aplikacji serwerowych}
+
+Testowanie aplikacji serwerowych odbywało się przez aplikację \textit{Postman}, która została omówiona w rozdziale 4.4. Aplikacja umożliwia wysyłanie żądań HTTP do serwera, co pozwala na utworzenie kontrolowanego środowiska do testowania. W ten sposób można tworzyć scenariusze testowania. W projekcie stworzone scenariusze obejmowały wszystkie funkcjonalności systemu.
+
+Podczas testowania aplikacji serwerowych wykryto błędy wynikające z nieobsłużenia wyjątku w kodzie, które zostały naprawione. Wykryto również dosyć poważne ograniczenie systemu, które wynika z wykorzystania języka Typescript.
+
+Ograniczenie systemu występuje w oprgramowaniu węzła sieci Blockchain. Sieć wykorzystująca algorytm konsensusu typu Proof of Work wymaga przeprowadzania wymagających obliczeń przez serwer. Język Typescript jest językiem operującym na jednym wątku. W Typescript kod wykonywany jest w tzw. pętli zdarzeń. Pętla zdarzeń dzieli zdarzenia według ich typu i w określonej kolejności umieszcza je na stosie wywołań. Stos wywołań to główny stos, w którym ostatecznie wykonywane są zdarzenia. Taki sposób wykonywania zadań pozwala na uzyskanie pewnego rodzaju współbieżności dla prograu działającego na jednym wątku. Jednakże wykonywanie zadań, które wymagają dużego wykorzystania procesora powoduje zatrzymanie pętli zdarzeń na długi czas na jednym zadaniu. Do momentu zakończenia obliczeń nie zostaną wykonane inne operacje. Oznacza to, że w tym czasie serwer nie jest w stanie odpowiedzieć na przychodzące żądania, co powoduje zablokowanie portów wejścia/ wyjścia serwera. Przychodzące żądania są umieszczane na końcu kolejki, która posiada skończoną pojemność. W przypadku przepełnienia kolejki część żądań nie zostanie obsłużona. Jest do dosyć poważne ograniczenie, którego częściowym rozwiązaniem było zmniejszenie wykorzystania mocy obliczeniowej przez algorytm Proof of Work. Dużo lepszym rozwiązaniem problemu było wprowadzenie możliwości wykorzystania algorytmu Proof of Authority, który nie obciąża procesora.
+
+\section{Testowanie aplikacji przeglądarkowych}
+
+Aplikacje przeglądarkowe zostały przetestowane, pod kątem działania na różnych przeglądarkach. Wykorzystane przeglądarki to \textit{Google Chrome}, \textit{Mozilla Firefox} i \textit{Microsoft Edge}. Podczas testowania apliakcje działały zgodnie z założeniami. Dodatkowo przetestowano wszystkie elementy, które podlegają interakcji z użytkownikiem. Do tych elementów należą formularze, przyciski i elementy służące do nawigowania widokami aplikacji. Wykryto kilka błędów dotyczących obsługi formularzy, jednakże były to błędy łatwe w naprawie.
+Aplikacja wyborcy została przetestowana pod kątem responsywności na \textit{smartfonach}. Aplikacje przetestowano na modelach \textit{Lenovo P2} i \textit{Samsung Galaxy Note 2}. Podczas testowania responsywności nie wykryto błędów.
+
+
+%%%%%%%%%%%%%%%%%%%%% TODO MOZE BEDA JAKIES TESTY%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+W projekcie niestety nie udało się przeprowadzić testów jednostkowych oprogramowania. Takie podejście wymaga dobrej znajomości wykorzystywanych technologii i szczegółowego planu tworzenia oprogramowania. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Podsumowanie}
 
 \begin{thebibliography}{99}
 \bibitem{pa} Ankit Patel:
