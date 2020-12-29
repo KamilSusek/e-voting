@@ -665,9 +665,19 @@ Podczas uruchamiania aplikacji serwerowych, należy określić port , na którym
 
 Aplikacja serwerowa \textit{e-voting-api} jest domyślnie uruchamiana na porcie 8080, jednak można to zmienić za pomocą następującego polecenia:
 
-\textit{\$env:PORT=NUMER\_PORTU; npm start}.
+\begin{equation}
+	\textit{\$env:PORT=NUMER\_PORTU; npm start}.
+\end{equation}
 
 Użycie tego polecenia jest obligatoryjne podczas uruchamiania węzła sieci Blockchain, ponieważ węzeł nie uruchamia się na domyślnym porcie. W celu uruchomienia węzła należy wybrać dowolny nieużywany port komputera.
+
+Podczas uruchamiania węzła sieci Blockchain można wybrać algorytm konsensusu, który będzie wykrozystywał dany węzeł. Pełne polecenie uruchamiające węzeł Blockchain wygląda następująco:
+
+\begin{equation}
+	\textit{\$env:PORT=NUMER\_PORTU; \$env:CONSENSUS=KOD; npm start}.
+\end{equation}
+
+W polu \textit{CONSENSUS} należy wpisać kod algorytmu. Dostępne są dwa kody: \textit{POA} i \textit{POW}. Kod \textit{POA} odpowiada algorytmowi \textit{Proof of Authority}, a kod \textit{POW} algorytmowi \textit{Proof of Work}. W przypadku podania błędnego kodu lub jego braku, domyślnym algorytmem używanym przez węzeł jest \textit{Proof of Authority}.
 
 \newpage
 
