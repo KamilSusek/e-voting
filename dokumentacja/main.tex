@@ -138,16 +138,116 @@
   style=JSES6Base
 }
 
+\newcommand{\miesiac}{%
+  \ifcase\the\month
+  \or styczeń% 1
+  \or luty% 2
+  \or marzec% 3
+  \or kwiecień% 4
+  \or maj% 5
+  \or czerwiec% 6
+  \or lipiec% 7
+  \or sierpień% 8
+  \or wrzesień% 9
+  \or październik% 10
+  \or listopad% 11
+  \or grudzień% 12
+  \fi}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Helvetica font macros for the title page:
+\newcommand{\headerfont}{\fontfamily{phv}\fontsize{18}{18}\bfseries\scshape\selectfont}
+\newcommand{\titlefont}{\fontfamily{phv}\fontsize{18}{18}\selectfont}
+\newcommand{\otherfont}{\fontfamily{phv}\fontsize{14}{14}\selectfont}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\autor}{Kamil Susek}
+\newcommand{\promotor}{dr inż. Marcin Połomski}
+\newcommand{\konsultant}{dr inż. Imię Nazwisko}
+\newcommand{\tytul}{Zastosowanie technologii Blockchain w implementacji prostego systemu do głosowania on-line}
+\newcommand{\polsl}{Politechnika Śląska}
+\newcommand{\wydzial}{Wydział Automatyki, Elektroniki i Informatyki}
+
 \begin{document}
 
-\begin{titlepage}
+%\kslistofremarks 
+	
+%%%%%%%%%%%%%%%%%%  STRONA TYTULOWA %%%%%%%%%%%%%%%%%%%
+\pagestyle{empty}
+{
+	\newgeometry{top=2.5cm,%
+	             bottom=2.5cm,%
+	             left=3cm,
+	             right=2.5cm}
+	\sffamily
+	\rule{0cm}{0cm}
+	
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{politechnika_sl_logo_bw_poziom_pl.eps}
+	\end{center} 
+	\vspace{1cm}
+	\begin{center}
+	\headerfont \polsl
+	\end{center}
+	\begin{center}
+	\headerfont \wydzial
+	\end{center}
+	\vfill
+	\begin{center}
+	\titlefont Praca dyplomowa inżynierska
+	\end{center}
+	\vfill
+	
+	\begin{center}
+	\otherfont \tytul\par
+	\end{center}
+	
+	\vfill
+	
+	\vfill
+	 
+	\noindent\vbox
+	{
+		\hbox{\otherfont autor: \autor}
+		\vspace{12pt}
+		\hbox{\otherfont kierujący pracą: \promotor}
+		%\vspace{12pt}  % zakomentuj, jezeli nie ma konsultanta
+		%\hbox{\otherfont konsultant: \konsultant} % zakomentuj, jezeli nie ma konsultanta
+	}
+	\vfill 
+ 
+   \begin{center}
+   \otherfont Gliwice,  \miesiac\ \the\year
+   \end{center}	
+	\restoregeometry
+}
+  
 
-\title{Praca inżynierska}
-\author{Kamil Susek}
-\date{September 2020}
+\cleardoublepage
+ 
 
-\maketitle
-\end{titlepage}
+\rmfamily
+\normalfont
+
+\tableofcontents
+
+%\begin{titlepage}
+
+%\title{Praca inżynierska}
+%\author{Kamil Susek}
+%\date{September 2020}
+
+%\maketitle
+%\end{titlepage}
 \chapter{Wstęp}
 
 Rozwój technologii pozwala na tworzenie coraz większych i bezpieczniejszych systemów, co prowadzi do przenoszenia niektórych procesów do świata wirtualnego. Takie działania pozwalają na zwiększenie efektywności i zmniejszenie kosztów tych procesów. Dodatkowo wyeliminowanie wpływu czynnika ludzkiego zwiększa wiarygodność takiego procesu i poprawia bezpieczeństwo. Przykładem takiego procesu jest głosowanie, które w tradycyjnej formie jest czasochłonne i trudne w organizacji. Natomiast przykładem technologii, która doprowadziła do prawdziwej rewolucji jest Blockchain. Blockchain odpowiada za przełomowe rozwiązanie w sektorze finansów, jakim jest Bitcoin, który zapoczątkował rozwój dużych systemów odpowiedzialnych za istotne procesy życia społecznego.
@@ -324,7 +424,9 @@ Internet of Things to technologia pozwalająca na łączenie ze sobą wielu urz�
 
 \newpage
 
-\section{Przegląd istniejących rozwiązań e-votingu}
+\chapter{E-voting}
+W rozdziale zatytułowanym E-voting znajduje się przegląd istniejących rozwiązań wyborów on-line, które są dostępne na rynku. System estoński jest przykładem wykorzystania wyborów on-line przez struktury państwowe, a E-voting w Walnych Zgromadzeniach jest przykładem rozwiązania stworzonego na prywatne potrzeby.
+
 \section{System estoński}
 Przykładem regularnego wykorzystania e-votingu jest Estonia. Estonia jest krajem, który pierwszy udostępnił możliwość głosowania elektronicznego w wyborach lokalnych, na szczeblu krajowym. W pierwszych wyborach wzięło udział około 1\% wyborców. Od roku 2005 w Estonii postępował rozwój systemów e-votingu. Wraz z następnymi wyborami zwiększała się liczba uczestników. W roku 2019 liczba wyborców, którzy skorzystali z e-votingu wyniosła 43,8\% wyborców.
 
@@ -1293,7 +1395,7 @@ function ElectionsPage () {
 }
 \end{lstlisting}
 
-\chapter{Testowanie}
+\chapter{Weryfikacja i walidacja}
 
 W tym rozdziale przedstawiono proces testowania systemu, wykryty i naprawione błędy. Testowanie systemu można podzielić na dwa etapy: testowanie aplikacji serwerowych i testowanie aplikacji przeglądarkowych. 
 
@@ -1310,17 +1412,20 @@ Ograniczenie systemu występuje w oprgramowaniu węzła sieci Blockchain. Sieć 
 Aplikacje przeglądarkowe zostały przetestowane, pod kątem działania na różnych przeglądarkach. Wykorzystane przeglądarki to \textit{Google Chrome}, \textit{Mozilla Firefox} i \textit{Microsoft Edge}. Podczas testowania apliakcje działały zgodnie z założeniami. Dodatkowo przetestowano wszystkie elementy, które podlegają interakcji z użytkownikiem. Do tych elementów należą formularze, przyciski i elementy służące do nawigowania widokami aplikacji. Wykryto kilka błędów dotyczących obsługi formularzy, jednakże były to błędy łatwe w naprawie.
 Aplikacja wyborcy została przetestowana pod kątem responsywności na \textit{smartfonach}. Aplikacje przetestowano na modelach \textit{Lenovo P2} i \textit{Samsung Galaxy Note 2}. Podczas testowania responsywności nie wykryto błędów.
 
+Zakres testów oprogramowania należy uznać za niepełny, ponieważ podczas testowania nie wykorzystano testów jednostkowych oprogramowania, które zapewniają szeroki zakres pokrytych przypadków testowych.
 
-%%%%%%%%%%%%%%%%%%%%% TODO MOZE BEDA JAKIES TESTY%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-W projekcie niestety nie udało się przeprowadzić testów jednostkowych oprogramowania. Takie podejście wymaga dobrej znajomości wykorzystywanych technologii i szczegółowego planu tworzenia oprogramowania. 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\chapter{Podsumowanie}
+\chapter{Podsumowanie i wnioski}
 
 Celem pracy było opracowanie oraz zaimplementowanie części systemu głosowania on-line, który wykorzystywał będzie technologię Blockchain. W skład systemu wchodzą cztery moduły: aplikacja wyborcy, aplikacja administratora, serwer z API systemu i sieć Blockchain. System umożliwia konfigurację  i przeprowadzenie wyborów elektronicznych, z wykorzystaniem aplikacji przeglądarkowej. W skład systemu wchodzi oprogramowanie, które umożliwia tworzenie węzłów sieci Blockchain. Węzły działają zgodnie z podstawowymi założeniami technologii Blockchain.
-Stworzony system spełnia, w sposób zadawalający postawione wymagania. Dokonana implementacja może zostać rozbudowana, aby mogła spełniać standardy profesjonalnych aplkacji dotyczących głsowania on-line.
+Stworzony system spełnia, w sposób zadawalający postawione wymagania. Dokonana implementacja może zostać rozbudowana, aby mogła spełniać standardy profesjonalnych aplkacji dotyczących głosowania on-line.
 
-Kierunkiem rozbudowy funkcjonalnej może być
+Zaproponowana implementacja systemu nie wyczerpuje wpełni tematu wyborów on-line i technologii Blockchain. Jednym z możliwych kierunków rozbudowy aplikacji jest utworzenie osobnego interfejsu graficznego, dla każdego węzła sieci Blockchain. Takie rozwiązanie zwiększyłoby kontrolę nad siecią Blockchain, a także ułatwiłoby zarządzanie siecią.
+
+Dodatkowo obecny system pozwala na organizowanie wyborów, które dotyczą jednego zagadnienia. Przykładowo wybory prezydenckie pozwalają na wybranie jednej kandydatury z kilku dostępnych. System można rozbudować w taki sposób, aby do jednego procesu wyborczego można było włączyć kilka zagadnień. Przykładowo w wyborach parlamentarnych wybierani są przedstawiciele do parlamentu i senatu, a odbywa się to w ramach jednego procesu wyborczego.
+
+Głównym problemem napotkanym podczas pracy było zaprojektowanie i zaimplementowanie rozproszonej sieci, która działa według standardów Blockchain. Zapewnienie komunikacji pomiędzy rozproszonymi węzłami zostało rozwiązane poprzez zaprojektowanie każdego węzła w konwencji REST. Dodatkowo zastosowanie podejścia REST pozwoliło na łatwe połączenie sieci Blockchain z serwerem zarządzającym wyborami, który również działał w konwencji REST.
+
+Zastosowanie technologii opartych na NodeJs do tworzenia sieci Blockchain okazało się złym pomysłem. NodeJs nie jest wystarczająco wydajny, gdy od serwera wymagana jest duża moc obliczeniowa. Zastosowanie tego rozwiązania negatywnie przekłada się na wydajność sieci Blockchain, które wykorzystują algorytm Proof od Work.
 
 \begin{thebibliography}{99}
 \bibitem{pa} Ankit Patel:
