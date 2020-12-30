@@ -233,29 +233,105 @@
   
 
 \cleardoublepage
+
+\begin{flushright}
+załącznik nr 2 do zarz. nr 97/08/09 
+\end{flushright}
+
+\vfill  
+
+\begin{center}
+\Large\bfseries Oświadczenie
+\end{center}
+
+\vfill
+
+Wyrażam  zgodę / Nie wyrażam zgody*  na  udostępnienie  mojej  pracy  dyplomowej / rozprawy doktorskiej*.
+
+\vfill
+
+Gliwice, dnia \today
+
+\vfill
+
+\rule{0.5\textwidth}{0cm}\dotfill 
+
+\rule{0.5\textwidth}{0cm}
+\begin{minipage}{0.45\textwidth}
+{\begin{center}(podpis)\end{center}}
+\end{minipage} 
+
+\vfill
+
+\rule{0.5\textwidth}{0cm}\dotfill 
+
+\rule{0.5\textwidth}{0cm}
+\begin{minipage}{0.45\textwidth}
+{\begin{center}\rule{0mm}{5mm}(poświadczenie wiarygodności podpisu przez Dziekanat)\end{center}}
+\end{minipage}
+
+
+\vfill
+
+* podkreślić właściwe
+
  
 
-\rmfamily
-\normalfont
 
+%%%%%%%%%%%%%%%%%%%%% oswiadczenie promotora o spełnieniu wymagań formalnych %%%%%%%%%%%%%%%%%%%
+\cleardoublepage
+
+\rule{1cm}{0cm}
+
+\vfill  
+
+\begin{center}
+\Large\bfseries Oświadczenie promotora
+\end{center}
+
+\vfill
+
+Oświadczam, że praca „\tytul” spełnia wymagania formalne pracy dyplomowej inżynierskiej.
+
+\vfill
+
+
+
+\vfill
+
+Gliwice, dnia \today
+
+\rule{0.5\textwidth}{0cm}\dotfill 
+
+\rule{0.5\textwidth}{0cm}
+\begin{minipage}{0.45\textwidth}
+{\begin{center}(podpis promotora)\end{center}}
+\end{minipage} 
+
+\vfill
+
+\cleardoublepage
+
+%%%%%%%%%%%%%%%%%% SPIS TRESCI %%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{Roman}
+\pagestyle{tylkoNumeryStron}
 \tableofcontents
 
-%\begin{titlepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+\pagenumbering{arabic}
+\setcounter{stronyPozaNumeracja}{\value{page}}
+\pagestyle{NumeryStronNazwyRozdzialow}
 
-%\title{Praca inżynierska}
-%\author{Kamil Susek}
-%\date{September 2020}
+%%%%%%%%%%%%%% wlasciwa tresc pracy %%%%%%%%%%%%%%%%%
 
-%\maketitle
-%\end{titlepage}
 \chapter{Wstęp}
 
-Rozwój technologii pozwala na tworzenie coraz większych i bezpieczniejszych systemów, co prowadzi do przenoszenia niektórych procesów do świata wirtualnego. Takie działania pozwalają na zwiększenie efektywności i zmniejszenie kosztów tych procesów. Dodatkowo wyeliminowanie wpływu czynnika ludzkiego zwiększa wiarygodność takiego procesu i poprawia bezpieczeństwo. Przykładem takiego procesu jest głosowanie, które w tradycyjnej formie jest czasochłonne i trudne w organizacji. Natomiast przykładem technologii, która doprowadziła do prawdziwej rewolucji jest Blockchain. Blockchain odpowiada za przełomowe rozwiązanie w sektorze finansów, jakim jest Bitcoin, który zapoczątkował rozwój dużych systemów odpowiedzialnych za istotne procesy życia społecznego.
+Rozwój technologii pozwala na tworzenie coraz większych i bezpieczniejszych systemów, co prowadzi do przenoszenia niektórych procesów do świata wirtualnego. Takie działania pozwalają na zwiększenie efektywności i zmniejszenie kosztów tych procesów. Dodatkowo wyeliminowanie wpływu czynnika ludzkiego zwiększa wiarygodność takiego procesu i poprawia bezpieczeństwo. Przykładem takiego procesu jest głosowanie, które w tradycyjnej formie jest czasochłonne i trudne w organizacji. Natomiast przykładem technologii, która doprowadziła do prawdziwej rewolucji jest Blockchain. Blockchain odpowiada za przełomowe rozwiązanie w sektorze finansów, jakim jest Bitcoin, który zapoczątkował rozwój systemów odpowiedzialnych za istotne procesy życia społecznego.
 
-Tematem niniejszej pracy jest E-voting, czyli system głosowania przez internet, który będzie wspierany przez technologię Blockchain. W ramach pracy został przedstawiony teoretyczny model systemu, którego część zaimplementowano. Do zaimplementowanej części systemu należą: aplikacje internetowe wyborcy i organizatora oraz grupa serwisów dostarczających REST-owe API. Aplikacje wyborcy pozwala na zalogowanie się, wysłanie głosu i uzyskanie wyników wyborów. Natomiast aplikacja organizatora dostarcza narzędzia do konfiguracji i nadzorowania procesu wyborczego. Dostarczono również możliwość konfigurowania sieci Blockchain, która jest odpowiedzialna za zapisanie dodawanych głosów. Przez konfigurację sieci Blockchain rozumiane jest tworzenie sieci Peer-to-Peer.
+Tematem niniejszej pracy jest E-voting, czyli system głosowania przez internet, który będzie wspierany przez technologię Blockchain. W ramach pracy został przedstawiony teoretyczny model systemu, którego część zaimplementowano. Do zaimplementowanej części systemu należą: aplikacje internetowe wyborcy i organizatora oraz grupa serwisów dostarczających REST (Representational State Transfer) API (Application Programming Interface). Aplikacja wyborcy pozwala na zalogowanie się, wysłanie głosu i uzyskanie wyników wyborów. Natomiast aplikacja organizatora dostarcza narzędzia do konfiguracji i nadzorowania procesu wyborczego. Dostarczono również możliwość konfigurowania sieci Blockchain, która jest odpowiedzialna za zapisanie i zabezpieczenie dodawanych głosów.
 
-W rozdziale pierwszym zostały przybliżone cele projektu i jego założenia, a także zakres pracy. Rozdział drugi poświęcony jest analizie dziedziny pracy, w tym rozdziale znajdują się informacje teoretyczne dotyczące technologii Blockchain, przykłady jej zastosowania oraz analiza istniejących rozwiązań E-votingu. Rozdział trzeci dotyczy opisu systemu od strony inżynierii oprogramowania. W tym rozdziale znajdują się informacje o wymaganiach projektu, przypadkach użycia oraz użytych narzędziach i technologiach. Rozdział czwarty dotyczy specyfikacji zewnętrznej systemu. Główne treści tego rozdziału to sposób korzystania z aplikacji, instrukcje dotyczące użytkowników systemu i sposób instalacji. Rozdział piąty dotyczy opisu architektury systemu, opisu algorytmów i szczegółów implementacji ciekawych fragmentów systemu. W szóstym rozdziale umieszczono wszystkie informacje dotyczące testowania oraz wykrytych błędów.
-Ostatni rozdział, czyli rozdział siódmy poświęcony jest podsumowaniu całej pracy, w tym rozdziale znajdują się uzyskane wyniki i wnioski, a także możliwości dalszego rozwoju pracy.
+W rozdziale pierwszym zostały przybliżone cele projektu, jego założenia, a także zakres pracy. Rozdział drugi poświęcony jest analizie zagadnienia wchodzącego w skład pracy, jakim jest Blockchain. W tym rozdziale przybliżono koncepcję technologii Blockchain, jej budowę i zastosowania. Rozdział trzeci zawiera przegląd wybranych rozwiązań wyborów on-line. W rozdziale czwartym sformułowano wymaganie funkcjonalne i niefunkcjonalne systemu. W tym rozdziale znajdują się informacje teoretyczne dotyczące systemu. W rozdziale czwartym znajdują się również diagramy przypadków użycia i opis wykorzystanych technologii. Rozdział piąty dotyczy specyfikacji zewnętrznej oprogramowania. W tym rodziale zawarto informacje dotyczące instalacji i uruchamiania oprogramowania, a także zrzuty ekranu pokazujące scenariusze działania systemu. Rozdział szósty zawiera informacje dotyczące specyfikacji wewnętrznej. W tym rozdziale znajduje się opis architektury systemu, wykorzystane struktury danych i szczegóły implementacyjne wybranych części systemu. Rozdział zawiera również informacje o wykorzystanych wzorcach projektowych i algorytmach. Rozdział dotyczy sposobów testowania poszczególnych modułów oprogramowania. Rozdział ósmy jest podsumowaniem pracy, a w jego skład wchodzi zakres spełnienia założeń projektu, napotkane błędy i wnioski.
 
 \section{Cele i założenia pracy}
 
@@ -265,39 +341,8 @@ Celem pracy jest opracowanie oraz zaimplementowanie systemu, który umożliwia p
 	\item Analizę dziedziny i przegląd literatury dotyczącej wyborów internetowych i technologii Blockchain;
 	\item Opracowanie systemu wyborów internetowych od strony teoretycznej;
 	\item Implementację wybranej części całego systemu;
-	\item Przetestowanie aplikacji.
+	\item Weryfikacja i walidacja aplikacji.
 \end{itemize}
-
-\chapter{Wstępna analiza dziedziny}
-Elektroniczne systemy głosowania coraz bardziej zyskują na popularności.
-Wraz z postępem technologii oraz coraz większego znaczenia internetu w życiu 
-społecznym, pojawiają się pomysły przeniesienia procesu głosowania do sieci. Pomysły i implementacje internetowych systemów wyborczych dotyczą wyborów na szczeblu państwowym (przykładowo wybory parlamentarne), jak i wyborów organizowanych na potrzeby prywatne. System e-votingu zazwyczaj sprowadza się do serwisu internetowego, który pozwala na oddanie głosu poprzez odpowiednią stronę internetową, bądź aplikację desktopową. 
-
-Przeniesienie głosowania do aplikacji internetowej, pozwala zminimalizować wpływ ewentualnego błędu ludzkiego podczas przeprowadzania wyborów. Jednakże takie rozwiązanie generuje nowe problemy, z którymi muszą się zmierzyć projektanci tych systemów. Największy problem stanowi zabezpieczenie aplikacji, przed zewnętrznymi próbami fałszowania wyników głosowania. Rozwój technologii prowadzi również do powstawania nowych odmian “złośliwego oprogramowania”, co prowadzi do ciągłego aktualizowania zabezpieczeń. Aplikacja odpowiadająca na potrzeby wyborów, na wysokim szczeblu powinna być tworzona “na potrzeby danych czasów”, bądź łatwa w płynnej aktualizacji.
-
-Zabezpieczenie przed fałszowaniem głosów to nie jest jedyny problem, z jakim trzeba się zmierzyć podczas próby przeniesienia procesu głosowania do internetu. Kolejnym problemem jest sama logika systemu głosowania, niektóre wybory wymagają, aby informacje o wyborcach oraz ich głosach, były tajne. System powinien również umożliwiać weryfikację użytkownika, na podstawie dostarczonych przez organizatora wyborów danych logowania. Coraz głębsza analiza problemu generuje coraz więcej potrzeb z zakresu bezpieczeństwa systemu. Dodatkowo wyszczególniając elementy, które powinny podlegać szczególnej protekcji należy zadbać, aby architektura systemu pozwalała na łatwą aktualizację zabezpieczeń.
-
-Wykorzystując komputery do obsługi głosowania, oczekuje się szybkiego i poprawnego uzyskania rezultatu głosowania. System taki powinien być zoptymalizowany, a czas uzyskania rezultatów powinien być zdeterminowany. Warto rozważyć także moduł generujący statystyki wyborcze.
-
-System wyborczy to nie tylko serwer, który zbiera, przechowuje i liczy głosy. Kliencka część aplikacji (widoczna dla wyborcy) powinna być responsywna, przejrzysta oraz przyjazna dla osób z pewnymi niepełnosprawnościami.
-
-Dużą zaletą e-votingu jest przeniesienie procedur, które musi wykonać organizator do interaktywnej aplikacji przeglądarkowej. Aplikacja webowa powinna zapewniać możliwość zarządzania głosowaniem oraz kreator głosowania, ten element również powinien podlegać zabezpieczeniu danych i autentykacji użytkownika. Aplikacja wyposażona w takie funkcjonalności powinna spełniać wymagania elektronicznego systemu głosowania.
-
-\section{Wstępne wymagania niefunkcjonalne}
-Z powyższej analizy można wypunktować następujące wymagania:
-\begin{itemize}
-
-\item Dbałość o zabezpieczenie głosu wyborcy przed fałszerstwem - rezultat głosu nie może zostać zmieniony, po jego zatwierdzeniu.
-
-\item Zabezpieczenie danych wyborcy, poprzez utajnienie jego tożsamości.
-
-\item Sprawne i bezbłędne liczenie głosów - czas liczenia głosów powinien być deterministyczny.
-
-\item Dbałość o stronę wizualną aplikacji, strona kliencka powinna być przejrzysta i łatwa w obsłudze.
-
-\item System musi być konfigurowalny, z uwzględnieniem bezpieczeństwa konfiguracji.
-\end{itemize}
-
 
 
 \chapter{Blockchain}
@@ -639,7 +684,7 @@ W celu sprawdzenia poprawności instalacji dla każdego systemu można wykorzyst
 
 \section{Struktura oprogramowania}
 
-System składa się z kilku modułów, dlatego dostarczone oprogramowanie jest podzielone na kilka folderów. Struktura folderów została przedstawiona na rysunku \ref{foldery}. Folder dokumentacja jest w tym opisie nieistotny, ponieważ nie przechowuje on żadnego oprogramowania.
+System składa się z kilku modułów, dlatego dostarczone oprogramowanie jest podzielone na kilka folderów. Struktura folderów została przedstawiona na rysunku \ref{foldery}. Folder dokumentacja przechowuje dokumentację projektu.
 
 \begin{figure}[h]
 	\centering
