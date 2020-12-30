@@ -1,0 +1,68 @@
+\babel@toc {polish}{}
+\contentsline {chapter}{\numberline {1}Wstęp}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Cele i założenia pracy}{2}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Blockchain}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Architektura Blockchain}{4}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Łańcuch bloków}{4}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Sieci Peer to Peer}{5}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Konsensus}{6}{subsection.2.1.3}%
+\contentsline {subsubsection}{Proof of Work}{6}{section*.2}%
+\contentsline {subsubsection}{Proof of Stake}{7}{section*.3}%
+\contentsline {subsubsection}{Proof of Authority}{8}{section*.4}%
+\contentsline {subsection}{\numberline {2.1.4}Funkcja skrótu}{8}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Smart kontrakty}{9}{subsection.2.1.5}%
+\contentsline {section}{\numberline {2.2}Technologia Blockchain na rynku}{10}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Kryptowaluty}{10}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Finanse}{10}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Internet of Things}{10}{subsection.2.2.3}%
+\contentsline {chapter}{\numberline {3}E-voting}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}System estoński}{11}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Przegląd rozwiązania}{11}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}Evoting w Walnych Zgromadzeniach}{14}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Wymagania systemu i wykorzystane narzędzia}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Wymagania niefunkcjonalne}{15}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Wymagania funkcjonalne}{16}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Diagramy przypadków użycia}{17}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Wykorzystane narzędzia i technologie}{18}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Interfejs użytkownika}{18}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Serwer}{20}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Baza danych}{20}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}Testowanie}{21}{subsection.4.4.4}%
+\contentsline {subsection}{\numberline {4.4.5}Metodyka pracy}{21}{subsection.4.4.5}%
+\contentsline {chapter}{\numberline {5}Specyfikacja zewnętrzna}{23}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Instalacja}{23}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Instalacja dla Windows i MacOS}{23}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Instalacja dla Linux}{23}{subsection.5.1.2}%
+\contentsline {section}{\numberline {5.2}Struktura oprogramowania}{24}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Uruchamianie modułów}{24}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Aplikacja administratora}{26}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Logowanie}{26}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Lista wyborców}{27}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Konfiguracja sieci Blockchain}{28}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Lista wyborów}{28}{subsection.5.4.4}%
+\contentsline {subsection}{\numberline {5.4.5}Konfiguracja wyborów}{29}{subsection.5.4.5}%
+\contentsline {subsection}{\numberline {5.4.6}Nadzorowanie wyborów}{31}{subsection.5.4.6}%
+\contentsline {section}{\numberline {5.5}Aplikacja użytkownika}{35}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Logowanie}{35}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Instrukcja obsługi}{36}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Głosowanie}{37}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}Wyniki}{38}{subsection.5.5.4}%
+\contentsline {chapter}{\numberline {6}Specyfikacja wewnętrzna}{39}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Architektura systemu}{39}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Architektura pełnego systemu}{39}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Architektura sieci Blockchain}{40}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Struktury danych}{40}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Łańcuch bloków}{40}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Baza danych}{43}{subsection.6.2.2}%
+\contentsline {section}{\numberline {6.3}Algorytmy}{44}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Proof of Work}{44}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Proof of Authority}{46}{subsection.6.3.2}%
+\contentsline {section}{\numberline {6.4}Zastosowane wzorce projektowe}{46}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Singleton}{47}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Repozytorium}{47}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.3}Strategia}{48}{subsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.4.4}Redux}{49}{subsection.6.4.4}%
+\contentsline {chapter}{\numberline {7}Weryfikacja i walidacja}{53}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Testowanie aplikacji serwerowych}{53}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Testowanie aplikacji przeglądarkowych}{54}{section.7.2}%
+\contentsline {chapter}{\numberline {8}Podsumowanie i wnioski}{55}{chapter.8}%
