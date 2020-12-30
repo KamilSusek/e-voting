@@ -1,0 +1,145 @@
+\begin{thebibliography}{10}
+
+\bibitem{elctricity-bitcoin}
+Bitcoin mining now consuming more electricity than 159 countries including
+  ireland and most countries in africa.
+
+\bibitem{pow-bitcoin}
+Proof-of-work, explained.
+\newblock 2018.
+\newblock data dostępu: rok 2020.
+
+\bibitem{CBECI}
+Cambridge bitcoin electricity consumption index (cbeci).
+\newblock
+  \url{https://www.epe.admin.cam.ac.uk/cambridge-bitcoin-electricity-consumption-index-cbeci},
+  2019.
+\newblock data dostępu: rok 2020.
+
+\bibitem{PKO-SMART}
+Blockchain w pko banku polskim.
+\newblock \url{https://fintech.pkobp.pl/blockchain-w-banku/}, 2020.
+\newblock data dostępu: rok 2020.
+
+\bibitem{smart-contract}
+Co to smart kontrakt?
+\newblock
+  \url{https://academy.binance.com/pl/articles/what-are-smart-contracts}, 2020.
+\newblock data dostępu: rok 2020.
+
+\bibitem{abpow}
+Czym jest atak 51\%?
+\newblock
+  \url{https://academy.binance.com/pl/articles/what-is-a-51-percent-attack},
+  2020.
+\newblock data dostępu: rok 2020.
+
+\bibitem{bitcoin}
+Czym jest bitcoin?
+\newblock
+  \url{https://academy.binance.com/pl/articles/what-is-bitcoin\#what-is-bitcoin},
+  2020.
+\newblock data dostępu: rok 2020.
+
+\bibitem{abpoa}
+Dowód autorytetu (proof of authority) - jak działa.
+\newblock
+  \url{https://academy.binance.com/pl/articles/proof-of-authority-explained},
+  2020.
+\newblock data dostępu: rok 2020.
+
+\bibitem{abpos}
+Dowód stawki (proof of stake).
+\newblock
+  \url{https://academy.binance.com/pl/articles/proof-of-stake-explained}, 2020.
+\newblock data dostępu: rok 2020.
+
+\bibitem{estonian:voting}
+General framework of electronic voting and implementation thereof at national
+  elections in estonia.
+\newblock \url{https://www.venice.coe.int/files/13EMB/13EMB_Priit_Vinkel.pdf},
+  2020.
+\newblock data dostępu: rok 2020.
+
+\bibitem{bitcoin-vs-blockchain}
+Jaka jest różnica między blockchainem a bitcoinem?
+\newblock
+  \url{https://academy.binance.com/pl/articles/difference-between-blockchain-and-bitcoin},
+  2020.
+\newblock data dostępu: rok 2020.
+
+\bibitem{sp-han}
+Kodeks spółek handlowych art. 402. tryb zwoływania walnego zgromadzenia.
+\newblock 2020.
+\newblock data dostępu: rok 2020.
+
+\bibitem{piechk}
+Leksykon pojęć na temat technologii blockchain i kryptowalut.
+\newblock
+  \url{https://www.gov.pl/documents/31305/0/leksykon\_pojec\_na\_temat\_technologii\_blockchain\_i\_kryptowalut.pdf/77392774-1180-79ab-4dd5-089ffab37602},
+  2020.
+\newblock data dostępu: rok 2020.
+
+\bibitem{PKO}
+Pko bp wdraża nową wersję trwałego nośnika. to pierwsze takie rozwiązanie
+  w europie.
+\newblock
+  \url{https://fintek.pl/pko-bp-wdraza-nowa-wersje-trwalego-nosnika-to-pierwsze-takie-rozwiazanie-w-europie/},
+  2020.
+\newblock data dostępu: rok 2020.
+
+\bibitem{abiot}
+Przykłady wykorzystania blockchain: Internet rzeczy (iot).
+\newblock
+  \url{https://academy.binance.com/pl/articles/blockchain-use-cases-the-internet-of-things},
+  2020.
+\newblock data dostępu: rok 2020.
+
+\bibitem{eVoting-dzialanie}
+Walne zgromadzenia. evoting - jak to działa?
+\newblock
+  \url{https://www.kdpw.pl/pl/uslugi/Walne\_zgromadzenia/Strony/Jak-to-dziala.asp}x,
+  2020.
+\newblock data dostępu: rok 2020.
+
+\bibitem{nodes}
+Węzły (nodes) - czym są i jak działają?
+\newblock \url{https://academy.binance.com/pl/articles/what-are-nodes}, 2020.
+\newblock data dostępu: rok 2020.
+
+\bibitem{pa}
+Ankit Patel.
+\newblock History of the blockchain(1991).
+\newblock {\em Medium}, 2018.
+\newblock data dostępu: rok 2020.
+
+\bibitem{hash}
+P.~Rodwald.
+\newblock Kryptograficzne funkcje skrótu.
+\newblock {\em Zeszyty Naukowe Akademii Marynarki Wojennej}, R. 54 nr 2
+  (193):91–102, 2013.
+
+\bibitem{atack51}
+Sarwar Sayeed,  Hector Marco-Gisbert.
+\newblock Assessing blockchain consensus and security mechanisms against the
+  51% attack.
+\newblock {\em Applied Sciences}, 9(9), 2019.
+\newblock data dostępu: rok 2020.
+
+\bibitem{p2pbib}
+Rüdiger Schollmeier.
+\newblock A definition of peer-to-peer networking for the classification of
+  peer-to-peer architectures and applications.
+\newblock strony 101 -- 102, 09 2001.
+
+\bibitem{business}
+Ravindhar Vadapalli.
+\newblock {\em BLOCKCHAIN FUNDAMENTALS TEXT BOOK Fundamentals of Blockchain}.
+\newblock 10 2020.
+
+\bibitem{4-concepts}
+Ravindhar Vadapalli.
+\newblock {\em BLOCKCHAIN FUNDAMENTALS TEXT BOOK Fundamentals of Blockchain}.
+\newblock 10 2020.
+
+\end{thebibliography}

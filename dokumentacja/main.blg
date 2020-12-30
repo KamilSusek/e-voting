@@ -1,0 +1,73 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+The style file: plplain.bst
+Reallocating 'name_of_file' (item size: 1) to 7 items.
+Database file #1: biblio.bib
+Warning--to sort, need author or key in bitcoin
+Warning--to sort, need author or key in bitcoin-vs-blockchain
+Warning--to sort, need author or key in piechk
+Warning--to sort, need author or key in pow-bitcoin
+Warning--to sort, need author or key in nodes
+Warning--to sort, need author or key in elctricity-bitcoin
+Warning--to sort, need author or key in CBECI
+Warning--to sort, need author or key in abpow
+Warning--to sort, need author or key in abpos
+Warning--to sort, need author or key in abpoa
+Warning--to sort, need author or key in smart-contract
+Warning--to sort, need author or key in PKO
+Warning--to sort, need author or key in PKO-SMART
+Warning--to sort, need author or key in abiot
+Warning--to sort, need author or key in estonian:voting
+Warning--to sort, need author or key in sp-han
+Warning--to sort, need author or key in eVoting-dzialanie
+Warning--empty author in pow-bitcoin
+Warning--empty journal in pow-bitcoin
+Warning--empty author in sp-han
+Warning--empty journal in sp-han
+Warning--empty booktitle in p2pbib
+Warning--empty publisher in business
+Warning--empty publisher in 4-concepts
+You've used 23 entries,
+            2129 wiz_defined-function locations,
+            603 strings with 7222 characters,
+and the built_in function-call counts, 4559 in all, are:
+= -- 457
+> -- 65
+< -- 1
++ -- 38
+- -- 14
+* -- 203
+:= -- 619
+add.period$ -- 69
+call.type$ -- 23
+change.case$ -- 74
+chr.to.int$ -- 0
+cite$ -- 47
+duplicate$ -- 204
+empty$ -- 530
+format.name$ -- 14
+if$ -- 1066
+int.to.chr$ -- 0
+int.to.str$ -- 23
+missing$ -- 10
+newline$ -- 118
+num.names$ -- 12
+pop$ -- 163
+preamble$ -- 1
+purify$ -- 53
+quote$ -- 0
+skip$ -- 165
+stack$ -- 0
+substring$ -- 176
+swap$ -- 32
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 88
+warning$ -- 24
+while$ -- 15
+width$ -- 25
+write$ -- 229
+(There were 24 warnings)

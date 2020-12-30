@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.22)  30 DEC 2020 17:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.22)  30 DEC 2020 22:49
 entering extended mode
 **f:/Praca-inÅ¼ynierska/e-voting/dokumentacja/main.tex
 (f:/Praca-inÅ¼ynierska/e-voting/dokumentacja/main.tex
@@ -1016,7 +1016,7 @@ File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 <images/node_version.png, id=537, 140.77594pt x 22.58438pt>
 File: images/node_version.png Graphic file (type png)
 <use images/node_version.png>
-Package pdftex.def Info: images/node_version.png  used on input line 685.
+Package pdftex.def Info: images/node_version.png  used on input line 686.
 (pdftex.def)             Requested size: 416.83289pt x 66.88345pt.
 
 
@@ -1026,45 +1026,45 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <images/foldery.png, id=546, 157.33781pt x 76.78688pt>
 File: images/foldery.png Graphic file (type png)
 <use images/foldery.png>
-Package pdftex.def Info: images/foldery.png  used on input line 695.
+Package pdftex.def Info: images/foldery.png  used on input line 696.
 (pdftex.def)             Requested size: 416.83289pt x 203.46198pt.
  [24 <f:/Praca-inÅ¼ynierska/e-voting/dokumentacja/images/node_version.png> <f:/Praca-inÅ¼ynierska/e-voting/dokumentacja/images/foldery.png>] [25]
 <images/adminlogin.png, id=564, 164.11313pt x 94.10156pt>
 File: images/adminlogin.png Graphic file (type png)
 <use images/adminlogin.png>
-Package pdftex.def Info: images/adminlogin.png  used on input line 743.
+Package pdftex.def Info: images/adminlogin.png  used on input line 744.
 (pdftex.def)             Requested size: 416.83289pt x 239.0368pt.
 <images/adminnav.png, id=566, 1434.10782pt x 53.44969pt>
 File: images/adminnav.png Graphic file (type png)
 <use images/adminnav.png>
-Package pdftex.def Info: images/adminnav.png  used on input line 751.
+Package pdftex.def Info: images/adminnav.png  used on input line 752.
 (pdftex.def)             Requested size: 416.83289pt x 15.53506pt.
  [26 <f:/Praca-inÅ¼ynierska/e-voting/dokumentacja/images/adminlogin.png> <f:/Praca-inÅ¼ynierska/e-voting/dokumentacja/images/adminnav.png>]
 <images/voterslist.png, id=576, 776.9025pt x 246.9225pt>
 File: images/voterslist.png Graphic file (type png)
 <use images/voterslist.png>
-Package pdftex.def Info: images/voterslist.png  used on input line 763.
+Package pdftex.def Info: images/voterslist.png  used on input line 764.
 (pdftex.def)             Requested size: 416.83289pt x 132.48463pt.
 <images/addvoter.png, id=577, 757.32938pt x 316.93407pt>
 File: images/addvoter.png Graphic file (type png)
 <use images/addvoter.png>
-Package pdftex.def Info: images/addvoter.png  used on input line 769.
+Package pdftex.def Info: images/addvoter.png  used on input line 770.
 (pdftex.def)             Requested size: 416.83289pt x 174.44pt.
  [27 <f:/Praca-inÅ¼ynierska/e-voting/dokumentacja/images/voterslist.png> <f:/Praca-inÅ¼ynierska/e-voting/dokumentacja/images/addvoter.png>]
 <images/findnode.png, id=586, 823.57687pt x 121.20282pt>
 File: images/findnode.png Graphic file (type png)
 <use images/findnode.png>
-Package pdftex.def Info: images/findnode.png  used on input line 781.
+Package pdftex.def Info: images/findnode.png  used on input line 782.
 (pdftex.def)             Requested size: 416.83289pt x 61.34286pt.
 <images/ndoeconfig.png, id=588, 746.79pt x 250.68657pt>
 File: images/ndoeconfig.png Graphic file (type png)
 <use images/ndoeconfig.png>
-Package pdftex.def Info: images/ndoeconfig.png  used on input line 789.
+Package pdftex.def Info: images/ndoeconfig.png  used on input line 790.
 (pdftex.def)             Requested size: 416.83289pt x 139.92448pt.
 <images/electionlist.png, id=590, 500.62032pt x 121.20282pt>
 File: images/electionlist.png Graphic file (type png)
 <use images/electionlist.png>
-Package pdftex.def Info: images/electionlist.png  used on input line 801.
+Package pdftex.def Info: images/electionlist.png  used on input line 802.
 (pdftex.def)             Requested size: 416.83289pt x 100.92195pt.
 
 
@@ -1074,12 +1074,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <images/votesconfig1.png, id=600, 1393.45593pt x 461.47406pt>
 File: images/votesconfig1.png Graphic file (type png)
 <use images/votesconfig1.png>
-Package pdftex.def Info: images/votesconfig1.png  used on input line 811.
+Package pdftex.def Info: images/votesconfig1.png  used on input line 812.
 (pdftex.def)             Requested size: 416.83289pt x 138.04192pt.
 <images/votesconfigerror.png, id=602, 874.76813pt x 410.2828pt>
 File: images/votesconfigerror.png Graphic file (type png)
 <use images/votesconfigerror.png>
-Package pdftex.def Info: images/votesconfigerror.png  used on input line 819.
+Package pdftex.def Info: images/votesconfigerror.png  used on input line 820.
 (pdftex.def)             Requested size: 416.83289pt x 195.49988pt.
 
 
@@ -1089,12 +1089,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <images/votescandidate.png, id=611, 957.5775pt x 506.6428pt>
 File: images/votescandidate.png Graphic file (type png)
 <use images/votescandidate.png>
-Package pdftex.def Info: images/votescandidate.png  used on input line 828.
+Package pdftex.def Info: images/votescandidate.png  used on input line 829.
 (pdftex.def)             Requested size: 416.83289pt x 220.54245pt.
 <images/choosevoters.png, id=613, 607.51968pt x 481.8pt>
 File: images/choosevoters.png Graphic file (type png)
 <use images/choosevoters.png>
-Package pdftex.def Info: images/choosevoters.png  used on input line 836.
+Package pdftex.def Info: images/choosevoters.png  used on input line 837.
 (pdftex.def)             Requested size: 416.83289pt x 330.58238pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1103,12 +1103,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <images/electionsview.png, id=621, 749.80125pt x 172.39406pt>
 File: images/electionsview.png Graphic file (type png)
 <use images/electionsview.png>
-Package pdftex.def Info: images/electionsview.png  used on input line 844.
+Package pdftex.def Info: images/electionsview.png  used on input line 845.
 (pdftex.def)             Requested size: 416.83289pt x 95.84029pt.
 <images/penicon.png, id=623, 33.12375pt x 27.10126pt>
 File: images/penicon.png Graphic file (type png)
 <use images/penicon.png>
-Package pdftex.def Info: images/penicon.png  used on input line 854.
+Package pdftex.def Info: images/penicon.png  used on input line 855.
 (pdftex.def)             Requested size: 33.12366pt x 27.10118pt.
 
 
@@ -1118,17 +1118,17 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <images/electionmanager.png, id=634, 841.64438pt x 266.49562pt>
 File: images/electionmanager.png Graphic file (type png)
 <use images/electionmanager.png>
-Package pdftex.def Info: images/electionmanager.png  used on input line 862.
+Package pdftex.def Info: images/electionmanager.png  used on input line 863.
 (pdftex.def)             Requested size: 416.83289pt x 131.9869pt.
 <images/changeurl.png, id=635, 928.97063pt x 166.37157pt>
 File: images/changeurl.png Graphic file (type png)
 <use images/changeurl.png>
-Package pdftex.def Info: images/changeurl.png  used on input line 868.
+Package pdftex.def Info: images/changeurl.png  used on input line 869.
 (pdftex.def)             Requested size: 416.83289pt x 74.65326pt.
 <images/infocandidates.png, id=639, 187.45032pt x 107.65219pt>
 File: images/infocandidates.png Graphic file (type png)
 <use images/infocandidates.png>
-Package pdftex.def Info: images/infocandidates.png  used on input line 876.
+Package pdftex.def Info: images/infocandidates.png  used on input line 877.
 (pdftex.def)             Requested size: 187.44984pt x 107.65192pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1137,12 +1137,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <images/infovoters.png, id=647, 198.7425pt x 185.94469pt>
 File: images/infovoters.png Graphic file (type png)
 <use images/infovoters.png>
-Package pdftex.def Info: images/infovoters.png  used on input line 882.
+Package pdftex.def Info: images/infovoters.png  used on input line 883.
 (pdftex.def)             Requested size: 198.742pt x 185.94421pt.
 <images/bcstatus.png, id=649, 1069.74657pt x 226.59656pt>
 File: images/bcstatus.png Graphic file (type png)
 <use images/bcstatus.png>
-Package pdftex.def Info: images/bcstatus.png  used on input line 890.
+Package pdftex.def Info: images/bcstatus.png  used on input line 891.
 (pdftex.def)             Requested size: 416.83289pt x 88.29622pt.
 <images/publish.png, id=652, 163.3603pt x 80.55093pt>
 File: images/publish.png Graphic file (type png)
@@ -1257,114 +1257,119 @@ Overfull \hbox (20.21617pt too wide) in paragraph at lines 1181--1182
 
 [44] [45] [46] [47] [48]
 
-LaTeX Warning: Reference `algorytmy' on page 49 undefined on input line 1362.
+LaTeX Warning: Reference `algorytmy' on page 49 undefined on input line 1365.
 
 [49] [50]
-Overfull \hbox (0.77599pt too wide) in paragraph at lines 1439--1440
+Overfull \hbox (0.77599pt too wide) in paragraph at lines 1442--1443
 []\T1/lmr/m/n/12 W Thunk'ach mo»na wy-ko-rzy-sty-wa¢ re-du-cer'y, a na-st¦p-nie wy-wo-ªy-wa¢ Thunk'i
  []
 
-[51] [52
-
-]
+[51] [52]
 Rozdzia\l  7.
-[53] [54]
+[53
+
+] [54]
 Rozdzia\l  8.
-[55
+(f:/Praca-inÅ¼ynierska\e-voting\dokumentacja\main.bbl [55
 
 ] [56
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1494--1497
-[]\T1/lmr/m/n/12 Academy Bi-nance: Czym jest Bit-coin? \T1/lmr/m/it/12 Pol-ski T[]X\T1/lmr/m/n/12 ,
+Underfull \hbox (badness 10000) in paragraph at lines 13--18
+[]\T1/lmr/m/n/12 Cambridge bit-coin elec-tri-city con-sump-tion in-
  []
 
 
-Underfull \hbox (badness 1320) in paragraph at lines 1506--1509
-\T1/lmr/m/it/12 En-glish T[]X\T1/lmr/m/n/12 , https://academy.binance.com/pl/articles/difference-between-
+Underfull \hbox (badness 10000) in paragraph at lines 13--18
+\T1/lmr/m/n/12 dex (cbeci).  []$\T1/lmtt/m/n/12 https : / / www . epe . admin . cam . ac . uk /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1515--1517
-[]\T1/lmr/m/n/12 Andrew Tar: Proof-of-Work, Expla-ined. 2018. \T1/lmr/m/it/12 En-glish T[]X\T1/lmr/m/n/12 ,
+Underfull \hbox (badness 10000) in paragraph at lines 13--18
+\T1/lmtt/m/n/12 cambridge-[]bitcoin-[]electricity-[]consumption-[]index-[]cbeci$[]\T1/lmr/m/n/12 , 2019.
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 1521--1523
-[]\T1/lmr/m/n/12 Academy Bi-nance: W¦-zªy (no-des) - czym s¡ i jak dzia-ªaj¡? \T1/lmr/m/it/12 Pol-ski
+Underfull \hbox (badness 10000) in paragraph at lines 20--23
+[]\T1/lmr/m/n/12 Blockchain w pko banku pol-skim.  []$\T1/lmtt/m/n/12 https : / / fintech . pkobp . pl /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1524--1526
-[]\T1/lmr/m/n/12 Cambridge Bit-coin Elec-tri-city Con-sump-tion In-dex \T1/lmr/m/it/12 En-glish
+Underfull \hbox (badness 1924) in paragraph at lines 31--36
+[]\T1/lmr/m/n/12 Czym jest atak 51%?  []$\T1/lmtt/m/n/12 https : / / academy . binance . com / pl / articles /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1524--1526
-\T1/lmr/m/it/12 T[]X\T1/lmr/m/n/12 ,https://www.epe.admin.cam.ac.uk/cambridge-bitcoin-electricity-
+Underfull \hbox (badness 10000) in paragraph at lines 38--43
+[]\T1/lmr/m/n/12 Czym jest bit-coin?  []$\T1/lmtt/m/n/12 https : / / academy . binance . com / pl / articles /
  []
 
 
-Underfull \hbox (badness 1668) in paragraph at lines 1527--1529
-[]\T1/lmr/m/n/12 Sarwar Say-eed and Hec-tor Marco-Gisbert: As-ses-sing Block-chain Con-
+Underfull \hbox (badness 2050) in paragraph at lines 52--56
+[]\T1/lmr/m/n/12 Dowód stawki (proof of stake).  []$\T1/lmtt/m/n/12 https : / / academy . binance . com / pl /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1533--1535
-[]\T1/lmr/m/n/12 BLOCKCHAIN W PKO BANKU POL-SKIM \T1/lmr/m/it/12 Pol-ski T[]X
+Underfull \hbox (badness 10000) in paragraph at lines 65--70
+[]\T1/lmr/m/n/12 Jaka jest ró»-nica mi¦-dzy block-cha-inem a bit-co-
  []
 
 
-Underfull \hbox (badness 1509) in paragraph at lines 1536--1538
-[]\T1/lmr/m/n/12 https://www.lexlege.pl/ksh/oddzial-3-walne-zgromadzenie/57/ \T1/lmr/m/it/12 Pol-ski T[]X
+Underfull \hbox (badness 10000) in paragraph at lines 65--70
+\T1/lmr/m/n/12 inem?  []$\T1/lmtt/m/n/12 https : / / academy . binance . com / pl / articles /
+ []
+
+
+Underfull \hbox (badness 2478) in paragraph at lines 65--70
+\T1/lmtt/m/n/12 difference-[]between-[]blockchain-[]and-[]bitcoin$[]\T1/lmr/m/n/12 , 2020.  data do-st¦pu:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--82
+[]\T1/lmr/m/n/12 Leksykon po-j¦¢ na te-mat tech-no-lo-gii block-chain i kryp-to-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--82
+\T1/lmr/m/n/12 wa-lut.  []$\T1/lmtt/m/n/12 https : / / www . gov . pl / documents / 31305 / 0 / leksykon _
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--82
+\T1/lmtt/m/n/12 pojec _ na _ temat _ technologii _ blockchain _ i _ kryptowalut . pdf /
+ []
+
+
+Underfull \hbox (badness 3623) in paragraph at lines 77--82
+\T1/lmtt/m/n/12 77392774-[]1180-[]79ab-[]4dd5-[]089ffab37602$[]\T1/lmr/m/n/12 , 2020.  data do-st¦pu: rok
  []
 
 [57]
-Underfull \hbox (badness 10000) in paragraph at lines 1539--1541
-[]\T1/lmr/m/n/12 https://www.kdpw.pl/pl/uslugi/Walne_zgromadzenia/Strony/Jak-to-
+Underfull \hbox (badness 10000) in paragraph at lines 84--90
+[]\T1/lmr/m/n/12 Pko bp wdra»a now¡ wer-sj¦ trwa-ªego no-±nika. to pierw-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1542--1544
-[]\T1/lmr/m/n/12 https://academy.binance.com/pl/articles/what-are-smart-contracts \T1/lmr/m/it/12 Pol-ski
+Underfull \hbox (badness 10000) in paragraph at lines 84--90
+\T1/lmr/m/n/12 sze ta-kie roz-wi¡-za-nie w eu-ro-pie.  []$\T1/lmtt/m/n/12 https : / / fintek . pl /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1549--1551
-[]\T1/lmr/m/n/12 Leksykon po-j¦¢ na te-mat tech-no-lo-gii Block-
+Overfull \hbox (129.10925pt too wide) in paragraph at lines 84--90
+\T1/lmtt/m/n/12 pko-[]bp-[]wdraza-[]nowa-[]wersje-[]trwalego-[]nosnika-[]to-[]pierwsze-[]takie-[]rozwiazanie-[]w-[]europie/$[]\T1/lmr/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1549--1551
-\T1/lmr/m/n/12 chain i kryp-to-wa-lut, prof Krzysz-tof Piech
+Underfull \hbox (badness 10000) in paragraph at lines 92--97
+[]\T1/lmr/m/n/12 Przykªady wy-ko-rzy-sta-nia block-chain: In-ter-net rze-czy
  []
 
 
-Overfull \hbox (248.18753pt too wide) in paragraph at lines 1549--1551
-\T1/lmr/m/n/12 https://www.gov.pl/documents/31305/0/leksykon_pojec_na_temat_technologii_blockchain_i_kryptowalut.pdf/77392774-
+Underfull \hbox (badness 10000) in paragraph at lines 92--97
+\T1/lmr/m/n/12 (iot).  []$\T1/lmtt/m/n/12 https : / / academy . binance . com / pl / articles /
  []
 
-
-Overfull \hbox (11.5164pt too wide) in paragraph at lines 1555--1556
-[]\T1/lmr/m/n/12 Dowód Stawki (Proof of Stake) https://academy.binance.com/pl/articles/proof-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1559--1560
-[]\T1/lmr/m/n/12 Przykªady wy-ko-rzy-sta-nia Block-chain: In-ter-net Rze-czy (IoT)
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1559--1560
-\T1/lmr/m/n/12 https://academy.binance.com/pl/articles/blockchain-use-cases-the-internet-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1561--1562
-[]\T1/lmr/m/n/12 Dowód Au-to-ry-tetu (Proof of Au-tho-rity) - jak dziaªa
- []
-
-[58] (f:/Praca-inÅ¼ynierska\e-voting\dokumentacja\main.aux)
+) [58] (f:/Praca-inÅ¼ynierska\e-voting\dokumentacja\main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 4C67F2AB7FF6DE42398E38F7F7CA61E9;4376.
 
@@ -1376,17 +1381,17 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 32772 strings out of 479799
- 760748 string characters out of 2869722
- 1165850 words of memory out of 3000000
+ 32775 strings out of 479799
+ 760858 string characters out of 2869722
+ 1169850 words of memory out of 3000000
  48635 multiletter control sequences out of 15000+200000
  609066 words of font info for 73 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  85i,12n,107p,1561b,2070s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on f:/Praca-inÅ¼ynierska\e-voting\dokumentacja\main.pdf (66 pages, 1169994 bytes).
+Output written on f:/Praca-inÅ¼ynierska\e-voting\dokumentacja\main.pdf (66 pages, 1177703 bytes).
 PDF statistics:
- 1269 PDF objects out of 1440 (max. 8388607)
+ 1298 PDF objects out of 1440 (max. 8388607)
  482 named destinations out of 1000 (max. 500000)
  725 words of extra memory for PDF output out of 10000 (max. 10000000)
 

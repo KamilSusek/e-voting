@@ -57,7 +57,7 @@
 \contentsline {section}{\numberline {6.3}Algorytmy}{44}{section.6.3}%
 \contentsline {subsection}{\numberline {6.3.1}Proof of Work}{44}{subsection.6.3.1}%
 \contentsline {subsection}{\numberline {6.3.2}Proof of Authority}{46}{subsection.6.3.2}%
-\contentsline {section}{\numberline {6.4}Zastosowane wzorce projektowe}{46}{section.6.4}%
+\contentsline {section}{\numberline {6.4}Zastosowane wzorce projektowe}{47}{section.6.4}%
 \contentsline {subsection}{\numberline {6.4.1}Singleton}{47}{subsection.6.4.1}%
 \contentsline {subsection}{\numberline {6.4.2}Repozytorium}{47}{subsection.6.4.2}%
 \contentsline {subsection}{\numberline {6.4.3}Strategia}{48}{subsection.6.4.3}%
