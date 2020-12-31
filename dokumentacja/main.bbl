@@ -3,10 +3,13 @@
 \bibitem{elctricity-bitcoin}
 Bitcoin mining now consuming more electricity than 159 countries including
   ireland and most countries in africa.
+\newblock \url{https://powercompare.co.uk/bitcoin/}, 2018.
+\newblock data dostępu: rok 2020.
 
 \bibitem{pow-bitcoin}
-Proof-of-work, explained.
-\newblock 2018.
+Proof-of-work explained.
+\newblock \url{https://cointelegraph.com/explained/proof-of-work-explained},
+  2018.
 \newblock data dostępu: rok 2020.
 
 \bibitem{CBECI}
@@ -70,7 +73,8 @@ Jaka jest różnica między blockchainem a bitcoinem?
 
 \bibitem{sp-han}
 Kodeks spółek handlowych art. 402. tryb zwoływania walnego zgromadzenia.
-\newblock 2020.
+\newblock \url{https://www.lexlege.pl/ksh/oddzial-3-walne-zgromadzenie/57/},
+  2020.
 \newblock data dostępu: rok 2020.
 
 \bibitem{piechk}
@@ -109,8 +113,10 @@ Węzły (nodes) - czym są i jak działają?
 
 \bibitem{pa}
 Ankit Patel.
-\newblock History of the blockchain(1991).
-\newblock {\em Medium}, 2018.
+\newblock Medium.
+\newblock
+  \url{https://medium.com/@ankit_233/history-of-the-blockchain-1991-38d6d4c3420c},
+  2018.
 \newblock data dostępu: rok 2020.
 
 \bibitem{hash}
@@ -133,11 +139,6 @@ Rüdiger Schollmeier.
 \newblock strony 101 -- 102, 09 2001.
 
 \bibitem{business}
-Ravindhar Vadapalli.
-\newblock {\em BLOCKCHAIN FUNDAMENTALS TEXT BOOK Fundamentals of Blockchain}.
-\newblock 10 2020.
-
-\bibitem{4-concepts}
 Ravindhar Vadapalli.
 \newblock {\em BLOCKCHAIN FUNDAMENTALS TEXT BOOK Fundamentals of Blockchain}.
 \newblock 10 2020.

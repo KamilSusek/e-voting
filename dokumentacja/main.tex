@@ -22,6 +22,10 @@
 \usepackage{graphicx}
 \usepackage{cite}
 \graphicspath{ {./images/} }
+\usepackage[page]{appendix} % toc,
+\renewcommand{\appendixtocname}{Dodatki}
+\renewcommand{\appendixpagename}{Dodatki}
+\renewcommand{\appendixname}{Dodatek}
 %%%%%%%%%%%% ZYWA PAGINA %%%%%%%%%%%%%%%
 % brak kapitalizacji zywej paginy
 \usepackage{fancyhdr}
@@ -353,7 +357,7 @@ Działanie \textit{Proof of Work} polega na wkładzie odpowiedniej ilości mocy 
 
 Kombinacja rozwiązań tworzących Blockchain, w kryptowalucie Bitcoin wywołała poruszenie na całym świecie. Zaczęto rozmyślać nad nowymi rozwiązaniami, których podstawą miał być Blockchain. Blockhain znalazł swoje zastosowanie w systemach dokumentowania transakcji, ze względu na redukcję kosztów utrzymania oraz wydajność, co jest spowodowane brakiem pośredników \cite{business}. Dodatkowo technologia cały czas się rozwija. Kolejnym rewolucyjnym krokiem dla Blockchainu było utworzenie przez Vitalik'a Buterin'a nowej kryptowaluty, o nazwie Ethereum. Ethereum poza funkcjami płatniczymi kryptowaluty wprowadza \textit{smart} kontrakty, czyli możliwość stworzenia kodu i uruchomienia go w systemie Ethereum. Programy mogą wchodzić w interakcje z węzłami w sieci, co pozwala na tworzenie ogromnych rozproszonych aplikacji.
 
-Technologia cały czas podlega rozwojowi i znajduje zastosowanie w nowych dziedzinach, jednakże przedstawione powyżej koncepty są podstawą obecnego systemu Blockchain. W skrócie podstawę systemu Blockchain tworzą \cite{4-concepts}:
+Technologia cały czas podlega rozwojowi i znajduje zastosowanie w nowych dziedzinach, jednakże przedstawione powyżej koncepty są podstawą obecnego systemu Blockchain. W skrócie podstawę systemu Blockchain tworzą \cite{business}:
 \begin{itemize}
 	\item Wspólny arkusz - rozproszony łańcuch bloków.
 	\item Ochrona dostępu.
@@ -1491,5 +1495,27 @@ Zastosowanie technologii opartych na NodeJs do tworzenia sieci Blockchain okaza�
 
 \bibliographystyle{plplain} 
 \bibliography{biblio}
+
+\begin{appendices}
+ 
+  \chapter*{Spis skrótów i symboli}
+  
+  \begin{description}
+    \item REST - Representational State Transfer
+    \item API - Application Programming Interface
+    \item IoT - Internet of Things
+    \item ORM - Object Relational Mapping
+  \end{description}
+
+Do pracy dołączona jest płyta CD z~następującą zawartością:
+
+\begin{itemize}
+  \item praca (źródła \LaTeX owe i końcowa wersja w \texttt{pdf}),
+  \item źródła programu,
+\end{itemize}
+
+\listoffigures
+
+\end{appendices}
 
 \end{document}

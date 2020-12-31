@@ -22,52 +22,47 @@ Warning--to sort, need author or key in abiot
 Warning--to sort, need author or key in estonian:voting
 Warning--to sort, need author or key in sp-han
 Warning--to sort, need author or key in eVoting-dzialanie
-Warning--empty author in pow-bitcoin
-Warning--empty journal in pow-bitcoin
-Warning--empty author in sp-han
-Warning--empty journal in sp-han
 Warning--empty booktitle in p2pbib
 Warning--empty publisher in business
-Warning--empty publisher in 4-concepts
-You've used 23 entries,
+You've used 22 entries,
             2129 wiz_defined-function locations,
-            603 strings with 7222 characters,
-and the built_in function-call counts, 4559 in all, are:
-= -- 457
-> -- 65
+            601 strings with 7219 characters,
+and the built_in function-call counts, 4369 in all, are:
+= -- 447
+> -- 58
 < -- 1
-+ -- 38
-- -- 14
-* -- 203
-:= -- 619
-add.period$ -- 69
-call.type$ -- 23
-change.case$ -- 74
++ -- 35
+- -- 12
+* -- 180
+:= -- 578
+add.period$ -- 68
+call.type$ -- 22
+change.case$ -- 71
 chr.to.int$ -- 0
-cite$ -- 47
-duplicate$ -- 204
-empty$ -- 530
-format.name$ -- 14
-if$ -- 1066
+cite$ -- 41
+duplicate$ -- 183
+empty$ -- 523
+format.name$ -- 12
+if$ -- 1044
 int.to.chr$ -- 0
-int.to.str$ -- 23
-missing$ -- 10
-newline$ -- 118
-num.names$ -- 12
-pop$ -- 163
+int.to.str$ -- 22
+missing$ -- 5
+newline$ -- 115
+num.names$ -- 10
+pop$ -- 165
 preamble$ -- 1
-purify$ -- 53
+purify$ -- 50
 quote$ -- 0
-skip$ -- 165
+skip$ -- 152
 stack$ -- 0
-substring$ -- 176
-swap$ -- 32
+substring$ -- 171
+swap$ -- 33
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 88
-warning$ -- 24
-while$ -- 15
-width$ -- 25
-write$ -- 229
-(There were 24 warnings)
+type$ -- 86
+warning$ -- 19
+while$ -- 13
+width$ -- 24
+write$ -- 227
+(There were 19 warnings)
