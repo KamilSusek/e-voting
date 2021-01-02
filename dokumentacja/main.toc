@@ -51,18 +51,18 @@
 \contentsline {section}{\numberline {6.1}Architektura systemu}{39}{section.6.1}%
 \contentsline {subsection}{\numberline {6.1.1}Architektura pełnego systemu}{39}{subsection.6.1.1}%
 \contentsline {subsection}{\numberline {6.1.2}Architektura sieci Blockchain}{40}{subsection.6.1.2}%
-\contentsline {section}{\numberline {6.2}Struktury danych}{40}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Łańcuch bloków}{40}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Baza danych}{43}{subsection.6.2.2}%
-\contentsline {section}{\numberline {6.3}Algorytmy}{44}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Proof of Work}{44}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Proof of Authority}{46}{subsection.6.3.2}%
-\contentsline {section}{\numberline {6.4}Zastosowane wzorce projektowe}{47}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Singleton}{47}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}Repozytorium}{47}{subsection.6.4.2}%
-\contentsline {subsection}{\numberline {6.4.3}Strategia}{48}{subsection.6.4.3}%
-\contentsline {subsection}{\numberline {6.4.4}Redux}{49}{subsection.6.4.4}%
-\contentsline {chapter}{\numberline {7}Weryfikacja i walidacja}{53}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Testowanie aplikacji serwerowych}{53}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Testowanie aplikacji przeglądarkowych}{54}{section.7.2}%
-\contentsline {chapter}{\numberline {8}Podsumowanie i wnioski}{55}{chapter.8}%
+\contentsline {section}{\numberline {6.2}Struktury danych}{41}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Łańcuch bloków}{41}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Baza danych}{44}{subsection.6.2.2}%
+\contentsline {section}{\numberline {6.3}Algorytmy}{46}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Proof of Work}{46}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Proof of Authority}{47}{subsection.6.3.2}%
+\contentsline {section}{\numberline {6.4}Zastosowane wzorce projektowe}{48}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Singleton}{48}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Repozytorium}{49}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.3}Strategia}{50}{subsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.4.4}Redux}{51}{subsection.6.4.4}%
+\contentsline {chapter}{\numberline {7}Weryfikacja i walidacja}{55}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Testowanie aplikacji serwerowych}{55}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Testowanie aplikacji przeglądarkowych}{56}{section.7.2}%
+\contentsline {chapter}{\numberline {8}Podsumowanie i wnioski}{57}{chapter.8}%

@@ -579,23 +579,23 @@ serwis udostępniający REST API i serwery sieci Blockchain. Do wymagań funkcjo
 
 \begin{itemize}
 	\item hasła przechowywane w bazie danych są szyfrowane za pomocą funkcji skrótu \textit{SHA256},
-	\item dostęp do zasobów wyborcy i administratora odbywa się poprzez dwie inne aplikacje internetowe,
+	\item dostęp do zasobów wyborcy i administratora odbywa się poprzez dwie różne aplikacje internetowe,
 	\item komunikacja pomiędzy aplikacjami przeglądarkowymi, a API odbywa się z wykorzystaniem konwencji REST API,
-	\item dostęp do punktów końcowych API (endpoint'ów) jest zabezpieczony za pomocą JWT (Json Web Token) oraz uwierzytelnienia na podstawie roli (Role Based Authentication),
+	\item dostęp do punktów końcowych API (tzw. endpoint'ów) jest zabezpieczony za pomocą JWT (Json Web Token) oraz uwierzytelnienia na podstawie roli (Role Based Authentication),
 	\item dostęp do zasobów posiadają tylko zalogowani użytkownicy,
 	\item za bezpieczne przechowywanie głosów odpowiada sieć Blockchain,
-	\item każdy węzeł sieci Blockchain to indywidualny program umożliwiający konfigurację sieci,
+	\item każdy węzeł sieci Blockchain to indywidualny program posiadający własną konfigurację,
 	\item dla każdych wyborów konfigurowana jest indywidualna sieć Blockchain,
 	\item dostęp do sieci Blockchain uzyskiwany jest za pomocą serwisu,
 	\item komunikacja pomiędzy serwisem, a siecią Blockchain odbywa się z udziałem jednego węzła, który odbiera informacje i rozsyła po całej sieci,
-	\item konsensus w sieci może zostać uzyskany z wykorzystaniem algorytmu Proof of Work lub Proof of Authority.
+	\item konsensus w sieci może zostać uzyskany z wykorzystaniem algorytmu \textit{Proof of Work} lub algorytmu opratego o \textit{Proof of Authority}.
 \end{itemize}
 
 \newpage
 
 \section{Diagramy przypadków użycia}
 
-W systemie można wyszczególnić dwóch aktorów. W tym podrozdziale zostały przedstawione i omówione diagramy przypadków użycia dla aktorów.
+W systemie można wyróżnić dwóch aktorów. W tym podrozdziale zostały przedstawione i omówione diagramy przypadków użycia dla tych aktorów.
 
 \begin{figure}[h]
 	\centering
@@ -625,32 +625,32 @@ Dodatkowo administrator posiada swoje konto w systemie. Aby mógł korzystać z 
 \newpage
 \section {Wykorzystane narzędzia i technologie}
 
-System e-votingu jest składa się z wielu modułów, których stworzenie obejmuje różne dziedziny programowania. W systemie są elementy odpowiedzialne za interfejs użytkownika, aplikację serwerową i bazę danych. Każdy z tych rodzajów oprogramowania wymaga innego podejścia. Są to popularne dziedziny programowania, dlatego znalezienie rozwiązań nie stanowi problemu. W tej sekcji przedstawiono wykorzystane narzędzia i technologie.
+System e-votingu składa się z wielu modułów, których stworzenie obejmuje różne dziedziny programowania. W systemie są elementy odpowiedzialne za interfejs użytkownika, aplikację serwerową i bazę danych. Każdy z tych rodzajów oprogramowania wymaga innego podejścia. Są to popularne dziedziny programowania, dlatego znalezienie rozwiązań nie stanowi problemu. W tej sekcji przedstawiono wykorzystane narzędzia i technologie.
 
 \subsection{Interfejs użytkownika}
 
 W celu stworzenia rozbudowanego interfejsu użytkownika wykorzystano bibliotekę javascript-ową - ReactJs. React pozwala na tworzenie aplikacji internetowych z wykorzystaniem języków JavaScript, HTML i CSS. Takie podejście do tworzenia aplikacji określane jest jako SPA (Single Page Application), taka aplikacja posiada jeden plik \textit{.html}, którego zawartość jest dynamicznie generowana w trakcie działania aplikacji. Podejście typu SPA pozwala na zredukowanie liczby zasobów potrzebnych do generowania strony, poprzez wykorzystanie tylko jednego pliku \textit{.html}. Strona typu SPA działa płynnie, ponieważ nie wymaga ona ładowania szablonów z plików \textit{.html}. Ważną cechą ReactJs jest podejście do tworzenia interfejsu użytkownika, jak do grupy komponentów. Komponent może być dowolnym elementem interfejsu, od paska nawigacji do przycisku. Każdy komponent posiada swój stan, czyli zestaw zmiennych kontrolujących jego funkcjonalności. Takie podejście pozwala na tworzenie uniwersalnych i konfigurowalnych komponentów, które można wykorzystywać w wielu miejscach aplikacji.
 
-Biblioteka ReactJs to bardzo rozbudowane narzędzie, które dzięki swojej popularności posiada wiele dodatkowych rozwiązań współpracujących z całym środowiskiem ReactJs. Przykładem takiego dodatku jest biblioteka Redux, która pozwala na zarządzanie stanem aplikacji. Redux pozwala przenieść stan z komponentu do osobnego kontekstu. Takie rozwiązanie pozwala na umieszczenie tych części stanu aplikacji, które odnoszą się do różnych komponentów w jednym miejscu. Stan aplikacji jest dostępny globalnie, a nie tylko dla komponentów potomnych. Przykładowo stan informujący o zalogowaniu do aplikacji powinien być dostępny dla całej aplikacji. Przeniesienie tego stanu do osobnego kontekstu pozwala na zdefiniowanie go w jednym miejscu i dostarczenie do komponentów, które wymagają tego stanu. W projekcie wykorzystano opartą na Redux, bibliotekę Redux-Toolkit. Głównym argumentem za wykorzystaniem Redux-Toolkit jest mniejsza objętość kodu, która powstaje do uzyskania rozwiązania.
+Biblioteka ReactJs to bardzo rozbudowane narzędzie, które dzięki swojej popularności posiada wiele dodatkowych rozwiązań współpracujących z całym środowiskiem ReactJs. Przykładem takiego dodatku jest biblioteka Redux, która pozwala na zarządzanie stanem aplikacji. Redux pozwala przenieść stan z komponentu do osobnego kontekstu. Takie rozwiązanie pozwala na umieszczenie tych części stanu aplikacji, które odnoszą się do różnych komponentów w jednym kontenerze. Stan aplikacji jest dostępny globalnie, a nie tylko dla komponentów potomnych. Przykładowo stan informujący o zalogowaniu do aplikacji powinien być dostępny dla całej aplikacji. Przeniesienie tego stanu do osobnego kontekstu pozwala na zdefiniowanie go w jednym miejscu i dostarczenie do odpowiednich komponentów. W projekcie wykorzystano opartą na Redux, bibliotekę Redux-Toolkit. Głównym argumentem za wykorzystaniem Redux-Toolkit jest mniejsza objętość kodu, która powstaje do uzyskania rozwiązania.
 
-Podstawowym narzędziem odpowiedzialnym za wygląd interfejsu aplikacji internetowej są kaskadowe arkusze stylów, czyli popularny CSS (Cascade Style Sheets). Język CSS jest jedynym językiem odpowiedzialnym za stylowanie wyglądu, który jest rozumiany przez przeglądarkę. Jednakże istnieją rozwiązania, które pozwalają na wprowadzenie nowej składni z zachowaniem kompatybilności z danym środowiskiem uruchomieniowym (w tym przypadku z przeglądarką). Są to tzw. preprocesory. Preprocesor pozwala na przetworzenie danego kodu źródłowego, na określony kod wyjściowy. Przykładem preprocesora języka CSS, który został wykorzystany w projekcie jest SASS. SASS dostarcza funkcjonalności, które nie są dostępne w języku CSS. Przykładowo SASS pozwala na zagnieżdżanie instrukcji, deklarowanie i wywoływanie zmiennych oraz tzw. \textit{mixins}, które pozwalają na zadeklarowanie powtarzających się fragmentów kodu w jednym miejscu i ich wywoływanie bez konieczności przepisywania kodu. Sass pozwala na lepsze wykorzystanie dobrych praktyk programowania, takich jak uniknięcie powtarzania kodu i ogólna poprawa jakości kodu.
+Podstawowym narzędziem odpowiedzialnym za wygląd interfejsu aplikacji internetowej są kaskadowe arkusze stylów, czyli popularny CSS (Cascade Style Sheets). Język CSS jest jedynym językiem odpowiedzialnym za określenie wyglądu strony internetowej, który jest rozumiany przez przeglądarkę. Jednakże istnieją rozwiązania, które pozwalają na wprowadzenie nowej składni z zachowaniem kompatybilności z danym środowiskiem uruchomieniowym (w tym przypadku z przeglądarką). Są to tzw. \textit{preprocesory}. Preprocesor pozwala na przetworzenie danego kodu źródłowego, na określony kod wyjściowy. Przykładem preprocesora języka CSS, który został wykorzystany w projekcie jest SASS(Syntactically Awesome Style Sheets). SASS dostarcza funkcjonalności, które nie są dostępne w języku CSS. Przykładowo SASS pozwala na zagnieżdżanie instrukcji, deklarowanie i wywoływanie zmiennych oraz tzw. \textit{mixin'y}, które pozwalają na zadeklarowanie powtarzających się fragmentów kodu w jednym miejscu i ich wywoływanie bez konieczności przepisywania kodu. Sass pozwala na lepsze wykorzystanie dobrych praktyk programowania, takich jak uniknięcie powtarzania kodu.
 
-Jak już wspomniano w tej sekcji ReactJs jest popularną biblioteką, co przekłada się na dużą liczbę rozszerzeń i dodatków. Dodatki obejmują również stylowanie aplikacji. W projekcie została wykorzystana biblioteka Material-Ui, która dostarcza gotowe zestawy komponentów i narzędzia do ich stylowania. Zaletą tego rozwiązania jest wykorzystywanie komponentów, które stworzono z wykorzystaniem dobrych praktyk tworzenia interfejsu użytkownika.
+Jak już wspomniano w tej sekcji ReactJs jest popularną biblioteką, co przekłada się na dużą liczbę rozszerzeń i dodatków. Dodatki obejmują również stylowanie aplikacji. W projekcie została wykorzystana biblioteka Material-Ui, która dostarcza gotowe zestawy komponentów i narzędzia do ich stylowania. Zaletą tego rozwiązania jest wykorzystywanie komponentów, które stworzono z użyciem dobrych praktyk tworzenia interfejsu użytkownika.
 
-Aplikacje internetowe często wymagają komunikacji z zewnętrznym serwerem, w celu pobrania lub wysłania odpowiednich zasobów. Istnieje wiele rozwiązań, które pozwalają na wysyłanie żądań w standardzie HTTP. W projekcie wykorzystano javascript-ową bibliotekę Axios. Biblioteka dostarcza wiele mechanizmów do wysyłania żądań HTTP, a jej wielką zaletą jest łatwość obsługi.
+Aplikacje internetowe często wymagają komunikacji z zewnętrznym serwerem, w celu pobrania lub wysłania odpowiednich zasobów. Istnieje wiele rozwiązań, które pozwalają na wysyłanie żądań w standardzie HTTP (Hypertext Transfer Protocol). W projekcie wykorzystano javascript-ową bibliotekę Axios. Biblioteka dostarcza wiele mechanizmów do wysyłania żądań HTTP, a jej wielką zaletą jest łatwość obsługi.
 
-JavaScript to język programowania, który świetnie sprawdza się w środowisku aplikacji przeglądarkowych. Język umożliwia wieloaspektowe podejście do programowania. Można pisać programy z podejściem deklaratywnym lub obiektowym. JavaScript spełnia najważniejsza standardy, dla nowoczesnych języków programowania, o czym świadczyć może ogromna popularność tego języka. Jednakże niektóre właściwości tego języka mogą utrudniać tworzenie oprogramowania. Przykładem jest dynamiczne typowanie.W JavaScript każda zmienna nie ma przypisanego typu na stałe. Takie rozwiązanie ma swoje wady i zalety, jednak programista powinien mieć wybór, kiedy użyć zmiennej typowanej dynamicznie, a kiedy nie. Rozwiązaniem tego problemu jest język Typescript. Typescript jest nadzbiorem JavaScript co oznacza, że dostarcza on wszystkie funkcje JavaScript'u i jednocześnie rozszerza go o nowe. W Typescript można deklarować zmienne z określonym typem, a także używać typu \textit{any}. Typ \textit{any} określa zmienne, które mogą być typowane dynamicznie. Język Typescript dostarcza również możliwość definiowania własnych typów. W projekcie, w celu uniknięcia problemów związanych z dynamicznym typowaniem wykorzystano język Typescript.
+JavaScript to język programowania, który świetnie sprawdza się w środowisku aplikacji przeglądarkowych. Język umożliwia wieloaspektowe podejście do programowania. Można pisać programy w sposób deklaratywny lub obiektowy. JavaScript spełnia standardy nowoczesnych języków programowania, o czym świadczyć może ogromna popularność tego języka. Jednakże niektóre właściwości tego języka mogą utrudniać tworzenie oprogramowania. Przykładem jest dynamiczne typowanie.W JavaScript każda zmienna nie ma przypisanego typu na stałe. Takie rozwiązanie ma swoje wady i zalety, jednak są przypadki, w których programista powinien mieć wybór, kiedy użyć zmiennej typowanej dynamicznie, a kiedy nie. Rozwiązaniem tego problemu jest język Typescript. Typescript jest nadzbiorem JavaScript co oznacza, że dostarcza on wszystkie funkcje JavaScript'u i jednocześnie rozszerza go o nowe. W Typescript można deklarować zmienne z określonym typem, a także używać typu \textit{any}. Typ \textit{any} określa zmienne, które mogą być typowane dynamicznie. Język Typescript dostarcza również możliwość definiowania własnych typów. W projekcie, w celu uniknięcia problemów związanych z dynamicznym typowaniem wykorzystano język Typescript.
 
 \subsection{Serwer}
-Za stronę serwerową aplikacji odpowiada silnik NodeJs. NodeJs pozwala na tworzenie aplikacji w JavaScript poza środowiskiem przeglądarkowym. Silnik stanowi również rozbudowane narzędzie pozwalające na tworzenie REST API. Zaletą NodeJs jest ogromna popularność, co jest zauważalne podczas szukania rozwiązań w internecie na napotkane problemy. Popularność silnika przekłada się również na jego bogatą dokumentację i dodatkowe biblioteki, które usprawniają elementy tworzenie oprogramowania.
+Za stronę serwerową aplikacji odpowiada silnik NodeJs. NodeJs pozwala na tworzenie aplikacji w JavaScript, poza środowiskiem przeglądarkowym. Silnik stanowi również rozbudowane narzędzie pozwalające na tworzenie REST API. Zaletą NodeJs jest ogromna popularność, co jest zauważalne podczas szukania rozwiązań w internecie na napotkane problemy. Popularność silnika przekłada się również na jego bogatą dokumentację i dodatkowe biblioteki, które usprawniają proces tworzenia oprogramowania.
 
-ExpressJs to biblioteka działająca na silniku NodeJs, która została wykorzystana w projekcie do tworzenia REST API i węzłów sieci Blockchain. ExpressJs dostarcza podstawowe narzędzia do tworzenia REST API, takie jak \textit{endpointy} (punkty końcowe serwera) pozwalające na obsługiwanie żądań HTTP. Zaletą biblioteki ExpressJs jest kompatybilność z wieloma innymi bibliotekami przeznaczonymi dla silnika NodeJs.
+ExpressJs to biblioteka działająca na silniku NodeJs, która została wykorzystana w projekcie do tworzenia REST API i węzłów sieci Blockchain. ExpressJs dostarcza podstawowe narzędzia do tworzenia REST API, takie jak tworzenie punktów końcowych serwera, które pozwalają na obsługiwanie żądań HTTP. Zaletą biblioteki ExpressJs jest kompatybilność z wieloma innymi bibliotekami przeznaczonymi dla silnika NodeJs.
 
-Prisma to jedna z bibliotek NodeJs, które są odpowiedzialne za obsługę bazy danych. Prisma dostarcza mechanizm ORM (Object Relational Mapping), czyli możliwość odwzorowania relacyjnej bazy danych, na obiekty danego języka programowania. Prisma generuje moduły odpowiedzialne za obsługę bazy danych i dostarcza je programiście. Takie rozwiązanie pozwala na utrzymanie całości aplikacji w jednym języku programowania, ponieważ nie wymaga korzystania z języka SQL. Wszystkie moduły obsługi bazy danych tworzone są automatycznie, dlatego Prisma pozwala oddzielić implementację bazy danych, od innych funkcjonalności aplikacji.
+Prisma to jedna z bibliotek NodeJs, które są odpowiedzialne za obsługę bazy danych. Prisma dostarcza mechanizm ORM (Object Relational Mapping), czyli możliwość odwzorowania relacyjnej bazy danych, na obiekty danego języka programowania. Prisma generuje moduły odpowiedzialne za obsługę bazy danych i dostarcza je programiście. Takie rozwiązanie pozwala na utrzymanie całości aplikacji w jednym języku programowania, ponieważ nie wymaga korzystania z języka SQL (Structured Query Language). Wszystkie moduły obsługi bazy danych tworzone są automatycznie, dlatego Prisma pozwala oddzielić implementację bazy danych, od innych funkcjonalności aplikacji.
 
 \subsection {Baza danych}
 
-Wykorzystana baza danych to SQLite. Baza danych znajduje się w pliku i jest umieszczona na serwerze wraz z REST API. SQLite to szybki, mały i łatwy w konfiguracji silnik baz danych. Jest to świetny silnik do prototypowania i tworzenia małych, a zarazem przenośnych baz danych.
+Wykorzystana baza danych działa na silniku SQLite. Baza danych znajduje się w pliku i jest umieszczona na serwerze wraz z REST API. SQLite to szybki, mały i łatwy w konfiguracji silnik baz danych. Jest to świetny silnik do prototypowania i tworzenia małych, a zarazem przenośnych baz danych.
 
 Silnik SQLite można obsługiwać z poziomu konsoli lub za pomocą specjalnej aplikacji, która dostarcza interfejs graficzny prezentujący zawartość bazy danych. W projekcie wykorzystano aplikację SQLiteStudio, która pozwala na połączenie się z bazą danych, w celu zarządzania nią. SQLiteStudio pozwala na tworzenie tabel, dodawanie zawartości, usuwanie danych i przeszukiwanie bazy danych. Aplikacja pozwala również na pisanie własnych zapytań w języku SQL. Tego rodzaju aplikacje są przydatne podczas tworzenie tabel w bazie danych i testowania aplikacji.
 
@@ -661,12 +661,13 @@ Testowanie strony serwerowej systemu odbywało się przez aplikację Postman, kt
 Testowanie aplikacji w środowisku lokalnym pozwala odpowiedzieć na pytanie, czy całość komponentów działa w kontrolowanym środowisku. Natomiast przeniesienie aplikacji do sieci pozwala na przetestowanie wydajności aplikacji. W projekcie, w celu udostępnienia aplikacji w internecie wykorzystano serwisy Netlify oraz Heroku. Netlify pozwala na udostępnienie aplikacji internetowej, pod adresem generowanym przez serwis. Heroku zajmuje się uruchomieniem aplikacji serwerowej, która również dostępna jest w sieci pod odpowiednim adresem.
 
 \subsection{Metodyka pracy}
-
-Do prowadzenia projektu wykorzystano repozytorium kontroli wersji GitHub. GitHub to narzędzie, które pozwala przechowywać kod źródłowy aplikacji, a także zapewnia jego archiwizację i wersjonowanie. Do przydatnych funkcji należy również tworzenie rozgałęznień na różnych etapach tworzenia aplikacji. Pozwala to na oddzielenie poszczególnych funkcji na odrębne gałęzie projektu. Takie podejścia pozwala na uporządkowanie pracy nad projektem i większą przejrzystość w procesie rozwoju modułów.
-
+ 
+Do prowadzenia projektu wykorzystano repozytorium kontroli wersji GitHub. GitHub to narzędzie, które pozwala przechowywać kod źródłowy aplikacji, a także zapewnia jego archiwizację i wersjonowanie. Do przydatnych funkcji należy również tworzenie rozgałęzień na różnych etapach tworzenia aplikacji. Pozwala to na oddzielenie poszczególnych funkcji na odrębne gałęzie projektu. Takie podejście pozwala na uporządkowanie pracy nad projektem i większą przejrzystość w procesie rozwoju modułów.
+ 
 GitHub pozwala również na synchronizację ze wspomnianymi Heroku i Netlify, co pozwala na automatyzację procesu umieszczania nowych wersji aplikacji w środowisku internetowym. Wraz z umieszczeniem nowej wersji aplikacji w repozytorium, serwisy otrzymują kod źródłowy za pośrednictwem GitHuba, a następnie budują i uruchamiają aplikację.
-
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Specyfikacja zewnętrzna %%%%%%%%%%%%%%%%%%%%
+
 \chapter{Specyfikacja zewnętrzna}
 Ten rozdział zawiera szczegółowy opis funkcjonalności systemu. Zawarto w nim opis instalacji, uruchomienia i korzystania z systemu. Opis dotyczy pracy systemu w środowisku lokalnym, ponieważ uzyskania działającego systemu w środowisku internetowym opiera się o wykorzystanie odpowiednich serwisów internetowych. Przykładowo może to być serwis Heroku lub Netlify.
 
@@ -1010,44 +1011,59 @@ Dostęp do wyników wyborów uzyskiwany jest po ogłoszeniu ich wyników. Wybory
 \chapter{Specyfikacja wewnętrzna}
 
 W tym rozdziale umieszczono wszystkie informacje dotyczące architektury systemu, wykorzystanych struktur danych, algorytmów i wykorzystania wzorców projektowych.
-
-\section{Architektura systemu}\label={architektura}
-Podrozdział architektura systemu zawiera przegląd komponentów systemu i pozwala nakreślić idee projektu. Podrozdział podzielono na dwie częsci. Pierwsza część dotyczy całego systemu, natomiast druga opisuje charakterystykę sieci Blockchain.
-
+ 
+\section{Architektura systemu}
+Podrozdział architektura systemu zawiera przegląd komponentów systemu, także nakreśla idee projektu. Podrozdział podzielono na dwie części. Pierwsza część dotyczy całego systemu, natomiast druga opisuje charakterystykę sieci Blockchain.
+ 
 \subsection{Architektura pełnego systemu}
-
+ 
 System składa się z pięciu głównych komponentów:
+
 \begin {itemize}
-	\item Aplikacja wyborcy - pozwala na dostęp do zasobów wyborcy,
-	\item Aplikacja administratora - umożliwia konfigurację wyborów, audytowanie wyborów, zarządzanie sieciami Blockchain i zarządzanie bazą danych,
-	\item Serwer z API - serwer, na którym uruchomione jest API. API dostarcza odpowiednie zasoby określonym użytkownikom i posiada dostęp do bazy danych,
-	\item Baza danych - przechowuje informacje dotyczące konfiguracji wyborów. Listy użytkowników, wyborów, kandydatów i określa relacje pomiędzy nimi. W bazie danych znajdują się również hasła użytkowników,
-	\item Sieć Blockchain - odpowiada za przechowywanie głosów i udostępnianie ich na życzenie administratora. Blockchain pełni również funkcje zabezpieczenia głosów.
+	\item aplikacja wyborcy - pozwala na dostęp do zasobów wyborcy,
+	\item aplikacja administratora - umożliwia konfigurację wyborów, audytowanie wyborów, zarządzanie sieciami Blockchain i zarządzanie bazą danych,
+	\item serwer z API - serwer, na którym uruchomione jest API. API dostarcza odpowiednie zasoby określonym użytkownikom i posiada dostęp do bazy danych,
+	\item baza danych - przechowuje informacje dotyczące konfiguracji wyborów. Listy użytkowników, wyborów, kandydatów i określa relacje pomiędzy nimi. W bazie danych znajdują się również hasła użytkowników,
+	\item sieć Blockchain - odpowiada za przechowywanie głosów i udostępnianie ich na życzenie administratora. Blockchain pełni również funkcje zabezpieczenia głosów.
 \end {itemize}
 
 Komponenty są przedstawione na rysunku \ref{komponenty}.
 
-\begin{figure}[h]
+\begin{figure}[H]
     	\centering
 	\includegraphics[width=\textwidth]{images/modules.png}
 	\caption{Schemat przedstawiający komponenty systemu.}\label{komponenty}
 \end {figure}
 
-Taki podział systemu umożliwia wykorzystanie sieci Blockchain. Proces przeprowadzania wyborów jest zcentralizowany, a sieć Blockchain, która odpowiada za zapisanie wyników wyborów jest rozproszona.
-
+Taki podział systemu umożliwia wykorzystanie sieci Blockchain. Proces przeprowadzania wyborów jest scentralizowany, a sieć Blockchain, która odpowiada za zapisanie wyników wyborów jest rozproszona.
+ 
 \subsection{Architektura sieci Blockchain}
-
+ 
 Sieć Blockchain to grupa serwerów, które wymieniają się informacjami. Komunikacja głównie odbywa się w celu przesłania zawartości nowego bloku, synchronizacji danych i dodania nowego węzła do sieci.
 
+Rysunek \ref{blockchainarch} przedstawia sieć Blockchain złożoną z pięciu węzłów. Wszystkie węzły połączone są ze sobą. W sieci można wyróżnić węzeł główny, którego zadaniem jest utrzymanie połączenia z REST API systemu wyborczego.
+
+Drogą komunikacyjną pomiędzy REST API, a węzłem głównym przesyłane są głosy i żądania dotyczące wyniku wyborów oraz statusu sieci.
+
+\begin{figure}[h]
+  \centering
+\includegraphics[width=\textwidth]{images/blockchainarch.png}
+\caption{Schemat przedstawiający przykładową sieć Blockchain.}\label{blockchainarch}
+\end {figure}
+
+\newpage
+
 \section{Struktury danych}
-
-W systemie można wyróżnić dwie struktury danych, które w znaczny sposób wpływają na zachowanie systemu. W tym podrozdziale omówiono implementację i zastoswania tych struktur danych.
-
+ 
+W systemie można wyróżnić dwie struktury danych, które w znaczny sposób wpływają na zachowanie systemu. W tym podrozdziale omówiono implementację i zastosowania tych struktur danych.
+ 
 \subsection{Łańcuch bloków}
+ 
+Za dostarczenie odpowiedniej struktury łańcucha bloków odpowiedzialne są klasy \textit{Block} i \textit{ChainRepository}. Listing \ref{Block.ts} przedstawia klasę \textit{Block}, która jest reprezentacją pojedynczego bloku. Każdy blok jest odpowiedzialny za przechowywanie głosu wyborczego. Głos jest przechowywany w polu \textit{data}. Pole \textit{timestamp} przechowuje datę utworzenia bloku w łańcuchu. W łańcuchu bloków, każdy blok posiada odniesienie do \textit{hash'u} poprzedniego bloku. W przedstawionej implementacji zajmuje się tym pole \textit{prevHash}. Klasa \textit{Block} posiada również pole \textit{nonce}, którego zastosowanie dotyczy algorytmu \textit{Proof of Work}.
 
-Za dostarczenie odpowiedniej struktury łańcucha bloków odpowiedzialne są klasy \textit{Block} i \textit{ChainRepository}. Listing \ref{Block.ts} przedstawia klasę \textit{Block}, która jest reprezentacją pojedynczego bloku. Każdy blok jest odpowiedzialny za przechowywanie głosu wyborczego. Głos jest przechowywany w polu data. Pole \textit{timestamp} przechowuje datę utworzenia bloku w łańcuchu. W łańcuchu bloków, każdy blok posiada odniesienie do hasza poprzedniego bloku, w tej implementacji zajmuje się tym pole \textit{prevHash}. Klasa \textit{Block} posiada również pole \textit{nonce}, którego zastosowanie zostało omówione w rozdziale dotyczącym algorytmów (rozdział 6.3).
+\newpage
 
-\begin{lstlisting}[style=ES6, caption={Klasa Block.},label={Block.ts}]
+\begin{lstlisting}[style=ES6, caption={Klasa \textit{Block}.},label={Block.ts}]
 class Block {
   index: number
   timestamp: string
@@ -1069,9 +1085,11 @@ class Block {
 }
 \end{lstlisting}
 
-Klasa \textit{ChainRepository} (przedstawiona w listingu \ref{ChainRepository.ts}) odpowiada za przechowywanie łańcucha bloków i jego udostępnianie. Aby zapewnić spójność danych, ułatwienie dostępu i ograniczenie zużycia pamięci, w programie istnieje tylko jedna instancja tej klasy. W tym celu wykorzystano wzorzec projektowy Singleton. Z punktu widzenia łańcucha bloków istotne jest pole\textit{chain}, które w tablicy przechowuje bloki. Klasa udostępnia metodę \textit{addBlock}, która pozwala na dodawanie nowego bloku na początek tablicy, zgodnie z regułą tworzenia łańcucha bloków. Dodatkowo klasa posiada prywatną metodę \textit{createGenesisBlock}, która tworzy pierwszy blok łańcucha, którego zawartość nie przechowuje istotnych danych. Metoda wywoływana jest podczas tworzenia instancji \textit{ChainRepository}.
+Klasa \textit{ChainRepository} (przedstawiona w listingu \ref{ChainRepository.ts}) odpowiada za przechowywanie łańcucha bloków i jego udostępnianie. Aby zapewnić spójność danych, ułatwienie dostępu i ograniczenie zużycia pamięci, w programie istnieje tylko jedna instancja tej klasy. W tym celu wykorzystano wzorzec projektowy Singleton. Z punktu widzenia łańcucha bloków istotne jest pole \textit{chain}. Jest to tablica bloków. Klasa udostępnia metodę \textit{addBlock}, która pozwala na dodawanie nowego bloku na początek tablicy, zgodnie z regułą tworzenia łańcucha bloków. Dodatkowo klasa posiada prywatną metodę \textit{createGenesisBlock}, która tworzy pierwszy blok łańcucha, którego zawartość nie przechowuje istotnych danych. Metoda wywoływana jest podczas tworzenia instancji \textit{ChainRepository}.
 
-\begin{lstlisting}[style=ES6, caption={Klasa ChainRepository.}, label={ChainRepository.ts}]
+\newpage
+
+\begin{lstlisting}[style=ES6, caption={Klasa \textit{ChainRepository}.}, label={ChainRepository.ts}]
 class ChainRepository {
   public static instance: ChainRepository
   private chain: Block[]
@@ -1102,7 +1120,9 @@ class ChainRepository {
 }
 \end{lstlisting}
 
-Za zapewnienie poprawnego utworzenia nowego bloku odpowiedzialna jest metoda \textit{createNewBlock} (listing \ref{Blockchain1.ts}), która należy do klasy \textit{Blockchain}. Metoda przyjmuje następujące parametry: \textit{nonce}, \textit{prevBlock} i \textit{data}. Z parametru \textit{prevBlock} wyliczany jest hash, za pomocą metody \textit{getHash}. Jest to hasz poprzedniego bloku, który przypisywany jest do pola \textit{prevHash} tworzonego bloku.
+Za zapewnienie poprawnego utworzenia nowego bloku odpowiedzialna jest metoda \textit{createNewBlock} (listing \ref{Blockchain1.ts}), która należy do klasy \textit{Blockchain}. Metoda przyjmuje następujące parametry: \textit{nonce}, \textit{prevBlock} i \textit{data}. Z parametru \textit{prevBlock} wyliczany jest \textit{hash}, za pomocą metody \textit{getHash}. Jest to \textit{hash} poprzedniego bloku, który przypisywany jest do pola \textit{prevHash} tworzonego bloku.
+
+\newpage
 
 \begin{lstlisting}[style=ES6, caption={Fragment klasy Blockchain.},label={Blockchain1.ts}]
 abstract class Blockchain {
@@ -1132,9 +1152,9 @@ abstract class Blockchain {
 
 Tak skonstruowany blok jest gotowy do dodania do łańcucha. Dodawanie bloku jest realizowane za pomocą metody \textit{addBlock}, klasy \textit{ChainRepository}.
 
-\subsection{Baza danych}\label={bazadanych}
+\subsection{Baza danych}
 
-W projekcie wykorzystano relacyjną bazę danych. Taka struktura danych pozwala na uporządkowanie danych w relacje pomiędzy tabelami. Rysunek \ref{database} przedstawia schemat relacyjnego modelu wykorzystanej bazy danych.
+W projekcie wykorzystano relacyjną bazę danych. Taka struktura danych pozwala na uporządkowanie danych, w relacje pomiędzy tabelami. Rysunek \ref{database} przedstawia schemat relacyjnego modelu wykorzystanej bazy danych.
 
 \begin{figure}[h]
     	\centering
@@ -1142,8 +1162,8 @@ W projekcie wykorzystano relacyjną bazę danych. Taka struktura danych pozwala 
 	\caption{Schemat przedstawiający relacyjny schemat bazy danych.}\label{database}
 \end {figure}
 
-Utworzona baza danych dzieli się na część odpowiadającą za przeprowadzenie wyborów oraz bank haseł i ról użytkowników. Tabele \textit{ADMIN} i \textit{VOTER} odpowiadają aktorom systemu. Na podstawie tych tabel można dokonać autoryzacji użytkownika systemu i przydzielić mu odpowiednią rolę, która zapewnia dostęp do zasobów. Dodatkowo tabela \textit{VOTER} jest połączona relacją wiele do wielu z tabelą \textit{ELECTION}. W wyniku realcji wiele do wielu powstała tabela łącznikowa \textit{VOTER\_ELECTION}, która pozwala podzielić relację wiele do wielu, na dwie relacje jeden do wielu. Tabela \textit{VOTER\_ELECTION} pozwala na przypisanie odpowiedniego wyborcy do odpowiednich wyborów. Dodatkowo tabela przechowuje informację o oddaniu głosu przez wyborcę, w polu \textit{DID\_VOTE}.
-
+Bazę danych można podzielić na część odpowiadającą za przechowywanie konfiguracji wyborów oraz część przechowującą hasła i róle użytkowników. Tabele \textit{ADMIN} i \textit{VOTER} przechowują dane logowania aktorów systemu. Na podstawie tych tabel można dokonać autoryzacji użytkownika systemu i przydzielić mu odpowiednią rolę, która zapewnia dostęp do zasobów. Dodatkowo tabela \textit{VOTER} jest połączona relacją wiele do wielu z tabelą \textit{ELECTION}. W wyniku relacji wiele do wielu powstała tabela łącznikowa \textit{VOTER\_ELECTION}, która pozwala podzielić relację wiele do wielu, na dwie relacje jeden do wielu. Tabela \textit{VOTER\_ELECTION} pozwala na przypisanie wyborcy do odpowiednich wyborów. Dodatkowo tabela przechowuje informację o oddaniu głosu przez wyborcę, w polu \textit{DID\_VOTE}.
+ 
 Pozostała część tabel odpowiada za przechowywanie danych dotyczących bezpośrednio wyborów. Zadaniem tabeli \textit{ELECTION} jest składowanie danych dotyczących konfiguracji wyborów. 
 
 Konfiguracji mogą podlegać:
@@ -1162,11 +1182,11 @@ Tabela \textit{CANDIDATE} reprezentuje kandydata, którego dane i opis definiuj�
 
 \section{Algorytmy}
 
-W podrozdziale algorytmy opisano implementacje algorytmów utrzymania konsensusu w sieci Blockchain. Węzeł sieci Blockchain może pracować w dwóch algorytmach konsensu: Proof of Work lub Proof of Authority. Każdy węzeł sieci Blockchain pozwala na wybranie algorytmu konsensusu, w którym będzie pracował. Algorytmy różnią się sposobem dodawania nowego bloku i synchronizacją sieci. Wybór algorytmu jest możliwy poprzez wykorzystanie wzorca projektowego strategia. Implementacja została opisana w rozdziale 6.4.
+W podrozdziale Algorytmy opisano implementację algorytmów konsensusu, w sieci Blockchain. Węzeł sieci Blockchain może pracować w dwóch algorytmach konsensu: \textit{Proof of Work} lub uproszczonej wersji algorytmu \textit{Proof of Authority}. Każdy węzeł sieci Blockchain pozwala na wybranie algorytmu konsensusu, w którym będzie pracował. Algorytmy różnią się sposobem dodawania nowego bloku i synchronizacją sieci. Wybór algorytmu jest możliwy, poprzez wykorzystanie wzorca projektowego strategia. Implementacja tego wzorca projektowaego została opisana w rozdziale 6.4.
 
 \subsection{Proof of Work}
 
-Dodawanie nowego bloku w algorytmie Proof of Work poprzedzone jest rozwiązaniem zagadki matematycznej. W listingu \ref{validateNonce} przedstawiono metodę \textit{validateNonce}, która zajmuje się weryfikacją rozwiązania zagadki.
+Dodawanie nowego bloku w algorytmie \textit{Proof of Work} poprzedzone jest rozwiązaniem zagadki matematycznej. W listingu \ref{validateNonce} przedstawiono metodę \textit{validateNonce}, która zajmuje się weryfikacją rozwiązania zagadki.
 
 \begin{lstlisting}[style=ES6, caption={Metoda \textit{validateNonce}.}, label={validateNonce}]
 private validateNonce (
@@ -1182,10 +1202,10 @@ private validateNonce (
   }
 \end{lstlisting}
 
-Rozwiązaniem zagadki matematycznej jest znalezienie odpowiedniej liczby (\textit{nonce}), która po dołączeniu do określonego stałego ciągu znaków i zahashowaniu go, daje ciąg zer na początku. W przypadku tej implementacji są to trzy zera.
-
+Rozwiązanie zagadki matematycznej, to znalezienie odpowiedniej liczby (\textit{nonce}), która po dołączeniu do określonego stałego ciągu znaków i \textit{hash’owaniu} go, daje ciąg określonej liczby zer na początku. W przypadku tej implementacji są to trzy zera.
+ 
 Metoda \textit{solveNonce} (listing \ref{solveNonce}) zajmuje się znalezieniem liczby \textit{nonce}. W pętli wywołana jest metoda \textit{validateNonce}, do momentu rozwiązania zagadki. Wraz z każdą iteracją pętli wykonywana jest inkrementacja zmiennej \textit{nonce}.
-
+ 
 \begin{lstlisting}[style=ES6, caption={Metoda \textit{solveNonce}.}, label={solveNonce}]
 private solveNonce (lastNonce: number, prevHash: string) {
     let nonce = 0
@@ -1225,15 +1245,15 @@ Synchronizacja łańcucha odbywa się poprzez porównanie jego długości z inny
   }
 \end{lstlisting}
 
-Jeżeli metoda \textit{synchronize} zwróci prawdę, to obecny łańcuch jest podmieniany, na łańcuch przysłany do synchronizacji.
-
+Jeżeli metoda \textit{synchronize} zwróci wartość \textit{true}, to obecny łańcuch jest podmieniany, na łańcuch przesłany do synchronizacji.
+ 
 \subsection{Proof of Authority}
-Algorytm Proof of Authority pozwala zwiększyć przepustowość sieci Blockchain w porównaniu z algorytmem Proof of Work. Ten algorytm nie wymaga rozwiązywania żadnej zagadki logicznej, dlatego dodawanie nowego bloku sprowadza się tylko do umieszczenia nowego bloku na końcu tablicy. 
-
-W projekcie zastosowano bardzo uproszczoną implementację algorytmu \textit{PoA}. W implementacji zrezygnowano z mechanizmu karania węzłów, za nieprawidłowe operacje w sieci. Dlatego należy mieć na uwadze, że węzły wchodzące w skład sieci muszą być dobrze zabezpieczone.
-
-Proces dodawania nowego bloku przedstawia listing \ref{PoABlock}. Klasa odpowiedzialna za algorytm Proof of Authority posiada dodatkowe pole - \textit{authorityFactor}. Jest to współczynnik określający zaufanie danego węzła w sieci. Im wyższy współczynnik, tym wyższe zaufanie. Zaufanie jest zwiekszane, wraz z dodawaniem nowych bloków.
-
+Algorytm \textit{Proof of Authority} pozwala zwiększyć przepustowość sieci Blockchain, w porównaniu z algorytmem \textit{Proof of Work}. Ten algorytm nie wymaga rozwiązywania żadnej zagadki logicznej, dlatego dodawanie nowego bloku sprowadza się tylko do umieszczenia nowego bloku na końcu tablicy. 
+ 
+W projekcie zastosowano bardzo uproszczoną implementację algorytmu \textit{PoA}. W implementacji zrezygnowano z mechanizmu penalizacji węzłów, za nieprawidłowe operacje w sieci. Dlatego należy mieć na uwadze, że węzły wchodzące w skład sieci muszą być dobrze zabezpieczone. Do sieci należy dodawać tylko zaufane węzły.
+ 
+Proces dodawania nowego bloku przedstawia listing \ref{PoABlock}. Klasa odpowiedzialna za algorytm \textit{Proof of Authority} posiada dodatkowe pole - \textit{authorityFactor}. Jest to współczynnik określający zaufanie danego węzła w sieci. Im wyższy współczynnik, tym wyższe zaufanie. Zaufanie jest zwiększane, wraz z dodawaniem nowych bloków.
+ 
 \begin{lstlisting}[style=ES6, caption={Dodawanie nowego bloku w algorytmie Proof of Authority.}, label={PoABlock}]
 private authorityFactor: number
 
@@ -1246,7 +1266,7 @@ public mine (data: any) {
   }
 \end{lstlisting}
 
-W przypadku algorytmu Proof of Authority synchronizacja łańcucha dokonywana jest poprzez porównanie wartości \textit{authorityFactor} dwóch węzłów. Listing \ref{PoASync} przedstawia ten proces.
+W przypadku algorytmu \textit{Proof of Authority} synchronizacja łańcucha dokonywana jest poprzez porównanie wartości \textit{authorityFactor} dwóch węzłów. Listing \ref{PoASync} przedstawia ten proces.
 
 \begin{lstlisting}[style=ES6, caption={Synchronizacja w algorytmi Proof of Authority.}, label={PoASync}]
 public synchronize (auth: number) {
@@ -1258,14 +1278,16 @@ public synchronize (auth: number) {
   }
 \end{lstlisting}
 
-Podmiana węzłów odbywa się analogicznie, jak dla algorytmu Proof of Work.
+Podmiana węzłów odbywa się analogicznie, jak dla algorytmu \textit{Proof of Work}.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Zastosowane wzorce projektowe}
-W projekcie zastoswano kilka wzorców projektowych dotyczących zarówno programowania obiektowego, jak i podejścia funkcyjnego towarzyszącego ReactJs. W tym rozdziale przedstawiono przykłady implementacji tych wzorców w projekcie.
+W projekcie zastosowano kilka wzorców projektowych dotyczących zarówno programowania obiektowego, jak i podejścia funkcyjnego towarzyszącego ReactJs. W tym podrozdziale przedstawiono przykłady implementacji tych wzorców w projekcie.
 
 \subsection{Singleton}
-Singleton w projekcie jest najczęściej występującym wzorcem projektowym. Jego zastosowaniem jest bezpośrednie przechowywanie danych lub utrzymywanie połączenia i dostępu do bazy danych. W Listingu \ref{singleton} przedstawiono klasę \textit{Database}, która jest Singletonem. Klasa zajmuje się udostępnianiem połączenia z bazą danych, za pośrednictwem obiektu \textit{PrismaClient}. Prywatny konstruktor otwiera połączenie z bazą danych tylko raz, a statyczna metoda \textit{getInstance} zwraca instację klasy \textit{Database}. Publiczna metoda \textit{getDatabase} zwraca obiekt \textit{PrismaClient}, który umożliwia dostęp do bazy danych.
-
+Singleton to najczęściej występujący wzorzec projektowy, w projekcie. Jego zadaniem jest bezpośrednie przechowywanie danych lub utrzymywanie połączenia i dostępu do bazy danych. W Listingu \ref{singleton} przedstawiono klasę \textit{Database}, która jest Singletonem. Klasa zajmuje się udostępnianiem połączenia z bazą danych, za pośrednictwem obiektu \textit{PrismaClient}. Prywatny konstruktor otwiera połączenie z bazą danych tylko raz, a statyczna metoda \textit{getInstance} zwraca instancję klasy \textit{Database}. Publiczna metoda \textit{getDatabase} zwraca obiekt \textit{PrismaClient}, który umożliwia dostęp do bazy danych.
+ 
 \begin{lstlisting}[style=ES6, caption={Klasa \textit{Database}. Singleton.}, label={singleton}]
 class Database {
   private static instance: Database;
@@ -1291,7 +1313,7 @@ class Database {
 
 \subsection{Repozytorium}
 
-Repozytorium pozwala na udzielenie dostępu do danych warstwom biznesowym aplikacji. Repozytorium posiada wszelkie metody wyszukujące i zwracające żądane obiekty lub kolekcje obiektów. Listing \ref{repo} przedstawia klasę \textit{CandidateRepository}. Jest to jedno z wielu repozytoriów, które dostarcza podstawowe metody służące do wyszukiwania i zapisywania danych. Klasa posiada pole \textit{db}, które zawiera obiekt udzielający dostępu do bazy danych.
+Repozytorium pozwala na udzielenie dostępu do danych warstwom biznesowym aplikacji, oddzielając jednocześnie implmentację modelu dostępu do bazy danych, od reszty warstw. Repozytorium posiada wszelkie metody wyszukujące i zwracające żądane obiekty lub kolekcje obiektów. Listing \ref{repo} przedstawia klasę \textit{CandidateRepository}. Jest to jedno z wielu repozytoriów, które dostarcza podstawowe metody służące do wyszukiwania i zapisywania danych. Klasa posiada pole \textit{db}, które jest instancją udzielającą dostępu do bazy danych.
 
 \begin{lstlisting}[style=ES6, caption={Klasa \textit{CandidateRepository}.}, label={repo}]
 class CandidateRepository {
@@ -1317,13 +1339,13 @@ class CandidateRepository {
 }
 \end{lstlisting}
 
-W projekcie repozytoria mają za zadanie dostarczać obiekty z bazy danych w klasach seriwsowych, które zawierają implementację logiki bizensowej.
+W projekcie repozytoria mają za zadanie dostarczać obiekty z bazy danych w klasach serwisowych, które zawierają implementację logiki biznesowej.
 
 \subsection{Strategia}
 
-Aplikacja serwerowa węzła sieci Blockchain pozwala na wybór jednego z dwóch algorytmów konsensusu. Algorytmy zajmują się rozwiązaniem tego samego problemu, dlatego można je dowolnie podstawiać. Wzorzec projektowy strategia pozwala na dokonanie takiego podstawienia, bez konieczności zmiany struktury programu. Listing \ref{abstractBlockchain} przedstawia klase bazową \textit{Blockchain}.
-Jest to klasa abstrakcyjna, ponieważ posiada implementację metod uniwersalnych dla każdego algorytmu. Metody \textit{mine}, \textit{getSyncValue} i \textit{synchronize} są abstrakcyjne.
-
+Aplikacja serwerowa węzła sieci Blockchain pozwala na wybór jednego z dwóch algorytmów konsensusu. Algorytmy zajmują się rozwiązaniem tego samego problemu, dlatego można je wykorzystać, w ten sam sposób. Wzorzec projektowy strategia pozwala na dokonanie takiego podstawienia, bez konieczności zmiany struktury programu. Listing \ref{abstractBlockchain} przedstawia klasę bazową \textit{Blockchain}.
+Jest to klasa abstrakcyjna, która posiada implementację metod uniwersalnych dla każdego algorytmu. Metody \textit{mine}, \textit{getSyncValue} i \textit{synchronize} są abstrakcyjne.
+ 
 \begin{lstlisting}[style=ES6, caption={Klasa \textit{Blockchain}.}, label={abstractBlockchain}]
 abstract class Blockchain {
   protected blockchain: ChainRepository
@@ -1365,12 +1387,12 @@ data: any): Block {
 }
 \end{lstlisting}
 
-Implementacja metod zależy od wykorzystywanego algorytmu. Implementacje znajduja się w klasach \textit{PoWAlgorithm} i \textit{PoAAlogorithm}. Klasy rozszerzają klasę \textit{Blockchain}.
-Szczegołowa implementacja metod abstrakcyjnych została omówiona w podrozdziale \ref{algorytmy}. Wykorzystanie mechanizmu dziedziczenia pozwala na podstawienie w miejsce klasy \textit{Blockchain} dowolną klasę potomną, która posiada zdefiniowaną implementację metod odpowiedzialnych za realizacje algorytmu.
-
+Implementacja metod zależy od wykorzystywanego algorytmu. Implementacje znajdują się w klasach \textit{PoWAlgorithm} i \textit{PoAAlogorithm}. Klasy rozszerzają klasę \textit{Blockchain}.
+Szczegółowa implementacja metod abstrakcyjnych została omówiona w podrozdziale 6.3. Wykorzystanie mechanizmu dziedziczenia pozwala na podstawienie w miejsce klasy \textit{Blockchain} dowolnej klasy potomnej, która posiada zdefiniowaną implementację metod odpowiedzialnych za realizację algorytmu.
+ 
 \subsection{Redux}
 
-Redux to specjalna architektura wykorzystywana w aplikacjach ReactJs. W projekcie wykorzystano bibliotekę Redux'a, o nazwie Redux-Toolkit, która upraszcza niektóre elementy Reduxa. Architektura pozwala na przeniesienie stanu aplikacji do jednego magazynu, który jest dostępny globalnie. Listingi \ref{slice} i  \ref{createSlice} przedstawiają jeden z wycinków magazynu. Wycinek (ang. slice) to oznaczony odpowednim identyfikatorem fragment magazynu. Każdy wycinek przechowuje określony stan (listing \ref{slice}).
+Redux to specjalna architektura wykorzystywana w aplikacjach ReactJs. W projekcie wykorzystano bibliotekę Redux'a, o nazwie Redux-Toolkit, która upraszcza niektóre elementy Redux'a. Architektura pozwala na przeniesienie stanu aplikacji do jednego magazynu, który jest dostępny globalnie. Listingi \ref{slice} i  \ref{createSlice} przedstawiają jeden z wycinków magazynu. Wycinek (ang. \textit{slice}) to oznaczony odpowiednim identyfikatorem fragment magazynu. Każdy wycinek przechowuje określony stan (listing \ref{slice}).
 
 \begin{lstlisting}[style=ES6, caption={Stan początkowy wycinka \textit{electionsSlice}.}, label={slice}]
 const initialState = {
@@ -1443,7 +1465,7 @@ export const fetchElections = (): AppThunk => async dispatch => {
 }
 \end{lstlisting}
 
-W Thunk'ach można wykorzystywać reducer'y, a następnie wywoływać Thunk'i w komponentach. Przykład znajduje się w listingu \ref{ElectionPage}. Wywołanie każdego reducer'a zawsze znajduje się wewnątrz funkcji \textit{dispatch}, która wysyła reducer do punktu obsługi reducer'ów.
+W Thunk'ach można wykorzystywać metody obiektu \textit{reducers}, a następnie wywoływać Thunk'i w komponentach. Przykład przedstawiono w listingu \ref{ElectionPage}. Wywołanie każdego reducer'a zawsze znajduje się wewnątrz funkcji \textit{dispatch}. \textit{Dispatch} odpowiada za wysłanie odpowiedniej metody obiektu \textit{reducers}, do punktu obsługi tych metod.
 
 \begin{lstlisting}[style=ES6, caption={Wykorzystanie Thunk'a, w komponencie \textit{ElectionsPage}.}, label={ElectionPage}]
 function ElectionsPage () {
@@ -1463,35 +1485,36 @@ function ElectionsPage () {
 
 \chapter{Weryfikacja i walidacja}
 
-W tym rozdziale przedstawiono proces testowania systemu, wykryty i naprawione błędy. Testowanie systemu można podzielić na dwa etapy: testowanie aplikacji serwerowych i testowanie aplikacji przeglądarkowych. 
+W tym rozdziale przedstawiono proces testowania systemu, a także wykryte i naprawione błędy. Testowanie systemu można podzielić na dwa etapy: testowanie aplikacji serwerowych i testowanie aplikacji przeglądarkowych. 
 
 \section{Testowanie aplikacji serwerowych}
 
 Testowanie aplikacji serwerowych odbywało się przez aplikację \textit{Postman}, która została omówiona w rozdziale 4.4. Aplikacja umożliwia wysyłanie żądań HTTP do serwera, co pozwala na utworzenie kontrolowanego środowiska do testowania. W ten sposób można tworzyć scenariusze testowania. W projekcie stworzone scenariusze obejmowały wszystkie funkcjonalności systemu.
-
-Podczas testowania aplikacji serwerowych wykryto błędy wynikające z nieobsłużenia wyjątku w kodzie, które zostały naprawione. Wykryto również dosyć poważne ograniczenie systemu, które wynika z wykorzystania języka Typescript.
-
-Ograniczenie systemu występuje w oprgramowaniu węzła sieci Blockchain. Sieć wykorzystująca algorytm konsensusu typu Proof of Work wymaga przeprowadzania wymagających obliczeń przez serwer. Język Typescript jest językiem operującym na jednym wątku. W Typescript kod wykonywany jest w tzw. pętli zdarzeń. Pętla zdarzeń dzieli zdarzenia według ich typu i w określonej kolejności umieszcza je na stosie wywołań. Stos wywołań to główny stos, w którym ostatecznie wykonywane są zdarzenia. Taki sposób wykonywania zadań pozwala na uzyskanie pewnego rodzaju współbieżności dla prograu działającego na jednym wątku. Jednakże wykonywanie zadań, które wymagają dużego wykorzystania procesora powoduje zatrzymanie pętli zdarzeń na długi czas na jednym zadaniu. Do momentu zakończenia obliczeń nie zostaną wykonane inne operacje. Oznacza to, że w tym czasie serwer nie jest w stanie odpowiedzieć na przychodzące żądania, co powoduje zablokowanie portów wejścia/ wyjścia serwera. Przychodzące żądania są umieszczane na końcu kolejki, która posiada skończoną pojemność. W przypadku przepełnienia kolejki część żądań nie zostanie obsłużona. Jest do dosyć poważne ograniczenie, którego częściowym rozwiązaniem było zmniejszenie wykorzystania mocy obliczeniowej przez algorytm Proof of Work. Dużo lepszym rozwiązaniem problemu było wprowadzenie możliwości wykorzystania algorytmu Proof of Authority, który nie obciąża procesora.
+ 
+Podczas testowania aplikacji serwerowych wykryto błędy wynikające z nieobsłużonego wyjątku w kodzie, które zostały naprawione. Wykryto również dosyć poważne ograniczenie systemu, które wynika z wykorzystania języka Typescript.
+ 
+Ograniczenie systemu występuje w oprogramowaniu węzła sieci Blockchain. Sieć wykorzystująca algorytm konsensusu typu \textit{Proof of Work} wymaga przeprowadzania wymagających obliczeń przez serwer. Język Typescript jest językiem operującym na jednym wątku. W Typescript kod wykonywany jest w tzw. pętli zdarzeń. Pętla zdarzeń dzieli zdarzenia według ich typu i w określonej kolejności umieszcza je na stosie wywołań. Stos wywołań to główny stos, w którym ostatecznie wykonywane są zdarzenia. Taki sposób wykonywania zadań pozwala na uzyskanie pewnego rodzaju współbieżności dla programu działającego na jednym wątku. Jednakże wykonywanie zadań, które wymagają dużego wykorzystania procesora powoduje zatrzymanie pętli zdarzeń na długi czas na jednym zadaniu. Do momentu zakończenia obliczeń nie zostaną wykonane inne operacje. Oznacza to, że w tym czasie serwer nie jest w stanie odpowiedzieć na przychodzące żądania, co powoduje zablokowanie portów wejścia/wyjścia serwera. Przychodzące żądania są umieszczane na końcu kolejki, która posiada skończoną pojemność. W przypadku przepełnienia kolejki, część żądań nie zostanie obsłużona. Jest do dosyć poważne ograniczenie, którego częściowym rozwiązaniem było zmniejszenie wykorzystania mocy obliczeniowej przez algorytm \textit{Proof of Work}. Dużo lepszym rozwiązaniem problemu było wprowadzenie możliwości wykorzystania uproszczonego algorytmu \textit{Proof of Authority}, który nie obciąża procesora.
 
 \section{Testowanie aplikacji przeglądarkowych}
 
-Aplikacje przeglądarkowe zostały przetestowane, pod kątem działania na różnych przeglądarkach. Wykorzystane przeglądarki to \textit{Google Chrome}, \textit{Mozilla Firefox} i \textit{Microsoft Edge}. Podczas testowania apliakcje działały zgodnie z założeniami. Dodatkowo przetestowano wszystkie elementy, które podlegają interakcji z użytkownikiem. Do tych elementów należą formularze, przyciski i elementy służące do nawigowania widokami aplikacji. Wykryto kilka błędów dotyczących obsługi formularzy, jednakże były to błędy łatwe w naprawie.
-Aplikacja wyborcy została przetestowana pod kątem responsywności na \textit{smartfonach}. Aplikacje przetestowano na modelach \textit{Lenovo P2} i \textit{Samsung Galaxy Note 2}. Podczas testowania responsywności nie wykryto błędów.
+Aplikacje przeglądarkowe zostały przetestowane, pod kątem działania na różnych przeglądarkach. Wykorzystane przeglądarki to \textit{Google Chrome}, \textit{Mozilla Firefox} i \textit{Microsoft Edge}. Podczas testowania aplikacje działały zgodnie z założeniami. Dodatkowo przetestowano wszystkie elementy, które podlegają interakcji z użytkownikiem. Do tych elementów należą formularze, przyciski i elementy służące do nawigowania widokami aplikacji. Wykryto kilka błędów dotyczących obsługi formularzy, jednakże były to błędy łatwe w naprawie.
 
-Zakres testów oprogramowania należy uznać za niepełny, ponieważ podczas testowania nie wykorzystano testów jednostkowych oprogramowania, które zapewniają szeroki zakres pokrytych przypadków testowych.
+Aplikacja wyborcy została przetestowana pod kątem responsywności na \textit{smartfonach}. Aplikacje przetestowano na modelach \textit{Lenovo P2} i \textit{Samsung Galaxy Note 2}. Podczas testowania responsywności nie wykryto błędów.
+ 
+Zakres testów oprogramowania należy uznać za niepełny, ponieważ podczas testowania nie przeprowadzono testów jednostkowych oprogramowania, które zapewniają duże pokrycie przypadków testowych.
 
 \chapter{Podsumowanie i wnioski}
 
-Celem pracy było opracowanie oraz zaimplementowanie części systemu głosowania on-line, który wykorzystywał będzie technologię Blockchain. W skład systemu wchodzą cztery moduły: aplikacja wyborcy, aplikacja administratora, serwer z API systemu i sieć Blockchain. System umożliwia konfigurację  i przeprowadzenie wyborów elektronicznych, z wykorzystaniem aplikacji przeglądarkowej. W skład systemu wchodzi oprogramowanie, które umożliwia tworzenie węzłów sieci Blockchain. Węzły działają zgodnie z podstawowymi założeniami technologii Blockchain.
-Stworzony system spełnia, w sposób zadawalający postawione wymagania. Dokonana implementacja może zostać rozbudowana, aby mogła spełniać standardy profesjonalnych aplkacji dotyczących głosowania on-line.
-
-Zaproponowana implementacja systemu nie wyczerpuje wpełni tematu wyborów on-line i technologii Blockchain. Jednym z możliwych kierunków rozbudowy aplikacji jest utworzenie osobnego interfejsu graficznego, dla każdego węzła sieci Blockchain. Takie rozwiązanie zwiększyłoby kontrolę nad siecią Blockchain, a także ułatwiłoby zarządzanie siecią.
-
+Celem pracy było opracowanie oraz zaimplementowanie części systemu głosowania on-line, który wykorzystywał będzie technologię Blockchain. W skład systemu wchodzą cztery moduły: aplikacja wyborcy, aplikacja administratora, serwer z API systemu i sieć Blockchain. System umożliwia konfigurację  i przeprowadzenie wyborów elektronicznych, z wykorzystaniem aplikacji przeglądarkowej. W skład systemu wchodzi oprogramowanie, które umożliwia tworzenie węzłów sieci Blockchain. Węzły działają zgodnie z częścią założeń technologii Blockchain.
+Stworzony system spełnia, w sposób zadowalający postawione wymagania. Dokonana implementacja może zostać rozbudowana, aby mogła spełniać standardy profesjonalnych aplikacji dotyczących głosowania on-line.
+ 
+Zaproponowana implementacja systemu nie wyczerpuje w pełni tematu wyborów on-line i technologii Blockchain. Jednym z możliwych kierunków rozbudowy aplikacji jest utworzenie osobnego interfejsu graficznego, dla każdego węzła sieci Blockchain. Takie rozwiązanie zwiększyłoby kontrolę nad siecią Blockchain, a także ułatwiłoby zarządzanie siecią.
+ 
 Dodatkowo obecny system pozwala na organizowanie wyborów, które dotyczą jednego zagadnienia. Przykładowo wybory prezydenckie pozwalają na wybranie jednej kandydatury z kilku dostępnych. System można rozbudować w taki sposób, aby do jednego procesu wyborczego można było włączyć kilka zagadnień. Przykładowo w wyborach parlamentarnych wybierani są przedstawiciele do parlamentu i senatu, a odbywa się to w ramach jednego procesu wyborczego.
-
+ 
 Głównym problemem napotkanym podczas pracy było zaprojektowanie i zaimplementowanie rozproszonej sieci, która działa według standardów Blockchain. Zapewnienie komunikacji pomiędzy rozproszonymi węzłami zostało rozwiązane poprzez zaprojektowanie każdego węzła w konwencji REST. Dodatkowo zastosowanie podejścia REST pozwoliło na łatwe połączenie sieci Blockchain z serwerem zarządzającym wyborami, który również działał w konwencji REST.
-
-Zastosowanie technologii opartych na NodeJs do tworzenia sieci Blockchain okazało się złym pomysłem. NodeJs nie jest wystarczająco wydajny, gdy od serwera wymagana jest duża moc obliczeniowa. Zastosowanie tego rozwiązania negatywnie przekłada się na wydajność sieci Blockchain, które wykorzystują algorytm Proof od Work.
+ 
+Zastosowanie technologii opartych na NodeJs do tworzenia sieci Blockchain okazało się złym pomysłem. NodeJs nie jest wystarczająco wydajny, gdy od serwera wymagana jest duża moc obliczeniowa. Zastosowanie tego rozwiązania negatywnie przekłada się na wydajność sieci Blockchain, które wykorzystują algorytm \textit{Proof of Work}.
 
 \bibliographystyle{plplain} 
 \bibliography{biblio}
@@ -1505,6 +1528,8 @@ Zastosowanie technologii opartych na NodeJs do tworzenia sieci Blockchain okaza�
     \item API - Application Programming Interface
     \item IoT - Internet of Things
     \item ORM - Object Relational Mapping
+    \item JWT - Json Web Token
+    \item SPA - Single Page Application
   \end{description}
 
 Do pracy dołączona jest płyta CD z~następującą zawartością:
