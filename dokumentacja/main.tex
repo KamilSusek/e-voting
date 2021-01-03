@@ -331,21 +331,21 @@ Gliwice, dnia \today
 
 \chapter{Wstęp}
 
-Rozwój technologii pozwala na tworzenie coraz większych i bezpieczniejszych systemów, co prowadzi do przenoszenia niektórych procesów do świata wirtualnego. Takie działania pozwalają na zwiększenie efektywności i zmniejszenie kosztów tych procesów. Dodatkowo wyeliminowanie wpływu czynnika ludzkiego zwiększa wiarygodność takiego procesu i poprawia bezpieczeństwo. Przykładem takiego procesu jest głosowanie, które w tradycyjnej formie jest czasochłonne i trudne w organizacji. Natomiast przykładem technologii, która doprowadziła do prawdziwej rewolucji jest Blockchain. Blockchain odpowiada za przełomowe rozwiązanie w sektorze finansów, jakim jest Bitcoin, który zapoczątkował rozwój systemów odpowiedzialnych za istotne procesy życia społecznego.
+Rozwój technologii pozwala na tworzenie coraz większych i bardziej bezpiecznych systemów, co prowadzi do przenoszenia niektórych procesów życia społecznego, do świata wirtualnego. Takie działania pozwalają na zwiększenie efektywności i zmniejszenie kosztów tych procesów. Dodatkowo wyeliminowanie wpływu czynnika ludzkiego zwiększa wiarygodność takiego procesu i poprawia bezpieczeństwo. Przykładem takiego procesu jest głosowanie, które w tradycyjnej formie jest czasochłonne i trudne w organizacji. Natomiast przykładem technologii, która doprowadziła do prawdziwej rewolucji jest Blockchain. Blockchain odpowiada za przełomowe rozwiązanie w sektorze finansów, jakim jest Bitcoin, który zapoczątkował rozwój systemów odpowiedzialnych za istotne procesy życia społecznego.
 
-Tematem niniejszej pracy jest E-voting, czyli system głosowania przez internet, który będzie wspierany przez technologię Blockchain. W ramach pracy został przedstawiony teoretyczny model systemu, którego część zaimplementowano. Do zaimplementowanej części systemu należą: aplikacje internetowe wyborcy i organizatora oraz grupa serwisów dostarczających REST (Representational State Transfer) API (Application Programming Interface). Aplikacja wyborcy pozwala na zalogowanie się, wysłanie głosu i uzyskanie wyników wyborów. Natomiast aplikacja organizatora dostarcza narzędzia do konfiguracji i nadzorowania procesu wyborczego. Dostarczono również możliwość konfigurowania sieci Blockchain, która jest odpowiedzialna za zapisanie i zabezpieczenie dodawanych głosów.
+Tematem niniejszej pracy jest głosowanie \textit{on-line}, czyli system głosowania przez internet, który będzie wspierany przez technologię Blockchain. W ramach pracy został przedstawiony teoretyczny model systemu, którego część została zaimplementowana. Do zaimplementowanej części systemu należą: aplikacje internetowe wyborcy oraz organizatora i grupa serwisów dostarczających REST (Representational State Transfer) API (Application Programming Interface). Aplikacja wyborcy pozwala na zalogowanie się, wysłanie głosu i uzyskanie wyników wyborów. Natomiast aplikacja organizatora dostarcza narzędzia do konfiguracji i nadzorowania procesu wyborczego. Dostarczono również możliwość konfigurowania sieci Blockchain, która jest odpowiedzialna za zapisanie i zabezpieczenie dodawanych głosów.
 
-W rozdziale pierwszym zostały przybliżone cele projektu, jego założenia, a także zakres pracy. Rozdział drugi poświęcony jest analizie zagadnienia wchodzącego w skład pracy, jakim jest Blockchain. W tym rozdziale przybliżono koncepcję technologii Blockchain, jej budowę i zastosowania. Rozdział trzeci zawiera przegląd wybranych rozwiązań wyborów on-line. W rozdziale czwartym sformułowano wymaganie funkcjonalne i niefunkcjonalne systemu. W tym rozdziale znajdują się informacje teoretyczne dotyczące systemu. W rozdziale czwartym znajdują się również diagramy przypadków użycia i opis wykorzystanych technologii. Rozdział piąty dotyczy specyfikacji zewnętrznej oprogramowania. W tym rodziale zawarto informacje dotyczące instalacji i uruchamiania oprogramowania, a także zrzuty ekranu pokazujące scenariusze działania systemu. Rozdział szósty zawiera informacje dotyczące specyfikacji wewnętrznej. W tym rozdziale znajduje się opis architektury systemu, wykorzystane struktury danych i szczegóły implementacyjne wybranych części systemu. Rozdział zawiera również informacje o wykorzystanych wzorcach projektowych i algorytmach. Rozdział dotyczy sposobów testowania poszczególnych modułów oprogramowania. Rozdział ósmy jest podsumowaniem pracy, a w jego skład wchodzi zakres spełnienia założeń projektu, napotkane błędy i wnioski.
+W rozdziale pierwszym zostały przybliżone cele projektu, jego założenia, a także zakres pracy. Rozdział drugi poświęcony jest analizie zagadnienia wchodzącego w skład pracy, jakim jest Blockchain. W tym rozdziale przybliżono koncepcję technologii Blockchain, jej budowę i zastosowania. Rozdział trzeci zawiera przegląd wybranych rozwiązań wyborów \textit{on-line}. W rozdziale czwartym sformułowano wymaganie funkcjonalne i niefunkcjonalne systemu. W tym rozdziale znajdują się informacje teoretyczne dotyczące systemu. W rozdziale czwartym znajdują się również diagramy przypadków użycia i opis wykorzystanych technologii. Rozdział piąty dotyczy specyfikacji zewnętrznej oprogramowania. W tym rodziale zawarto informacje dotyczące instalacji i uruchamiania oprogramowania, a także zrzuty ekranu pokazujące scenariusze działania systemu. Rozdział szósty zawiera informacje dotyczące specyfikacji wewnętrznej. W tym rozdziale znajduje się opis architektury systemu, wykorzystane struktury danych i szczegóły implementacyjne wybranych części systemu. Rozdział szósty zawiera również informacje o wykorzystanych wzorcach projektowych i algorytmach. Rozdział siódmy dotyczy sposobów testowania poszczególnych modułów oprogramowania. Natomiast rozdział ósmy jest podsumowaniem pracy, a w jego skład wchodzą spełnione założenia projektu, napotkane błędy i wnioski.
 
 \section{Cele i założenia pracy}
 
 Celem pracy jest opracowanie oraz zaimplementowanie systemu, który umożliwia przeprowadzenie wyborów przez internet. Głównym założeniem projektu jest wykorzystanie technologii Blockchain. Zakres pracy obejmuje:
 
 \begin{itemize}
-	\item Analizę dziedziny i przegląd literatury dotyczącej wyborów internetowych i technologii Blockchain;
-	\item Opracowanie systemu wyborów internetowych od strony teoretycznej;
-	\item Implementację wybranej części całego systemu;
-	\item Weryfikacja i walidacja aplikacji.
+	\item analizę dziedziny i przegląd literatury dotyczącej wyborów internetowych i technologii Blockchain,
+	\item opracowanie systemu wyborów internetowych od strony teoretycznej,
+	\item implementację wybranej części całego systemu,
+	\item weryfikację i walidację aplikacji.
 \end{itemize}
 
 
@@ -669,10 +669,10 @@ GitHub pozwala również na synchronizację ze wspomnianymi Heroku i Netlify, co
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Specyfikacja zewnętrzna %%%%%%%%%%%%%%%%%%%%
 
 \chapter{Specyfikacja zewnętrzna}
-Ten rozdział zawiera szczegółowy opis funkcjonalności systemu. Zawarto w nim opis instalacji, uruchomienia i korzystania z systemu. Opis dotyczy pracy systemu w środowisku lokalnym, ponieważ uzyskania działającego systemu w środowisku internetowym opiera się o wykorzystanie odpowiednich serwisów internetowych. Przykładowo może to być serwis Heroku lub Netlify.
+Ten rozdział zawiera szczegółowy opis funkcjonalności systemu. Zawarto w nim opis instalacji, uruchomienia i korzystania z systemu. Opis dotyczy pracy systemu w środowisku lokalnym.
 
 \section{Instalacja}
-Przed rozpoczęciem instalacji poszczególnych modułów systemu należy zainstalować silnik NodeJs oraz środowisko NPM. Silnik NodeJs jest niezbędny do uruchomienia poszczególnych serwerów systemu. NPM (Node Packet Manager) to menedżer pakietów, który dostarcza mechanizmy pozwalające uruchamiać odpowiednie skrypty, które pozwalają na konfigurację serwera. 
+Przed rozpoczęciem instalacji poszczególnych modułów systemu należy zainstalować silnik NodeJs oraz środowisko NPM(Node Packet Module). Silnik NodeJs jest niezbędny do uruchomienia poszczególnych serwerów systemu. NPM to menedżer pakietów, który dostarcza mechanizmy pozwalające uruchamiać odpowiednie skrypty, które pozwalają na konfigurację serwera. 
 
 \subsection{Instalacja dla Windows i MacOS}
 Dla systemów operacyjnych Windows i MacOs pakiet instalacyjny znajduje się na stronie NodeJs - \url{https://nodejs.org/en/download/}. Na stronie należy wybrać opcję \textit{Windows Installer} lub \textit{macOs Installer}, a pobieranie rozpocznie się automatycznie. Pobrany instalator przeprowadzi również instalację NPM.
@@ -688,13 +688,13 @@ W celu sprawdzenia poprawności instalacji dla każdego systemu można wykorzyst
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{images/node_version.png}
+	\includegraphics{images/node_version.png}
 	\caption{Rezultat polecenia \textit{node -v}}\label{nodeversion}
 \end {figure}
 
 \section{Struktura oprogramowania}
 
-System składa się z kilku modułów, dlatego dostarczone oprogramowanie jest podzielone na kilka folderów. Struktura folderów została przedstawiona na rysunku \ref{foldery}. Folder dokumentacja przechowuje dokumentację projektu.
+System składa się z kilku modułów, dlatego dostarczone oprogramowanie jest podzielone na kilka folderów. Struktura folderów została przedstawiona na rysunku \ref{foldery}.
 
 \begin{figure}[h]
 	\centering
@@ -704,6 +704,7 @@ System składa się z kilku modułów, dlatego dostarczone oprogramowanie jest p
 
 Foldery przechowują następujące moduły:
 \begin{itemize}
+  \item dokumentacja przechowuje dokumentację projektu,
 	\item admin-app przechowuje aplikację przeglądarkową administratora,
 	\item voter-app przechowuje aplikację przeglądarkową użytkownika,
 	\item e-voting-api przechowuje aplikację serwerową dostarczającą API systemu,
@@ -711,15 +712,15 @@ Foldery przechowują następujące moduły:
 \end{itemize}
 
 \section{Uruchamianie modułów}
-
+ 
 Za pomocą menadżera pakietów NPM uruchamiane są poszczególne moduły systemu. Aby uruchomić dany moduł należy otworzyć katalog z tym modułem. W katalogu znajduje się plik \textit{package.json}, który zawiera konfigurację i skrypty uruchamiające program. Programy uruchamia się za pomocą poleceń dostarczanych przez pakiet NPM, które należy wpisać w konsoli. Konsola musi być uruchomiona w folderze z plikiem \textit{package.json}.
-
+ 
 Moduły \textit{admin-app} i \textit{voter-app} uruchamiane są za pomocą polecenia \textit{npm-start}. Aplikacja \textit{admin-app} w środowisku lokalnym uruchamiana jest pod adresem \url{http://localhost:4000}, a aplikacja \textit{voter-app} pod adresem \url{http://localhost:3000}.
-
-Podczas uruchamiania aplikacji serwerowych, należy określić port , na którym widoczny będzie określony serwer.
-
+ 
+Podczas uruchamiania aplikacji serwerowych, należy określić port, na którym widoczny będzie określony serwer.
+ 
 Aplikacja serwerowa \textit{e-voting-api} jest domyślnie uruchamiana na porcie 8080, jednak można to zmienić za pomocą następującego polecenia:
-
+ 
 \begin{equation}
 	\textit{\$env:PORT=NUMER\_PORTU; npm start}.
 \end{equation}
@@ -732,7 +733,7 @@ Podczas uruchamiania węzła sieci Blockchain można wybrać algorytm konsensusu
 	\textit{\$env:PORT=NUMER\_PORTU; \$env:CONSENSUS=KOD; npm start}.
 \end{equation}
 
-W polu \textit{CONSENSUS} należy wpisać kod algorytmu. Dostępne są dwa kody: \textit{POA} i \textit{POW}. Kod \textit{POA} odpowiada algorytmowi \textit{Proof of Authority}, a kod \textit{POW} algorytmowi \textit{Proof of Work}. W przypadku podania błędnego kodu lub jego braku, domyślnym algorytmem używanym przez węzeł jest \textit{Proof of Authority}.
+W polu \textit{KOD} należy wpisać kod algorytmu. Dostępne są dwa kody: \textit{POA} i \textit{POW}. Kod \textit{POA} odpowiada algorytmowi \textit{Proof of Authority}, a kod \textit{POW} algorytmowi \textit{Proof of Work}. W przypadku podania błędnego kodu lub jego braku, domyślnym algorytmem używanym przez węzeł jest \textit{Proof of Authority}.
 
 \newpage
 
@@ -746,7 +747,7 @@ Wszystkie funkcjonalności administratora dostępne są po zalogowaniu. Dlatego 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{images/adminlogin.png}
+	\includegraphics{images/adminlogin.png}
 	\caption{Formularz logowania administratora.}\label{adminlogin}
 \end {figure}
 
@@ -780,7 +781,7 @@ Lista wyborców dostarcza informacje o wyborcach utworzonych w systemie. Cały w
 
 \subsection{Konfiguracja sieci Blockchain}
 
-Administrator posiada interfejs pozwalający na tworzenie sieci Blockchain. Węzły Blockchain to oprogramowanie działające na pojedynczym serwerze. Za pomocą konfiguratora administrator systemu może podłączyć się do danego węzła i powiązać z nim inne serwery. Interfejs jest dostępny po kliknięciu na pasku nawigacji opcji \textit{Servers}. Rysunek \ref{findnode} przedstawia wyszukiwarkę węzłów Blockchain. W pole \textit{Server url} należy wpisać adres serwera, na którym pracuje węzeł sieci Blockchain.
+Administrator posiada interfejs pozwalający na tworzenie sieci Blockchain. Węzły Blockchain to oprogramowanie działające na pojedynczym serwerze. Za pomocą konfiguratora, administrator systemu może połączyć się z danym węzłem i połączyć z nim inne serwery. Interfejs jest dostępny po kliknięciu na pasku nawigacji opcji \textit{Servers}. Rysunek \ref{findnode} przedstawia wyszukiwarkę węzłów Blockchain. W pole \textit{Server url} należy wpisać adres serwera, na którym pracuje węzeł sieci Blockchain.
 
 \begin{figure}[h]
 	\centering
@@ -788,7 +789,7 @@ Administrator posiada interfejs pozwalający na tworzenie sieci Blockchain. Węz
 	\caption{Wyszukiwarka węzłów.}\label{findnode}
 \end {figure}
 
-Pomyślne połączenie sygnalizowane jest zmianą koloru przycisku \textit{check}, tak jak na rysunku \ref{nodeconfig}. Na rysunku widać również zakładkę \textit{Peers}, która wyświetla wszystkie połączone węzły. Po podłączeniu do węzła administrator uzyskuje dostęp, do możliwości połączenia ze sobą dwóch węzłów. Do tego służy pole z etykietą \textit{Server url} znajdujące się pod zakładką \textit{Peers}.
+Pomyślne połączenie sygnalizowane jest zmianą koloru przycisku \textit{check}, tak jak na rysunku \ref{nodeconfig}. Na rysunku widać również zakładkę \textit{Peers}, która wyświetla wszystkie połączone węzły. Po podłączeniu do węzła administrator uzyskuje dostęp, do możliwości połączenia ze sobą dwóch węzłów. Do tego służy pole z etykietą \textit{Server url}, znajdujące się pod zakładką \textit{Peers}.
 
 \begin{figure}[h]
 	\centering
@@ -800,7 +801,7 @@ W taki sposób można łączyć węzły i tworzyć sieci Blockchain. Bardzo waż
 
 \subsection{Lista wyborów}
 
-Widok prezentujący listę wyborów pozwala na uzyskanie dostępu do menedżera wyborów, tworzenia nowych wyborów i usunięcie wyborów. Rysunek \ref{electionlist} przedstawia omawiany widok. Ikona kosza pozwala na usunięcie wyborów, jeżeli wyniki wyborów są opublikowane. Ikona długopisu pozwala na zarządzanie wyborami. Przycisk \textit{Create election} przenosi użytkownika do konfiguratora wyborów, który pozwala na tworzenie nowych wyborów.
+Widok prezentujący listę wyborów pozwala na uzyskanie dostępu do menedżera wyborów, opcji tworzenia nowych wyborów i usunięcia wyborów. Rysunek \ref{electionlist} przedstawia omawiany widok. Ikona kosza pozwala na usunięcie wyborów, jeżeli wyniki wyborów są opublikowane. Ikona długopisu pozwala na zarządzanie wyborami. Przycisk \textit{Create election} przenosi użytkownika do konfiguratora wyborów, który pozwala na tworzenie nowych wyborów.
 
 \begin{figure}[h]
 	\centering
@@ -835,7 +836,7 @@ Następnym widokiem jest formularz pozwalający na utworzenie kandydatów. Widok
 	\caption{Formularz dodawania kandydatów. Etap drugi}\label{votescandidate}
 \end {figure}
 
-Następnym i ostatnim krokiem jest przypisanie wyborców do wyborów. Rysunek \ref{choosevoters} przedstawia formularz dodawania wyborców. Żeby zakończyć proces konfiguracji wyborów należy kliknąć przycisk \textit{Submit}.
+Następnym i ostatnim krokiem jest przypisanie wyborców do wyborów. Rysunek \ref{choosevoters} przedstawia formularz dodawania wyborców. Wyborców dodaje się poprzez zaznaczenie ich na liście. Żeby zakończyć proces konfiguracji wyborów należy kliknąć przycisk \textit{Submit}.
 
 \begin{figure}[H]
 	\centering
@@ -861,7 +862,7 @@ Po utworzeniu wyborów następuje przeniesienie do widoku z listą wyborów (rys
 	\caption{Ikona edycji.}\label{penicon}
 \end {figure}
 
-Po kliknięciu przycisku ukazuje się menu zarządzania wyborami (rys. \ref{electionmanager}). Na górze menu widać rozszerzenie paska nawigacji, które pozwala na przełączanie się pomiędzy funkcjami menadżera wyborów. Widok, który ukazuje się jako pierwszy jest komponent o tytule status. Ten komponent wyświetla tytuł i opis wyborów, a także adres głównego węzła sieci Blockchain odpowiedzialnego za dane wybory. Na rysunku \ref{electionmanager} widać przycisk \textit{Change Url}, którego kliknięcie aktywuje pole tekstowe z etykietą \textit{Server Url} (rys. \ref{changeurl}). W pole tekstowe należy wpisać adres nowego serwera sieci Blockchain, który ma być traktowany jako węzeł główny. Zmiana serwera następuje po kliknięciu przycisku \textit{Submit}. Pozwala to na zmianę serwera, jeżeli używany serwer uległ awarii.
+Po kliknięciu przycisku ukazuje się menu zarządzania wyborami (rys. \ref{electionmanager}). Na górze menu widać rozszerzenie paska nawigacji, które pozwala na przełączanie się pomiędzy funkcjami menadżera wyborów. Widokiem, który ukazuje się jako pierwszy jest komponent o tytule \textit{Status}. Ten komponent wyświetla tytuł i opis wyborów, a także adres głównego węzła sieci Blockchain odpowiedzialnego za dane wybory. Na rysunku \ref{electionmanager} widać przycisk \textit{Change Url}, którego kliknięcie aktywuje pole tekstowe z etykietą \textit{Server Url} (rys. \ref{changeurl}). W pole tekstowe należy wpisać adres nowego serwera sieci Blockchain, który ma być traktowany jako węzeł główny. Zmiana serwera następuje po kliknięciu przycisku \textit{Submit}. Pozwala to na zmianę serwera, jeżeli używany serwer uległ awarii.
 
 \begin{figure}[h]
 	\centering
@@ -897,7 +898,15 @@ Komponent Blockchain (rys. \ref{bcstatus}) zawiera informacje dotyczące liczby 
 	\caption{Dane dotyczące sieci Blockchain.}\label{bcstatus}
 \end {figure}
 
-Ostatnim komponentem menadżera wyborów jest \textit{Results}. Ten komponent odpowiada za publikację wyników wyborów. Wyniki wyborów są tajne, dla każdego aktora systemu, do momentu ich opublikowania. Po otwarciu komponentu, jeżeli wyniki wyborów nie zostały opublikowane wyświetlony zostaje przycisk \ref{publish}. Po kliknięciu tego przycisku wyniki wyborów zostaną opublikowane i pobierane z serwera. Wyświetlany jset wykres słupkowy prezentujący wyniki wyborów (rys. \ref{adminelectionresult}).
+Ostatnim komponentem menadżera wyborów jest
+Results
+. Ten komponent od-
+powiada za publikację wyników wyborów. Wyniki wyborów są tajne, dla każdego
+aktora systemu, do momentu ich opublikowania. Po otwarciu komponentu, jeżeli
+wyniki wyborów nie zostały opublikowane wyświetlony zostaje przycisk \ref{publish}. Po
+kliknięciu tego przycisku wyniki wyborów zostaną opublikowane i pobierane z
+serwera. Wyświetlany jest wykres słupkowy prezentujący wyniki wyborów (rys.
+\ref{adminelectionresult}).
 
 \begin{figure}[H]
 	\centering
@@ -914,8 +923,8 @@ Ostatnim komponentem menadżera wyborów jest \textit{Results}. Ten komponent od
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Aplikacja użytkownika}
 
-Aplikacja użytkownika dostarcza interfejs pozwalający na wysłanie głosu i odczytanie wyników wyborów. Ten podrozdział przedstawia scenariusze obsługi aplkacji wyborcy.
-
+Aplikacja użytkownika dostarcza interfejs pozwalający na wysłanie głosu i odczytanie wyników wyborów. Ten podrozdział przedstawia scenariusze obsługi aplikacji wyborcy.
+ 
 \subsection{Logowanie}
 
 Dostęp do zasobów wyborcy wymaga zalogowania. W celu zalogowania się należ kliknąć przycisk \textit{login}, który znajduję w prawym górnym rogu, na pasku nawigacji (rysunek \ref{navlogin}).
@@ -926,8 +935,8 @@ Dostęp do zasobów wyborcy wymaga zalogowania. W celu zalogowania się należ k
 	\caption{Pasek nawigacji.}\label{navlogin}
 \end {figure}
 
-Po kliknięciu przycisku \textit{login} na ekranie pojawaia się okno, które wymaga podania loginu i hasła wyborcy. Okno przedstawiono na rysunku \ref{userlogin}. Jeżeli dane logowania są poprawne, to następuje przeniesienie do strony wyborcy (rys. \ref{manual}).
-
+Po kliknięciu przycisku \textit{login} na ekranie pojawia się okno, które wymaga podania loginu i hasła wyborcy. Okno przedstawiono na rysunku \ref{userlogin}. Jeżeli dane logowania są poprawne, to następuje przeniesienie do strony wyborcy (rys. \ref{manual}).
+ 
 \begin{figure}[h]
 	\centering
 	\includegraphics{images/userlogin.png}
@@ -948,7 +957,7 @@ Wylogowanie wymaga kliknięcia przycisku \textit{Logout} w prawym górnym rogu s
 
 \subsection{Instrukcja obsługi}
 
-Instrukcja obsługi, to krótki opis wykonywania danych akcji na stronie użytkownika. Można do niej przejść klikając \textit{help} na pasku nawigacji (rys. \ref{manual}). Informacje zawarte w instrukcji dotyczą: wyboru głosowania, procesu głosowania i wyników wyborów.
+Instrukcja obsługi, to krótki opis wykonywania podstawowych akcji na stronie użytkownika. Można do niej przejść klikając \textit{help} na pasku nawigacji (rys. \ref{manual}). Informacje zawarte w instrukcji dotyczą: wyboru głosowania, procesu głosowania i wyników wyborów.
 
 \begin{figure}[H]
 	\centering
@@ -992,7 +1001,7 @@ Po wysłaniu głosu na ekranie pojawia się powiadomienie \ref{votesuccess} i na
 
 \subsection{Wyniki}
 
-Dostęp do wyników wyborów uzyskiwany jest po ogłoszeniu ich wyników. Wybory, których wyniki są dostępne oznaczone są tak jak na rysunku \ref{voterresults}. Okno zawiera przycisk \textit{results}, którego kliknięcie przenosi użytkownika do okna \ref{resultdiagram}. Wykres jest podobny do wykresu administratora (rys. \ref{adminelectionresult}). Wrócić do poprzedniego widoku można za pomocą przycisku pod wykresem \textit{Go Back}.
+Dostęp do wyników wyborów uzyskiwany jest po ogłoszeniu wyników. Wybory, których wyniki są dostępne oznaczone są tak jak na rysunku \ref{voterresults}. Okno zawiera przycisk \textit{results}, którego kliknięcie przenosi użytkownika do okna \ref{resultdiagram}. Wykres jest podobny do wykresu administratora (rys. \ref{adminelectionresult}). Wrócić do poprzedniego widoku można za pomocą przycisku pod wykresem \textit{Go Back}.
 
 \begin{figure}[H]
 	\centering
@@ -1311,9 +1320,11 @@ class Database {
 }
 \end{lstlisting}
 
+
 \subsection{Repozytorium}
 
 Repozytorium pozwala na udzielenie dostępu do danych warstwom biznesowym aplikacji, oddzielając jednocześnie implmentację modelu dostępu do bazy danych, od reszty warstw. Repozytorium posiada wszelkie metody wyszukujące i zwracające żądane obiekty lub kolekcje obiektów. Listing \ref{repo} przedstawia klasę \textit{CandidateRepository}. Jest to jedno z wielu repozytoriów, które dostarcza podstawowe metody służące do wyszukiwania i zapisywania danych. Klasa posiada pole \textit{db}, które jest instancją udzielającą dostępu do bazy danych.
+\newpage
 
 \begin{lstlisting}[style=ES6, caption={Klasa \textit{CandidateRepository}.}, label={repo}]
 class CandidateRepository {
@@ -1346,6 +1357,8 @@ W projekcie repozytoria mają za zadanie dostarczać obiekty z bazy danych w kla
 Aplikacja serwerowa węzła sieci Blockchain pozwala na wybór jednego z dwóch algorytmów konsensusu. Algorytmy zajmują się rozwiązaniem tego samego problemu, dlatego można je wykorzystać, w ten sam sposób. Wzorzec projektowy strategia pozwala na dokonanie takiego podstawienia, bez konieczności zmiany struktury programu. Listing \ref{abstractBlockchain} przedstawia klasę bazową \textit{Blockchain}.
 Jest to klasa abstrakcyjna, która posiada implementację metod uniwersalnych dla każdego algorytmu. Metody \textit{mine}, \textit{getSyncValue} i \textit{synchronize} są abstrakcyjne.
  
+\newpage
+
 \begin{lstlisting}[style=ES6, caption={Klasa \textit{Blockchain}.}, label={abstractBlockchain}]
 abstract class Blockchain {
   protected blockchain: ChainRepository
@@ -1408,6 +1421,8 @@ const initialState = {
 
 Wycinek posiada zestaw metod, które pozwalają na modyfikowanie stanu wycinka. W kodzie są to metody obiektu \textit{reducers}, przedstawione w listingu \ref{createSlice}.
 
+\newpage
+
 \begin{lstlisting}[style=ES6, caption={Wycinek \textit{electionsSlice}.}, label={createSlice}]
 const electionsSlice = createSlice({
   name: 'elections',
@@ -1446,6 +1461,7 @@ const electionsSlice = createSlice({
 
 Tak stworzony kontener ułatwia zarządzanie stanem aplikacji, ponieważ pozwala na odseparowanie implementacji stanu, od kodu odpowiedzialnego za użycie stanu. Architektura Redux posiada również specjalny mechanizm do wykonywania zadań asynchronicznych, takich jak np. pobranie danych z API. Takie zadania nazywane są Thunk'ami. Listing \ref{fetch} przedstawia Thunk'a, który pobiera listę wyborów dostępnych dla określonego użytkownika.
 
+\newpage
 \begin{lstlisting}[style=ES6, caption={Thunk \textit{fetchElection}.}, label={fetch}]
 export const fetchElections = (): AppThunk => async dispatch => {
   try {
@@ -1530,12 +1546,13 @@ Zastosowanie technologii opartych na NodeJs do tworzenia sieci Blockchain okaza�
     \item ORM - Object Relational Mapping
     \item JWT - Json Web Token
     \item SPA - Single Page Application
+    \item NPM - Node Node Packet Module
   \end{description}
 
-Do pracy dołączona jest płyta CD z~następującą zawartością:
+Do pracy dołączona jest płyta CD, z następującą zawartością:
 
 \begin{itemize}
-  \item praca (źródła \LaTeX owe i końcowa wersja w \texttt{pdf}),
+  \item dokumentacja (źródła \LaTeX owe i końcowa wersja w \texttt{pdf}),
   \item źródła programu,
 \end{itemize}
 
