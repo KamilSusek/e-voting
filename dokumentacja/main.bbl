@@ -111,6 +111,11 @@ Węzły (nodes) - czym są i jak działają?
 \newblock \url{https://academy.binance.com/pl/articles/what-are-nodes}, 2020.
 \newblock data dostępu: rok 2020.
 
+\bibitem{bchistory}
+Stuart Haber,  W.~Stornetta.
+\newblock How to time-stamp a digital document.
+\newblock {\em Journal of Cryptology}, 3, 09 1999.
+
 \bibitem{pa}
 Ankit Patel.
 \newblock Medium.

@@ -24,45 +24,45 @@ Warning--to sort, need author or key in sp-han
 Warning--to sort, need author or key in eVoting-dzialanie
 Warning--empty booktitle in p2pbib
 Warning--empty publisher in business
-You've used 22 entries,
+You've used 23 entries,
             2129 wiz_defined-function locations,
-            601 strings with 7219 characters,
-and the built_in function-call counts, 4369 in all, are:
-= -- 447
-> -- 58
+            606 strings with 7320 characters,
+and the built_in function-call counts, 4618 in all, are:
+= -- 472
+> -- 71
 < -- 1
-+ -- 35
-- -- 12
-* -- 180
-:= -- 578
-add.period$ -- 68
-call.type$ -- 22
-change.case$ -- 71
++ -- 40
+- -- 16
+* -- 196
+:= -- 624
+add.period$ -- 71
+call.type$ -- 23
+change.case$ -- 76
 chr.to.int$ -- 0
-cite$ -- 41
-duplicate$ -- 183
-empty$ -- 523
-format.name$ -- 12
-if$ -- 1044
+cite$ -- 42
+duplicate$ -- 193
+empty$ -- 540
+format.name$ -- 16
+if$ -- 1094
 int.to.chr$ -- 0
-int.to.str$ -- 22
-missing$ -- 5
-newline$ -- 115
-num.names$ -- 10
-pop$ -- 165
+int.to.str$ -- 23
+missing$ -- 6
+newline$ -- 120
+num.names$ -- 12
+pop$ -- 168
 preamble$ -- 1
-purify$ -- 50
+purify$ -- 54
 quote$ -- 0
-skip$ -- 152
+skip$ -- 161
 stack$ -- 0
-substring$ -- 171
-swap$ -- 33
+substring$ -- 176
+swap$ -- 34
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 86
+type$ -- 90
 warning$ -- 19
-while$ -- 13
-width$ -- 24
-write$ -- 227
+while$ -- 15
+width$ -- 25
+write$ -- 238
 (There were 19 warnings)

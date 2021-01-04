@@ -3,8 +3,8 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Łańcuch bloków.}}{5}{figure.2.1}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Moduły systemu i-votingu. \cite {estonian:voting}}}{12}{figure.3.1}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Proces wyborczy. \cite {estonian:voting}}}{13}{figure.3.2}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Moduły systemu i-votingu \cite {estonian:voting}.}}{12}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Proces i-votingu. \cite {estonian:voting}}}{13}{figure.3.2}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Diagram przypadków użycia wyborcy.}}{17}{figure.4.1}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Diagram przypadków użycia administratora.}}{18}{figure.4.2}%
