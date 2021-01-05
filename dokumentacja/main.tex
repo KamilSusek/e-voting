@@ -1545,6 +1545,79 @@ Aplikacja wyborcy została przetestowana pod kątem responsywności na \textit{s
  
 Zakres testów oprogramowania należy uznać za niepełny, ponieważ podczas testowania nie przeprowadzono testów jednostkowych oprogramowania, które zapewniają duże pokrycie przypadków testowych.
 
+\section{Weryfikacja systemu}
+
+Weryfikacja systemu pozwala na przetestowanie funkcji systemu, a także przedstawienie przykładowego zastosowania.
+Do weryfikacji systemu przygotowano scenariusz, który zakładał konfigurację i przeprowadzenie wyborów na najlepszego piłkarza sezonu 2019 - 2020.
+W tym celu stworzono konta dla dwudziestu-jeden wyborców, a następnie przystąpiono do konfiguracji sieci Blockchain.
+
+Dodatkowym założeniem scenariusza było uruchomionie węzłów Blockchain na osobnych maszynach wirtualnych, aby przetestować system w środowisku bardziej rozproszonym.
+Maszyny wirtualne operowały na systemie Linux Ubuntu. Po zainstalowaniu wymaganych składników uruchomiono program odpowiedzialny za węzeł Blockchain, w konfiguracji wykrozystującej algorytm \textit{Proof of Authority}, na każdej maszynie.
+Program wykorzystywał port \textit{3001}. Do konfiguracji sieci wymagane są adresy IP węzłów. W celu uzyskania adresów wykorzystano polcenie terminalowe \textit{ifconfig}, które dostarcza informacje dotyczące interfejsów sieciowych 
+systemu operacyjnego. Wśród tych informacji znajduje się adres IP karty sieciowej, jest on oznaczony poprzez \textit{inet} (rys. \ref{ifconfig}). 
+
+\begin{figure}[H]
+  \centering
+\includegraphics[width=\textwidth]{images/ifconfig.png}
+\caption{Rezultat polecenia \textit{ifconfig}.}\label{ifconfig}
+\end {figure}
+
+Następnie zalogowano się na stronę administratora i połączono ze sobą utworzone węzły (rys. \ref{KonfiguracjaSieci}).
+
+\begin{figure}[H]
+  \centering
+\includegraphics[width=\textwidth]{images/KonfiguracjaSieci.png}
+\caption{Konfiguracja węzłów.}\label{KonfiguracjaSieci}
+\end {figure}
+
+Kolejnym krokiem była konfiguracja wyborów. Rysunek \ref{bestplayercfg} przedstawia nadany tytuł, opis, ramy czasowe i adres głównego węzła Blockchain, dla tworzonych wyborów.
+
+\begin{figure}[H]
+  \centering
+\includegraphics[width=\textwidth]{images/bestplayercfg.png}
+\caption{Konfiguracja wyborów.}\label{bestplayercfg}
+\end {figure}
+
+Następnie dodano sześciu kandydatów na piłkarza sezonu 2019-2020(rys. \ref{addedplayers}).
+
+\begin{figure}[H]
+  \centering
+\includegraphics[width=\textwidth]{images/addedplayers.png}
+\caption{Dodawanie kandydatów.}\label{addedplayers}
+\end {figure}
+
+Po dodaniu kandydatów przypisano wyborców do tworzonych wyborów (rys. \ref{choosingplayers}). 
+
+\begin{figure}[H]
+  \centering
+\includegraphics[width=\textwidth]{images/choosingplayers.png}
+\caption{Przypisanie wyborców.}\label{choosingplayers}
+\end {figure}
+
+W przedstawiony sposób utworzono nowe wybory, które są widoczne w menu wyborów (rys. \ref{addedelectionstest}).
+
+\begin{figure}[H]
+  \centering
+\includegraphics[width=\textwidth]{images/addedelectionstest.png}
+\caption{Menu wyborów.}\label{addedelectionstest}
+\end {figure}
+
+Po utworzeniu wyborów oddane zostały głosy z utworzonych dwudziestu-jeden kont. System pomyślnie przetworzył, o czym świadczy informacja z panelu administratora, dotycząca statusu sieci (rys. \ref{bcstatus2}).
+Sieć składa się z trzech węzłów, a utworzono w niej 22 bloki. Pierwszy blok przechowuje nieistotne dane, dlatego należy go odliczyć.
+Ostatecznie dodano 21 nowych bloków, czyli tyle ilu było wyborców uprawnionych do głosowania. Wyniki wyborów zostały opublikowane i otrzymano diagram, który przedstawiono na rysunku \ref{ezresult}.
+
+\begin{figure}[H]
+  \centering
+\includegraphics[width=\textwidth]{images/bcstatus2.png}
+\caption{Status wyborów.}\label{bcstatus2}
+\end {figure}
+
+\begin{figure}[H]
+  \centering
+\includegraphics[width=\textwidth]{images/ezresult.png}
+\caption{Wyniki wyborów.}\label{ezresult}
+\end {figure}
+
 \chapter{Podsumowanie i wnioski}
 
 Celem pracy było opracowanie oraz zaimplementowanie części systemu głosowania on-line, który wykorzystywał będzie technologię Blockchain. W skład systemu wchodzą cztery moduły: aplikacja wyborcy, aplikacja administratora, serwer z API systemu i sieć Blockchain. System umożliwia konfigurację  i przeprowadzenie wyborów elektronicznych, z wykorzystaniem aplikacji przeglądarkowej. W skład systemu wchodzi oprogramowanie, które umożliwia tworzenie węzłów sieci Blockchain. Węzły działają zgodnie z częścią założeń technologii Blockchain. Stworzony system spełnia funkcjonalności oraz realizuje cel pracy.

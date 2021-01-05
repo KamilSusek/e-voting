@@ -21,7 +21,7 @@ const RenderBarChart = ({ data }: PropTypes) => {
         <ValueAxis />
         <BarSeries
           color='#3f51b5'
-          valueField='voteCounter'
+          valueField='votes'
           argumentField='candidate_name'
           name='Candidate'
         />

@@ -10,6 +10,7 @@ export async function saveVoter (
 ) {
   try {
     const { username, password } = req.body
+    console.log(username, password)
     const response = await votersRepo.save({ username, password })
     res.status(201).send()
   } catch (error) {

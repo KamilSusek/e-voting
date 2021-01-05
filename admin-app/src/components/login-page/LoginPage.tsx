@@ -1,4 +1,4 @@
-import { Button, Grid, TextField } from '@material-ui/core'
+import { Button, Grid, Paper, TextField } from '@material-ui/core'
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from '../../axios/axios'
@@ -23,30 +23,38 @@ function LoginPage () {
   }
 
   return (
-    <div>
+    <Grid container direction='column' justify='center' alignItems='center'>
       <form onSubmit={handleLogin}>
-        <Grid container justify='center' alignItems='center'>
-          <Grid
-            container
-            direction='column'
-            justify='center'
-            alignItems='center'
-          >
-            <TextField
-              onChange={handleUsernameChange}
-              placeholder='login'
-              type='text'
-            />
-            <TextField
-              onChange={handlePasswordChange}
-              placeholder='password'
-              type='password'
-            />
-            <Button type='submit'>Login</Button>
-          </Grid>
+        <Grid
+          style={{ minHeight: '50vh' }}
+          container
+          direction='column'
+          justify='center'
+          alignItems='center'
+        >
+          <Paper style={{padding: '8px'}}>
+            <Grid
+              container
+              direction='column'
+              justify='center'
+              alignItems='center'
+            >
+              <TextField
+                onChange={handleUsernameChange}
+                placeholder='login'
+                type='text'
+              />
+              <TextField
+                onChange={handlePasswordChange}
+                placeholder='password'
+                type='password'
+              />
+              <Button type='submit'>Login</Button>
+            </Grid>
+          </Paper>
         </Grid>
       </form>
-    </div>
+    </Grid>
   )
 }
 

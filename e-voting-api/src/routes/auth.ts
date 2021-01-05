@@ -38,7 +38,7 @@ router.post('/login', async (req, res) => {
     }
   })
 
-  if (voter.password === password) {
+  if (voter && voter.password === password) {
     //sha256(password).toString()) {
     const token = jwt.sign({ username }, 'secret_key')
 
@@ -54,7 +54,7 @@ export function ensureToken (
   next: Function
 ) {
   const bearerHeader = req.headers['authorization']
-  console.log(bearerHeader)
+  console.log('Header', bearerHeader)
   if (bearerHeader !== undefined) {
     const bearer = bearerHeader.split(' ')
     const bearerToken = bearer[1]
@@ -71,7 +71,7 @@ export function verifyToken (
   res: express.Response,
   next: Function
 ) {
-  console.log(req.body.token)
+  console.log('Token', req.body.token)
 
   jwt.verify(req.body.token, 'secret_key', (err: any, data: any) => {
     if (err) {

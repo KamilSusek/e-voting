@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.22)  4 JAN 2021 18:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.22)  5 JAN 2021 22:21
 entering extended mode
 **f:/Praca-inżynierska/e-voting/dokumentacja/main.tex
 (f:/Praca-inżynierska/e-voting/dokumentacja/main.tex
@@ -849,7 +849,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file f:/Praca-inżynierska/e-voting/dokumentacja/politechnika_sl_logo_bw_poziom_pl-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<politechnika_sl_logo_bw_poziom_pl-eps-converted-to.pdf, id=258, 485.815pt x 179.67125pt>
+<politechnika_sl_logo_bw_poziom_pl-eps-converted-to.pdf, id=270, 485.815pt x 179.67125pt>
 File: politechnika_sl_logo_bw_poziom_pl-eps-converted-to.pdf Graphic file (type pdf)
 <use politechnika_sl_logo_bw_poziom_pl-eps-converted-to.pdf>
 Package pdftex.def Info: politechnika_sl_logo_bw_poziom_pl-eps-converted-to.pdf  used on input line 199.
@@ -913,67 +913,66 @@ This may cause the page layout to be inconsistent, however.
 [2]
 Rozdzia\l  1.
 
-Overfull \hbox (7.0146pt too wide) in paragraph at lines 340--341
-[]\T1/lmr/m/n/12 Celem pracy jest za-pro-jek-to-wa-nie oraz za-im-ple-men-to-wa-nie sys-temu, kt�ry umo�-
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 343.
-(C:\Users\Kamil\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
-File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.350 
+l.346 
        [1
 
 
-]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
+]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 348.
+ (C:\Users\Kamil\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.351 \chapter
+l.358 \chapter
               {Blockchain} [2]
 Rozdzia\l  2.
 pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.358 
+l.365 
        [3
 
 ]
-<images/łańcuch_bloków.jpg, id=386, 547.54562pt x 234.37563pt>
+<images/łańcuch_bloków.jpg, id=401, 547.54562pt x 234.37563pt>
 File: images/łańcuch_bloków.jpg Graphic file (type jpg)
 <use images/łańcuch_bloków.jpg>
-Package pdftex.def Info: images/łańcuch_bloków.jpg  used on input line 379.
+Package pdftex.def Info: images/łańcuch_bloków.jpg  used on input line 386.
 (pdftex.def)             Requested size: 416.83289pt x 178.42772pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.381 \end {figure}
+l.388 \end {figure}
                     [4]
-Overfull \hbox (5.59563pt too wide) in paragraph at lines 392--394
+Overfull \hbox (5.59563pt too wide) in paragraph at lines 399--401
 []\T1/lmr/m/it/12 Peer-to-peer \T1/lmr/m/n/12 jest przy-k�a-dem cie-ka-wego za-sto-so-wa-nia ar-chi-tek-tury klient-serwer.
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.394 
+l.401 
        [5 <f:/Praca-inżynierska/e-voting/dokumentacja/images/łańcuch_bloków.jpg>]pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.406 
+l.413 
        [6] [7]
-Overfull \hbox (4.1043pt too wide) in paragraph at lines 437--440
+Overfull \hbox (4.1043pt too wide) in paragraph at lines 444--447
 \T1/lmr/m/it/12 6ac73742db534bebccc9af1453c5637ee5bb5d7c9628ec2f26cf9777c89e96d8\T1/lmr/m/n/12 . Na-to-miast
  []
 
 
-Overfull \hbox (13.91382pt too wide) in paragraph at lines 437--440
+Overfull \hbox (13.91382pt too wide) in paragraph at lines 444--447
 \T1/lmr/m/it/12 af316ecb91a8ee7ae99210702b2d4758f30cdde3bf61e3d8e787d74681f90a6\T1/lmr/m/n/12 . Przy-k�ad ob-
  []
 
 [8]
-Overfull \hbox (1.77148pt too wide) in paragraph at lines 457--458
+Overfull \hbox (1.77148pt too wide) in paragraph at lines 464--465
 []\T1/lmr/m/it/12 Smart \T1/lmr/m/n/12 kon-trakty po-zwa-laj� na two-rze-nie apli-ka-cji, kt�-rych pod-staw� jest Block-
  []
 
@@ -982,36 +981,50 @@ Rozdzia\l  3.
 [11
 
 ]
-<images/Dziedzina systemu estońskiego.png, id=468, 490.83376pt x 264.23718pt>
+Underfull \hbox (badness 10000) in paragraph at lines 513--517
+
+ []
+
+<images/Dziedzina systemu estońskiego.png, id=482, 490.83376pt x 264.23718pt>
 File: images/Dziedzina systemu estońskiego.png Graphic file (type png)
 <use images/Dziedzina systemu estońskiego.png>
-Package pdftex.def Info: images/Dziedzina systemu estońskiego.png  used on input line 520.
+Package pdftex.def Info: images/Dziedzina systemu estońskiego.png  used on input line 526.
 (pdftex.def)             Requested size: 416.83289pt x 224.40509pt.
-<images/Główne częsci systemu estońskiego.png, id=470, 490.83376pt x 136.25906pt>
+[12 <f:/Praca-inżynierska/e-voting/dokumentacja/images/Dziedzina systemu estońskiego.png>]
+<images/Główne częsci systemu estońskiego.png, id=490, 490.83376pt x 136.25906pt>
 File: images/Główne częsci systemu estońskiego.png Graphic file (type png)
 <use images/Główne częsci systemu estońskiego.png>
-Package pdftex.def Info: images/Główne częsci systemu estońskiego.png  used on input line 529.
+Package pdftex.def Info: images/Główne częsci systemu estońskiego.png  used on input line 535.
 (pdftex.def)             Requested size: 416.83289pt x 115.71886pt.
- [12 <f:/Praca-inżynierska/e-voting/dokumentacja/images/Dziedzina systemu estońskiego.png>] [13 <f:/Praca-inżynierska/e-voting/dokumentacja/images/Główne częsci systemu estońskiego.png>] [14]
+ [13 <f:/Praca-inżynierska/e-voting/dokumentacja/images/Główne częsci systemu estońskiego.png>] [14]
 Rozdzia\l  4.
 [15
 
-] [16]
-<images/user_use_case.jpg, id=500, 465.23813pt x 330.48468pt>
+]
+Overfull \hbox (13.67871pt too wide) in paragraph at lines 585--586
+[]\T1/lmr/m/n/12 dane lo-go-wa-nia u�yt-kow-ni-k�w s� za-bez-pie-czone, za po-moc� al-go-rytmu \T1/lmr/m/it/12 SHA256\T1/lmr/m/n/12 , 
+ []
+
+<images/user_use_case.jpg, id=511, 465.23813pt x 330.48468pt>
 File: images/user_use_case.jpg Graphic file (type jpg)
 <use images/user_use_case.jpg>
-Package pdftex.def Info: images/user_use_case.jpg  used on input line 600.
+Package pdftex.def Info: images/user_use_case.jpg  used on input line 601.
 (pdftex.def)             Requested size: 416.83289pt x 296.10721pt.
-<images/admin_use_case.jpg, id=503, 545.03625pt x 350.81062pt>
-File: images/admin_use_case.jpg Graphic file (type jpg)
-<use images/admin_use_case.jpg>
-Package pdftex.def Info: images/admin_use_case.jpg  used on input line 619.
-(pdftex.def)             Requested size: 416.83289pt x 268.2943pt.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[17 <f:/Praca-inżynierska/e-voting/dokumentacja/images/user_use_case.jpg>] [18 <f:/Praca-inżynierska/e-voting/dokumentacja/images/admin_use_case.jpg>] [19] [20] [21] [22
+<images/admin_use_case.jpg, id=514, 545.03625pt x 350.81062pt>
+File: images/admin_use_case.jpg Graphic file (type jpg)
+<use images/admin_use_case.jpg>
+Package pdftex.def Info: images/admin_use_case.jpg  used on input line 620.
+(pdftex.def)             Requested size: 416.83289pt x 268.2943pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[16] [17 <f:/Praca-inżynierska/e-voting/dokumentacja/images/user_use_case.jpg>]
+Underfull \vbox (badness 1502) has occurred while \output is active []
+
+ [18 <f:/Praca-inżynierska/e-voting/dokumentacja/images/admin_use_case.jpg>] [19] [20] [21] [22
 
 ]
 Rozdzia\l  5.
@@ -1019,7 +1032,7 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 67
 (C:\Users\Kamil\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-<images/node_version.png, id=533, 140.77594pt x 22.58438pt>
+<images/node_version.png, id=548, 140.77594pt x 22.58438pt>
 File: images/node_version.png Graphic file (type png)
 <use images/node_version.png>
 Package pdftex.def Info: images/node_version.png  used on input line 689.
@@ -1029,256 +1042,260 @@ Package pdftex.def Info: images/node_version.png  used on input line 689.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [23]
-<images/foldery.png, id=542, 157.33781pt x 76.78688pt>
+<images/foldery.png, id=557, 157.33781pt x 76.78688pt>
 File: images/foldery.png Graphic file (type png)
 <use images/foldery.png>
 Package pdftex.def Info: images/foldery.png  used on input line 699.
-(pdftex.def)             Requested size: 416.83289pt x 203.46198pt.
+(pdftex.def)             Requested size: 157.33742pt x 76.78668pt.
 
 Overfull \hbox (4.40195pt too wide) in paragraph at lines 709--710
 []\T1/lmr/m/n/12 blockchain-server prze-cho-wuje pro-gram, kt�ry re-ali-zuje dzia-�a-nie w�-z�a w sieci
  []
 
-[24 <f:/Praca-inżynierska/e-voting/dokumentacja/images/node_version.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/foldery.png>] [25]
-<images/adminlogin.png, id=560, 164.11313pt x 94.10156pt>
+[24 <f:/Praca-inżynierska/e-voting/dokumentacja/images/node_version.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/foldery.png>]
+<images/adminlogin.png, id=569, 164.11313pt x 94.10156pt>
 File: images/adminlogin.png Graphic file (type png)
 <use images/adminlogin.png>
-Package pdftex.def Info: images/adminlogin.png  used on input line 748.
+Package pdftex.def Info: images/adminlogin.png  used on input line 746.
 (pdftex.def)             Requested size: 164.11272pt x 94.10132pt.
-<images/adminnav.png, id=562, 1434.10782pt x 53.44969pt>
+<images/adminnav.png, id=571, 1434.10782pt x 53.44969pt>
 File: images/adminnav.png Graphic file (type png)
 <use images/adminnav.png>
-Package pdftex.def Info: images/adminnav.png  used on input line 756.
+Package pdftex.def Info: images/adminnav.png  used on input line 754.
 (pdftex.def)             Requested size: 416.83289pt x 15.53506pt.
- [26 <f:/Praca-inżynierska/e-voting/dokumentacja/images/adminlogin.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/adminnav.png>]
-<images/voterslist.png, id=572, 776.9025pt x 246.9225pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[25 <f:/Praca-inżynierska/e-voting/dokumentacja/images/adminlogin.png>]
+<images/voterslist.png, id=583, 776.9025pt x 246.9225pt>
 File: images/voterslist.png Graphic file (type png)
 <use images/voterslist.png>
-Package pdftex.def Info: images/voterslist.png  used on input line 768.
+Package pdftex.def Info: images/voterslist.png  used on input line 766.
 (pdftex.def)             Requested size: 416.83289pt x 132.48463pt.
-<images/addvoter.png, id=573, 757.32938pt x 316.93407pt>
+<images/addvoter.png, id=584, 757.32938pt x 316.93407pt>
 File: images/addvoter.png Graphic file (type png)
 <use images/addvoter.png>
-Package pdftex.def Info: images/addvoter.png  used on input line 774.
+Package pdftex.def Info: images/addvoter.png  used on input line 772.
 (pdftex.def)             Requested size: 416.83289pt x 174.44pt.
- [27 <f:/Praca-inżynierska/e-voting/dokumentacja/images/voterslist.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/addvoter.png>]
-<images/findnode.png, id=582, 823.57687pt x 121.20282pt>
+ [26 <f:/Praca-inżynierska/e-voting/dokumentacja/images/adminnav.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/voterslist.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/addvoter.png>]
+<images/findnode.png, id=593, 823.57687pt x 121.20282pt>
 File: images/findnode.png Graphic file (type png)
 <use images/findnode.png>
-Package pdftex.def Info: images/findnode.png  used on input line 786.
+Package pdftex.def Info: images/findnode.png  used on input line 784.
 (pdftex.def)             Requested size: 416.83289pt x 61.34286pt.
-<images/ndoeconfig.png, id=584, 746.79pt x 250.68657pt>
+<images/ndoeconfig.png, id=595, 746.79pt x 250.68657pt>
 File: images/ndoeconfig.png Graphic file (type png)
 <use images/ndoeconfig.png>
-Package pdftex.def Info: images/ndoeconfig.png  used on input line 794.
+Package pdftex.def Info: images/ndoeconfig.png  used on input line 792.
 (pdftex.def)             Requested size: 416.83289pt x 139.92448pt.
-<images/electionlist.png, id=586, 500.62032pt x 121.20282pt>
+<images/electionlist.png, id=597, 500.62032pt x 121.20282pt>
 File: images/electionlist.png Graphic file (type png)
 <use images/electionlist.png>
-Package pdftex.def Info: images/electionlist.png  used on input line 806.
+Package pdftex.def Info: images/electionlist.png  used on input line 804.
 (pdftex.def)             Requested size: 416.83289pt x 100.92195pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[28 <f:/Praca-inżynierska/e-voting/dokumentacja/images/findnode.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/ndoeconfig.png>]
-<images/votesconfig1.png, id=596, 1393.45593pt x 461.47406pt>
+[27 <f:/Praca-inżynierska/e-voting/dokumentacja/images/findnode.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/ndoeconfig.png>]
+<images/votesconfig1.png, id=607, 1393.45593pt x 461.47406pt>
 File: images/votesconfig1.png Graphic file (type png)
 <use images/votesconfig1.png>
-Package pdftex.def Info: images/votesconfig1.png  used on input line 816.
+Package pdftex.def Info: images/votesconfig1.png  used on input line 814.
 (pdftex.def)             Requested size: 416.83289pt x 138.04192pt.
-<images/votesconfigerror.png, id=598, 874.76813pt x 410.2828pt>
+<images/votesconfigerror.png, id=609, 874.76813pt x 410.2828pt>
 File: images/votesconfigerror.png Graphic file (type png)
 <use images/votesconfigerror.png>
-Package pdftex.def Info: images/votesconfigerror.png  used on input line 824.
+Package pdftex.def Info: images/votesconfigerror.png  used on input line 822.
 (pdftex.def)             Requested size: 416.83289pt x 195.49988pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[29 <f:/Praca-inżynierska/e-voting/dokumentacja/images/electionlist.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/votesconfig1.png>]
-<images/votescandidate.png, id=607, 957.5775pt x 506.6428pt>
+[28 <f:/Praca-inżynierska/e-voting/dokumentacja/images/electionlist.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/votesconfig1.png>]
+<images/votescandidate.png, id=617, 957.5775pt x 506.6428pt>
 File: images/votescandidate.png Graphic file (type png)
 <use images/votescandidate.png>
-Package pdftex.def Info: images/votescandidate.png  used on input line 833.
+Package pdftex.def Info: images/votescandidate.png  used on input line 831.
 (pdftex.def)             Requested size: 416.83289pt x 220.54245pt.
-<images/choosevoters.png, id=609, 607.51968pt x 481.8pt>
+<images/choosevoters.png, id=619, 607.51968pt x 481.8pt>
 File: images/choosevoters.png Graphic file (type png)
 <use images/choosevoters.png>
-Package pdftex.def Info: images/choosevoters.png  used on input line 841.
+Package pdftex.def Info: images/choosevoters.png  used on input line 839.
 (pdftex.def)             Requested size: 416.83289pt x 330.58238pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [30 <f:/Praca-inżynierska/e-voting/dokumentacja/images/votesconfigerror.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/votescandidate.png>]
-<images/electionsview.png, id=617, 749.80125pt x 172.39406pt>
+ [29 <f:/Praca-inżynierska/e-voting/dokumentacja/images/votesconfigerror.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/votescandidate.png>]
+<images/electionsview.png, id=628, 749.80125pt x 172.39406pt>
 File: images/electionsview.png Graphic file (type png)
 <use images/electionsview.png>
-Package pdftex.def Info: images/electionsview.png  used on input line 849.
+Package pdftex.def Info: images/electionsview.png  used on input line 847.
 (pdftex.def)             Requested size: 416.83289pt x 95.84029pt.
-<images/penicon.png, id=619, 33.12375pt x 27.10126pt>
+<images/penicon.png, id=630, 33.12375pt x 27.10126pt>
 File: images/penicon.png Graphic file (type png)
 <use images/penicon.png>
-Package pdftex.def Info: images/penicon.png  used on input line 859.
+Package pdftex.def Info: images/penicon.png  used on input line 857.
 (pdftex.def)             Requested size: 33.12366pt x 27.10118pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[31 <f:/Praca-inżynierska/e-voting/dokumentacja/images/choosevoters.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/electionsview.png>]
-<images/electionmanager.png, id=630, 841.64438pt x 266.49562pt>
+[30 <f:/Praca-inżynierska/e-voting/dokumentacja/images/choosevoters.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/electionsview.png>]
+<images/electionmanager.png, id=641, 841.64438pt x 266.49562pt>
 File: images/electionmanager.png Graphic file (type png)
 <use images/electionmanager.png>
-Package pdftex.def Info: images/electionmanager.png  used on input line 867.
+Package pdftex.def Info: images/electionmanager.png  used on input line 865.
 (pdftex.def)             Requested size: 416.83289pt x 131.9869pt.
-<images/changeurl.png, id=631, 928.97063pt x 166.37157pt>
+<images/changeurl.png, id=642, 928.97063pt x 166.37157pt>
 File: images/changeurl.png Graphic file (type png)
 <use images/changeurl.png>
-Package pdftex.def Info: images/changeurl.png  used on input line 873.
+Package pdftex.def Info: images/changeurl.png  used on input line 871.
 (pdftex.def)             Requested size: 416.83289pt x 74.65326pt.
-<images/infocandidates.png, id=635, 187.45032pt x 107.65219pt>
+<images/infocandidates.png, id=646, 187.45032pt x 107.65219pt>
 File: images/infocandidates.png Graphic file (type png)
 <use images/infocandidates.png>
-Package pdftex.def Info: images/infocandidates.png  used on input line 881.
+Package pdftex.def Info: images/infocandidates.png  used on input line 879.
 (pdftex.def)             Requested size: 187.44984pt x 107.65192pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [32 <f:/Praca-inżynierska/e-voting/dokumentacja/images/penicon.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/electionmanager.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/changeurl.png>]
-<images/infovoters.png, id=643, 198.7425pt x 185.94469pt>
+ [31 <f:/Praca-inżynierska/e-voting/dokumentacja/images/penicon.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/electionmanager.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/changeurl.png>]
+<images/infovoters.png, id=654, 198.7425pt x 185.94469pt>
 File: images/infovoters.png Graphic file (type png)
 <use images/infovoters.png>
-Package pdftex.def Info: images/infovoters.png  used on input line 887.
+Package pdftex.def Info: images/infovoters.png  used on input line 885.
 (pdftex.def)             Requested size: 198.742pt x 185.94421pt.
-<images/bcstatus.png, id=645, 1069.74657pt x 226.59656pt>
+<images/bcstatus.png, id=656, 1069.74657pt x 226.59656pt>
 File: images/bcstatus.png Graphic file (type png)
 <use images/bcstatus.png>
-Package pdftex.def Info: images/bcstatus.png  used on input line 895.
+Package pdftex.def Info: images/bcstatus.png  used on input line 893.
 (pdftex.def)             Requested size: 416.83289pt x 88.29622pt.
-<images/publish.png, id=648, 163.3603pt x 80.55093pt>
+<images/publish.png, id=659, 163.3603pt x 80.55093pt>
 File: images/publish.png Graphic file (type png)
 <use images/publish.png>
-Package pdftex.def Info: images/publish.png  used on input line 910.
+Package pdftex.def Info: images/publish.png  used on input line 908.
 (pdftex.def)             Requested size: 163.3599pt x 80.55074pt.
- [33 <f:/Praca-inżynierska/e-voting/dokumentacja/images/infocandidates.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/infovoters.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/bcstatus.png>]
-<images/adminelectionresult.png, id=656, 925.20656pt x 411.03563pt>
+ [32 <f:/Praca-inżynierska/e-voting/dokumentacja/images/infocandidates.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/infovoters.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/bcstatus.png>]
+<images/adminelectionresult.png, id=667, 925.20656pt x 411.03563pt>
 File: images/adminelectionresult.png Graphic file (type png)
 <use images/adminelectionresult.png>
-Package pdftex.def Info: images/adminelectionresult.png  used on input line 916.
+Package pdftex.def Info: images/adminelectionresult.png  used on input line 914.
 (pdftex.def)             Requested size: 416.83289pt x 185.18384pt.
- [34 <f:/Praca-inżynierska/e-voting/dokumentacja/images/publish.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/adminelectionresult.png>]
-<images/navlogin.png, id=662, 1431.09656pt x 51.94406pt>
+ [33 <f:/Praca-inżynierska/e-voting/dokumentacja/images/publish.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/adminelectionresult.png>]
+<images/navlogin.png, id=673, 1431.09656pt x 51.94406pt>
 File: images/navlogin.png Graphic file (type png)
 <use images/navlogin.png>
-Package pdftex.def Info: images/navlogin.png  used on input line 931.
+Package pdftex.def Info: images/navlogin.png  used on input line 929.
 (pdftex.def)             Requested size: 416.83289pt x 15.12996pt.
-<images/userlogin.png, id=665, 330.48468pt x 191.9672pt>
+<images/userlogin.png, id=676, 330.48468pt x 191.9672pt>
 File: images/userlogin.png Graphic file (type png)
 <use images/userlogin.png>
-Package pdftex.def Info: images/userlogin.png  used on input line 939.
+Package pdftex.def Info: images/userlogin.png  used on input line 937.
 (pdftex.def)             Requested size: 330.48387pt x 191.96672pt.
-<images/errorlogin.png, id=666, 347.79938pt x 217.5628pt>
+<images/errorlogin.png, id=677, 347.79938pt x 217.5628pt>
 File: images/errorlogin.png Graphic file (type png)
 <use images/errorlogin.png>
-Package pdftex.def Info: images/errorlogin.png  used on input line 945.
+Package pdftex.def Info: images/errorlogin.png  used on input line 943.
 (pdftex.def)             Requested size: 347.79852pt x 217.56227pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[35 <f:/Praca-inżynierska/e-voting/dokumentacja/images/navlogin.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/userlogin.png>]
-<images/manual.png, id=680, 1432.60219pt x 715.92468pt>
+[34 <f:/Praca-inżynierska/e-voting/dokumentacja/images/navlogin.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/userlogin.png>]
+<images/manual.png, id=690, 1432.60219pt x 715.92468pt>
 File: images/manual.png Graphic file (type png)
 <use images/manual.png>
-Package pdftex.def Info: images/manual.png  used on input line 961.
+Package pdftex.def Info: images/manual.png  used on input line 959.
 (pdftex.def)             Requested size: 416.83289pt x 208.30106pt.
- [36 <f:/Praca-inżynierska/e-voting/dokumentacja/images/errorlogin.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/manual.png>]
-<images/electionwindow.png, id=690, 895.84688pt x 158.09062pt>
+ [35 <f:/Praca-inżynierska/e-voting/dokumentacja/images/errorlogin.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/manual.png>]
+<images/electionwindow.png, id=701, 895.84688pt x 158.09062pt>
 File: images/electionwindow.png Graphic file (type png)
 <use images/electionwindow.png>
-Package pdftex.def Info: images/electionwindow.png  used on input line 975.
+Package pdftex.def Info: images/electionwindow.png  used on input line 973.
 (pdftex.def)             Requested size: 416.83289pt x 73.5572pt.
-<images/votescreen.png, id=691, 898.10532pt x 261.97874pt>
+<images/votescreen.png, id=702, 898.10532pt x 261.97874pt>
 File: images/votescreen.png Graphic file (type png)
 <use images/votescreen.png>
-Package pdftex.def Info: images/votescreen.png  used on input line 981.
+Package pdftex.def Info: images/votescreen.png  used on input line 979.
 (pdftex.def)             Requested size: 416.83289pt x 121.59099pt.
-<images/votesuccess.png, id=694, 356.83313pt x 99.37125pt>
+<images/votesuccess.png, id=705, 356.83313pt x 99.37125pt>
 File: images/votesuccess.png Graphic file (type png)
 <use images/votesuccess.png>
-Package pdftex.def Info: images/votesuccess.png  used on input line 989.
+Package pdftex.def Info: images/votesuccess.png  used on input line 987.
 (pdftex.def)             Requested size: 356.83224pt x 99.371pt.
-<images/votesent.png, id=695, 877.77937pt x 144.54pt>
+<images/votesent.png, id=706, 877.77937pt x 144.54pt>
 File: images/votesent.png Graphic file (type png)
 <use images/votesent.png>
-Package pdftex.def Info: images/votesent.png  used on input line 995.
+Package pdftex.def Info: images/votesent.png  used on input line 993.
 (pdftex.def)             Requested size: 416.83289pt x 68.63956pt.
- [37 <f:/Praca-inżynierska/e-voting/dokumentacja/images/electionwindow.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/votescreen.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/votesuccess.png>]
-<images/voterresults.png, id=707, 893.58844pt x 142.28156pt>
+ [36 <f:/Praca-inżynierska/e-voting/dokumentacja/images/electionwindow.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/votescreen.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/votesuccess.png>]
+<images/voterresults.png, id=718, 893.58844pt x 142.28156pt>
 File: images/voterresults.png Graphic file (type png)
 <use images/voterresults.png>
-Package pdftex.def Info: images/voterresults.png  used on input line 1005.
+Package pdftex.def Info: images/voterresults.png  used on input line 1003.
 (pdftex.def)             Requested size: 416.83289pt x 66.37082pt.
-<images/resultdiagram.png, id=708, 893.58844pt x 483.30562pt>
+<images/resultdiagram.png, id=719, 893.58844pt x 483.30562pt>
 File: images/resultdiagram.png Graphic file (type png)
 <use images/resultdiagram.png>
-Package pdftex.def Info: images/resultdiagram.png  used on input line 1011.
+Package pdftex.def Info: images/resultdiagram.png  used on input line 1009.
 (pdftex.def)             Requested size: 416.83289pt x 225.45013pt.
- [38 <f:/Praca-inżynierska/e-voting/dokumentacja/images/votesent.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/voterresults.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/resultdiagram.png>]
-Rozdzia\l  6.
-<images/modules.png, id=716, 667.49374pt x 382.42876pt>
-File: images/modules.png Graphic file (type png)
-<use images/modules.png>
-Package pdftex.def Info: images/modules.png  used on input line 1040.
-(pdftex.def)             Requested size: 416.83289pt x 238.82481pt.
-[39
+ [37 <f:/Praca-inżynierska/e-voting/dokumentacja/images/votesent.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/voterresults.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/resultdiagram.png>] [38
 
 ]
-<images/blockchainarch.png, id=723, 664.73344pt x 565.36218pt>
+Rozdzia\l  6.
+<images/modules.png, id=731, 667.49374pt x 382.42876pt>
+File: images/modules.png Graphic file (type png)
+<use images/modules.png>
+Package pdftex.def Info: images/modules.png  used on input line 1038.
+(pdftex.def)             Requested size: 416.83289pt x 238.82481pt.
+[39]
+<images/blockchainarch.png, id=738, 664.73344pt x 565.36218pt>
 File: images/blockchainarch.png Graphic file (type png)
 <use images/blockchainarch.png>
-Package pdftex.def Info: images/blockchainarch.png  used on input line 1056.
+Package pdftex.def Info: images/blockchainarch.png  used on input line 1054.
 (pdftex.def)             Requested size: 416.83289pt x 354.52373pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [40 <f:/Praca-inżynierska/e-voting/dokumentacja/images/modules.png>] [41 <f:/Praca-inżynierska/e-voting/dokumentacja/images/blockchainarch.png>]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 1074.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 1072.
  [42]
-LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 1125.
+LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 1123.
  (C:\Users\Kamil\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [43]
-Overfull \hbox (0.51886pt too wide) in paragraph at lines 1168--1169
+Overfull \hbox (0.51886pt too wide) in paragraph at lines 1166--1167
 \T1/lmr/m/n/12 zwala na upo-rz�d-ko-wa-nie da-nych, w re-la-cje po-mi�-dzy ta-be-lami. Ry-su-nek []6.3[] przed-
  []
 
-<images/Relational.png, id=800, 929.72343pt x 619.56468pt>
+<images/Relational.png, id=815, 929.72343pt x 619.56468pt>
 File: images/Relational.png Graphic file (type png)
 <use images/Relational.png>
-Package pdftex.def Info: images/Relational.png  used on input line 1172.
+Package pdftex.def Info: images/Relational.png  used on input line 1170.
 (pdftex.def)             Requested size: 416.83289pt x 277.77106pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [44]
-Overfull \hbox (5.22485pt too wide) in paragraph at lines 1192--1193
+Overfull \hbox (5.22485pt too wide) in paragraph at lines 1190--1191
 \T1/lmr/m/n/12 pola \T1/lmr/m/it/12 CAN-DI-DATE_NAME \T1/lmr/m/n/12 i \T1/lmr/m/it/12 CAN-DI-DATE_DESCRIPTION\T1/lmr/m/n/12 . Ta-bela po-siada r�w-
  []
 
 
-Overfull \hbox (6.09608pt too wide) in paragraph at lines 1196--1197
+Overfull \hbox (6.09608pt too wide) in paragraph at lines 1194--1195
 \T1/lmr/m/n/12 i syn-chro-ni-za-cj� sieci. Wy-b�r al-go-rytmu jest mo�-liwy, po-przez wy-ko-rzy-sta-nie wzorca
  []
 
 [45 <f:/Praca-inżynierska/e-voting/dokumentacja/images/Relational.png>]
-Overfull \hbox (6.11624pt too wide) in paragraph at lines 1218--1219
+Overfull \hbox (6.11624pt too wide) in paragraph at lines 1216--1217
 []\T1/lmr/m/n/12 Rozwi�zanie za-gadki ma-te-ma-tycz-nej, to zna-le-zie-nie od-po-wied-niej liczby (\T1/lmr/m/it/12 nonce\T1/lmr/m/n/12 ),
  []
 
 [46] [47] [48] [49] [50] [51]
-Overfull \hbox (3.57607pt too wide) in paragraph at lines 1425--1426
+Overfull \hbox (3.57607pt too wide) in paragraph at lines 1423--1424
 []\T1/lmr/m/n/12 Redux to spe-cjalna ar-chi-tek-tura wy-ko-rzy-sty-wana w apli-ka-cjach Re-ac-tJs. W pro-
  []
 
@@ -1286,11 +1303,65 @@ Overfull \hbox (3.57607pt too wide) in paragraph at lines 1425--1426
 
 ]
 Rozdzia\l  7.
-[59] [60]
-Rozdzia\l  8.
-(f:/Praca-inżynierska\e-voting\dokumentacja\main.bbl [61
+[59]
+<images/ifconfig.png, id=1138, 537.50812pt x 43.66313pt>
+File: images/ifconfig.png Graphic file (type png)
+<use images/ifconfig.png>
+Package pdftex.def Info: images/ifconfig.png  used on input line 1561.
+(pdftex.def)             Requested size: 416.83289pt x 33.86055pt.
+<images/KonfiguracjaSieci.png, id=1140, 1029.09468pt x 228.855pt>
+File: images/KonfiguracjaSieci.png Graphic file (type png)
+<use images/KonfiguracjaSieci.png>
+Package pdftex.def Info: images/KonfiguracjaSieci.png  used on input line 1569.
+(pdftex.def)             Requested size: 416.83289pt x 92.69972pt.
 
-] [62
+Underfull \vbox (badness 2726) has occurred while \output is active []
+
+ [60 <f:/Praca-inżynierska/e-voting/dokumentacja/images/ifconfig.png>]
+Overfull \hbox (1.91937pt too wide) in paragraph at lines 1573--1574
+[]\T1/lmr/m/n/12 Kolejnym kro-kiem by�a kon-fi-gu-ra-cja wy-bo-r�w. Ry-su-nek []7.3[] przed-sta-wia nadany
+ []
+
+<images/bestplayercfg.png, id=1148, 844.65562pt x 395.97937pt>
+File: images/bestplayercfg.png Graphic file (type png)
+<use images/bestplayercfg.png>
+Package pdftex.def Info: images/bestplayercfg.png  used on input line 1577.
+(pdftex.def)             Requested size: 416.83289pt x 195.41524pt.
+<images/addedplayers.png, id=1150, 791.95876pt x 569.12625pt>
+File: images/addedplayers.png Graphic file (type png)
+<use images/addedplayers.png>
+Package pdftex.def Info: images/addedplayers.png  used on input line 1585.
+(pdftex.def)             Requested size: 416.83289pt x 299.55128pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [61 <f:/Praca-inżynierska/e-voting/dokumentacja/images/KonfiguracjaSieci.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/bestplayercfg.png>]
+<images/choosingplayers.png, id=1158, 892.83563pt x 487.06969pt>
+File: images/choosingplayers.png Graphic file (type png)
+<use images/choosingplayers.png>
+Package pdftex.def Info: images/choosingplayers.png  used on input line 1593.
+(pdftex.def)             Requested size: 416.83289pt x 227.3992pt.
+<images/addedelectionstest.png, id=1160, 490.08093pt x 84.315pt>
+File: images/addedelectionstest.png Graphic file (type png)
+<use images/addedelectionstest.png>
+Package pdftex.def Info: images/addedelectionstest.png  used on input line 1601.
+(pdftex.def)             Requested size: 416.83289pt x 71.71567pt.
+ [62 <f:/Praca-inżynierska/e-voting/dokumentacja/images/addedplayers.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/choosingplayers.png>]
+<images/bcstatus2.png, id=1168, 711.4078pt x 219.82124pt>
+File: images/bcstatus2.png Graphic file (type png)
+<use images/bcstatus2.png>
+Package pdftex.def Info: images/bcstatus2.png  used on input line 1611.
+(pdftex.def)             Requested size: 416.83289pt x 128.80453pt.
+<images/ezresult.png, id=1169, 919.18407pt x 384.6872pt>
+File: images/ezresult.png Graphic file (type png)
+<use images/ezresult.png>
+Package pdftex.def Info: images/ezresult.png  used on input line 1617.
+(pdftex.def)             Requested size: 416.83289pt x 174.45183pt.
+ [63 <f:/Praca-inżynierska/e-voting/dokumentacja/images/addedelectionstest.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/bcstatus2.png> <f:/Praca-inżynierska/e-voting/dokumentacja/images/ezresult.png>] [64
+
+]
+Rozdzia\l  8.
+(f:/Praca-inżynierska\e-voting\dokumentacja\main.bbl [65] [66
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 10--14
@@ -1347,7 +1418,7 @@ Underfull \hbox (badness 2478) in paragraph at lines 68--73
 \T1/lmtt/m/n/12 difference-[]between-[]blockchain-[]and-[]bitcoin$[]\T1/lmr/m/n/12 , 2020.  data do-st�pu:
  []
 
-[63]
+[67]
 Underfull \hbox (badness 10000) in paragraph at lines 81--86
 []\T1/lmr/m/n/12 Leksykon po-j�� na te-mat tech-no-lo-gii block-chain i kryp-to-
  []
@@ -1397,32 +1468,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 120--126
 []\T1/lmr/m/n/12 Ankit Pa-tel.  Me-dium.  []$\T1/lmtt/m/n/12 https : / / medium . com / @ankit _ 233 /
  []
 
-) [64] [65
+) [68] [69
 
-] [66] [67
+] [70] [71
 
-] [68
+] [72
 
-] (f:/Praca-inżynierska\e-voting\dokumentacja\main.lof [69])
+] (f:/Praca-inżynierska\e-voting\dokumentacja\main.lof [73])
 \tf@lof=\write6
 \openout6 = `main.lof'.
 
- [70] (f:/Praca-inżynierska\e-voting\dokumentacja\main.aux)
+ [74] (f:/Praca-inżynierska\e-voting\dokumentacja\main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 6864DCAA012AAF6137EC4BB9BA431FFC;4304.
+(rerunfilecheck)             Checksum: A81FFC0120B6B90EECA2D1632A84BAED;4519.
  ) 
 Here is how much of TeX's memory you used:
- 32925 strings out of 479799
- 763428 string characters out of 2869722
+ 32999 strings out of 479799
+ 764948 string characters out of 2869722
  1168850 words of memory out of 3000000
- 48760 multiletter control sequences out of 15000+200000
+ 48811 multiletter control sequences out of 15000+200000
  609066 words of font info for 73 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  85i,12n,107p,1611b,1614s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/Kamil/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on f:/Praca-inżynierska\e-voting\dokumentacja\main.pdf (78 pages, 1216544 bytes).
+Output written on f:/Praca-inżynierska\e-voting\dokumentacja\main.pdf (82 pages, 1345550 bytes).
 PDF statistics:
- 1406 PDF objects out of 1440 (max. 8388607)
- 496 named destinations out of 1000 (max. 500000)
- 722 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1474 PDF objects out of 1728 (max. 8388607)
+ 511 named destinations out of 1000 (max. 500000)
+ 786 words of extra memory for PDF output out of 10000 (max. 10000000)
 

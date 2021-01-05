@@ -92,15 +92,18 @@ export const publishElectionResults = (
   electionName: string
 ): AppThunk => async dispatch => {
   try {
-    const response = await axios.post(`/election/publish`, {
-      data: {
+    const response = await axios.post(
+      `/election/publish`,
+      {
         electionName: electionName
       },
-      headers: {
-        role: localStorage.getItem('role'),
-        authorization: `Bearer ${localStorage.getItem('token')}`
+      {
+        headers: {
+          role: localStorage.getItem('role'),
+          authorization: `Bearer ${localStorage.getItem('token')}`
+        }
       }
-    })
+    )
     const elections = await axios.get(`/election/${electionName}`, {
       headers: {
         role: localStorage.getItem('role'),
@@ -117,12 +120,13 @@ export const fetchResults = (
   electionName: string
 ): AppThunk => async dispatch => {
   try {
-    const response = await axios.get(`/score/${electionName}`, {
+    const response = await axios.get(`/results/${electionName}`, {
       headers: {
         role: localStorage.getItem('role'),
         authorization: `Bearer ${localStorage.getItem('token')}`
       }
     })
+    console.log(response.data)
     dispatch(setResults(response.data))
   } catch (error) {
     console.log(error)

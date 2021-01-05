@@ -36,7 +36,7 @@ router.post('/login', async (req, res) => {
             username: username
         }
     });
-    if (voter.password === password) {
+    if (voter && voter.password === password) {
         //sha256(password).toString()) {
         const token = jsonwebtoken_1.default.sign({ username }, 'secret_key');
         res.send({ token: token, role: 'user' });
@@ -47,7 +47,7 @@ router.post('/login', async (req, res) => {
 });
 function ensureToken(req, res, next) {
     const bearerHeader = req.headers['authorization'];
-    console.log(bearerHeader);
+    console.log('Header', bearerHeader);
     if (bearerHeader !== undefined) {
         const bearer = bearerHeader.split(' ');
         const bearerToken = bearer[1];
@@ -60,7 +60,7 @@ function ensureToken(req, res, next) {
 }
 exports.ensureToken = ensureToken;
 function verifyToken(req, res, next) {
-    console.log(req.body.token);
+    console.log('Token', req.body.token);
     jsonwebtoken_1.default.verify(req.body.token, 'secret_key', (err, data) => {
         if (err) {
             res.status(403).send();

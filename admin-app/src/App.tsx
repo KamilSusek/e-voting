@@ -48,7 +48,7 @@ function App () {
 
     return (
       <AppBar position='static'>
-        <Grid container justify='space-between'>
+        <Grid container justify='space-between' alignItems="center">
           <Toolbar className={styles.link}>
             <Link to='/voters'>
               <IconButton>Voters</IconButton>
@@ -60,7 +60,7 @@ function App () {
               <IconButton>Servers</IconButton>
             </Link>
           </Toolbar>
-          <Button onClick={handleLogout}>Logout</Button>
+          <Button onClick={handleLogout} variant="contained" style={{height: '4vh'}}>Logout</Button>
         </Grid>
       </AppBar>
     )

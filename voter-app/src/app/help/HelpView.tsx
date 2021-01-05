@@ -25,7 +25,7 @@ const VoteManual = () => (
 
 const ResultsManual = () => (
   <div className='manual__container'>
-    If the voting is finished ypu can see its results. To check results click
+    If the voting is finished you can see its results. To check results click
     the 'results' button. <br />
     It will show you a diagram with results. You can go back by clicking 'go
     back' button beneath the diagram.

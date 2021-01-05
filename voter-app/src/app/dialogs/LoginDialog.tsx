@@ -6,7 +6,7 @@ import {
   TextField
 } from '@material-ui/core'
 import Dialog from '@material-ui/core/Dialog/Dialog'
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import {
@@ -20,6 +20,7 @@ function LoginDialog ({ open, handleClose }: any) {
   const history = useHistory()
   const dispatch = useDispatch()
   const { username, password } = useSelector((state: RootState) => state.login)
+  const [error, setError] = useState(false)
 
   const handleUsernameChange = (event: any) => {
     dispatch(setUsername(event.target.value))
@@ -31,11 +32,13 @@ function LoginDialog ({ open, handleClose }: any) {
 
   const handleSubmit = (event: any) => {
     event.preventDefault()
-    console.log(username, password)
     dispatch(
       handleLogin(username, password, (result: boolean) => {
         if (result) {
           history.push('/user')
+          setError(false)
+        } else {
+          setError(true)
         }
       })
     )
@@ -49,6 +52,8 @@ function LoginDialog ({ open, handleClose }: any) {
           <TextField
             onChange={handleUsernameChange}
             value={username}
+            error={error}
+            helperText={error}
             margin='dense'
             label='Login'
             type='text'
@@ -58,6 +63,8 @@ function LoginDialog ({ open, handleClose }: any) {
             onChange={handlePasswordChange}
             value={password}
             margin='dense'
+            error={error}
+            helperText={error && 'You provided wrong login or password'}
             label='Password'
             type='password'
             fullWidth

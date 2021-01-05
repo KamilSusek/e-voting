@@ -9,6 +9,7 @@ const votersRepo = new VotersRepo_1.default();
 async function saveVoter(req, res, next) {
     try {
         const { username, password } = req.body;
+        console.log(username, password);
         const response = await votersRepo.save({ username, password });
         res.status(201).send();
     }

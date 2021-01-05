@@ -35,7 +35,7 @@ router.get(
 
 router.get('/voting/result/:electionName', ensureToken, verifyToken, countVotes)
 
-router.post('/voter', ensureToken, verifyToken, ensureAdmin, saveVoter)
+router.post('/voter/add', ensureToken, verifyToken, ensureAdmin, saveVoter)
 
 router.post(
   '/send-vote',

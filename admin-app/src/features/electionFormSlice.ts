@@ -3,26 +3,28 @@ import { AppThunk } from '../store/store'
 import moment from 'moment'
 import axios from '../axios/axios'
 
+const initialState = {
+  electionFormState: {
+    election_name: '',
+    election_description: '',
+    start_date: '',
+    end_date: '',
+    server_url: ''
+  },
+  errors: {
+    titleError: false,
+    startDateError: false,
+    endDateError: false,
+    serverUrlError: false
+  },
+  candidates: [{ candidate_name: '', candidate_description: '' }],
+  voters: [],
+  checked: []
+}
+
 const electionsFormSlice = createSlice({
   name: 'electionsForm',
-  initialState: {
-    electionFormState: {
-      election_name: '',
-      election_description: '',
-      start_date: '',
-      end_date: '',
-      server_url: ''
-    },
-    errors: {
-      titleError: false,
-      startDateError: false,
-      endDateError: false,
-      serverUrlError: false
-    },
-    candidates: [{ candidate_name: '', candidate_description: '' }],
-    voters: [],
-    checked: []
-  },
+  initialState: initialState,
   reducers: {
     setElectionFormState: (state, action) => {
       state.electionFormState = action.payload
@@ -45,6 +47,9 @@ const electionsFormSlice = createSlice({
     },
     setServerUrlError: (state, action) => {
       state.errors.serverUrlError = action.payload
+    },
+    reset: state => {
+      state = initialState
     }
   }
 })
@@ -56,7 +61,8 @@ export const {
   setTitleError,
   setStartDateError,
   setEndDateError,
-  setServerUrlError
+  setServerUrlError,
+  reset
 } = electionsFormSlice.actions
 
 export const checkIfTitleExists = (
