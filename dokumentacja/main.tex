@@ -207,7 +207,7 @@
 	\end{center}
 	\vfill
 	\begin{center}
-	\titlefont Praca dyplomowa inżynierska
+	\titlefont Praca  inżynierska
 	\end{center}
 	\vfill
 	
@@ -335,7 +335,7 @@ Rozwój technologii pozwala na tworzenie coraz większych i bardziej bezpiecznyc
 
 Tematem niniejszej pracy jest głosowanie \textit{on-line}, czyli system głosowania przez internet, który będzie wspierany przez technologię Blockchain. W ramach pracy został zaprojektowany model systemu, którego część została zaimplementowana. Do zaimplementowanej części systemu należą: aplikacje internetowe wyborcy oraz organizatora i grupa serwisów dostarczających REST (Representational State Transfer) API (Application Programming Interface). Aplikacja wyborcy pozwala na zalogowanie się, wysłanie głosu i uzyskanie wyników wyborów. Natomiast aplikacja organizatora dostarcza narzędzia do konfiguracji i nadzorowania procesu wyborczego. 
 
-W pracy zastosowano sieć Blockchain, jako środek zabezpieczający głosy przed usunięciem lub podmianą. Blockchain to rozproszona sieć węzłów przechowujących kopie danych, w~łańcuchach bloków. Łańcuch bloków to specjalna struktura danych, która dzięki specjalnym algorytmom kryptograficznym pozwala na zabezpieczenie danych przed podmianą lub usunięciem. W pracy zaprojektowano przykładowy schemat działania takiej sieci oraz dostarczono narzędzia do jej kongiuracji i uruchamiania.
+W pracy zastosowano sieć Blockchain, jako środek zabezpieczający głosy przed usunięciem lub podmianą. Blockchain to rozproszona sieć węzłów przechowujących kopie danych, w~łańcuchach bloków. Łańcuch bloków to specjalna struktura danych, która dzięki specjalnym algorytmom kryptograficznym pozwala na zabezpieczenie danych przed podmianą lub usunięciem. W pracy zaprojektowano schemat działania takiej sieci oraz dostarczono narzędzia do jej kongiuracji i uruchamiania.
 
 Do realizacji projektu zastosowano techniki oraz narzędzia pozwalające na tworzenie aplikacji przeglądarkowych i serwerowych. W pracy przedstawiono narzędzia, wzorce projektowe, algorytmy i struktury danych wykorzystane do implementacji rozwiązania.
 
@@ -351,7 +351,7 @@ Głównym celem pracy jest zastosowanie technologii Blockchain w implementacji p
 
 \section{Charakterystyka rozdziałów}
 
-Niniejsza praca została podzielona na kilka rozdziałów. W rozdziale pierwszym zostały przybliżone cele projektu, jego założenia, a~także zakres pracy. Rozdział drugi poświęcony jest analizie zagadnienia wchodzącego w~skład pracy, jakim jest Blockchain. W tym rozdziale przybliżono koncepcję technologii Blockchain, jej budowę i zastosowania. Rozdział trzeci zawiera przegląd rozwiązań dotyczących głosowania \textit{on-line}, w zakresie tematyki, której dotyczy praca. W rozdziale czwartym sformułowano wymagania funkcjonalne i pozafunkcjonalne systemu. W tym rozdziale sformułowano wymagania stawiane systemowi. Rozdział czwarty zawiera również diagramy przypadków użycia i opis wykorzystanych technologii. Rozdział piąty dotyczy specyfikacji zewnętrznej oprogramowania. W tym rodziale zawarto informacje dotyczące instalacji i uruchamiania oprogramowania, a także scenariusze działania systemu. Rozdział szósty zawiera informacje dotyczące specyfikacji wewnętrznej. W tym rozdziale znajduje się opis architektury systemu, wykorzystane struktury danych i szczegóły implementacyjne wybranych części systemu. Rozdział szósty zawiera informacje o wykorzystanych wzorcach projektowych i~algorytmach. Rozdział siódmy dotyczy sposobów testowania poszczególnych modułów oprogramowania. W rozdziale siódmym umieszczono również przebieg weryfikacji systemu na podstawie scenariusza zastosowania systemu w głosowaniu. Natomiast rozdział ósmy jest podsumowaniem pracy, a w jego skład wchodzą spełnione założenia projektu, napotkane błędy i wnioski.
+Niniejsza praca została podzielona na kilka rozdziałów. W rozdziale pierwszym zostały przybliżone cele projektu, jego założenia, a~także zakres pracy. Rozdział drugi poświęcony jest analizie zagadnienia wchodzącego w~skład pracy, jakim jest Blockchain. W tym rozdziale przybliżono koncepcję technologii Blockchain, jej budowę i zastosowania. Rozdział trzeci zawiera przegląd rozwiązań dotyczących głosowania \textit{on-line}, w zakresie tematyki, której dotyczy praca. W rozdziale czwartym sformułowano wymagania funkcjonalne i pozafunkcjonalne systemu. W tym rozdziale sformułowano wymagania stawiane systemowi. Rozdział czwarty zawiera również diagramy przypadków użycia i opis wykorzystanych technologii. Rozdział piąty dotyczy specyfikacji zewnętrznej oprogramowania. W tym rodziale zawarto informacje dotyczące instalacji i uruchamiania oprogramowania, a także scenariusze działania systemu. Rozdział szósty zawiera informacje dotyczące specyfikacji wewnętrznej. W tym rozdziale znajduje się opis architektury systemu, wykorzystane struktury danych i szczegóły implementacyjne wybranych części systemu. Rozdział szósty zawiera informacje o wykorzystanych wzorcach projektowych i~algorytmach. Rozdział siódmy dotyczy sposobów testowania poszczególnych modułów oprogramowania. W rozdziale siódmym umieszczono również przebieg weryfikacji systemu, na podstawie scenariusza zastosowania systemu w głosowaniu. Natomiast rozdział ósmy jest podsumowaniem pracy, a w jego skład wchodzą spełnione założenia projektu, napotkane błędy i wnioski.
 
 \chapter{Blockchain}
 Podstawy teoretyczne technologii Blockchain powstały już w roku 1991, a zostały opracowane przez dr Stuart'a Haber'a oraz dr W. Scott Stornett'a \cite{bchistory}. Naukowcy zajmowali się opracowaniem systemu, zabezpieczającego cyfrowe dokumenty przed podrobieniem, bądź podmianą. System opierał się na łańcuchach bloków, gdzie w~każdym bloku znajdowały się cyfrowe dane dokumentu. Podczas dodawania nowego dokumentu do łańcucha, podpisywano go za pomocą tak zwanego stempla czasu (ang. timestamp), a następnie dokument był łączony z poprzednim dokumentem. Łączenie polega na przypisaniu nowem blokowi, wskaźnika na poprzedni dokument. Wartością wskaźnika były określone dane poprzedniego dokumentu, co stanowiło zabezpieczenie dokumentów. Jeżeli zawartość dokumentu w łańcuchu uległaby zmianie, to należałoby zmienić również wskaźnik na ten dokument\cite{pa}.
@@ -363,9 +363,9 @@ Kombinacja rozwiązań tworzących Blockchain, w kryptowalucie Bitcoin wywołał
 
 Technologia cały czas podlega rozwojowi i znajduje zastosowanie w nowych dziedzinach, jednakże przedstawione powyżej koncepty są podstawą obecnego systemu Blockchain. W skrócie podstawę systemu Blockchain tworzą \cite{business}:
 \begin{itemize}
-	\item Wspólny arkusz - rozproszony łańcuch bloków.
-	\item Ochrona dostępu.
-	\item \textit{Smart} kontrakty - kontrolowanie i programowanie transakcji.
+	\item Wspólny arkusz - rozproszony łańcuch bloków,
+	\item Ochrona dostępu,
+	\item \textit{Smart} kontrakty - kontrolowanie i programowanie transakcji,
 	\item Konsensus - zawartość sieci jest bezpieczna, dzięki zgodzie pomiędzy jej uczestnikami.
 \end{itemize}
 
@@ -445,8 +445,8 @@ Przykładowo dla ciągu znaków \textit{hash0}, dla funkcji skrótu \textit{SHA2
 
 Głównymi cechami funkcji skrótu są:
 \begin{itemize}
-	\item Nieodwracalność -- na podstawie otrzymanego wyniku nie można bezpośrednio odtworzyć danych.
-	\item Bezkolizyjność -- nie istnieją dwa różne ciągi znaków, które dają ten sam wynik.
+	\item nieodwracalność -- na podstawie otrzymanego wyniku nie można bezpośrednio odtworzyć danych.
+	\item bezkolizyjność -- nie istnieją dwa różne ciągi znaków, które dają ten sam wynik.
 \end{itemize}
 
 Znalezienie danych wejściowych dla funkcji skrótu jest zadaniem wymagającym dużego nakładu mocy obliczeniowej. Dane można uzyskać losując wejściowy ciąg znaków i \textit{hash'ując} go, a następnie porównując otrzymany \textit{hash} z \textit{hash'em}, który ma być rozszyfrowany. Jest to tak zwany atak brutalny (ang. brute force).
@@ -577,7 +577,7 @@ W tej sekcji umieszczono wszystkie funkcjonalności systemu. Do głównych czę�
 
 \section {Wymagania pozafunkcjonalne}
 
-Wymagania niefunkcjonalne definiują jakość usług dostarczanych przez system. W systemie e-votingu ważnymi elementami są bezpieczeństwo i czytelność procedury głosowania. Dlatego w celu uściślenia oczekiwań jakościowych systemu sformułowano następujące wymagania pozafunkcjonalne:
+Wymagania pozafunkcjonalne definiują jakość usług dostarczanych przez system. W systemie e-votingu ważnymi elementami są bezpieczeństwo i czytelność procedury głosowania. Dlatego w celu uściślenia oczekiwań jakościowych systemu sformułowano następujące wymagania pozafunkcjonalne:
 
 \begin{itemize}
 	\item dane logowania użytkowników są zabezpieczone, za pomocą algorytmu \textit{SHA256},
@@ -757,8 +757,6 @@ Po zalogowaniu ukazuje się strona administratora. Nawigacja po stronie administ
 	\caption{Pasek nawigacji administratora.}\label{adminnav}
 \end {figure}
 
-\newpage
-
 \subsection{Lista wyborców}
 
 Lista wyborców dostarcza informacje o wyborcach utworzonych w systemie. Cały widok przedstawia rysunek \ref{voterslist}. Przycisk \textit{Create Voter} pozwala na dodanie nowego wyborcy do systemu. Po kliknięciu tego przycisku pojawia się okno \ref{addvoter}, które zawiera formularz dodawania nowego wyborcy. Do formularza należy wpisać dane nowego wyborcy.
@@ -916,7 +914,7 @@ kliknięciu tego przycisku wyniki wyborów zostaną opublikowane i pobierane z~s
 	\includegraphics[width=\textwidth]{images/adminelectionresult.png}
 	\caption{Diagram słupkowy prezentujący wyniki.}\label{adminelectionresult}
 \end {figure}
-\newpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Aplikacja użytkownika}
 
@@ -1262,7 +1260,7 @@ Dodawanie nowego bloku jest przeprowadzane w metodzie \textit{mine}. Metodę prz
 \end{figure}
 Przed wywołaniem metody \textit{createNewBlock} wywoływana jest metoda \textit{solveNonce}, która rozwiązuje zagadkę matematyczną. Następnie zwracany jest wynik zagadki i tworzony jest nowy blok. Nowy blok jest dodawany do łańcucha.
 
-Synchronizacja łańcucha odbywa się poprzez porównanie jego długości z innym łańcuchem. Listing \ref{synchronize} przedstawia metodę \textit{synchronize}, która przyjmuje jako argument długość porównywanego łańcucha znaków. Następnie porównuje ją z łańcuchem bloków węzła.
+Synchronizacja łańcucha odbywa się poprzez porównanie jego długości z innym łańcuchem. Listing \ref{synchronize} przedstawia metodę \textit{synchronize}, która przyjmuje jako argument długość porównywanego łańcucha znaków. Następnie porównuje ją z~łańcuchem bloków węzła.
 
 \begin{figure}[H]  
   \centering
