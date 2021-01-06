@@ -332,8 +332,6 @@ Gliwice, dnia \today
 \chapter{Wstęp}
 
 Rozwój technologii pozwala na tworzenie coraz większych i bardziej bezpiecznych systemów, co prowadzi do przenoszenia niektórych procesów życia społecznego, do świata wirtualnego. Takie działania pozwalają na zwiększenie efektywności i zmniejszenie kosztów tych procesów. Dodatkowo wyeliminowanie wpływu czynnika ludzkiego zwiększa wiarygodność takiego procesu i poprawia bezpieczeństwo. Przykładem takiego procesu jest głosowanie, które w tradycyjnej formie jest czasochłonne i trudne w organizacji. Natomiast przykładem technologii, która doprowadziła do prawdziwej rewolucji jest Blockchain. Blockchain odpowiada za przełomowe rozwiązanie w sektorze finansów, jakim jest Bitcoin, który zapoczątkował rozwój systemów odpowiedzialnych za istotne procesy życia społecznego.
-% Cel skopiowac z tematu pracy
-% Internet z wielkiej kiedy jest nazwa wlasna
 
 Tematem niniejszej pracy jest głosowanie \textit{on-line}, czyli system głosowania przez internet, który będzie wspierany przez technologię Blockchain. W ramach pracy został zaprojektowany model systemu, którego część została zaimplementowana. Do zaimplementowanej części systemu należą: aplikacje internetowe wyborcy oraz organizatora i grupa serwisów dostarczających REST (Representational State Transfer) API (Application Programming Interface). Aplikacja wyborcy pozwala na zalogowanie się, wysłanie głosu i uzyskanie wyników wyborów. Natomiast aplikacja organizatora dostarcza narzędzia do konfiguracji i nadzorowania procesu wyborczego. 
 
@@ -353,7 +351,7 @@ Głównym celem pracy jest zastosowanie technologii Blockchain w implementacji p
 
 \section{Charakterystyka rozdziałów}
 
-Niniejsza praca została podzielona na kilka rozdziałów. W rozdziale pierwszym zostały przybliżone cele projektu, jego założenia, a~także zakres pracy. Rozdział drugi poświęcony jest analizie zagadnienia wchodzącego w~skład pracy, jakim jest Blockchain. W tym rozdziale przybliżono koncepcję technologii Blockchain, jej budowę i zastosowania. Rozdział trzeci zawiera przegląd rozwiązań dotyczących głosowania \textit{on-line}, w zakresie tematyki, której dotyczy praca. W rozdziale czwartym sformułowano wymagania funkcjonalne i pozafunkcjonalne systemu. W tym rozdziale sformułowano wymagania stawiane systemowi. Rozdział czwarty zawiera również diagramy przypadków użycia i opis wykorzystanych technologii. Rozdział piąty dotyczy specyfikacji zewnętrznej oprogramowania. W tym rodziale zawarto informacje dotyczące instalacji i uruchamiania oprogramowania, a także scenariusze działania systemu. Rozdział szósty zawiera informacje dotyczące specyfikacji wewnętrznej. W tym rozdziale znajduje się opis architektury systemu, wykorzystane struktury danych i szczegóły implementacyjne wybranych części systemu. Rozdział szósty zawiera informacje o wykorzystanych wzorcach projektowych i algorytmach. Rozdział siódmy dotyczy sposobów testowania poszczególnych modułów oprogramowania. Natomiast rozdział ósmy jest podsumowaniem pracy, a w jego skład wchodzą spełnione założenia projektu, napotkane błędy i wnioski.
+Niniejsza praca została podzielona na kilka rozdziałów. W rozdziale pierwszym zostały przybliżone cele projektu, jego założenia, a~także zakres pracy. Rozdział drugi poświęcony jest analizie zagadnienia wchodzącego w~skład pracy, jakim jest Blockchain. W tym rozdziale przybliżono koncepcję technologii Blockchain, jej budowę i zastosowania. Rozdział trzeci zawiera przegląd rozwiązań dotyczących głosowania \textit{on-line}, w zakresie tematyki, której dotyczy praca. W rozdziale czwartym sformułowano wymagania funkcjonalne i pozafunkcjonalne systemu. W tym rozdziale sformułowano wymagania stawiane systemowi. Rozdział czwarty zawiera również diagramy przypadków użycia i opis wykorzystanych technologii. Rozdział piąty dotyczy specyfikacji zewnętrznej oprogramowania. W tym rodziale zawarto informacje dotyczące instalacji i uruchamiania oprogramowania, a także scenariusze działania systemu. Rozdział szósty zawiera informacje dotyczące specyfikacji wewnętrznej. W tym rozdziale znajduje się opis architektury systemu, wykorzystane struktury danych i szczegóły implementacyjne wybranych części systemu. Rozdział szósty zawiera informacje o wykorzystanych wzorcach projektowych i~algorytmach. Rozdział siódmy dotyczy sposobów testowania poszczególnych modułów oprogramowania. W rozdziale siódmym umieszczono również przebieg weryfikacji systemu na podstawie scenariusza zastosowania systemu w głosowaniu. Natomiast rozdział ósmy jest podsumowaniem pracy, a w jego skład wchodzą spełnione założenia projektu, napotkane błędy i wnioski.
 
 \chapter{Blockchain}
 Podstawy teoretyczne technologii Blockchain powstały już w roku 1991, a zostały opracowane przez dr Stuart'a Haber'a oraz dr W. Scott Stornett'a \cite{bchistory}. Naukowcy zajmowali się opracowaniem systemu, zabezpieczającego cyfrowe dokumenty przed podrobieniem, bądź podmianą. System opierał się na łańcuchach bloków, gdzie w~każdym bloku znajdowały się cyfrowe dane dokumentu. Podczas dodawania nowego dokumentu do łańcucha, podpisywano go za pomocą tak zwanego stempla czasu (ang. timestamp), a następnie dokument był łączony z poprzednim dokumentem. Łączenie polega na przypisaniu nowem blokowi, wskaźnika na poprzedni dokument. Wartością wskaźnika były określone dane poprzedniego dokumentu, co stanowiło zabezpieczenie dokumentów. Jeżeli zawartość dokumentu w łańcuchu uległaby zmianie, to należałoby zmienić również wskaźnik na ten dokument\cite{pa}.
@@ -373,7 +371,7 @@ Technologia cały czas podlega rozwojowi i znajduje zastosowanie w nowych dziedz
 
 \section{Architektura Blockchain}
 
-Obecnie pod terminem Blockchain kryje się wiele rozwiązań, co czasami prowadzi do rozmycia definicji Blockchain'u. Mówiąc Blockchain można mieć na myśli sam łańcuch bloków lub rozproszoną sieć urządzeń. Zdarzają się przypadki użycia terminu Blockchain zamiennie, z terminem Bitcoin\cite{bitcoin-vs-blockchain}. Mylenie Bitcoin'a, z Blockchain'em jest błędem. Jednakże ten przypadek pokazuje, jak ważnym elementem Bitcoin'a jest Blockchain. W celu uściślenia rozwiązań charakterystycznych dla Blockchain'u, w tym podrozodziale opisano składniki, które wchodzą w skład technologii Blockchain.
+Obecnie pod terminem Blockchain kryje się wiele rozwiązań, co czasami prowadzi do rozmycia definicji Blockchain'u. Mówiąc Blockchain można mieć na myśli sam łańcuch bloków lub rozproszoną sieć urządzeń. Zdarzają się przypadki użycia terminu Blockchain zamiennie, z terminem Bitcoin\cite{bitcoin-vs-blockchain}. Mylenie Bitcoin'a, z~Blockchain'em jest błędem. Jednakże ten przypadek pokazuje, jak ważnym elementem Bitcoin'a jest Blockchain. W celu uściślenia rozwiązań charakterystycznych dla Blockchain'u, w tym podrozodziale opisano składniki, które wchodzą w~skład technologii Blockchain.
 
 \subsection{Łańcuch bloków}
 
@@ -387,13 +385,13 @@ Można powiedzieć, że łańcuch bloków to jeden z filarów, na którym opiera
 	\caption {Łańcuch bloków.}\label{blocksschain}
 \end {figure}
 
-Na rysunku \ref{blocksschain} ukazany jest schemat łańcucha bloków. Jak widać dane przechowywane są w blokach, a bloki połączone są za pomocą wskaźników na \textit{hash} poprzedniego bloku. Dokładne działanie procedury \textit{hash'owania} zawarto w rozdziale 2.1.4. Taka budowa stanowi zabezpieczenie łańcucha bloków przed modyfikacją lub usunięciem danych. Modyfikacja dowolnego bloku w sieci jest widoczna i łatwa do wykrycia. Wystarczy policzyć od początku \textit{hash} dla każdego bloku i porównać go z polem następnego bloku, które przechowuje poprzedni \textit{hash}.
+Na rysunku \ref{blocksschain} ukazany jest schemat łańcucha bloków. Jak widać dane przechowywane są w blokach, a bloki połączone są za pomocą wskaźników na \textit{hash} poprzedniego bloku. Dokładne działanie procedury \textit{hash'owania} zawarto w rozdziale 2.1.4. Taka budowa stanowi zabezpieczenie łańcucha bloków przed modyfikacją lub usunięciem danych. Modyfikacja dowolnego bloku w sieci jest widoczna i łatwa do wykrycia. Wystarczy policzyć od początku \textit{hash} dla każdego bloku i~porównać go z polem następnego bloku, które przechowuje poprzedni \textit{hash}.
 
 \subsection{Sieci Peer-to-peer}
 
 Zmodyfikowanie łańcucha bloków jest trudne, lecz nie jest niemożliwe. Wymaga wystarczająco dużej mocy obliczeniowej. Dodatkowo zamiast modyfikować łańcuch, można przejąć kontrolę nad urządzeniem, na którym uruchomiony jest łańcuch bloków, co daje możliwość zakłócenia pracy systemu opartego na działaniu łańcucha.
 
-Twórcy Bitcoin'a rozwiązali podane problemy wykorzystując zdecentralizowaną sieć \textit{Peer-to-peer}. Sieć \textit{Peer-to-peer} składa się z węzłów, które komunikują się ze sobą, bez centralnego serwera. Jeżeli węzły chcą się ze sobą skontaktować, to wysyłają dane bezpośrednio do siebie. Takie rozwiązanie pozwala zwiększyć bezpieczeństwo sieci, ponieważ trudniej jest przejąć kontrolę nad wieloma maszynami tworzącymi całą sieć, niż nad centralnym systemem obsługującym działanie tej sieci. Dodatkowo \textit{Peer-to-peer} zapewnia zabezpieczenie danych zgromadzonych w sieci, przed usunięciem, ponieważ każde urządzenie przechowuje swoje egzemplarze danych, które można traktować jako kopie zapasowe. 
+Twórcy Bitcoin'a rozwiązali podane problemy wykorzystując zdecentralizowaną sieć \textit{Peer-to-peer}. Sieć \textit{Peer-to-peer} składa się z węzłów, które komunikują się ze sobą, bez centralnego serwera. Jeżeli węzły chcą się ze sobą skontaktować, to wysyłają dane bezpośrednio do siebie. Takie rozwiązanie pozwala zwiększyć bezpieczeństwo sieci, ponieważ trudniej jest przejąć kontrolę nad wieloma maszynami tworzącymi całą sieć, niż nad centralnym systemem obsługującym działanie tej sieci. Dodatkowo \textit{Peer-to-peer} zapewnia zabezpieczenie danych zgromadzonych w~sieci, przed usunięciem, ponieważ każde urządzenie przechowuje swoje egzemplarze danych, które można traktować jako kopie zapasowe. 
 Rozproszenie sieci na całym świecie zabezpiecza sieć przed cenzurowaniem, z czego korzysta Bitcoin i~ inne kryptowaluty.
 
 \textit{Peer-to-peer} jest przykładem ciekawego zastosowania architektury klient-serwer. Architektura klient serwer polega na podzieleniu systemu na stronę kliencką, która zajmuje się wysłaniem żądań do serwera, oraz na stronę serwerową, której zadaniem jest odpowiadanie na żądania, przechowywanie danych i operowanie na tych danych. W sieci \textit{Peer-to-peer} węzeł pełni rolę zarówno serwera, jak i klienta \cite{p2pbib}. 
@@ -515,9 +513,9 @@ Wsparcie e-votingu (w Estonii określanego i-votingiem) obejmuje ostatnie trzy e
 \newline
 W skład systemu głosowania wchodzą bazy danych (rys. \ref{estmodules}) przechowujące:
 \begin{itemize}
-\item listę osób uprawnionych do głosowania,
-\item listę okręgów wyborczych,
-\item listę kandydatów lub opcji wyborczych,
+\item listę osób uprawnionych do głosowania (na rysunku \textit{List of voters}),
+\item listę okręgów wyborczych (na rysunku \textit{List of electoral districts and polling stations}),
+\item listę kandydatów lub opcji wyborczych (na rysunku \textit{List of candidates}),
 \item listę e-wyborców (na rys. \ref{estmodules} \textit{i-voters}).
 \end{itemize}
 
@@ -732,6 +730,10 @@ Podczas uruchamiania węzła sieci Blockchain można wybrać algorytm konsensusu
 \end{equation}
 
 W polu \textit{KOD} należy wpisać kod algorytmu. Dostępne są dwa kody: \textit{POA} i~\textit{POW}. Kod \textit{POA} odpowiada algorytmowi \textit{Proof of Authority}, a kod \textit{POW} algorytmowi \textit{Proof of Work}. W przypadku podania błędnego kodu lub jego braku, domyślnym algorytmem używanym przez węzeł jest \textit{Proof of Authority}.
+
+\section{Aktywacja oprogramowania}
+
+Wraz z oprogramowaniem dostarczono konto administratora. Na konto administratora należy się zalogować wpisując \textit{admin}, w pole \textit{login} i \textit{test}, w pole \textit{password}.
 
 \section{Aplikacja administratora}
 
@@ -966,7 +968,7 @@ Instrukcja obsługi, to krótki opis wykonywania podstawowych akcji na stronie u
 
 Głosowanie dostępne jest po kliknięciu \textit{Elections} na pasku nawigacji. Po wybraniu tej opcji z paska nawigacji następuje przekierowanie do strony, której zawartość przedstawiona jest na rysunku \ref{electionwindow}. Jeżeli wyborca bierze udział w większej liczbie wyborów, to będzie miał do wyboru więcej opcji, niż na rysunku \ref{electionwindow}.
 
-Okno  przedstawione na rysunku \ref{electionwindow} zawiera przycisk oznaczony \textit{Vote}. Kliknięcie tego przycisku przenosi użytkownika do głównego panelu wyborów \ref{votescreen}. W tym miejscu wyborca dokonuje wyboru kandydata i przesyła swój głos, po klinięciu przycisku \textit{Send Vote}. Wyborca może cofnąć widok, do poprzedniego widoku, za pomocą przycisku \textit{Go Back}.
+Okno  przedstawione na rysunku \ref{electionwindow} zawiera przycisk oznaczony \textit{Vote}. Kliknięcie tego przycisku przenosi użytkownika do głównego panelu wyborów \ref{votescreen}. W~tym miejscu wyborca dokonuje wyboru kandydata i przesyła swój głos, po klinięciu przycisku \textit{Send Vote}. Wyborca może cofnąć widok, do poprzedniego widoku, za pomocą przycisku \textit{Go Back}.
 
 \begin{figure}[H]
 	\centering
@@ -1069,7 +1071,7 @@ Za dostarczenie odpowiedniej struktury łańcucha bloków odpowiedzialne są kla
 
 \begin{figure}  
   \centering
-\begin{lstlisting}[style=ES6, caption={Klasa \textit{Block}.},label={Block.ts}]
+\begin{lstlisting}[style=ES6]
 class Block {
   index: number
   timestamp: string
@@ -1090,6 +1092,8 @@ class Block {
   }
 }
 \end{lstlisting}
+\caption{Klasa \textit{Block}.}
+\label{Block.ts}
 \end{figure}
 Klasa \textit{ChainRepository} (przedstawiona w listingu \ref{ChainRepository.ts}) odpowiada za przechowywanie łańcucha bloków i jego udostępnianie. Aby zapewnić spójność danych, ułatwienie dostępu i ograniczenie zużycia pamięci, w programie istnieje tylko jedna instancja tej klasy. W tym celu wykorzystano wzorzec projektowy Singleton. Z~punktu widzenia łańcucha bloków istotne jest pole \textit{chain}. Jest to tablica bloków. Klasa udostępnia metodę \textit{addBlock}, która pozwala na dodawanie nowego bloku na początek tablicy, zgodnie z regułą tworzenia łańcucha bloków. Dodatkowo klasa posiada prywatną metodę \textit{createGenesisBlock}, która tworzy pierwszy blok łańcucha, którego zawartość nie przechowuje istotnych danych. Metoda wywoływana jest podczas tworzenia instancji \textit{ChainRepository}.
 
@@ -1097,7 +1101,7 @@ Klasa \textit{ChainRepository} (przedstawiona w listingu \ref{ChainRepository.ts
 
 \begin{figure}  
   \centering
-\begin{lstlisting}[style=ES6, caption={Klasa \textit{ChainRepository}.}, label={ChainRepository.ts}]
+\begin{lstlisting}[style=ES6]
 class ChainRepository {
   public static instance: ChainRepository
   private chain: Block[]
@@ -1127,13 +1131,15 @@ class ChainRepository {
 /* ... Getters and setters*/
 }
 \end{lstlisting}
+\caption{Klasa \textit{ChainRepository}.}
+\label{ChainRepository.ts}
 \end{figure}
 Za zapewnienie poprawnego utworzenia nowego bloku odpowiedzialna jest metoda \textit{createNewBlock} (listing \ref{Blockchain1.ts}), która należy do klasy \textit{Blockchain}. Metoda przyjmuje następujące parametry: \textit{nonce}, \textit{prevBlock} i \textit{data}. Z parametru \textit{prevBlock} wyliczany jest \textit{hash}, za pomocą metody \textit{getHash}. Jest to \textit{hash} poprzedniego bloku, który przypisywany jest do pola \textit{prevHash} tworzonego bloku.
 
 \newpage
 \begin{figure}  
   \centering
-\begin{lstlisting}[style=ES6, caption={Fragment klasy Blockchain.},label={Blockchain1.ts}]
+\begin{lstlisting}[style=ES6]
 abstract class Blockchain {
   protected blockchain: ChainRepository
 
@@ -1158,6 +1164,8 @@ abstract class Blockchain {
  /* ...  */
 }
 \end{lstlisting}
+\caption{Fragment klasy Blockchain.}
+\label{Blockchain1.ts}
 \end{figure}
 Tak skonstruowany blok jest gotowy do dodania do łańcucha. Dodawanie bloku jest realizowane za pomocą metody \textit{addBlock}, klasy \textit{ChainRepository}.
 
@@ -1197,9 +1205,9 @@ W podrozdziale Algorytmy opisano implementację algorytmów konsensusu, w~sieci 
 
 Dodawanie nowego bloku w algorytmie \textit{Proof of Work} poprzedzone jest rozwiązaniem zagadki matematycznej. W listingu \ref{validateNonce} przedstawiono metodę \textit{validateNonce}, która zajmuje się weryfikacją rozwiązania zagadki.
 
-\begin{figure}  
+\begin{figure}[H]  
   \centering
-\begin{lstlisting}[style=ES6, caption={Metoda \textit{validateNonce}.}, label={validateNonce}]
+\begin{lstlisting}[style=ES6]
 private validateNonce (
     lastNonce: number,
     nonce: number,
@@ -1212,14 +1220,16 @@ private validateNonce (
     return isValid
   }
 \end{lstlisting}
+\caption{Metoda \textit{validateNonce}.}
+\label{validateNonce}
 \end{figure}
 Rozwiązanie zagadki matematycznej, to znalezienie odpowiedniej liczby (\textit{nonce}), która po dołączeniu do określonego stałego ciągu znaków i \textit{hash’owaniu} go, daje ciąg określonej liczby zer na początku. W przypadku tej implementacji są to trzy zera.
  
 Metoda \textit{solveNonce} (listing \ref{solveNonce}) zajmuje się znalezieniem liczby \textit{nonce}. W pętli wywołana jest metoda \textit{validateNonce}, do momentu rozwiązania zagadki. Wraz z~każdą iteracją pętli wykonywana jest inkrementacja zmiennej \textit{nonce}.
  
-\begin{figure}  
+\begin{figure}[H]  
   \centering
-\begin{lstlisting}[style=ES6, caption={Metoda \textit{solveNonce}.}, label={solveNonce}]
+\begin{lstlisting}[style=ES6]
 private solveNonce (lastNonce: number, prevHash: string) {
     let nonce = 0
 
@@ -1229,12 +1239,14 @@ private solveNonce (lastNonce: number, prevHash: string) {
     return nonce
   }
 \end{lstlisting}
+\caption{Metoda \textit{solveNonce}.}
+\label{solveNonce}
 \end{figure}
 Dodawanie nowego bloku jest przeprowadzane w metodzie \textit{mine}. Metodę przedstawiono w listingu \ref{mine}.
 
-\begin{figure}  
+\begin{figure}[H]  
   \centering
-\begin{lstlisting}[style=ES6, caption={Dodawanie nowego bloku. Metoda \textit{mine}.},label={mine}]
+\begin{lstlisting}[style=ES6]
   public mine (data: any) {
     const blockchain = this.blockchain.getChain()
     const lastBlock = blockchain[blockchain.length - 1]
@@ -1245,14 +1257,16 @@ Dodawanie nowego bloku jest przeprowadzane w metodzie \textit{mine}. Metodę prz
     this.blockchain.addBlock(newBlock)
   }
 \end{lstlisting}
+\caption{Dodawanie nowego bloku. Metoda \textit{mine}.}
+\label{mine}
 \end{figure}
 Przed wywołaniem metody \textit{createNewBlock} wywoływana jest metoda \textit{solveNonce}, która rozwiązuje zagadkę matematyczną. Następnie zwracany jest wynik zagadki i tworzony jest nowy blok. Nowy blok jest dodawany do łańcucha.
 
 Synchronizacja łańcucha odbywa się poprzez porównanie jego długości z innym łańcuchem. Listing \ref{synchronize} przedstawia metodę \textit{synchronize}, która przyjmuje jako argument długość porównywanego łańcucha znaków. Następnie porównuje ją z łańcuchem bloków węzła.
 
-\begin{figure}  
+\begin{figure}[H]  
   \centering
-\begin{lstlisting}[style=ES6, caption={Metoda \textit{synchronize}.},label={synchronize}]
+\begin{lstlisting}[style=ES6]
   public synchronize (syncValue: number): boolean {
     if (this.blockchain.getChain().length < syncValue) {
       return true
@@ -1261,6 +1275,8 @@ Synchronizacja łańcucha odbywa się poprzez porównanie jego długości z inny
     }
   }
 \end{lstlisting}
+\caption{Metoda \textit{synchronize}.}
+\label{synchronize}
 \end{figure}
 Jeżeli metoda \textit{synchronize} zwróci wartość \textit{true}, to obecny łańcuch jest podmieniany, na łańcuch przesłany do synchronizacji.
  
@@ -1271,9 +1287,9 @@ W projekcie zastosowano bardzo uproszczoną implementację algorytmu \textit{PoA
  
 Proces dodawania nowego bloku przedstawia listing \ref{PoABlock}. Klasa odpowiedzialna za algorytm \textit{Proof of Authority} posiada dodatkowe pole - \textit{authorityFactor}. Jest to współczynnik określający zaufanie danego węzła w sieci. Im wyższy współczynnik, tym wyższe zaufanie. Zaufanie jest zwiększane, wraz z dodawaniem nowych bloków.
  
-\begin{figure}  
+\begin{figure}[H]  
   \centering
-\begin{lstlisting}[style=ES6, caption={Dodawanie nowego bloku w algorytmie Proof of Authority.}, label={PoABlock}]
+\begin{lstlisting}[style=ES6]
 private authorityFactor: number
 
 public mine (data: any) {
@@ -1284,12 +1300,14 @@ public mine (data: any) {
     this.authorityFactor++
   }
 \end{lstlisting}
+\caption{Dodawanie nowego bloku w algorytmie Proof of Authority.}
+\label{PoABlock}
 \end{figure}
 W przypadku algorytmu \textit{Proof of Authority} synchronizacja łańcucha dokonywana jest poprzez porównanie wartości \textit{authorityFactor} dwóch węzłów. Listing \ref{PoASync} przedstawia ten proces.
 
-\begin{figure}  
+\begin{figure}[H]  
   \centering
-\begin{lstlisting}[style=ES6, caption={Synchronizacja w algorytmi Proof of Authority.}, label={PoASync}]
+\begin{lstlisting}[style=ES6]
 public synchronize (auth: number) {
     if (this.authorityFactor < auth) {
       return true
@@ -1298,6 +1316,8 @@ public synchronize (auth: number) {
     }
   }
 \end{lstlisting}
+\caption{Synchronizacja w algorytmi Proof of Authority.}
+\label{PoASync}
 \end{figure}
 Podmiana węzłów odbywa się analogicznie, jak dla algorytmu \textit{Proof of Work}.
 
@@ -1308,9 +1328,10 @@ W projekcie zastosowano kilka wzorców projektowych dotyczących zarówno progra
 
 \subsection{Singleton}
 Singleton to najczęściej występujący wzorzec projektowy, w projekcie. Jego zadaniem jest bezpośrednie przechowywanie danych lub utrzymywanie połączenia i dostępu do bazy danych. W Listingu \ref{singleton} przedstawiono klasę \textit{Database}, która jest Singletonem. Klasa zajmuje się udostępnianiem połączenia z bazą danych, za pośrednictwem obiektu \textit{PrismaClient}. Prywatny konstruktor otwiera połączenie z bazą danych tylko raz, a statyczna metoda \textit{getInstance} zwraca instancję klasy \textit{Database}. Publiczna metoda \textit{getDatabase} zwraca obiekt \textit{PrismaClient}, który umożliwia dostęp do bazy danych.
-\begin{figure}  
+
+\begin{figure} [H]
   \centering
-\begin{lstlisting}[style=ES6, caption={Klasa \textit{Database}. Singleton.}, label={singleton}]
+\begin{lstlisting}[style=ES6]
 class Database {
   private static instance: Database;
   private db: PrismaClient;
@@ -1332,15 +1353,17 @@ class Database {
   }
 }
 \end{lstlisting}
+\caption{Klasa \textit{Database}. Singleton.}
+\label{singleton}
 \end{figure}
 
 \subsection{Repozytorium}
 
 Repozytorium pozwala na udzielenie dostępu do danych warstwom biznesowym aplikacji, oddzielając jednocześnie implmentację modelu dostępu do bazy danych, od reszty warstw. Repozytorium posiada wszelkie metody wyszukujące i~zwracające żądane obiekty lub kolekcje obiektów. Listing \ref{repo} przedstawia klasę \textit{CandidateRepository}. Jest to jedno z wielu repozytoriów, które dostarcza podstawowe metody służące do wyszukiwania i zapisywania danych. Klasa posiada pole \textit{db}, które jest instancją udzielającą dostępu do bazy danych.
-\newpage
-\begin{figure}  
+
+\begin{figure}[H]
   \centering
-\begin{lstlisting}[style=ES6, caption={Klasa \textit{CandidateRepository}.}, label={repo}]
+\begin{lstlisting}[style=ES6]
 class CandidateRepository {
   private db: PrismaClient
 
@@ -1363,6 +1386,8 @@ class CandidateRepository {
  }
 }
 \end{lstlisting}
+\caption{Klasa \textit{CandidateRepository}.}
+\label{repo}
 \end{figure}
 W projekcie repozytoria mają za zadanie dostarczać obiekty z bazy danych w~klasach serwisowych, które zawierają implementację logiki biznesowej.
 
@@ -1371,10 +1396,9 @@ W projekcie repozytoria mają za zadanie dostarczać obiekty z bazy danych w~kla
 Aplikacja serwerowa węzła sieci Blockchain pozwala na wybór jednego z dwóch algorytmów konsensusu. Algorytmy zajmują się rozwiązaniem tego samego problemu, dlatego można je wykorzystać, w ten sam sposób. Wzorzec projektowy strategia pozwala na dokonanie takiego podstawienia, bez konieczności zmiany struktury programu. Listing \ref{abstractBlockchain} przedstawia klasę bazową \textit{Blockchain}.
 Jest to klasa abstrakcyjna, która posiada implementację metod uniwersalnych dla każdego algorytmu. Metody \textit{mine}, \textit{getSyncValue} i \textit{synchronize} są abstrakcyjne.
  
-\newpage
-\begin{figure}  
+\begin{figure}[H]
   \centering
-\begin{lstlisting}[style=ES6, caption={Klasa \textit{Blockchain}.}, label={abstractBlockchain}]
+\begin{lstlisting}[style=ES6]
 abstract class Blockchain {
   protected blockchain: ChainRepository
 
@@ -1414,6 +1438,8 @@ data: any): Block {
   }
 }
 \end{lstlisting}
+\caption{Klasa \textit{Blockchain}.}
+\label{abstractBlockchain}
 \end{figure}
 Implementacja metod zależy od wykorzystywanego algorytmu. Implementacje znajdują się w klasach \textit{PoWAlgorithm} i \textit{PoAAlogorithm}. Klasy rozszerzają klasę \textit{Blockchain}.
 Szczegółowa implementacja metod abstrakcyjnych została omówiona w podrozdziale 6.3. Wykorzystanie mechanizmu dziedziczenia pozwala na podstawienie w miejsce klasy \textit{Blockchain} dowolnej klasy potomnej, która posiada zdefiniowaną implementację metod odpowiedzialnych za realizację algorytmu.
@@ -1422,9 +1448,9 @@ Szczegółowa implementacja metod abstrakcyjnych została omówiona w podrozdzia
 
 Redux to specjalna architektura wykorzystywana w aplikacjach ReactJs. W~projekcie wykorzystano bibliotekę Redux'a, o nazwie Redux-Toolkit, która upraszcza niektóre elementy Redux'a. Architektura pozwala na przeniesienie stanu aplikacji do jednego magazynu, który jest dostępny globalnie. Listingi \ref{slice} i  \ref{createSlice} przedstawiają jeden z wycinków magazynu. Wycinek (ang. \textit{slice}) to oznaczony odpowiednim identyfikatorem fragment magazynu. Każdy wycinek przechowuje określony stan (listing \ref{slice}).
 
-\begin{figure}  
+\begin{figure}[H]
   \centering
-\begin{lstlisting}[style=ES6, caption={Stan początkowy wycinka \textit{electionsSlice}.}, label={slice}]
+\begin{lstlisting}[style=ES6]
 const initialState = {
   electionsList: [],
   candidatesList: [],
@@ -1435,14 +1461,16 @@ const initialState = {
   electionResults: []
 }
 \end{lstlisting}
+\caption{Stan początkowy wycinka \textit{electionsSlice}.}
+\label{slice}
 \end{figure}
 Wycinek posiada zestaw metod, które pozwalają na modyfikowanie stanu wycinka. W kodzie są to metody obiektu \textit{reducers}, przedstawione w listingu \ref{createSlice}.
 
-\newpage
 
-\begin{figure}  
+
+\begin{figure}[H]
 \centering
-\begin{lstlisting}[style=ES6, caption={Wycinek \textit{electionsSlice}.}, label={createSlice}]
+\begin{lstlisting}[style=ES6]
 const electionsSlice = createSlice({
   name: 'elections',
   initialState,
@@ -1477,14 +1505,15 @@ const electionsSlice = createSlice({
   }
 })
 \end{lstlisting}
+\caption{Wycinek \textit{electionsSlice}.}
+\label{createSlice}
 \end{figure}
 Tak stworzony kontener ułatwia zarządzanie stanem aplikacji, ponieważ pozwala na odseparowanie implementacji stanu, od kodu odpowiedzialnego za użycie stanu. Architektura Redux posiada również specjalny mechanizm do wykonywania zadań asynchronicznych, takich jak np. pobranie danych z API. Takie zadania nazywane są Thunk'ami. Listing \ref{fetch} przedstawia Thunk'a, który pobiera listę wyborów dostępnych dla określonego użytkownika.
 
-\newpage
 
-\begin{figure}
+\begin{figure}[H]
 \centering
-\begin{lstlisting}[style=ES6, caption={Thunk \textit{fetchElection}.}, label={fetch}]
+\begin{lstlisting}[style=ES6]
 export const fetchElections = (): AppThunk => async dispatch => {
   try {
     const username = localStorage.getItem('username')
@@ -1502,13 +1531,15 @@ export const fetchElections = (): AppThunk => async dispatch => {
   }
 }
 \end{lstlisting}
+\caption{Thunk \textit{fetchElection}.}
+\label{fetch}
 \end{figure}
 
 W Thunk'ach można wykorzystywać metody obiektu \textit{reducers}, a następnie wywoływać Thunk'i w komponentach. Przykład przedstawiono w listingu \ref{ElectionPage}. Wywołanie każdego reducer'a zawsze znajduje się wewnątrz funkcji \textit{dispatch}. \textit{Dispatch} odpowiada za wysłanie odpowiedniej metody obiektu \textit{reducers}, do punktu obsługi tych metod.
 
-\begin{figure}
+\begin{figure}[H]
 \centering
-\begin{lstlisting}[style=ES6, caption={Wykorzystanie Thunk'a, w komponencie \textit{ElectionsPage}.}, label={ElectionPage}]
+\begin{lstlisting}[style=ES6]
 function ElectionsPage () {
   const dispatch = useDispatch()
   const { electionsList, isCandidatesShown, isResultsShown } 
@@ -1523,11 +1554,14 @@ function ElectionsPage () {
 /* ... */
 }
 \end{lstlisting}
+\caption{Wykorzystanie Thunk'a, w komponencie \textit{ElectionsPage}.}
+\label{ElectionPage}
 \end{figure}
 
 \chapter{Weryfikacja i walidacja}
 
-W rozdziale przedstawiono proces testowania systemu, a także wykryte i naprawione błędy. Testowanie systemu można podzielić na dwa etapy: testowanie aplikacji serwerowych i~testowanie aplikacji przeglądarkowych. 
+W rozdziale przedstawiono proces testowania systemu, a także wykryte i naprawione błędy. Testowanie systemu można podzielić na dwa etapy: testowanie aplikacji serwerowych i~testowanie aplikacji przeglądarkowych. W ostatniej części
+rozdziału przedstawiono proces weryfikacji systemu, wraz z pokazaniem jego przykładowego zastosowania.
 
 \section{Testowanie aplikacji serwerowych}
 
@@ -1550,12 +1584,12 @@ Zakres testów oprogramowania należy uznać za niepełny, ponieważ podczas tes
 Weryfikacja systemu pozwala na przetestowanie funkcji systemu, a także przedstawienie przykładowego zastosowania.
 Do weryfikacji systemu przygotowano scenariusz, który zakładał konfigurację i przeprowadzenie wyborów na najlepszego piłkarza sezonu 2019 - 2020.
 W tym celu stworzono konta dla dwudziestu-jeden wyborców, a następnie przystąpiono do konfiguracji sieci Blockchain.
-
-Dodatkowym założeniem scenariusza było uruchomionie węzłów Blockchain na osobnych maszynach wirtualnych, aby przetestować system w środowisku bardziej rozproszonym.
-Maszyny wirtualne operowały na systemie Linux Ubuntu. Po zainstalowaniu wymaganych składników uruchomiono program odpowiedzialny za węzeł Blockchain, w konfiguracji wykrozystującej algorytm \textit{Proof of Authority}, na każdej maszynie.
-Program wykorzystywał port \textit{3001}. Do konfiguracji sieci wymagane są adresy IP węzłów. W celu uzyskania adresów wykorzystano polcenie terminalowe \textit{ifconfig}, które dostarcza informacje dotyczące interfejsów sieciowych 
+ 
+Dodatkowym założeniem scenariusza było uruchomienie węzłów Blockchain na osobnych maszynach wirtualnych, aby przetestować system w środowisku bardziej rozproszonym.
+Maszyny wirtualne operowały na systemie Linux Ubuntu. Po zainstalowaniu wymaganych składników uruchomiono program odpowiedzialny za węzeł Blockchain, w konfiguracji wykorzystującej algorytm \textit{Proof of Authority}, na każdej maszynie.
+Program wykorzystywał port \textit{3001}. Do konfiguracji sieci wymagane są adresy IP węzłów. W celu uzyskania adresów wykorzystano polecenie terminalowe \textit{ifconfig}, które dostarcza informacje dotyczące interfejsów sieciowych 
 systemu operacyjnego. Wśród tych informacji znajduje się adres IP karty sieciowej, jest on oznaczony poprzez \textit{inet} (rys. \ref{ifconfig}). 
-
+ 
 \begin{figure}[H]
   \centering
 \includegraphics[width=\textwidth]{images/ifconfig.png}
@@ -1602,7 +1636,7 @@ W przedstawiony sposób utworzono nowe wybory, które są widoczne w menu wybor�
 \caption{Menu wyborów.}\label{addedelectionstest}
 \end {figure}
 
-Po utworzeniu wyborów oddane zostały głosy z utworzonych dwudziestu-jeden kont. System pomyślnie przetworzył, o czym świadczy informacja z panelu administratora, dotycząca statusu sieci (rys. \ref{bcstatus2}).
+Po utworzeniu wyborów oddane zostały głosy z utworzonych dwudziestu-jeden kont. System pomyślnie przetworzył wszystkie głosy, o czym świadczy informacja z panelu administratora, dotycząca statusu sieci (rys. \ref{bcstatus2}).
 Sieć składa się z trzech węzłów, a utworzono w niej 22 bloki. Pierwszy blok przechowuje nieistotne dane, dlatego należy go odliczyć.
 Ostatecznie dodano 21 nowych bloków, czyli tyle ilu było wyborców uprawnionych do głosowania. Wyniki wyborów zostały opublikowane i otrzymano diagram, który przedstawiono na rysunku \ref{ezresult}.
 
@@ -1645,13 +1679,21 @@ Zastosowanie technologii opartych na NodeJs do tworzenia sieci Blockchain okaza�
     \item JWT - Json Web Token
     \item SPA - Single Page Application
     \item NPM - Node Node Packet Module
+    \item GB - Giga Bajt
+    \item KDPW - Krajowy Depozyt Papierów Wartościowych
+    \item IP - Internet Protocol
   \end{description}
 
-Do pracy dołączona jest płyta CD, z następującą zawartością:
+\newpage
+
+Do pracy dołączona jest płyta CD, z~ następującą zawartością:
 
 \begin{itemize}
-  \item dokumentacja (źródła \LaTeX owe i końcowa wersja w \texttt{pdf}),
-  \item źródła programu,
+  \item dokumentacja -- (źródła \LaTeX owe i końcowa wersja w \texttt{pdf}),
+  \item admin-app -- źródła aplikacji przeglądarkowej administratora,
+  \item voter-app -- źródła aplikacji przeglądrakowej wyborcy,
+  \item blockchain-server -- źródła aplikacji serwerowej, będącej instancją węzła sieci Blockchain,
+  \item e-voting-api -- źródła aplikacji serwerowej, dostarczającej API systemu.
 \end{itemize}
 
 \listoffigures
