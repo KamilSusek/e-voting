@@ -32,35 +32,36 @@
 \BOOKMARK [2][-]{subsection.5.1.2}{Instalacja dla Linux}{section.5.1}% 32
 \BOOKMARK [1][-]{section.5.2}{Struktura oprogramowania}{chapter.5}% 33
 \BOOKMARK [1][-]{section.5.3}{Uruchamianie modu\233\363w}{chapter.5}% 34
-\BOOKMARK [1][-]{section.5.4}{Aplikacja administratora}{chapter.5}% 35
-\BOOKMARK [2][-]{subsection.5.4.1}{Logowanie}{section.5.4}% 36
-\BOOKMARK [2][-]{subsection.5.4.2}{Lista wyborc\363w}{section.5.4}% 37
-\BOOKMARK [2][-]{subsection.5.4.3}{Konfiguracja sieci Blockchain}{section.5.4}% 38
-\BOOKMARK [2][-]{subsection.5.4.4}{Lista wybor\363w}{section.5.4}% 39
-\BOOKMARK [2][-]{subsection.5.4.5}{Konfiguracja wybor\363w}{section.5.4}% 40
-\BOOKMARK [2][-]{subsection.5.4.6}{Nadzorowanie wybor\363w}{section.5.4}% 41
-\BOOKMARK [1][-]{section.5.5}{Aplikacja uzytkownika}{chapter.5}% 42
-\BOOKMARK [2][-]{subsection.5.5.1}{Logowanie}{section.5.5}% 43
-\BOOKMARK [2][-]{subsection.5.5.2}{Instrukcja obs\233ugi}{section.5.5}% 44
-\BOOKMARK [2][-]{subsection.5.5.3}{G\233osowanie}{section.5.5}% 45
-\BOOKMARK [2][-]{subsection.5.5.4}{Wyniki}{section.5.5}% 46
-\BOOKMARK [0][-]{chapter.6}{Specyfikacja wewnetrzna}{}% 47
-\BOOKMARK [1][-]{section.6.1}{Architektura systemu}{chapter.6}% 48
-\BOOKMARK [2][-]{subsection.6.1.1}{Architektura pe\233nego systemu}{section.6.1}% 49
-\BOOKMARK [2][-]{subsection.6.1.2}{Architektura sieci Blockchain}{section.6.1}% 50
-\BOOKMARK [1][-]{section.6.2}{Struktury danych}{chapter.6}% 51
-\BOOKMARK [2][-]{subsection.6.2.1}{\225ancuch blok\363w}{section.6.2}% 52
-\BOOKMARK [2][-]{subsection.6.2.2}{Baza danych}{section.6.2}% 53
-\BOOKMARK [1][-]{section.6.3}{Algorytmy}{chapter.6}% 54
-\BOOKMARK [2][-]{subsection.6.3.1}{Proof of Work}{section.6.3}% 55
-\BOOKMARK [2][-]{subsection.6.3.2}{Proof of Authority}{section.6.3}% 56
-\BOOKMARK [1][-]{section.6.4}{Zastosowane wzorce projektowe}{chapter.6}% 57
-\BOOKMARK [2][-]{subsection.6.4.1}{Singleton}{section.6.4}% 58
-\BOOKMARK [2][-]{subsection.6.4.2}{Repozytorium}{section.6.4}% 59
-\BOOKMARK [2][-]{subsection.6.4.3}{Strategia}{section.6.4}% 60
-\BOOKMARK [2][-]{subsection.6.4.4}{Redux}{section.6.4}% 61
-\BOOKMARK [0][-]{chapter.7}{Weryfikacja i walidacja}{}% 62
-\BOOKMARK [1][-]{section.7.1}{Testowanie aplikacji serwerowych}{chapter.7}% 63
-\BOOKMARK [1][-]{section.7.2}{Testowanie aplikacji przegladarkowych}{chapter.7}% 64
-\BOOKMARK [1][-]{section.7.3}{Weryfikacja systemu}{chapter.7}% 65
-\BOOKMARK [0][-]{chapter.8}{Podsumowanie i wnioski}{}% 66
+\BOOKMARK [1][-]{section.5.4}{Aktywacja oprogramowania}{chapter.5}% 35
+\BOOKMARK [1][-]{section.5.5}{Aplikacja administratora}{chapter.5}% 36
+\BOOKMARK [2][-]{subsection.5.5.1}{Logowanie}{section.5.5}% 37
+\BOOKMARK [2][-]{subsection.5.5.2}{Lista wyborc\363w}{section.5.5}% 38
+\BOOKMARK [2][-]{subsection.5.5.3}{Konfiguracja sieci Blockchain}{section.5.5}% 39
+\BOOKMARK [2][-]{subsection.5.5.4}{Lista wybor\363w}{section.5.5}% 40
+\BOOKMARK [2][-]{subsection.5.5.5}{Konfiguracja wybor\363w}{section.5.5}% 41
+\BOOKMARK [2][-]{subsection.5.5.6}{Nadzorowanie wybor\363w}{section.5.5}% 42
+\BOOKMARK [1][-]{section.5.6}{Aplikacja uzytkownika}{chapter.5}% 43
+\BOOKMARK [2][-]{subsection.5.6.1}{Logowanie}{section.5.6}% 44
+\BOOKMARK [2][-]{subsection.5.6.2}{Instrukcja obs\233ugi}{section.5.6}% 45
+\BOOKMARK [2][-]{subsection.5.6.3}{G\233osowanie}{section.5.6}% 46
+\BOOKMARK [2][-]{subsection.5.6.4}{Wyniki}{section.5.6}% 47
+\BOOKMARK [0][-]{chapter.6}{Specyfikacja wewnetrzna}{}% 48
+\BOOKMARK [1][-]{section.6.1}{Architektura systemu}{chapter.6}% 49
+\BOOKMARK [2][-]{subsection.6.1.1}{Architektura pe\233nego systemu}{section.6.1}% 50
+\BOOKMARK [2][-]{subsection.6.1.2}{Architektura sieci Blockchain}{section.6.1}% 51
+\BOOKMARK [1][-]{section.6.2}{Struktury danych}{chapter.6}% 52
+\BOOKMARK [2][-]{subsection.6.2.1}{\225ancuch blok\363w}{section.6.2}% 53
+\BOOKMARK [2][-]{subsection.6.2.2}{Baza danych}{section.6.2}% 54
+\BOOKMARK [1][-]{section.6.3}{Algorytmy}{chapter.6}% 55
+\BOOKMARK [2][-]{subsection.6.3.1}{Proof of Work}{section.6.3}% 56
+\BOOKMARK [2][-]{subsection.6.3.2}{Proof of Authority}{section.6.3}% 57
+\BOOKMARK [1][-]{section.6.4}{Zastosowane wzorce projektowe}{chapter.6}% 58
+\BOOKMARK [2][-]{subsection.6.4.1}{Singleton}{section.6.4}% 59
+\BOOKMARK [2][-]{subsection.6.4.2}{Repozytorium}{section.6.4}% 60
+\BOOKMARK [2][-]{subsection.6.4.3}{Strategia}{section.6.4}% 61
+\BOOKMARK [2][-]{subsection.6.4.4}{Redux}{section.6.4}% 62
+\BOOKMARK [0][-]{chapter.7}{Weryfikacja i walidacja}{}% 63
+\BOOKMARK [1][-]{section.7.1}{Testowanie aplikacji serwerowych}{chapter.7}% 64
+\BOOKMARK [1][-]{section.7.2}{Testowanie aplikacji przegladarkowych}{chapter.7}% 65
+\BOOKMARK [1][-]{section.7.3}{Weryfikacja systemu}{chapter.7}% 66
+\BOOKMARK [0][-]{chapter.8}{Podsumowanie i wnioski}{}% 67

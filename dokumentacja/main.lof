@@ -6,8 +6,8 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Moduły systemu i-votingu \cite {estonian:voting}.}}{12}{figure.3.1}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Proces i-votingu \cite {estonian:voting}.}}{13}{figure.3.2}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagram przypadków użycia wyborcy.}}{17}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Diagram przypadków użycia administratora.}}{18}{figure.4.2}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagram przypadków użycia wyborcy.}}{16}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Diagram przypadków użycia administratora.}}{17}{figure.4.2}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Rezultat polecenia \textit {node -v}}}{24}{figure.5.1}%
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Struktura folderów}}{24}{figure.5.2}%
@@ -31,27 +31,43 @@
 \contentsline {figure}{\numberline {5.20}{\ignorespaces Dane dotyczące sieci Blockchain.}}{32}{figure.5.20}%
 \contentsline {figure}{\numberline {5.21}{\ignorespaces Przycisk publikowania wyborów.}}{33}{figure.5.21}%
 \contentsline {figure}{\numberline {5.22}{\ignorespaces Diagram słupkowy prezentujący wyniki.}}{33}{figure.5.22}%
-\contentsline {figure}{\numberline {5.23}{\ignorespaces Pasek nawigacji.}}{34}{figure.5.23}%
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Pasek nawigacji.}}{33}{figure.5.23}%
 \contentsline {figure}{\numberline {5.24}{\ignorespaces Okno logowania.}}{34}{figure.5.24}%
+\contentsline {figure}{\numberline {5.26}{\ignorespaces Strona wyborcy. Instrukcja obsługi.}}{34}{figure.5.26}%
 \contentsline {figure}{\numberline {5.25}{\ignorespaces Obsługa błędnych danych logowania.}}{35}{figure.5.25}%
-\contentsline {figure}{\numberline {5.26}{\ignorespaces Strona wyborcy. Instrukcja obsługi.}}{35}{figure.5.26}%
-\contentsline {figure}{\numberline {5.27}{\ignorespaces Okno wyborcze.}}{36}{figure.5.27}%
+\contentsline {figure}{\numberline {5.27}{\ignorespaces Okno wyborcze.}}{35}{figure.5.27}%
 \contentsline {figure}{\numberline {5.28}{\ignorespaces Panel wyborów.}}{36}{figure.5.28}%
 \contentsline {figure}{\numberline {5.29}{\ignorespaces Pomyślnie wysłany głos.}}{36}{figure.5.29}%
-\contentsline {figure}{\numberline {5.30}{\ignorespaces Okno wyborów. Po zagłosowaniu.}}{37}{figure.5.30}%
-\contentsline {figure}{\numberline {5.31}{\ignorespaces Okno wyborów. Po ogłoszeniu wyników.}}{37}{figure.5.31}%
+\contentsline {figure}{\numberline {5.30}{\ignorespaces Okno wyborów. Po zagłosowaniu.}}{36}{figure.5.30}%
+\contentsline {figure}{\numberline {5.31}{\ignorespaces Okno wyborów. Po ogłoszeniu wyników.}}{36}{figure.5.31}%
 \contentsline {figure}{\numberline {5.32}{\ignorespaces Wykres wyników wyborów.}}{37}{figure.5.32}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Schemat przedstawiający komponenty systemu.}}{40}{figure.6.1}%
 \contentsline {figure}{\numberline {6.2}{\ignorespaces Schemat przedstawiający przykładową sieć Blockchain.}}{41}{figure.6.2}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Schemat przedstawiający relacyjny schemat bazy danych.}}{45}{figure.6.3}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Klasa \textit {Block}.}}{42}{figure.6.3}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Klasa \textit {ChainRepository}.}}{43}{figure.6.4}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Fragment klasy Blockchain.}}{44}{figure.6.5}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Schemat przedstawiający relacyjny schemat bazy danych.}}{45}{figure.6.6}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Metoda \textit {validateNonce}.}}{46}{figure.6.7}%
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Metoda \textit {solveNonce}.}}{47}{figure.6.8}%
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Dodawanie nowego bloku. Metoda \textit {mine}.}}{47}{figure.6.9}%
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Metoda \textit {synchronize}.}}{48}{figure.6.10}%
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Dodawanie nowego bloku w algorytmie Proof of Authority.}}{48}{figure.6.11}%
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Synchronizacja w algorytmie Proof of Authority.}}{49}{figure.6.12}%
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Klasa \textit {Database}. Singleton.}}{50}{figure.6.13}%
+\contentsline {figure}{\numberline {6.14}{\ignorespaces Klasa \textit {CandidateRepository}.}}{51}{figure.6.14}%
+\contentsline {figure}{\numberline {6.15}{\ignorespaces Klasa \textit {Blockchain}.}}{52}{figure.6.15}%
+\contentsline {figure}{\numberline {6.16}{\ignorespaces Stan początkowy wycinka \textit {electionsSlice}.}}{53}{figure.6.16}%
+\contentsline {figure}{\numberline {6.17}{\ignorespaces Wycinek \textit {electionsSlice}.}}{54}{figure.6.17}%
+\contentsline {figure}{\numberline {6.18}{\ignorespaces Thunk \textit {fetchElection}.}}{55}{figure.6.18}%
+\contentsline {figure}{\numberline {6.19}{\ignorespaces Wykorzystanie Thunk'a, w komponencie \textit {ElectionsPage}.}}{55}{figure.6.19}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Rezultat polecenia \textit {ifconfig}.}}{60}{figure.7.1}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Konfiguracja węzłów.}}{61}{figure.7.2}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Konfiguracja wyborów.}}{61}{figure.7.3}%
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Dodawanie kandydatów.}}{62}{figure.7.4}%
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Przypisanie wyborców.}}{62}{figure.7.5}%
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Menu wyborów.}}{63}{figure.7.6}%
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Status wyborów.}}{63}{figure.7.7}%
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Wyniki wyborów.}}{63}{figure.7.8}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Rezultat polecenia \textit {ifconfig}.}}{58}{figure.7.1}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Konfiguracja węzłów.}}{59}{figure.7.2}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Konfiguracja wyborów.}}{59}{figure.7.3}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Dodawanie kandydatów.}}{60}{figure.7.4}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Przypisanie wyborców.}}{60}{figure.7.5}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Menu wyborów.}}{61}{figure.7.6}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Status wyborów.}}{61}{figure.7.7}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Wyniki wyborów.}}{61}{figure.7.8}%
 \addvspace {10\p@ }
